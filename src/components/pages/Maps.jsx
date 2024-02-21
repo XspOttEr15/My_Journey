@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 
-export const Map = () => {
+export const Maps = () => {
   // สร้างฟังก์ชันที่จะเลื่อนไปยัง ID storyboard
   // const scrollToStoryboard = () => {
   //   const storyboardElement = document.getElementById("storyboard");
@@ -84,5 +84,5 @@ export const Map = () => {
 </>
 );
 }
-export default Map;
+export default Maps;
 

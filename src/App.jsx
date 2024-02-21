@@ -16,7 +16,7 @@ import ChapterDialogTwo from "./components/pages/Chapter/ChapterDialogTwo";
 import ChapterDialogThree from "./components/pages/Chapter/ChapterDiaologThree";
 import ChapterTwo from "./components/pages/Chapter/ChapterTwo";
 import ChapterThree from "./components/pages/Chapter/ChapterThree";
-import Map from "./components/pages/map";
+import Maps from "./components/pages/Maps";
 
 export const DataContext = createContext();
 
@@ -39,7 +39,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/concept" element={<Concept />} />
           <Route path="/character" element={<Character />} />
-          <Route path="/map" element={<Map/>} />
+          <Route path="/maps" element={<Maps/>} />
           <Route path="/chapteronedialog" element={<ChapterDialogOne />} />
           <Route path="/chaptertwodialog" element={<ChapterDialogTwo />} />
           <Route path="/chapterthreedialog" element={<ChapterDialogThree />} />
