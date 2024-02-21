@@ -17,6 +17,7 @@ import ChapterDialogThree from "./components/pages/Chapter/ChapterDiaologThree";
 import ChapterTwo from "./components/pages/Chapter/ChapterTwo";
 import ChapterThree from "./components/pages/Chapter/ChapterThree";
 import Maps from "./components/pages/Maps";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 export const DataContext = createContext();
 
@@ -30,7 +31,7 @@ function App() {
 
   return (
     <>
-     
+      <SpeedInsights />
       <DataContext.Provider value={{ CloseNavbar, setCloseNavbar , CloseButtonNavbar , setCloseButtonNavbar, ColseBgmusic, setColseBgmusic,Volumn, setVolumn,isNavbarFixed, setIsNavbarFixed}}>
       <Navbar/>
       <div>
