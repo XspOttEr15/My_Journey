@@ -15,7 +15,7 @@ const LoadingScreen = () => {
 
   return (
     <div className={`loading-screen ${active ? "" : "loading-screen--hidden"}`}>
-      <video className="loading-screen__background-video" autoPlay loop>
+      <video className="loading-screen__background-video" autoPlay loop muted>
         <source src={randomVideo} type="video/mp4" />
       </video>
       <div className="loading-screen__container">
