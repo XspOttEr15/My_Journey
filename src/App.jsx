@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "flowbite";
 
@@ -34,7 +34,6 @@ function App() {
       <SpeedInsights />
       <DataContext.Provider value={{ CloseNavbar, setCloseNavbar , CloseButtonNavbar , setCloseButtonNavbar, ColseBgmusic, setColseBgmusic,Volumn, setVolumn,isNavbarFixed, setIsNavbarFixed}}>
       <Navbar/>
-      <div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -49,7 +48,6 @@ function App() {
           <Route path="/chapterthree" element={<ChapterThree />} />
           <Route path="/roomchapterone" element={<RoomChapterOne />} />
         </Routes>
-      </div>  
       </DataContext.Provider>
     </>
   );

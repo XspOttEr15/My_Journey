@@ -1,6 +1,6 @@
 import { DarkThemeToggle } from "flowbite-react";
 import ThemeToggle from "../Home/ThemeToggle";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import AudioPlayer from "./AudioPlayer";
 import { Button } from "flowbite-react";
 import { useContext, useEffect, useState } from "react";
