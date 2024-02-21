@@ -92,7 +92,7 @@ const Concept = () => {
         animate={{ opacity:1 , y:0}}
         transition={{duration:0.5}}>
         
-        <Link to={"/map"}>
+        <Link to={"/maps"}>
           <motion.img
             className="rounded-3xl shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 "
             src="/images/Concepts/map.png"

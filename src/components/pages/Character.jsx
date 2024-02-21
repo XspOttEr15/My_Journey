@@ -52,7 +52,6 @@ const Character = () => {
     handleCardClick(4);
   };
 
-
   return (
     <>
       <div className="text-center">
@@ -229,7 +228,7 @@ export default Character;
 
 //CardOne
 
-export const CardOne = React.forwardRef((props, ref) => {
+const CardOne = React.forwardRef((props, ref) => {
   const [openModal, setOpenModal] = useState(false);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
@@ -255,7 +254,6 @@ export const CardOne = React.forwardRef((props, ref) => {
         </Modal.Body>
       </Modal>
 
-
       <Lightbox
         open={open}
         close={() => {
@@ -269,7 +267,7 @@ export const CardOne = React.forwardRef((props, ref) => {
       />
 
       <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5 ">
-        <Characterdisplaytwo />
+        <Characterdisplay />
         <button
           type="button"
           onClick={() => {
@@ -332,7 +330,7 @@ export const CardOne = React.forwardRef((props, ref) => {
 
 //CardTwo
 
-export const CardTwo = React.forwardRef((props, ref) => {
+const CardTwo = React.forwardRef((props, ref) => {
   const [openModal, setOpenModal] = useState(false);
   const [open, setOpen] = React.useState(false);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
@@ -428,11 +426,9 @@ export const CardTwo = React.forwardRef((props, ref) => {
   );
 });
 
-
-
 //CardThee
 
-export const CardThee = React.forwardRef((props, ref) => {
+const CardThee = React.forwardRef((props, ref) => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalimg, setOpenModalimg] = useState(false);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
@@ -446,7 +442,9 @@ export const CardThee = React.forwardRef((props, ref) => {
         <Characterdisplaythree />
         <div>
           <button
-            onClick={() => {setOpenModal(true),play()}}
+            onClick={() => {
+              setOpenModal(true), play();
+            }}
             type="button"
             className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
           >
@@ -455,7 +453,9 @@ export const CardThee = React.forwardRef((props, ref) => {
           <Modal
             size={["800px"]}
             show={openModal}
-            onClose={() => {setOpenModal(false),play()}}
+            onClose={() => {
+              setOpenModal(false), play();
+            }}
           >
             <Modal.Header>Power by Sketchfab</Modal.Header>
             <Modal.Body>
@@ -485,7 +485,7 @@ export const CardThee = React.forwardRef((props, ref) => {
   );
 });
 
-export const CardFour = React.forwardRef((props, ref) => {
+const CardFour = React.forwardRef((props, ref) => {
   const [openModal, setOpenModal] = useState(false);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
@@ -498,7 +498,9 @@ export const CardFour = React.forwardRef((props, ref) => {
         <Characterdisplayfour />
         <div>
           <button
-            onClick={() => {setOpenModal(true),play()}}
+            onClick={() => {
+              setOpenModal(true), play();
+            }}
             type="button"
             className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
           >
@@ -507,7 +509,9 @@ export const CardFour = React.forwardRef((props, ref) => {
           <Modal
             size={["800px"]}
             show={openModal}
-            onClose={() =>{ setOpenModal(false),play()}}
+            onClose={() => {
+              setOpenModal(false), play();
+            }}
           >
             <Modal.Header>Power by Sketchfab</Modal.Header>
             <Modal.Body>
@@ -540,7 +544,7 @@ export const CardFour = React.forwardRef((props, ref) => {
 
 // 3D sence Inspect
 
-export function ThreeModelOne() {
+function ThreeModelOne() {
   return (
     <div className="sketchfab-embed-wrapper">
       <iframe
@@ -557,7 +561,9 @@ export function ThreeModelOne() {
   );
 }
 
-export function ThreeModelTwo() {
+
+
+function ThreeModelTwo() {
   return (
     <div className="sketchfab-embed-wrapper">
       <iframe
@@ -574,7 +580,7 @@ export function ThreeModelTwo() {
   );
 }
 
-export function ThreeModelThee() {
+function ThreeModelThee() {
   return (
     <div className="sketchfab-embed-wrapper">
       <iframe
@@ -591,33 +597,22 @@ export function ThreeModelThee() {
   );
 }
 
-export function ThreeModelFour() {
+function ThreeModelFour() {
   return (
     <div className="sketchfab-embed-wrapper">
       <iframe
         className="rounded-3xl "
-        title="Employee"
-        frameBorder="0"
-        allowFullScreen
-        allow="autoplay; fullscreen"
-        src="https://sketchfab.com/models/9d1098bc72a74bb1b6371aef4b987100/embed"
-        width="100%"
-        height="740"
-      ></iframe>
-    </div>
-  );
-}
-
-export function ThreeModelFive() {
-  return (
-    <div className="sketchfab-embed-wrapper">
-      <iframe
-        className="rounded-3xl "
-        title="Employee"
-        frameBorder="0"
-        allowFullScreen
-        allow="autoplay; fullscreen"
-        src="https://sketchfab.com/models/9d1098bc72a74bb1b6371aef4b987100/embed"
+        title="CS_robot"
+        frameborder="0"
+        allowfullscreen
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+        allow="autoplay; fullscreen; xr-spatial-tracking"
+        xr-spatial-tracking
+        execution-while-out-of-viewport
+        execution-while-not-rendered
+        web-share
+        src="https://sketchfab.com/models/e222bb9da46943da9280c1fc4e57fdca/embed"
         width="100%"
         height="740"
       ></iframe>

@@ -46,6 +46,7 @@
     font-size: 4rem;
     font-weight: 900;
     text-transform: uppercase;
+    text-align: center;
     color: #ffffff;
     margin: 15rem 0 0; /* Adjust the top margin to move the text downwards */
 }
