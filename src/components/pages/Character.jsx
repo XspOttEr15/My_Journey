@@ -27,6 +27,13 @@ const Character = () => {
     setSelectedCard(cardNumber);
   };
 
+  const handleNextClick = () => {
+    setSelectedCard((prevIndex) => prevIndex + 1);
+  };
+  const handleBackClick = () => {
+    setSelectedCard((prevIndex) => prevIndex - 1);
+  };
+
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
 
@@ -150,10 +157,34 @@ const Character = () => {
             </Slider>
           </div>
         </div>
-        {selectedCard === 1 && <CardOne ref={cardRef} />}
-        {selectedCard === 2 && <CardTwo ref={cardRef} />}
-        {selectedCard === 3 && <CardThee ref={cardRef} />}
-        {selectedCard === 4 && <CardFour ref={cardRef} />}
+        {selectedCard === 1 && (
+          <CardOne
+            ref={cardRef}
+            handleNextClick={handleNextClick}
+            handleBackClick={handleBackClick}
+          />
+        )}
+        {selectedCard === 2 && (
+          <CardTwo
+            ref={cardRef}
+            handleNextClick={handleNextClick}
+            handleBackClick={handleBackClick}
+          />
+        )}
+        {selectedCard === 3 && (
+          <CardThee
+            ref={cardRef}
+            handleNextClick={handleNextClick}
+            handleBackClick={handleBackClick}
+          />
+        )}
+        {selectedCard === 4 && (
+          <CardFour
+            ref={cardRef}
+            handleNextClick={handleNextClick}
+            handleBackClick={handleBackClick}
+          />
+        )}
       </div>
     </>
   );
@@ -228,265 +259,327 @@ export default Character;
 
 //CardOne
 
-const CardOne = React.forwardRef((props, ref) => {
-  const [openModal, setOpenModal] = useState(false);
-  const soundUrl = "/sound_effects/ButtonPush.mp3";
-  const [play] = useSound(soundUrl);
-  const [open, setOpen] = React.useState(false);
-  return (
-    <div
-      ref={ref}
-      id="componentCardOne"
-      className=" sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
-    >
-      <Modal
-        size={["800px"]}
-        show={openModal}
-        onClose={() => {
-          setOpenModal(false), play();
-        }}
+const CardOne = React.forwardRef(
+  ({ handleNextClick, handleBackClick }, ref) => {
+    const [openModal, setOpenModal] = useState(false);
+    const soundUrl = "/sound_effects/ButtonPush.mp3";
+    const [play] = useSound(soundUrl);
+    const [open, setOpen] = React.useState(false);
+    return (
+      <div
+        ref={ref}
+        id="componentCardOne"
+        className=" sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
       >
-        <Modal.Header>Power by Sketchfab</Modal.Header>
-        <Modal.Body>
-          <div>
-            <ThreeModelOne />
-          </div>
-        </Modal.Body>
-      </Modal>
-
-      <Lightbox
-        open={open}
-        close={() => {
-          setOpen(false), play();
-        }}
-        slides={[
-          { src: "/images/Characters/Lunar/Lunar_FullSuit.png" },
-          { src: "/images/Characters/Lunar/Lunar_NormalSuit.png" },
-          { src: "/images/Characters/Lunar/Lunar_Undressed.png" },
-        ]}
-      />
-
-      <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5 ">
-        <Characterdisplay />
-        <button
-          type="button"
-          onClick={() => {
-            setOpenModal(true), play();
+        <Modal
+          size={["800px"]}
+          show={openModal}
+          onClose={() => {
+            setOpenModal(false), play();
           }}
-          className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
         >
-          {openModal ? "Close" : "Inspect 3D"}
-        </button>
+          <Modal.Header>Power by Sketchfab</Modal.Header>
+          <Modal.Body>
+            <div>
+              <ThreeModelOne />
+            </div>
+          </Modal.Body>
+        </Modal>
 
-        <button
-          type="button"
-          onClick={() => {
-            setOpen(true), play();
+        <Lightbox
+          open={open}
+          close={() => {
+            setOpen(false), play();
           }}
-          className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
-        >
-          {openModal ? "Close" : "Inspect 2D"}
-        </button>
-      </div>
+          slides={[
+            { src: "/images/Characters/Lunar/Lunar_FullSuit.png" },
+            { src: "/images/Characters/Lunar/Lunar_NormalSuit.png" },
+            { src: "/images/Characters/Lunar/Lunar_Undressed.png" },
+          ]}
+        />
 
-      <div className="lg:flex-1  lg:m-5 ">
-        <div className="align-middle">
-          <h1 className="text-4xl lg:text-5xl font-extrabold dark:text-white m-5">
-            Lunar (Main Charecter)
-          </h1>
-          <p className="text-2xl  text-justify pt-5">
-            เป็นตัวละครหลักที่จะคอยบรรยายสิ่งต่าง ๆ ให้กับผู้รับชม
-            จะมีการเล่าผ่านมุมมองของเธอเปรียบเสมือนผู้ชมที่ไม่เคยรู้จักสิ่งนั้น
-            ๆ มาก่อน และพยายามทำความเข้าใจในสิ่งที่กำลังจะเกิดขึ้นต่อจากนี้
-            คุณลักษณะของเธอจะมีอายุ 17 ปี และไม่รู้จักโลกภายนอก
-            และมีความสนใจในสิ่งใหม่ ๆ และผ่านประสบการณ์การใช้ชีวิตมาประมาณหนึ่ง
-            การร่างตัวละคร มีการใช้ความเป็น Sci-fi ร่วมด้วยในการออกแบบ
-            เพื่อให้ดูกลมกลืนไปกับฉาก และใช้อุปกรณ์บางชิ้นแทนอวัยวะเช่นแขนเทียม
-            เพื่อให้ตัวละครดูมีภูมิหลัง และที่มาที่ดูซับซ้อน
-            ตัวละครตัวนี้จะถูกพัฒนาความสัมพันธ์ตามเหตการณ์ในเนื้อเรื่อง
-          </p>
-        </div>
-        <div className=" flex  justify-around m-10 ">
+        <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5 ">
+          <Characterdisplay />
           <button
-            onClick={() => {}}
             type="button"
-            className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
-          >
-            {openModal ? "Close" : "Back"}
-          </button>
-
-          <button
-            onClick={() => {}}
-            type="button"
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
-          >
-            {open ? "Close" : "Next"}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-});
-
-//CardTwo
-
-const CardTwo = React.forwardRef((props, ref) => {
-  const [openModal, setOpenModal] = useState(false);
-  const [open, setOpen] = React.useState(false);
-  const soundUrl = "/sound_effects/ButtonPush.mp3";
-  const [play] = useSound(soundUrl);
-  return (
-    <div
-      ref={ref}
-      id="componentCardTwo"
-      className=" sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center "
-    >
-      <Modal
-        size={["800px"]}
-        show={openModal}
-        onClose={() => {
-          setOpenModal(false), play();
-        }}
-      >
-        <Modal.Header>Power by Sketchfab</Modal.Header>
-        <Modal.Body>
-          <div>
-            <ThreeModelTwo />
-          </div>
-        </Modal.Body>
-      </Modal>
-
-      <Lightbox
-        open={open}
-        close={() => {
-          setOpen(false), play();
-        }}
-        slides={[
-          { src: "/images/Characters/Rabbet/3DRabbet.png" },
-          { src: "/images/Characters/Rabbet/Rabbet.png" },
-        ]}
-      />
-
-      <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5 ">
-        <Characterdisplaytwo />
-        <button
-          type="button"
-          onClick={() => {
-            setOpenModal(true), play();
-          }}
-          className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
-        >
-          {openModal ? "Close" : "Inspect 3D"}
-        </button>
-
-        <button
-          type="button"
-          onClick={() => {
-            setOpen(true), play();
-          }}
-          className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
-        >
-          {open ? "Close" : "Inspect 2D"}
-        </button>
-      </div>
-
-      <div className="lg:flex-1  lg:m-0  p-5 ">
-        <div className=" align-middle">
-          <h1 className="lg:text-5xl font-extrabold dark:text-white m-5 ssm:text-3xl">
-            Rabbet (Lapin-02)
-          </h1>
-          <p className="  text-2xl text-justify pt-5 ssm:text-center ssm:text-xl ">
-            Lapin-02 คือชื่อที่แท้จริงของ Rabbet มีความหมายในภาษาละตินว่า
-            กระต่าย และเป็นเตาปฏิกรณ์หมายเลข 2 ที่ถูกสร้างขึ้นเพื่อมาทดแทนที่
-            เตาปฏิกรณ์หมายเลข1
-            แต่ด้วยความที่ไม่เสถียรจึงจะนำไปทำลายที่เมืองด้านล่างสุดด้วยระบบอัตโนมัติ
-            แต่เกิดข้อผิดพลาดจึงกลายเป็น Rabbet
-            ที่มีระบบไม่สมบูรณ์จึงไม่ทำลายตัวเองในหลุมลาวา
-          </p>
-        </div>
-
-        <div className=" flex  justify-around m-10 ">
-          <button
-            onClick={() => {}}
-            type="button"
-            className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
-          >
-            {openModal ? "Close" : "Back"}
-          </button>
-          <button
-            onClick={() => {}}
-            type="button"
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
-          >
-            {open ? "Close" : "Next"}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-});
-
-//CardThee
-
-const CardThee = React.forwardRef((props, ref) => {
-  const [openModal, setOpenModal] = useState(false);
-  const [openModalimg, setOpenModalimg] = useState(false);
-  const soundUrl = "/sound_effects/ButtonPush.mp3";
-  const [play] = useSound(soundUrl);
-  return (
-    <div
-      ref={ref}
-      className="sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
-    >
-      <div className="xl:max-w-3xl xl:w-1/2 bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5">
-        <Characterdisplaythree />
-        <div>
-          <button
             onClick={() => {
               setOpenModal(true), play();
             }}
-            type="button"
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
           >
-            {openModal ? "Close" : "Inspect"}
+            {openModal ? "Close" : "Inspect 3D"}
           </button>
-          <Modal
-            size={["800px"]}
-            show={openModal}
-            onClose={() => {
-              setOpenModal(false), play();
+
+          <button
+            type="button"
+            onClick={() => {
+              setOpen(true), play();
             }}
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
           >
-            <Modal.Header>Power by Sketchfab</Modal.Header>
-            <Modal.Body>
-              <div className="">
-                <ThreeModelThee />
-              </div>
-            </Modal.Body>
-          </Modal>
+            {openModal ? "Close" : "Inspect 2D"}
+          </button>
+        </div>
+
+        <div className="lg:flex-1  lg:m-5 ">
+          <div className="align-middle">
+            <h1 className="text-4xl lg:text-5xl font-extrabold dark:text-white m-5">
+              Lunar (Main Charecter)
+            </h1>
+            <p className="text-2xl  text-justify pt-5">
+              เป็นตัวละครหลักที่จะคอยบรรยายสิ่งต่าง ๆ ให้กับผู้รับชม
+              จะมีการเล่าผ่านมุมมองของเธอเปรียบเสมือนผู้ชมที่ไม่เคยรู้จักสิ่งนั้น
+              ๆ มาก่อน และพยายามทำความเข้าใจในสิ่งที่กำลังจะเกิดขึ้นต่อจากนี้
+              คุณลักษณะของเธอจะมีอายุ 17 ปี และไม่รู้จักโลกภายนอก
+              และมีความสนใจในสิ่งใหม่ ๆ
+              และผ่านประสบการณ์การใช้ชีวิตมาประมาณหนึ่ง การร่างตัวละคร
+              มีการใช้ความเป็น Sci-fi ร่วมด้วยในการออกแบบ
+              เพื่อให้ดูกลมกลืนไปกับฉาก
+              และใช้อุปกรณ์บางชิ้นแทนอวัยวะเช่นแขนเทียม
+              เพื่อให้ตัวละครดูมีภูมิหลัง และที่มาที่ดูซับซ้อน
+              ตัวละครตัวนี้จะถูกพัฒนาความสัมพันธ์ตามเหตการณ์ในเนื้อเรื่อง
+            </p>
+          </div>
+          <div className=" flex  justify-around m-10 ">
+            <button
+              onClick={() => {
+                handleBackClick(), play();
+              }}
+              type="button"
+              className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+            >
+              Back
+            </button>
+
+            <button
+              onClick={() => {
+                handleNextClick(), play();
+              }}
+              type="button"
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
+    );
+  }
+);
 
-      <div className="lg:flex-1  lg:m-5 pt-10 ">
-        <div className=" align-middle ">
-          <h1 className="text-4xl lg:text-5xl font-extrabold dark:text-white m-5 ">
-            Supporting Character
-          </h1>
-          <p className="text-2xl text-justify pt-5">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-          </p>
+//CardTwo
+
+const CardTwo = React.forwardRef(
+  ({ handleNextClick, handleBackClick }, ref) => {
+    const [openModal, setOpenModal] = useState(false);
+    const [open, setOpen] = React.useState(false);
+    const soundUrl = "/sound_effects/ButtonPush.mp3";
+    const [play] = useSound(soundUrl);
+    return (
+      <div
+        ref={ref}
+        id="componentCardTwo"
+        className=" sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center "
+      >
+        <Modal
+          size={["800px"]}
+          show={openModal}
+          onClose={() => {
+            setOpenModal(false), play();
+          }}
+        >
+          <Modal.Header>Power by Sketchfab</Modal.Header>
+          <Modal.Body>
+            <div>
+              <ThreeModelTwo />
+            </div>
+          </Modal.Body>
+        </Modal>
+
+        <Lightbox
+          open={open}
+          close={() => {
+            setOpen(false), play();
+          }}
+          slides={[
+            { src: "/images/Characters/Rabbet/3DRabbet.png" },
+            { src: "/images/Characters/Rabbet/Rabbet.png" },
+          ]}
+        />
+
+        <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5 ">
+          <Characterdisplaytwo />
+          <button
+            type="button"
+            onClick={() => {
+              setOpenModal(true), play();
+            }}
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+          >
+            {openModal ? "Close" : "Inspect 3D"}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setOpen(true), play();
+            }}
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+          >
+            {open ? "Close" : "Inspect 2D"}
+          </button>
+        </div>
+
+        <div className="lg:flex-1  lg:m-0  p-5 ">
+          <div className=" align-middle">
+            <h1 className="lg:text-5xl font-extrabold dark:text-white m-5 ssm:text-3xl">
+              Rabbet (Lapin-02)
+            </h1>
+            <p className="  text-2xl text-justify pt-5 ssm:text-center ssm:text-xl ">
+              Lapin-02 คือชื่อที่แท้จริงของ Rabbet มีความหมายในภาษาละตินว่า
+              กระต่าย และเป็นเตาปฏิกรณ์หมายเลข 2 ที่ถูกสร้างขึ้นเพื่อมาทดแทนที่
+              เตาปฏิกรณ์หมายเลข1
+              แต่ด้วยความที่ไม่เสถียรจึงจะนำไปทำลายที่เมืองด้านล่างสุดด้วยระบบอัตโนมัติ
+              แต่เกิดข้อผิดพลาดจึงกลายเป็น Rabbet
+              ที่มีระบบไม่สมบูรณ์จึงไม่ทำลายตัวเองในหลุมลาวา
+            </p>
+          </div>
+
+          <div className=" flex  justify-around m-10 ">
+            <button
+              onClick={() => {
+                handleBackClick(), play();
+              }}
+              type="button"
+              className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+            >
+              Back
+            </button>
+            <button
+              onClick={() => {
+                handleNextClick(), play();
+              }}
+              type="button"
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+);
 
-const CardFour = React.forwardRef((props, ref) => {
+//CardThee
+
+const CardThee = React.forwardRef(
+  ({ handleNextClick, handleBackClick }, ref) => {
+    const [openModal, setOpenModal] = useState(false);
+    const [open, setOpen] = React.useState(false);
+    const soundUrl = "/sound_effects/ButtonPush.mp3";
+    const [play] = useSound(soundUrl);
+    return (
+      <div
+        ref={ref}
+        className="sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
+      >
+        <Modal
+          size={["800px"]}
+          show={openModal}
+          onClose={() => {
+            setOpenModal(false), play();
+          }}
+        >
+          <Modal.Header>Power by Sketchfab</Modal.Header>
+          <Modal.Body>
+            <div className="">
+              <ThreeModelThee />
+            </div>
+          </Modal.Body>
+        </Modal>
+
+        <Lightbox
+          open={open}
+          close={() => {
+            setOpen(false), play();
+          }}
+          slides={[
+            { src: "/images/Characters/SupportingCharacter/SupCharacter.png" },
+          ]}
+        />
+
+        <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5">
+          <Characterdisplaythree />
+          <div>
+            <button
+              onClick={() => {
+                setOpenModal(true), play();
+              }}
+              type="button"
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+            >
+              {openModal ? "Close" : "Inspect 3D"}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(true), play();
+              }}
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+            >
+              {open ? "Close" : "Inspect 2D"}
+            </button>
+          </div>
+        </div>
+
+        <div className="lg:flex-1  lg:m-0 p-5 ">
+          <div className=" align-middle ">
+            <h1 className="lg:text-5xl font-extrabold dark:text-white m-5 ssm:text-3xl ">
+              Supporting Character
+            </h1>
+            <p className=" text-2xl text-justify pt-5 ssm:text-center ssm:text-xl">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting,
+            </p>
+          </div>
+          <div className=" flex  justify-around m-10 ">
+            <button
+              onClick={() => {
+                handleBackClick(), play();
+              }}
+              type="button"
+              className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+            >
+              Back
+            </button>
+            <button
+              onClick={()=> {
+                handleNextClick(),
+                play();
+              }}
+              type="button"
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+);
+
+//cardfour
+
+const CardFour = React.forwardRef(({ handleNextClick, handleBackClick }, ref) => {
   const [openModal, setOpenModal] = useState(false);
+  const [open, setOpen] = React.useState(false);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
   return (
@@ -494,7 +587,7 @@ const CardFour = React.forwardRef((props, ref) => {
       ref={ref}
       className="sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
     >
-      <div className="xl:max-w-3xl xl:w-1/2 bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5">
+      <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5">
         <Characterdisplayfour />
         <div>
           <button
@@ -504,8 +597,19 @@ const CardFour = React.forwardRef((props, ref) => {
             type="button"
             className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
           >
-            {openModal ? "Close" : "Inspect"}
+            {openModal ? "Close" : "Inspect 3D"}
           </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setOpen(true), play();
+            }}
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+          >
+            {open ? "Close" : "Inspect 2D"}
+          </button>
+
           <Modal
             size={["800px"]}
             show={openModal}
@@ -520,6 +624,18 @@ const CardFour = React.forwardRef((props, ref) => {
               </div>
             </Modal.Body>
           </Modal>
+
+          <Lightbox
+            open={open}
+            close={() => {
+              setOpen(false), play();
+            }}
+            slides={[
+              {
+                src: "/images/Characters/SupportingRobot/SupRobot.png",
+              },
+            ]}
+          />
         </div>
       </div>
 
@@ -537,6 +653,26 @@ const CardFour = React.forwardRef((props, ref) => {
             remaining essentially unchanged. It was popularised in the 1960s
           </p>
         </div>
+        <div className=" flex  justify-around m-10 ">
+          <button
+            onClick={() => {
+              handleBackClick(), play();
+            }}
+            type="button"
+            className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+          >
+            Back
+          </button>
+          <button
+            onClick={() => {
+              handleNextClick(), play();
+            }}
+            type="button"
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+          >
+           Next
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -549,19 +685,23 @@ function ThreeModelOne() {
     <div className="sketchfab-embed-wrapper">
       <iframe
         className="rounded-3xl"
-        title="Employee"
-        frameBorder="0"
-        allowFullScreen
-        allow="autoplay; fullscreen"
-        src="https://sketchfab.com/models/9d1098bc72a74bb1b6371aef4b987100/embed"
+        title="Cl_Lunar_tosketchfab6"
+        frameborder="0"
+        allowfullscreen
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+        allow="autoplay; fullscreen; xr-spatial-tracking"
+        xr-spatial-tracking
+        execution-while-out-of-viewport
+        execution-while-not-rendered
+        web-share
+        src="https://sketchfab.com/models/ce4af655ce024e83b8ff5fe30e0be4a8/embed"
         width="100%"
         height="740"
       ></iframe>
     </div>
   );
 }
-
-
 
 function ThreeModelTwo() {
   return (
