@@ -1,4 +1,3 @@
-import React from "react";
 import { useProgress } from "@react-three/drei";
 import "../styles/LoadingScreen.css";
 
@@ -15,9 +14,9 @@ const LoadingScreen = () => {
 
   return (
     <div className={`loading-screen ${active ? "" : "loading-screen--hidden"}`}>
-      <video className="loading-screen__background-video" autoPlay loop muted>
-        <source src={randomVideo} type="video/mp4" />
-      </video>
+        <video className="loading-screen__background-video" autoPlay loop muted>
+          <source src={randomVideo} type="video/mp4" />
+        </video>
       <div className="loading-screen__container">
         <h1 className="loading-screen__title">3D Web Agency</h1>
         <div className="progress__container">
