@@ -9,7 +9,6 @@ import * as RAPIER from "@dimforge/rapier3d-compat";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   PointerLockControls,
-  Stats,
   useHelper,
   useGLTF,
   Html,
