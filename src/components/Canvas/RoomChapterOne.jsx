@@ -157,7 +157,7 @@ export const RoomChapterOne = () => {
             fov: 45,
             position: [0, 0, 0],
           }}
-          style={{ width: "100vw", height: "100vh" }}
+          style={{ width: "100%", height: "91vh" }}
         >
           <color attach="background" args={["#638689"]} />
           <fog attach="fog" args={["#569BF3", 1, 200]} />

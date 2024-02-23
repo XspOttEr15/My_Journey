@@ -24,7 +24,11 @@ const Character = () => {
   const cardRef = useRef(null);
 
   const handleCardClick = (cardNumber) => {
-    setSelectedCard(cardNumber);
+    if (selectedCard === cardNumber && cardRef.current) {
+      cardRef.current.scrollIntoView({ block: "center", behavior: "smooth" });
+    } else {
+      setSelectedCard(cardNumber);
+    }
   };
 
   const handleNextClick = () => {
@@ -134,7 +138,7 @@ const Character = () => {
                 </Link>
               </div>
 
-              <div className="">
+              <div>
                 <Link
                   onClick={() => {
                     CardFourClick(), play();
@@ -451,7 +455,7 @@ const CardTwo = React.forwardRef(
                 handleBackClick(), play();
               }}
               type="button"
-              className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+              className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2 "
             >
               Back
             </button>
@@ -460,7 +464,7 @@ const CardTwo = React.forwardRef(
                 handleNextClick(), play();
               }}
               type="button"
-              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2 "
             >
               Next
             </button>
@@ -517,7 +521,7 @@ const CardThee = React.forwardRef(
                 setOpenModal(true), play();
               }}
               type="button"
-              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2 "
             >
               {openModal ? "Close" : "Inspect 3D"}
             </button>
@@ -554,17 +558,16 @@ const CardThee = React.forwardRef(
                 handleBackClick(), play();
               }}
               type="button"
-              className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+              className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
             >
               Back
             </button>
             <button
-              onClick={()=> {
-                handleNextClick(),
-                play();
+              onClick={() => {
+                handleNextClick(), play();
               }}
               type="button"
-              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center mb-2 mx-2"
             >
               Next
             </button>
@@ -577,106 +580,109 @@ const CardThee = React.forwardRef(
 
 //cardfour
 
-const CardFour = React.forwardRef(({ handleNextClick, handleBackClick }, ref) => {
-  const [openModal, setOpenModal] = useState(false);
-  const [open, setOpen] = React.useState(false);
-  const soundUrl = "/sound_effects/ButtonPush.mp3";
-  const [play] = useSound(soundUrl);
-  return (
-    <div
-      ref={ref}
-      className="sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
-    >
-      <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5">
-        <Characterdisplayfour />
-        <div>
-          <button
-            onClick={() => {
-              setOpenModal(true), play();
-            }}
-            type="button"
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
-          >
-            {openModal ? "Close" : "Inspect 3D"}
-          </button>
+const CardFour = React.forwardRef(
+  ({ handleNextClick, handleBackClick }, ref) => {
+    const [openModal, setOpenModal] = useState(false);
+    const [open, setOpen] = React.useState(false);
+    const soundUrl = "/sound_effects/ButtonPush.mp3";
+    const [play] = useSound(soundUrl);
+    return (
+      <div
+        ref={ref}
+        className="sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
+      >
+        <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5">
+          <Characterdisplayfour />
+          <div>
+            <button
+              onClick={() => {
+                setOpenModal(true), play();
+              }}
+              type="button"
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2 "
+            >
+              {openModal ? "Close" : "Inspect 3D"}
+            </button>
 
-          <button
-            type="button"
-            onClick={() => {
-              setOpen(true), play();
-            }}
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
-          >
-            {open ? "Close" : "Inspect 2D"}
-          </button>
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(true), play();
+              }}
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+            >
+              {open ? "Close" : "Inspect 2D"}
+            </button>
 
-          <Modal
-            size={["800px"]}
-            show={openModal}
-            onClose={() => {
-              setOpenModal(false), play();
-            }}
-          >
-            <Modal.Header>Power by Sketchfab</Modal.Header>
-            <Modal.Body>
-              <div className="">
-                <ThreeModelFour />
-              </div>
-            </Modal.Body>
-          </Modal>
+            <Modal
+              size={["800px"]}
+              show={openModal}
+              onClose={() => {
+                setOpenModal(false), play();
+              }}
+            >
+              <Modal.Header>Power by Sketchfab</Modal.Header>
+              <Modal.Body>
+                <div className="">
+                  <ThreeModelFour />
+                </div>
+              </Modal.Body>
+            </Modal>
 
-          <Lightbox
-            open={open}
-            close={() => {
-              setOpen(false), play();
-            }}
-            slides={[
-              {
-                src: "/images/Characters/SupportingRobot/SupRobot.png",
-              },
-            ]}
-          />
+            <Lightbox
+              open={open}
+              close={() => {
+                setOpen(false), play();
+              }}
+              slides={[
+                {
+                  src: "/images/Characters/SupportingRobot/SupRobot.png",
+                },
+              ]}
+            />
+          </div>
+        </div>
+
+        <div className="lg:flex-1  lg:m-5 pt-10  ">
+          <div className=" align-middle">
+            <h1 className="text-4xl lg:text-5xl font-extrabold dark:text-white m-5">
+              Suppoting Robot
+            </h1>
+            <p className="text-2xl text-justify pt-5 ">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s
+            </p>
+          </div>
+          <div className=" flex  justify-around m-10 ">
+            <button
+              onClick={() => {
+                handleBackClick(), play();
+              }}
+              type="button"
+              className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+            >
+              Back
+            </button>
+            <button
+              onClick={() => {
+                handleNextClick(), play();
+              }}
+              type="button"
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
-
-      <div className="lg:flex-1  lg:m-5 pt-10  ">
-        <div className=" align-middle">
-          <h1 className="text-4xl lg:text-5xl font-extrabold dark:text-white m-5">
-            Suppoting Robot
-          </h1>
-          <p className="text-2xl text-justify pt-5 ">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-          </p>
-        </div>
-        <div className=" flex  justify-around m-10 ">
-          <button
-            onClick={() => {
-              handleBackClick(), play();
-            }}
-            type="button"
-            className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
-          >
-            Back
-          </button>
-          <button
-            onClick={() => {
-              handleNextClick(), play();
-            }}
-            type="button"
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
-          >
-           Next
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-});
+    );
+  }
+);
 
 // 3D sence Inspect
 
@@ -707,12 +713,18 @@ function ThreeModelTwo() {
   return (
     <div className="sketchfab-embed-wrapper">
       <iframe
+        title="CB_rabbet"
         className="rounded-3xl "
-        title="Grandma's TV"
-        frameBorder="0"
-        allowFullScreen
-        allow="autoplay; fullscreen"
-        src="https://sketchfab.com/models/b2310e7e18dc4c11b5758804cfcc7dab/embed"
+        frameborder="0"
+        allowfullscreen
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+        allow="autoplay; fullscreen; xr-spatial-tracking"
+        xr-spatial-tracking
+        execution-while-out-of-viewport
+        execution-while-not-rendered
+        web-share
+        src="https://sketchfab.com/models/fd14f883bd0c439c82c01420bfe8c114/embed"
         width="100%"
         height="740"
       ></iframe>
@@ -724,15 +736,22 @@ function ThreeModelThee() {
   return (
     <div className="sketchfab-embed-wrapper">
       <iframe
+        title="CS_villager"
         className="rounded-3xl "
-        title="Employee"
-        frameBorder="0"
-        allowFullScreen
-        allow="autoplay; fullscreen"
-        src="https://sketchfab.com/models/9d1098bc72a74bb1b6371aef4b987100/embed"
+        frameborder="0"
+        allowfullscreen
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+        allow="autoplay; fullscreen; xr-spatial-tracking"
+        xr-spatial-tracking
+        execution-while-out-of-viewport
+        execution-while-not-rendered
+        web-share
+        src="https://sketchfab.com/models/9d1e95ee0e234adb849482ee345bf0ee/embed"
         width="100%"
         height="740"
-      ></iframe>
+      >
+      </iframe>
     </div>
   );
 }

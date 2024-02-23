@@ -10,7 +10,6 @@ import { Overlay } from './Overlay';
 const Home = () => {
   const { setCloseNavbar, setCloseButtonNavbar,setColseBgmusic, setIsNavbarFixed } = useContext(DataContext);
 
-
   useEffect(() => {
     setCloseNavbar(false);
     setCloseButtonNavbar(false);
@@ -21,14 +20,14 @@ const Home = () => {
   
   return (
     <>
-      <LoadingScreen/>
-      <div className=' sections w-full '>
+    <LoadingScreen/>
+      <motion.div className=' sections w-full  '>
         <Hearder3D />
         <Overlay/>
-      </div>
+      </motion.div>
       <motion.div className=' sections w-full h-screen'>
         <City/>
-      </motion.div>    
+      </motion.div>   
     </>
   )
 }
