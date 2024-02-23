@@ -51,7 +51,7 @@ const Navbar = () => {
         }
         className={`${classes.base} ${navbarClose ? classes.hidden : ""} ${isNavbarFixed ? classes.fixed : ""}` }
       >
-        <div className="flex flex-wrap items-center justify-between mx-auto p-4 ">
+        <div className="flex flex-wrap items-center justify-between mx-auto p-4 text-center">
           <div  className="flex items-center">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
