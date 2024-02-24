@@ -370,18 +370,21 @@ export const Player = ({ playerActive }) => {
   const direction = new THREE.Vector3();
   const frontVector = new THREE.Vector3();
   const sideVector = new THREE.Vector3();
-
   const playerRef = useRef();
   const { forward, backward, left, right, jump } = usePersonControls();
   const rapier = useRapier();
 
+  // Fall detection threshold
+  const fallThresholdY = -10; // Adjust this value based on your map's lowest possible y-coordinate
+  // Predefined reset position
+  const resetPosition = { x: -2, y: 3, z: 4 }; // Change this to your desired reset position
   useFrame((state) => {
     if (!playerRef.current) return;
 
+    const playerPosition = playerRef.current.translation();
+
     // moving player
     const velocity = playerRef.current.linvel();
-    
-
     //  player movement
     if (!active) {
       frontVector.set(0, 0, backward - forward);
@@ -391,6 +394,12 @@ export const Player = ({ playerActive }) => {
         .normalize()
         .multiplyScalar(MOVE_SPEED)
         .applyEuler(state.camera.rotation);
+
+        
+    if (playerPosition.y < fallThresholdY) {
+      // Reset player position
+      playerRef.current.setTranslation(resetPosition, true);
+    } 
 
       playerRef.current.wakeUp();
       playerRef.current.setLinvel({
@@ -418,7 +427,7 @@ export const Player = ({ playerActive }) => {
   });
 
   const doJump = () => {
-    playerRef.current.setLinvel({ x: 0, y: 4, z: 0 });
+    playerRef.current.setLinvel({ x: 0, y: 3.5, z: 0 });
   };
 
   return (
@@ -426,7 +435,7 @@ export const Player = ({ playerActive }) => {
       {/* First Person Camera */}
       {!active ? <PointerLockControls /> : null}
       <RigidBody
-        position={[-2, 3, 3]}
+        position={[-2, 3, 4 ]}
         mass={1}
         colliders={false}
         ref={playerRef}
