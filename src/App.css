@@ -4,6 +4,8 @@
   padding: 0;
 }
 
+
+
 #root {
   width: 100vw;
   max-height: 100vh;
@@ -13,7 +15,9 @@
   position: relative;
   scroll-snap-type: y mandatory;
   overflow-y: auto;
+  cursor: url("/images/CustomMouses/default32.png"), default;
 }
+
 
 .logo:hover {
   filter: drop-shadow(0 0 1em #646cffaa);
@@ -33,5 +37,13 @@
   border: 40px solid ;
   border-image-source: url("/images/border-img/mock_frame.png");
   border-image-slice:40;
+  
 }
 
+button {
+  cursor: url('/images/CustomMouses/pointer32.png'), pointer !important;
+}
+
+a {
+  cursor: url('/images/CustomMouses/pointer32.png'), pointer !important;
+}

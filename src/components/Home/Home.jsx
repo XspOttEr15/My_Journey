@@ -23,7 +23,7 @@ const Home = () => {
     <LoadingScreen/>
       <motion.div className=' sections w-full  '>
         <Hearder3D />
-        <Overlay/>
+        <Overlay />
       </motion.div>
       <motion.div className=' sections w-full h-screen'>
         <City/>

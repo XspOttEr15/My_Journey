@@ -87,7 +87,7 @@ const Navbar = () => {
             </svg>
           </button>
 
-          <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+          <div className="hidden w-full md:block md:w-auto" id="navbar-default ">
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-300 md:dark:bg-gray-300 dark:border-gray-700 ">
               <Link to="/" onClick={play}>
                 <li className="pt-2">

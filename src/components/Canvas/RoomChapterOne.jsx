@@ -52,11 +52,11 @@ export const RoomChapterOne = () => {
     setCloseNavbar,
     setCloseButtonNavbar,
     CloseButtonNavbar,
-    setColseBgmusic, 
+    setColseBgmusic,
     setIsNavbarFixed,
   } = useContext(DataContext);
   const [htmltext, setHtmltext] = useState(false);
-  const soundUrl = '/sound_effects/ButtonPush.mp3';
+  const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
   const [dialogue, setDialogue] = useState([
     {
@@ -149,7 +149,10 @@ export const RoomChapterOne = () => {
       )}
       <div className="aim"></div>
       <Tutorial />
-      <LoadingScreen  setPlayerActive={setPlayerActive} setHtmltext={setHtmltext} />
+      <LoadingScreen
+        setPlayerActive={setPlayerActive}
+        setHtmltext={setHtmltext}
+      />
       <Suspense>
         <Canvas
           shadows="soft"
@@ -157,7 +160,7 @@ export const RoomChapterOne = () => {
             fov: 45,
             position: [0, 0, 0],
           }}
-          style={{ width: "100%", height: "91vh" }}
+          style={{ width: "100%", height: "100vh" }}
         >
           <color attach="background" args={["#638689"]} />
           <fog attach="fog" args={["#569BF3", 1, 200]} />
@@ -172,17 +175,20 @@ export const RoomChapterOne = () => {
             <Wall />
             <mesh
               onClick={() => {
-                setPlayerActive(false), setLoopcamera(true), setHtmltext(false),play();
+                setPlayerActive(false),
+                  setLoopcamera(true),
+                  setHtmltext(false),
+                  play();
               }}
             >
               <Book htmltext={htmltext} setHtmltext={setHtmltext} />
             </mesh>
             <mesh
               onClick={() => {
-                  setPlayerActive(false),
+                setPlayerActive(false),
                   setLoopcameratwo(true),
                   setHtmltext(false);
-                  play();
+                play();
               }}
             >
               <MBook
@@ -214,7 +220,7 @@ export const RoomChapterOne = () => {
         transition={{ duration: 1 }}
       >
         <Modal
-          size={"1200px"}
+          size={"8xl"}
           show={openModal}
           onClose={() => {
             setOpenModal(false);
@@ -224,16 +230,22 @@ export const RoomChapterOne = () => {
             play();
           }}
           className="relative z-10"
+          style={{ cursor: 'url("/images/CustomMouses/default32.png"), pointer' }}
         >
           <motion.svg
-            className="w-12 h-12 text-gray-800 dark:text-white absolute top-[50%] bottom-[50%] left-[0%] opacity-60 z-50"
+            className="w-12 h-12 text-gray-800 dark:text-white absolute top-[50%] bottom-[50%] left-[0%] opacity-60 z-20"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 10 16"
-            onClick={() =>{handleBack(),play()}}
+            onClick={() => {
+              handleBack(), play();
+            }}
             whileHover={{ scale: 1.5 }}
             whileTap={{ scale: 0.9 }}
+            style={{
+              cursor: 'url("/images/CustomMouses/pointer32.png"), pointer',
+            }}
           >
             <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
           </motion.svg>
@@ -244,15 +256,22 @@ export const RoomChapterOne = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 10 16"
-            onClick={() =>{handleNext(),play()}}
+            onClick={() => {
+              handleNext(), play();
+            }}
             whileHover={{ scale: 1.5 }}
             whileTap={{ scale: 0.9 }}
+            style={{
+              cursor: 'url("/images/CustomMouses/pointer32.png"), pointer',
+            }}
           >
             <path d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z" />
           </motion.svg>
-          <Modal.Header>SELECT CHAPTER PAGE</Modal.Header>
 
-          <motion.div>
+          <Modal.Header>
+            SELECT CHAPTER PAGE
+          </Modal.Header>
+
             <Modal.Body>
               <div id="city" className="lg:flex mx-5 m-5  ">
                 <div className=" h-auto m-2 ">
@@ -286,6 +305,10 @@ export const RoomChapterOne = () => {
                     <div className="text-center m-3">
                       <button
                         onClick={play}
+                        style={{
+                          cursor:
+                            'url("/images/CustomMouses/pointer.png"), pointer',
+                        }}
                         type="button"
                         className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
                       >
@@ -296,7 +319,6 @@ export const RoomChapterOne = () => {
                 </motion.div>
               </div>
             </Modal.Body>
-          </motion.div>
         </Modal>
 
         <Modal
@@ -386,11 +408,10 @@ export const Player = ({ playerActive }) => {
         .multiplyScalar(MOVE_SPEED)
         .applyEuler(state.camera.rotation);
 
-        
-    if (playerPosition.y < fallThresholdY) {
-      // Reset player position
-      playerRef.current.setTranslation(resetPosition, true);
-    } 
+      if (playerPosition.y < fallThresholdY) {
+        // Reset player position
+        playerRef.current.setTranslation(resetPosition, true);
+      }
 
       playerRef.current.wakeUp();
       playerRef.current.setLinvel({
@@ -414,7 +435,7 @@ export const Player = ({ playerActive }) => {
     if (playerActive) {
       // Condition to check if book is not clicked
       state.camera.position.set(x, y, z);
-    }   
+    }
   });
 
   const doJump = () => {
@@ -424,9 +445,9 @@ export const Player = ({ playerActive }) => {
   return (
     <>
       {/* First Person Camera */}
-      {playerActive  ? <PointerLockControls /> : null}
+      {playerActive ? <PointerLockControls /> : null}
       <RigidBody
-        position={[-2, 3, 4 ]}
+        position={[-2, 3, 4]}
         mass={1}
         colliders={false}
         ref={playerRef}
@@ -690,7 +711,7 @@ export const MBook = ({
   const [hovered, hover] = useState(null);
   const ref = useRef();
   const [closelabel, Setcloselabel] = useState(false);
-  const soundUrl = '/sound_effects/ButtonPush.mp3';
+  const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
 
   useEffect(() => {
@@ -714,7 +735,6 @@ export const MBook = ({
   useFrame((state, delta) => {
     if (Ebookclicked) {
       const zoomSpeed = 2.0 * delta; // Adjust the speed for smoother animation
-      
 
       // Set the current target position based on the state
       if (currentTarget === 1) {

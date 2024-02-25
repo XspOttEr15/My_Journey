@@ -46,8 +46,9 @@ const LoadingScreen = ({ setPlayerActive,setHtmltext }) => {
         </div>
         {progress === 100 && (
           <button
-            className=" bg-gradient-to-r from-blue-500 to-teal-400 hover:from-teal-400 hover:to-blue-500 text-white text-xl font-bold py-4 px-12  rounded-md transition duration-300 ease-in-out transform hover:scale-110 mt-5 "
+            className=" bg-gradient-to-r from-blue-500 to-teal-400 hover:from-teal-400 hover:to-blue-500 text-white text-xl font-bold py-4 px-12  rounded-md transition duration-300 ease-in-out transform hover:scale-110 mt-5 cursor-pointer "
             onClick={handleStartClick}
+            style={{ cursor: 'url("/images/CustomMouses/pointer.png"), pointer' }}
           >
             Start
           </button>
