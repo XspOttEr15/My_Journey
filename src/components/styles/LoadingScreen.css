@@ -13,7 +13,7 @@
 }
 
 .loading-screen--hidden {
-    animation: fade-out 0.5s ease-in-out forwards 1s;
+    animation: fade-out 0.5s ease-in-out forwards 0.1s;
 }
 
 @keyframes fade-out {
@@ -39,6 +39,7 @@
 .loading-screen__container {
     position: relative;
     z-index: 1; /* Ensure the content is above the video */
+    text-align: center;
 }
 
 .loading-screen__title {
@@ -47,7 +48,7 @@
     text-transform: uppercase;
     text-align: center;
     color: #ffffff;
-    margin: 15rem 0 0; /* Adjust the top margin to move the text downwards */
+    margin: 18rem 0 0; /* Adjust the top margin to move the text downwards */
 }
 
 .progress__container {

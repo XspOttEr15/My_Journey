@@ -55,7 +55,7 @@ export const RoomChapterOne = () => {
     setColseBgmusic, 
     setIsNavbarFixed,
   } = useContext(DataContext);
-  const [htmltext, setHtmltext] = useState(true);
+  const [htmltext, setHtmltext] = useState(false);
   const soundUrl = '/sound_effects/ButtonPush.mp3';
   const [play] = useSound(soundUrl);
   const [dialogue, setDialogue] = useState([
@@ -149,7 +149,7 @@ export const RoomChapterOne = () => {
       )}
       <div className="aim"></div>
       <Tutorial />
-      <LoadingScreen />
+      <LoadingScreen  setPlayerActive={setPlayerActive} setHtmltext={setHtmltext} />
       <Suspense>
         <Canvas
           shadows="soft"
@@ -172,14 +172,14 @@ export const RoomChapterOne = () => {
             <Wall />
             <mesh
               onClick={() => {
-                setPlayerActive(true), setLoopcamera(true), setHtmltext(false),play();
+                setPlayerActive(false), setLoopcamera(true), setHtmltext(false),play();
               }}
             >
               <Book htmltext={htmltext} setHtmltext={setHtmltext} />
             </mesh>
             <mesh
               onClick={() => {
-                  setPlayerActive(true),
+                  setPlayerActive(false),
                   setLoopcameratwo(true),
                   setHtmltext(false);
                   play();
@@ -218,7 +218,7 @@ export const RoomChapterOne = () => {
           show={openModal}
           onClose={() => {
             setOpenModal(false);
-            setPlayerActive(false);
+            setPlayerActive(true);
             setHtmltext(true);
             setTarget(1);
             play();
@@ -304,7 +304,7 @@ export const RoomChapterOne = () => {
           size="md"
           onClose={() => {
             setOpenModaltwo(false);
-            setPlayerActive(false);
+            setPlayerActive(true);
             setHtmltext(true);
             setTargetwo(1);
             play();
@@ -334,7 +334,7 @@ export const RoomChapterOne = () => {
                   color="gray"
                   onClick={() => {
                     setOpenModaltwo(false);
-                    setPlayerActive(false);
+                    setPlayerActive(true);
                     setHtmltext(true);
                     setTargetwo(1);
                     play();
@@ -357,15 +357,6 @@ export default RoomChapterOne;
 export const Player = ({ playerActive }) => {
   const [active, setActive] = useState(false);
 
-  useEffect(() => {
-    setActive(playerActive);
-
-    // Check if player is not active, then release pointer lock
-    if (playerActive) {
-      document.exitPointerLock();
-    }
-  }, [playerActive]);
-
   const MOVE_SPEED = 5;
   const direction = new THREE.Vector3();
   const frontVector = new THREE.Vector3();
@@ -386,7 +377,7 @@ export const Player = ({ playerActive }) => {
     // moving player
     const velocity = playerRef.current.linvel();
     //  player movement
-    if (!active) {
+    if (playerActive) {
       frontVector.set(0, 0, backward - forward);
       sideVector.set(left - right, 0, 0);
       direction
@@ -420,10 +411,10 @@ export const Player = ({ playerActive }) => {
 
     // moving camera
     const { x, y, z } = playerRef.current.translation();
-    if (!active) {
+    if (playerActive) {
       // Condition to check if book is not clicked
       state.camera.position.set(x, y, z);
-    }
+    }   
   });
 
   const doJump = () => {
@@ -433,7 +424,7 @@ export const Player = ({ playerActive }) => {
   return (
     <>
       {/* First Person Camera */}
-      {!active ? <PointerLockControls /> : null}
+      {playerActive  ? <PointerLockControls /> : null}
       <RigidBody
         position={[-2, 3, 4 ]}
         mass={1}
@@ -573,6 +564,7 @@ export const EffectsPost = ({
         setOpenModal(true);
         setLoopcamera(false); // Stop zooming after both targets are reached
         setTarget(3);
+        document.exitPointerLock();
       }
     }
   });
@@ -745,6 +737,7 @@ export const MBook = ({
         setTargetwo(3);
         setOpenModaltwo(true);
         setLoopcameratwo(false);
+        document.exitPointerLock();
       }
     }
   });
