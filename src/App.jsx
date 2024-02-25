@@ -36,9 +36,9 @@ function App() {
       <SpeedInsights />
       <DataContext.Provider value={{ CloseNavbar, setCloseNavbar , CloseButtonNavbar , setCloseButtonNavbar, ColseBgmusic, setColseBgmusic,Volumn, setVolumn,isNavbarFixed, setIsNavbarFixed}}>
       <Navbar/>
-      <div className="border-img">
+      
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home  />}  />
           <Route path="/about" element={<About />} />
           <Route path="/concept" element={<Concept />} />
           <Route path="/character" element={<Character />} />
@@ -51,7 +51,7 @@ function App() {
           <Route path="/chapterthree" element={<ChapterThree />} />
           <Route path="/roomchapterone" element={<RoomChapterOne />} />
         </Routes>
-        </div>
+ 
       </DataContext.Provider>
     </>
   );
