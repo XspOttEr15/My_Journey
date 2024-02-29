@@ -21,8 +21,7 @@ export default {
     'shadow-lg'
   ],
 
-  // enable dark mode via class strategy
-  darkMode: 'class',
+  
   
   
   theme: {
@@ -33,18 +32,9 @@ export default {
         secondary: '#ecc94b',
       },
       screens: {
-        ssm: '375px',
-        sm:  '480px',
+        sm:  '425px',
         md:  '768px',
-        lg:  '976px',
-        lgg: '1024px',
-        xl:  '1440px',
-      },
-      sizes: {
-        sm: "max-w-sm",
-        md: "max-w-md",
-        lg: "max-w-lg",
-        xxxl: "max-w-[1920px]"
+        lg:  '1440px',
       },
     }, 
   },

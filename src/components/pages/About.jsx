@@ -15,7 +15,7 @@ const About = () => {
     <>
       <div className="sections h-screen ssm:h-auto overflow-y-hidden overflow-x-hidden text-center">
       <motion.div
-        className="ssm:mt-[5rem] ssm:m-0 "
+        className="lg:mt-[0rem] sm:m-0 "
         animate={{ scale: [1, 1.1, 1] }}
         transition={{
           duration: 2,
@@ -125,13 +125,13 @@ const About = () => {
       </div>
 
 
-      <div className="sections lg:h-screen ssm:h-auto  lg:pt-36 ssm:pt-0 text-center">
+      <div className="sections lg:h-screen sm:h-auto  lg:pt-[200px] sm:pt-0 text-center">
 
-      <div className="flex ssm:flex-col lg:flex-col xl:flex-row lgg:flex-col   m-10 ">
-        <motion.div className="xl:max-w-3xl xl:w-1/2 bg-gray-800 rounded-3xl p-3 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5"
-        initial={{ opacity: 0, x: -10 }}
+      <div className="flex sm:flex-col md:flex-col lg:flex-row  lg:m-10 ">
+        <motion.div className="lg:max-w-3xl lg:w-1/2 bg-gray-800 rounded-3xl p-3 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 ml-8"
+        initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0,  }}
-        viewport={{ once: true, amount: 1 }}
+        viewport={{ once: false  }}
         transition={{
           type: "spring",
           duration: 1.5,
@@ -141,16 +141,16 @@ const About = () => {
         }}
         >
           <motion.img
-            className="rounded-3xl h-full w-full shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80"
+            className="rounded-3xl h-full w-full  shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80"
             src="https://images.unsplash.com/photo-1701861970903-7c4312a0b807?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
           />
         </motion.div>
 
-        <motion.div className="lg:flex-1 lg:m-5" 
-        initial={{ opacity: 0, y: -100 }}
-        whileInView={{ opacity: 1, y: 0,  }}
-        viewport={{ once: true, amount: 1 }}
+        <motion.div className="lg:flex-1 lg:m-5 " 
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 1, x: 0,  }}
+        viewport={{ once: false  }}
         transition={{
           type: "spring",
           duration: 1.5,
@@ -158,7 +158,7 @@ const About = () => {
           damping: 10,
         }}
         >
-          <h1 className="text-4xl lg:text-5xl font-extrabold dark:text-white m-5">
+          <h1 className=" lg:text-5xl font-extrabold dark:text-white m-5">
             About Project
           </h1>
           <p className="text-sm lg:text-base">
@@ -196,11 +196,11 @@ const About = () => {
 
 
       <div className="sections lg:h-screen ssm:h-auto text-center ">
-      <motion.div className=" flex flex-col mx-[7rem] my-[2rem]" >
-        <motion.h1 className="text-6xl font-extrabold dark:text-white m-5 mb-10" 
+      <motion.div className=" flex flex-col mx-[8rem] my-[2rem]" >
+        <motion.h1 className="text-6xl font-extrabold text-white  mb-10 mt-[10rem]" 
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0,  }}
-        viewport={{ once: true, amount: 1 }}
+        viewport={{ once: false, amount: 1 }}
         transition={{
           type: "spring",
           duration: 1.5,
@@ -210,10 +210,10 @@ const About = () => {
         }}>
           Contact
         </motion.h1>
-        <motion.div className=" max-w-[120rem] items-center  justify-center bg-gray-800 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 rounded-3xl p-5"
+        <motion.div className="  w-full  items-center  justify-center bg-gray-800 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 rounded-3xl p-5"
         initial={{ opacity: 0, y: 0 }}
         whileInView={{ opacity: 1, y: 0,  }}
-        viewport={{ once: true, amount: 1 }}
+        viewport={{ once: false, amount: 1 }}
         transition={{
           type: "spring",
           duration: 1.5,
@@ -225,7 +225,7 @@ const About = () => {
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62033.71264054248!2d100.43052483124997!3d13.6512522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2a251bb6b0cf1%3A0xf656e94ff13324ad!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Lie4Lij4Liw4LiI4Lit4Lih4LmA4LiB4Lil4LmJ4Liy4LiY4LiZ4Lia4Li44Lij4Li1!5e0!3m2!1sth!2sth!4v1702623863437!5m2!1sth!2sth"
             width="100%"
-            height="700"
+            height="500"
             style={{ border: "0", filter: "hue-rotate(180deg) invert(99%) " }}
             allowFullScreen=""
             loading="lazy"
