@@ -1,0 +1,20 @@
+
+.max-w-screen-4xl {
+    max-width: 1800px;
+}
+
+.slick-next
+{
+    right: 50px; 
+    top: -3rem;
+  }
+
+  .slick-prev
+{
+    left: 50px; 
+    top: -3rem;
+  }
+
+  .max-h-97 {
+    max-height: 34rem;
+}

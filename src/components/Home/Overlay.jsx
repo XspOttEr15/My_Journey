@@ -13,7 +13,7 @@ export function Overlay() {
   };
 
   return (
-    <div className='absolute' style={{ top: 650, left: 30 }}>
+    <div className='absolute z-30 top-[650px] left-[90px]'>
       <motion.header initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={transition}>
       </motion.header>
       <AnimatePresence>
@@ -42,9 +42,9 @@ export function Overlay() {
                   </p>
                   <Link to={"/roomchapterone"}>
                   <button
-                  style={{ cursor: 'url("/images/CustomMouses/pointer.png"), pointer' }}
+                  style={{ cursor: 'url("/images/CustomMouses/pointer.png"), pointer', backgroundColor:'rgb(26, 162, 125)' }}
                     onClick={play}
-                   className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg  text-4xl px-20 py-3.5 text-center mr-5 mb-5 w-full'
+                   className='text-white  bg font-medium rounded-lg  text-4xl px-20 py-3.5 text-center mr-5 mb-5 w-full'
                   >
                     START
                   </button>

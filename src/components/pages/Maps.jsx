@@ -27,9 +27,9 @@ export const Maps = () => {
   return (
     <>
         <div className="sections">
-          <div className="  xl:flex  lgg:inline-block ssm:inline-block gap-0 ">
+          <div className="  lg:flex  md:inline-block sm:inline-block gap-0 ">
             {/* // Card Layout 1*/}
-            <div className=" lg:w-full xl:w-1/3  ssm:w-full lgg:w-full h-screen relative  ">
+            <div className=" md:w-full lg:w-1/3  ssm:w-full lgg:w-full h-screen relative  ">
               <Link to={"/"}>
                 <img
                   className="h-screen"

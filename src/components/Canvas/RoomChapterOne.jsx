@@ -36,7 +36,7 @@ import { Button, Modal } from "flowbite-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { DataContext } from "../../App";
-import LoadingScreen from "../pages/LoadingScreen";
+import {LoadingScreenRoom} from "../pages/LoadingScreen";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import useSound from "use-sound";
 
@@ -123,7 +123,7 @@ export const RoomChapterOne = () => {
 
   return (
     <>
-      {!CloseButtonNavbar && (
+      {/* {!CloseButtonNavbar && (
         <Button
           className="absolute z-50 right-[1%] top-[1.8%] rounded-full  opacity-50"
           gradientDuoTone="purpleToBlue"
@@ -146,10 +146,10 @@ export const RoomChapterOne = () => {
             />
           </svg>
         </Button>
-      )}
+      )} */}
       <div className="aim"></div>
       <Tutorial />
-      <LoadingScreen
+      <LoadingScreenRoom
         setPlayerActive={setPlayerActive}
         setHtmltext={setHtmltext}
       />
@@ -267,12 +267,11 @@ export const RoomChapterOne = () => {
           >
             <path d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z" />
           </motion.svg>
-
-          <Modal.Header>
-            SELECT CHAPTER PAGE
+          <Modal.Header className=" bg-slate-800 ">
+            <span className="text-white">SELECT CHAPTER PAGE</span>
           </Modal.Header>
 
-            <Modal.Body>
+            <Modal.Body className="bg-slate-800" >
               <div id="city" className="lg:flex mx-5 m-5  ">
                 <div className=" h-auto m-2 ">
                   <motion.img
@@ -288,14 +287,14 @@ export const RoomChapterOne = () => {
                 </div>
 
                 <motion.div
-                  className="m-2 bg-gray-800 rounded-xl w-[100%] flex flex-col items-center justify-center"
+                  className="m-2 bg-gray-700 rounded-xl w-[100%] flex flex-col items-center justify-center"
                   key={currentDialogueIndex}
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 25 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <motion.h1 className="text-4xl lg:text-5xl font-extrabold dark:text-white text-center">
+                  <motion.h1 className="text-4xl lg:text-5xl font-extrabold text-white text-center">
                     {dialogue[currentDialogueIndex].speaker}
                   </motion.h1>
                   <motion.p className="lg:text-xl p-6 text-center">
@@ -333,8 +332,9 @@ export const RoomChapterOne = () => {
           }}
           popup
         >
-          <Modal.Header />
-          <Modal.Body>
+          
+          <Modal.Header className = "bg-slate-800" />
+          <Modal.Body className="class bg-slate-800" >
             <div className="text-center">
               <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
               <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normal text-gray-500 dark:text-gray-400">
@@ -349,7 +349,7 @@ export const RoomChapterOne = () => {
                       play();
                     }}
                   >
-                    {" แน่ใจอยู่แล้ว "}
+                    {" ไปหน้า Concept"}
                   </Button>
                 </Link>
                 <Button
@@ -362,7 +362,7 @@ export const RoomChapterOne = () => {
                     play();
                   }}
                 >
-                  ขออีก 5 นาที
+                  ยกเลิก
                 </Button>
               </div>
             </div>

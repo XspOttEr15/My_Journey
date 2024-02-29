@@ -41,7 +41,7 @@ const AudioPlayer = () => {
         controls
         loop
         id="audio"
-        className="xl:w-80 h-10 sm:w-45 sm:h-9 md:w-44"
+        className=" lg:w-60 lg:h-7 "
       >
         <source src="/audios/bgm_home.mp3" type="audio/mpeg" />
       </audio>
