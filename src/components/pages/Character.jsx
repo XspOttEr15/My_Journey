@@ -28,6 +28,7 @@ const Character = () => {
       cardRef.current.scrollIntoView({ block: "center", behavior: "smooth" });
     } else {
       setSelectedCard(cardNumber);
+      
     }
   };
 
@@ -43,9 +44,12 @@ const Character = () => {
 
   useEffect(() => {
     if (cardRef.current) {
-      cardRef.current.scrollIntoView({ block: "center", behavior: "smooth" });
+      setTimeout(() => {
+        cardRef.current.scrollIntoView({ block: "center", behavior: "smooth" });
+      }, 200); // Adjust delay as necessary
     }
   }, [selectedCard]);
+  
 
   const CardOneClick = () => {
     handleCardClick(1);
@@ -66,13 +70,13 @@ const Character = () => {
   return (
     <>
       <div className="text-center">
-        <div className=" sections m-14 ssm:m-14">
-          <span className=" text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl dark:text-emerald-400 dark:bg-gray-900 bg-white  pl-12 pr-12 pt-2 pb-2 rounded-full dark:shadow-green-800/80 dark:shadow-lg dark:focus:ring-green-800 ">
+        <div className=" sections  sm:mt-12  ">
+          <span className=" text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
             Character
           </span>
         </div>
 
-        <div className=" w-3/4 ssm:inline-block lg:m-16 smm:p-10 ssm:m-12">
+        <div className=" w-3/4 sm:inline-block m-16 lg:p-10 sm:m-12">
           <div className="">
             <Slider {...settings}>
               <div className="">
@@ -81,7 +85,7 @@ const Character = () => {
                     CardOneClick(), play();
                   }}
                 >
-                  <div className=" max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg dark:hover:border-rose-600  dark:bg-gray-800 dark:shadow-green-600/60 dark:shadow-lg dark:focus:ring-green-800  dark:hover:shadow-xl dark:border dark:hover:shadow-rose-600/60">
+                  <div className=" max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
                     <img
                       src="/images/Characters/Lunar/Lunar_NormalSuit.png"
                       alt="Lunar"
@@ -89,7 +93,7 @@ const Character = () => {
                     />
                   </div>
                   <div className="p-5 bg-gray-800 rounded-xl">
-                    <h5 className="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white ">
+                    <h5 className="mb-2 text-4xl font-bold tracking-tight  text-white ">
                       Lunar
                     </h5>
                   </div>
@@ -102,7 +106,7 @@ const Character = () => {
                     CardTwoClick(), play();
                   }}
                 >
-                  <div className=" max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg dark:hover:border-rose-600  dark:bg-gray-800 dark:shadow-green-600/60 dark:shadow-lg dark:focus:ring-green-800  dark:hover:shadow-xl dark:border dark:hover:shadow-rose-600/60">
+                  <div className="max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
                     <img
                       src="/images/Characters/Rabbet/Rabbet.png"
                       alt="Rabbet"
@@ -110,7 +114,7 @@ const Character = () => {
                     />
                   </div>
                   <div className="p-5 bg-gray-800 rounded-xl">
-                    <h5 className="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white ">
+                    <h5 className="mb-2 text-4xl font-bold tracking-tight text-white ">
                       Rabbet
                     </h5>
                   </div>
@@ -123,15 +127,15 @@ const Character = () => {
                     CardTheeClick(), play();
                   }}
                 >
-                  <div className=" max-w-md   md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg dark:hover:border-rose-600  dark:bg-gray-800 dark:shadow-green-600/60 dark:shadow-lg dark:focus:ring-green-800  dark:hover:shadow-xl dark:border dark:hover:shadow-rose-600/60">
+                  <div className=" max-w-md  mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
                     <img
                       src="/images/Characters/SupportingCharacter/SupCharacter.png"
                       alt="Supporting Character"
                       className="p-2"
                     />
                   </div>
-                  <div className="p-6 bg-gray-800 rounded-xl">
-                    <h5 className="mb-2  text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">
+                  <div className="py-4 bg-gray-800 rounded-xl">
+                    <h5 className="mb-5  text-2xl font-bold tracking-tight text-white  ">
                       Supporting Character
                     </h5>
                   </div>
@@ -144,7 +148,7 @@ const Character = () => {
                     CardFourClick(), play();
                   }}
                 >
-                  <div className=" max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg dark:hover:border-rose-600  dark:bg-gray-800 dark:shadow-green-600/60 dark:shadow-lg dark:focus:ring-green-800  dark:hover:shadow-xl dark:border dark:hover:shadow-rose-600/60">
+                  <div className=" max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
                     <img
                       src="/images/Characters/SupportingRobot/SupRobot.png"
                       alt="Suppoting Robot"
@@ -152,7 +156,7 @@ const Character = () => {
                     />
                   </div>
                   <div className="p-5 bg-gray-800 rounded-xl">
-                    <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white ">
+                    <h5 className="mb-2 text-3xl font-bold tracking-tight text-white ">
                       Suppoting Robot
                     </h5>
                   </div>
@@ -282,8 +286,11 @@ const CardOne = React.forwardRef(
             setOpenModal(false), play();
           }}
         >
-          <Modal.Header>Power by Sketchfab</Modal.Header>
-          <Modal.Body>
+          <Modal.Header className=" bg-slate-800 ">
+            {" "}
+            <span className="text-white">Power by Sketchfab</span>
+          </Modal.Header>
+          <Modal.Body className="bg-slate-800">
             <div>
               <ThreeModelOne />
             </div>
@@ -299,17 +306,22 @@ const CardOne = React.forwardRef(
             { src: "/images/Characters/Lunar/Lunar_FullSuit.png" },
             { src: "/images/Characters/Lunar/Lunar_NormalSuit.png" },
             { src: "/images/Characters/Lunar/Lunar_Undressed.png" },
+            { src: "/images/Characters/Lunar/Lunar_NormalSuit_front.png" },
+            { src: "/images/Characters/Lunar/Lunar_NormalSuit_back.png" },
+            { src: "/images/Characters/Lunar/Lunar_Undressed_front.png" },
+            { src: "/images/Characters/Lunar/Lunar_Undressed_side.png" },
+            { src: "/images/Characters/Lunar/Lunar_Undressed_back.png" },
           ]}
         />
 
-        <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5 ">
+        <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800 m-5 ">
           <Characterdisplay />
           <button
             type="button"
             onClick={() => {
               setOpenModal(true), play();
             }}
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800   shadow-lg shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
           >
             {openModal ? "Close" : "Inspect 3D"}
           </button>
@@ -319,7 +331,7 @@ const CardOne = React.forwardRef(
             onClick={() => {
               setOpen(true), play();
             }}
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800   shadow-lg shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
           >
             {openModal ? "Close" : "Inspect 2D"}
           </button>
@@ -327,7 +339,7 @@ const CardOne = React.forwardRef(
 
         <div className="lg:flex-1  lg:m-5 ">
           <div className="align-middle">
-            <h1 className="text-4xl lg:text-5xl font-extrabold dark:text-white m-5">
+            <h1 className="text-4xl lg:text-5xl font-extrabold text-white m-5">
               Lunar (Main Charecter)
             </h1>
             <p className="text-2xl  text-justify pt-5">
@@ -350,7 +362,7 @@ const CardOne = React.forwardRef(
                 handleBackClick(), play();
               }}
               type="button"
-              className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+              className="  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800 shadow-lg   shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
             >
               Back
             </button>
@@ -360,7 +372,7 @@ const CardOne = React.forwardRef(
                 handleNextClick(), play();
               }}
               type="button"
-              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 "
             >
               Next
             </button>
@@ -392,8 +404,11 @@ const CardTwo = React.forwardRef(
             setOpenModal(false), play();
           }}
         >
-          <Modal.Header>Power by Sketchfab</Modal.Header>
-          <Modal.Body>
+          <Modal.Header className=" bg-slate-800 ">
+            {" "}
+            <span className="text-white">Power by Sketchfab</span>
+          </Modal.Header>
+          <Modal.Body className="bg-slate-800">
             <div>
               <ThreeModelTwo />
             </div>
@@ -406,8 +421,10 @@ const CardTwo = React.forwardRef(
             setOpen(false), play();
           }}
           slides={[
-            { src: "/images/Characters/Rabbet/3DRabbet.png" },
             { src: "/images/Characters/Rabbet/Rabbet.png" },
+            { src: "/images/Characters/Rabbet/front.png" },
+            { src: "/images/Characters/Rabbet/side.png" },
+            { src: "/images/Characters/Rabbet/back.png" },
           ]}
         />
 
@@ -495,8 +512,11 @@ const CardThee = React.forwardRef(
             setOpenModal(false), play();
           }}
         >
-          <Modal.Header>Power by Sketchfab</Modal.Header>
-          <Modal.Body>
+          <Modal.Header className=" bg-slate-800 ">
+            {" "}
+            <span className="text-white">Power by Sketchfab</span>
+          </Modal.Header>
+          <Modal.Body className="bg-slate-800">
             <div className="">
               <ThreeModelThee />
             </div>
@@ -510,6 +530,9 @@ const CardThee = React.forwardRef(
           }}
           slides={[
             { src: "/images/Characters/SupportingCharacter/SupCharacter.png" },
+            { src: "/images/Characters/SupportingCharacter/front.png" },
+            { src: "/images/Characters/SupportingCharacter/side.png" },
+            { src: "/images/Characters/SupportingCharacter/back.png" },
           ]}
         />
 
@@ -621,11 +644,12 @@ const CardFour = React.forwardRef(
                 setOpenModal(false), play();
               }}
             >
-              <Modal.Header>Power by Sketchfab</Modal.Header>
-              <Modal.Body>
-                <div className="">
-                  <ThreeModelFour />
-                </div>
+              <Modal.Header className=" bg-slate-800 ">
+                {" "}
+                <span className="text-white">Power by Sketchfab</span>
+              </Modal.Header>
+              <Modal.Body className="bg-slate-800">
+                <ThreeModelFour />
               </Modal.Body>
             </Modal>
 
@@ -638,6 +662,9 @@ const CardFour = React.forwardRef(
                 {
                   src: "/images/Characters/SupportingRobot/SupRobot.png",
                 },
+                { src: "/images/Characters/SupportingRobot/front.png" },
+                { src: "/images/Characters/SupportingRobot/side.png" },
+                { src: "/images/Characters/SupportingRobot/back.png" },
               ]}
             />
           </div>
@@ -750,8 +777,7 @@ function ThreeModelThee() {
         src="https://sketchfab.com/models/9d1e95ee0e234adb849482ee345bf0ee/embed"
         width="100%"
         height="740"
-      >
-      </iframe>
+      ></iframe>
     </div>
   );
 }

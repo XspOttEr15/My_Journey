@@ -6,9 +6,7 @@ import { DataContext } from '../../App';
 const AudioPlayer = () => {
   const {
     ColseBgmusic,
-    setColseBgmusic,
     Volumn,
-    setVolumn
   } = useContext(DataContext);
   
   const audioRef = useRef(null);
@@ -18,34 +16,28 @@ const AudioPlayer = () => {
 
     if (audio) {
       audio.volume = Volumn;
-
-      if (ColseBgmusic) {
-        audio.pause();
-      } else {
-        // Check if user has interacted with the document
-        const playPromise = audio.play();
-
-        if (playPromise !== undefined) {
-          playPromise.catch(error => {
-            console.error('Auto-play failed:', error);
-          });
-        }
-      }
     }
+
+    if (ColseBgmusic) {
+      audio.pause();
+    } 
+    
+    if(!ColseBgmusic){
+      audio.play();
+    }
+
   }, [Volumn, ColseBgmusic]);
 
   return (
-    <div className="w-full">
       <audio
         ref={audioRef}
         controls
         loop
         id="audio"
-        className="xl:w-80 h-10 sm:w-45 sm:h-9 md:w-44"
+        className='w-full h-[38px]'
       >
         <source src="/audios/bgm_home.mp3" type="audio/mpeg" />
       </audio>
-    </div>
   );
 };
 

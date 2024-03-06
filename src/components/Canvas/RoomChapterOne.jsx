@@ -12,6 +12,7 @@ import {
   useHelper,
   useGLTF,
   Html,
+  KeyboardControls,
 } from "@react-three/drei";
 import { Floor, Room, Wall } from "./Models/Fky3_room";
 import {
@@ -28,7 +29,6 @@ import {
   Bloom,
   Select,
 } from "@react-three/postprocessing";
-import { usePersonControls } from "./utility/hook";
 import * as THREE from "three";
 import "./styles/RoomChapterOne.css";
 import { useControls } from "leva";
@@ -36,14 +36,19 @@ import { Button, Modal } from "flowbite-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { DataContext } from "../../App";
-import LoadingScreen from "../pages/LoadingScreen";
+import {
+  LoadingScreenRoom,
+  LoadingScreenRoomSkip,
+} from "../pages/LoadingScreen";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import useSound from "use-sound";
+import Ecctrl from "ecctrl";
+import { EcctrlJoystick } from "ecctrl";
 
 export const RoomChapterOne = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openModaltwo, setOpenModaltwo] = useState(false);
-  const [playerActive, setPlayerActive] = useState(false);
+  const [disableFollowCam, setdisableFollowCam] = useState(false);
   const [loopcamera, setLoopcamera] = useState(false);
   const [loopcameratwo, setLoopcameratwo] = useState(false);
   const [target, setTarget] = useState(1);
@@ -52,6 +57,7 @@ export const RoomChapterOne = () => {
     setCloseNavbar,
     setCloseButtonNavbar,
     CloseButtonNavbar,
+    isPassOne,
     setColseBgmusic,
     setIsNavbarFixed,
   } = useContext(DataContext);
@@ -103,6 +109,26 @@ export const RoomChapterOne = () => {
     }
   };
 
+  const keyboardMap = [
+    { name: "forward", keys: ["ArrowUp", "KeyW"] },
+    { name: "backward", keys: ["ArrowDown", "KeyS"] },
+    { name: "leftward", keys: ["ArrowLeft", "KeyA"] },
+    { name: "rightward", keys: ["ArrowRight", "KeyD"] },
+    { name: "jump", keys: ["Space"] },
+    { name: "run", keys: ["Shift"] },
+  ];
+
+  const [position, setPosition] = useState([-2, 3, 4]);
+
+  useEffect(() => {
+    if (position[1] !== 3) {
+      // Reset position to some initial value or a new value as required
+      setPosition([-2, 3, 4]); // Example: Reset to initial position
+    }
+  }, [position, setPosition]);
+  
+  
+
   useEffect(() => {
     const preloadImages = () => {
       dialogue.forEach((item) => {
@@ -123,7 +149,7 @@ export const RoomChapterOne = () => {
 
   return (
     <>
-      {!CloseButtonNavbar && (
+      {/* {!CloseButtonNavbar && (
         <Button
           className="absolute z-50 right-[1%] top-[1.8%] rounded-full  opacity-50"
           gradientDuoTone="purpleToBlue"
@@ -146,14 +172,20 @@ export const RoomChapterOne = () => {
             />
           </svg>
         </Button>
-      )}
+      )} */}
+
       <div className="aim"></div>
-      <Tutorial />
-      <LoadingScreen
-        setPlayerActive={setPlayerActive}
-        setHtmltext={setHtmltext}
-      />
+      {isPassOne === 1 ? (
+        <LoadingScreenRoom
+          setHtmltext={setHtmltext}
+        />
+      ) : (
+        <LoadingScreenRoomSkip
+          setHtmltext={setHtmltext}
+        />
+      )}
       <Suspense>
+        <EcctrlJoystick/>
         <Canvas
           shadows="soft"
           camera={{
@@ -164,18 +196,35 @@ export const RoomChapterOne = () => {
         >
           <color attach="background" args={["#638689"]} />
           <fog attach="fog" args={["#569BF3", 1, 200]} />
-          <Physics>
-            {/* debug */}
-            <Player
-              playerActive={playerActive}
-              setPlayerActive={setPlayerActive}
-            />
+          {/* debug */}
+          <Physics  >
+            <KeyboardControls map={keyboardMap}>
+              <Ecctrl
+                camInitDis={-0.01} // camera intial position
+                camInitDir= {{ x: 0, y: -3.1, z: 0 }} // Camera initial rotation direction (in rad)
+                camMaxDis= {-0.03} // Maximum camera distance
+                camMinDis={-0.01} // camera zoom in closest position
+                camFollowMult={100} // give any big number here, so the camera follows the character instantly
+                turnVelMultiplier={1} // character won't move before turn completed
+                turnSpeed={100} // give it big turning speed to prevent turning wait time
+                mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
+                disableFollowCam={disableFollowCam}
+                disableFollowCamPos={{ x: 0, y: 2, z: 0 }} // Corrected: Camera position when the follow camera feature is disabled
+                disableFollowCamTarget={{ x: 0, y: 0, z: -2 }} // Camera lookAt target when the follow camera feature is disabled
+                position={[-2, 3, 4]}
+              >
+                {/* Replace your model here */}
+                <Player/>
+                {/* First Person Camera */}
+                {!disableFollowCam && <PointerLockControls />}
+              </Ecctrl>
+            </KeyboardControls>
             <Room />
             <Floor />
             <Wall />
             <mesh
               onClick={() => {
-                setPlayerActive(false),
+                  setdisableFollowCam(true),
                   setLoopcamera(true),
                   setHtmltext(false),
                   play();
@@ -185,7 +234,17 @@ export const RoomChapterOne = () => {
             </mesh>
             <mesh
               onClick={() => {
-                setPlayerActive(false),
+                  setdisableFollowCam(true),
+                  // setLoopcamera(true),
+                  setHtmltext(false),
+                  play();
+              }}
+            >
+              <Paper htmltext={htmltext} setHtmltext={setHtmltext} />
+            </mesh>
+            <mesh
+              onClick={() => {
+                  setdisableFollowCam(true),
                   setLoopcameratwo(true),
                   setHtmltext(false);
                 play();
@@ -212,7 +271,6 @@ export const RoomChapterOne = () => {
           <Lights />
         </Canvas>
       </Suspense>
-
       <motion.div
         key={openModal}
         initial={{ opacity: 0 }}
@@ -220,20 +278,21 @@ export const RoomChapterOne = () => {
         transition={{ duration: 1 }}
       >
         <Modal
-          size={"8xl"}
+          size={"7xl"}
           show={openModal}
           onClose={() => {
             setOpenModal(false);
-            setPlayerActive(true);
+            setdisableFollowCam(false);
             setHtmltext(true);
             setTarget(1);
             play();
           }}
-          className="relative z-10"
-          style={{ cursor: 'url("/images/CustomMouses/default32.png"), pointer' }}
+          style={{
+            cursor: 'url("/images/CustomMouses/default32.png"), pointer',
+          }}
         >
           <motion.svg
-            className="w-12 h-12 text-gray-800 dark:text-white absolute top-[50%] bottom-[50%] left-[0%] opacity-60 z-20"
+            className="w-12 h-12  text-white absolute top-[50%] bottom-[50%] left-[0%] opacity-60 z-[50]"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -251,7 +310,7 @@ export const RoomChapterOne = () => {
           </motion.svg>
 
           <motion.svg
-            className="w-12 h-12 text-gray-800 dark:text-white absolute top-[50%] bottom-[50%] right-[0%] opacity-60 z-20"
+            className="w-12 h-12 text-white absolute top-[50%] bottom-[50%] right-[0%] opacity-60 z-[50]"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -267,58 +326,57 @@ export const RoomChapterOne = () => {
           >
             <path d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z" />
           </motion.svg>
-
-          <Modal.Header>
-            SELECT CHAPTER PAGE
+          <Modal.Header className=" bg-slate-800">
+            <span className="text-white">SELECT CHAPTER PAGE</span>
           </Modal.Header>
 
-            <Modal.Body>
-              <div id="city" className="lg:flex mx-5 m-5  ">
-                <div className=" h-auto m-2 ">
-                  <motion.img
-                    src={dialogue[currentDialogueIndex].bg}
-                    alt="..."
-                    className="rounded-3xl h-full w-full z-10"
-                    key={currentDialogueIndex}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 50 }}
-                    transition={{ duration: 0.4 }}
-                  />
-                </div>
-
-                <motion.div
-                  className="m-2 bg-gray-800 rounded-xl w-[100%] flex flex-col items-center justify-center"
+          <Modal.Body className="bg-slate-800 relative">
+            <div id="city" className="lg:flex mx-5 m-5  ">
+              <div className=" w-full h-auto m-2 ">
+                <motion.img
+                  src={dialogue[currentDialogueIndex].bg}
+                  alt="..."
+                  className="rounded-3xl h-full w-full z-10"
                   key={currentDialogueIndex}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 25 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <motion.h1 className="text-4xl lg:text-5xl font-extrabold dark:text-white text-center">
-                    {dialogue[currentDialogueIndex].speaker}
-                  </motion.h1>
-                  <motion.p className="lg:text-xl p-6 text-center">
-                    {dialogue[currentDialogueIndex].text}
-                  </motion.p>
-                  <Link to={dialogue[currentDialogueIndex].link}>
-                    <div className="text-center m-3">
-                      <button
-                        onClick={play}
-                        style={{
-                          cursor:
-                            'url("/images/CustomMouses/pointer.png"), pointer',
-                        }}
-                        type="button"
-                        className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
-                      >
-                        {dialogue[currentDialogueIndex].button}
-                      </button>
-                    </div>
-                  </Link>
-                </motion.div>
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 50 }}
+                  transition={{ duration: 0.4 }}
+                />
               </div>
-            </Modal.Body>
+
+              <motion.div
+                className="m-2 bg-gray-700 rounded-xl w-[100%] flex flex-col items-center justify-center"
+                key={currentDialogueIndex}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 25 }}
+                transition={{ duration: 0.6 }}
+              >
+                <motion.h1 className="text-4xl lg:text-4xl font-extrabold text-white text-center pt-5">
+                  {dialogue[currentDialogueIndex].speaker}
+                </motion.h1>
+                <motion.p className="lg:text-xl p-6 text-center">
+                  {dialogue[currentDialogueIndex].text}
+                </motion.p>
+                <Link to={dialogue[currentDialogueIndex].link}>
+                  <div className="text-center m-3">
+                    <button
+                      onClick={play}
+                      style={{
+                        cursor:
+                          'url("/images/CustomMouses/pointer.png"), pointer',
+                      }}
+                      type="button"
+                      className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none  focus:ring-blue-800 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
+                    >
+                      {dialogue[currentDialogueIndex].button}
+                    </button>
+                  </div>
+                </Link>
+              </motion.div>
+            </div>
+          </Modal.Body>
         </Modal>
 
         <Modal
@@ -326,18 +384,18 @@ export const RoomChapterOne = () => {
           size="md"
           onClose={() => {
             setOpenModaltwo(false);
-            setPlayerActive(true);
+            setdisableFollowCam(false);
             setHtmltext(true);
             setTargetwo(1);
             play();
           }}
           popup
         >
-          <Modal.Header />
-          <Modal.Body>
+          <Modal.Header className="bg-slate-800" />
+          <Modal.Body className="class bg-slate-800">
             <div className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normal text-gray-500 dark:text-gray-400">
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
+              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
                 คุณแน่ใจว่าจะไปหน้า Concept ?
               </h3>
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
@@ -349,20 +407,20 @@ export const RoomChapterOne = () => {
                       play();
                     }}
                   >
-                    {" แน่ใจอยู่แล้ว "}
+                    {" ไปหน้า Concept"}
                   </Button>
                 </Link>
                 <Button
                   color="gray"
                   onClick={() => {
                     setOpenModaltwo(false);
-                    setPlayerActive(true);
+                    setdisableFollowCam(false);
                     setHtmltext(true);
                     setTargetwo(1);
                     play();
                   }}
                 >
-                  ขออีก 5 นาที
+                  ยกเลิก
                 </Button>
               </div>
             </div>
@@ -374,89 +432,15 @@ export const RoomChapterOne = () => {
 };
 export default RoomChapterOne;
 
-// Player Control
 
-export const Player = ({ playerActive }) => {
-  const [active, setActive] = useState(false);
-
-  const MOVE_SPEED = 5;
-  const direction = new THREE.Vector3();
-  const frontVector = new THREE.Vector3();
-  const sideVector = new THREE.Vector3();
-  const playerRef = useRef();
-  const { forward, backward, left, right, jump } = usePersonControls();
-  const rapier = useRapier();
-
-  // Fall detection threshold
-  const fallThresholdY = -10; // Adjust this value based on your map's lowest possible y-coordinate
-  // Predefined reset position
-  const resetPosition = { x: -2, y: 3, z: 4 }; // Change this to your desired reset position
-  useFrame((state) => {
-    if (!playerRef.current) return;
-
-    const playerPosition = playerRef.current.translation();
-
-    // moving player
-    const velocity = playerRef.current.linvel();
-    //  player movement
-    if (playerActive) {
-      frontVector.set(0, 0, backward - forward);
-      sideVector.set(left - right, 0, 0);
-      direction
-        .subVectors(frontVector, sideVector)
-        .normalize()
-        .multiplyScalar(MOVE_SPEED)
-        .applyEuler(state.camera.rotation);
-
-      if (playerPosition.y < fallThresholdY) {
-        // Reset player position
-        playerRef.current.setTranslation(resetPosition, true);
-      }
-
-      playerRef.current.wakeUp();
-      playerRef.current.setLinvel({
-        x: direction.x,
-        y: velocity.y,
-        z: direction.z,
-      });
-    }
-
-    // jumping
-    const world = rapier.world;
-    const ray = world.castRay(
-      new RAPIER.Ray(playerRef.current.translation(), { x: 0, y: -1, z: 0 })
-    );
-    const grounded = ray && ray.collider && Math.abs(ray.toi) <= 1.5;
-
-    if (jump && grounded) doJump();
-
-    // moving camera
-    const { x, y, z } = playerRef.current.translation();
-    if (playerActive) {
-      // Condition to check if book is not clicked
-      state.camera.position.set(x, y, z);
-    }
-  });
-
-  const doJump = () => {
-    playerRef.current.setLinvel({ x: 0, y: 3.5, z: 0 });
-  };
-
+export const Player = () => {
   return (
     <>
-      {/* First Person Camera */}
-      {playerActive ? <PointerLockControls /> : null}
-      <RigidBody
-        position={[-2, 3, 4]}
-        mass={1}
-        colliders={false}
-        ref={playerRef}
-        lockRotations
-      >
+      <RigidBody colliders={false} lockRotations>
         <mesh visible={false}>
-          <capsuleGeometry args={[0.4, 0.4]} />
+          <capsuleGeometry args={[0.1, 0.1]} />
           <meshStandardMaterial color="hotpink" />
-          <CapsuleCollider args={[0.9, 0.5]} />
+          <CapsuleCollider args={[0.1, 0.1]} />
         </mesh>
       </RigidBody>
     </>
@@ -507,6 +491,12 @@ const Lights = () => {
     </>
   );
 };
+
+
+
+
+
+
 
 // Effect Compo
 export const EffectsPost = ({
@@ -604,29 +594,32 @@ export const EffectsPost = ({
         <mesh>
           <MBook />
         </mesh>
+        <mesh>
+          <Paper/>
+        </mesh>
       </Selection>
     </>
   );
 };
 
 // player UI
-export const Tutorial = () => {
-  return (
-    <div className="tutorial">
-      <div className="absolute opacity-70  top-[87%] left-[4%]">
-        <h2 className="text-2xl font-bold dark:text-white opacity-70  ">
-          Press W A S D to move around
-        </h2>
-        <h2 className="text-2xl font-bold dark:text-white opacity-70 ">
-          Press SPACEBAR to jump
-        </h2>
-        <h2 className="text-2xl font-bold dark:text-white opacity-70 ">
-          Press Esc to show cusor mouse
-        </h2>
-      </div>
-    </div>
-  );
-};
+// export const Tutorial = () => {
+//   return (
+//     <div className="tutorial">
+//       <div className="absolute opacity-70  top-[87%] left-[4%]">
+//         <h2 className="text-2xl font-bold dark:text-white opacity-70  ">
+//           Press W A S D to move around
+//         </h2>
+//         <h2 className="text-2xl font-bold dark:text-white opacity-70 ">
+//           Press SPACEBAR to jump
+//         </h2>
+//         <h2 className="text-2xl font-bold dark:text-white opacity-70 ">
+//           Press Esc to show cusor mouse
+//         </h2>
+//       </div>
+//     </div>
+//   );
+// };
 
 // Book Component
 
@@ -796,5 +789,133 @@ export const MBook = ({
         </RigidBody>
       </group>
     </>
+  );
+};
+
+
+export const Paper = ({ htmltext, setHtmltext, ...props }) => {
+  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const ref = useRef();
+  const [hovered, hover] = useState(null);
+  const [closelabel, Setcloselabel] = useState(false);
+
+  useEffect(() => {
+    Setcloselabel(htmltext);
+  }, [htmltext]);
+
+  return (
+    <group {...props} dispose={null}>
+      <RigidBody type="fixed">
+        <Select enabled={hovered}>
+          <mesh
+            castShadow
+            ref={ref}
+            {...props}
+            onPointerOver={() => hover(true)}
+            onPointerOut={() => hover(false)}
+          >
+            <mesh
+            position={[2.7,-0.37,-5.6]}
+            rotation={[-4.65,-0.4,0.]}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane2.geometry}
+              material={materials.M_maintable}
+            />
+
+            <mesh
+            position={[3.36,-0.33,-5.6]}
+            rotation={[-4.65,0,0.]}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane2.geometry}
+              material={materials.M_maintable}
+            />
+
+            <mesh
+            position={[2.7,-0.2,-5.7]}
+            rotation={[-4.60,-0.4,0.031]}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane3.geometry}
+              material={materials.M_maintable}
+            />
+            
+
+            <mesh
+            position={[2.7,-0.2,-5.7]}
+            rotation={[-4.60,-0.4,0.031]}
+            scale={1}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane1.geometry}
+              material={materials.M_maintable}
+            />
+
+            <mesh
+            position={[1.69,-0.04,-5.7]}
+            rotation={[-4.60,-0.42,0.031]}
+            scale={1}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane1.geometry}
+              material={materials.M_maintable}
+            />
+            <mesh
+            position={[1.4,0,-5.7]}
+            rotation={[-4.60,-0.4,0.031]}
+            scale={1}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane1.geometry}
+              material={materials.M_maintable}
+            />
+
+            <mesh
+            position={[1.6,-0.4,-5.7]}
+            rotation={[-4.60,-0.4,0.031]}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane3.geometry}
+              material={materials.M_maintable}
+            />
+
+        <mesh
+            position={[1.6,-0.5,-5.7]}
+            rotation={[-4.60,-0.42,0.031]}
+            scale={1}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane1.geometry}
+              material={materials.M_maintable}
+            />
+
+
+            <mesh
+            position={[2.36,-0.33,-5.6]}
+            rotation={[-4.65,0,0.]}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane2.geometry}
+              material={materials.M_maintable}
+            />
+            
+
+            <group position={[1.6, 1.7, -4.5]}>
+              {!htmltext ? null : (
+                <Html distanceFactor={2}>
+                  <div className="label noselect">
+                    <div className="label__tu">ABOUT-US</div>
+                    <div className="label__name">
+                      Left Click to Go to About-us page 
+                    </div>
+                  </div>
+                </Html>
+              )}
+            </group>
+          </mesh>
+        </Select>
+      </RigidBody>
+    </group>
   );
 };

@@ -13,10 +13,11 @@
 }
 
 .loading-screen--hidden {
-    animation: fade-out 0.5s ease-in-out forwards 0.1s;
+    animation: fadeOut 0.5s ease-in-out forwards 0.3s;
 }
 
-@keyframes fade-out {
+
+@keyframes fadeOut { /* This should match the animation name specified in .loading-screen--hidden */
     0% {
         opacity: 1;
     }
@@ -37,18 +38,22 @@
 }
 
 .loading-screen__container {
-    position: relative;
+    position: relative; /* Maintain this for positioning context */
     z-index: 1; /* Ensure the content is above the video */
     text-align: center;
+    display: flex; /* Use flexbox for positioning */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    height: 100%; /* Take full height of the parent */
 }
 
 .loading-screen__title {
+    margin-top: auto; /* Push the title to the bottom */
     font-size: 4rem;
     font-weight: 900;
     text-transform: uppercase;
-    text-align: center;
     color: #ffffff;
-    margin: 18rem 0 0; /* Adjust the top margin to move the text downwards */
+    position: relative; /* Keep it relative inside the flex container */
 }
 
 .progress__container {
@@ -60,6 +65,10 @@
     border-radius: 4px;
 }
 
+.loading-screen__container > *:first-child {
+    margin-top: 50%;
+}
+
 .progress__bar {
     width: 0;
     height: 100%;
@@ -67,3 +76,13 @@
     transition: width 0.5s ease-in-out;
 }
 
+.click-to-continue-text {
+    color: white;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 20px; /* Adjust as needed */
+    width: 100%;
+    text-align: center;
+  }
+  
+  
