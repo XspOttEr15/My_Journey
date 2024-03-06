@@ -51,8 +51,10 @@ export const RoomChapterOne = () => {
   const [disableFollowCam, setdisableFollowCam] = useState(false);
   const [loopcamera, setLoopcamera] = useState(false);
   const [loopcameratwo, setLoopcameratwo] = useState(false);
+  const [loopcamerathree, setLoopcamerathree] = useState(false);
   const [target, setTarget] = useState(1);
   const [targettwo, setTargetwo] = useState(1);
+  const [targetthree, setTargethree] = useState(1);
   const {
     setCloseNavbar,
     setCloseButtonNavbar,
@@ -117,15 +119,6 @@ export const RoomChapterOne = () => {
     { name: "jump", keys: ["Space"] },
     { name: "run", keys: ["Shift"] },
   ];
-
-  const [position, setPosition] = useState([-2, 3, 4]);
-
-  useEffect(() => {
-    if (position[1] !== 3) {
-      // Reset position to some initial value or a new value as required
-      setPosition([-2, 3, 4]); // Example: Reset to initial position
-    }
-  }, [position, setPosition]);
   
   
 
@@ -167,7 +160,7 @@ export const RoomChapterOne = () => {
             <path
               stroke="currentColor"
               strokeLinecap="round"
-              stroke-width="2"
+              strokeWidth="2"
               d="M5 7h14M5 12h14M5 17h14"
             />
           </svg>
@@ -211,7 +204,7 @@ export const RoomChapterOne = () => {
                 disableFollowCam={disableFollowCam}
                 disableFollowCamPos={{ x: 0, y: 2, z: 0 }} // Corrected: Camera position when the follow camera feature is disabled
                 disableFollowCamTarget={{ x: 0, y: 0, z: -2 }} // Camera lookAt target when the follow camera feature is disabled
-                position={[-2, 3, 4]}
+                position={[-2, 4, 4]}
               >
                 {/* Replace your model here */}
                 <Player/>
@@ -602,27 +595,6 @@ export const EffectsPost = ({
   );
 };
 
-// player UI
-// export const Tutorial = () => {
-//   return (
-//     <div className="tutorial">
-//       <div className="absolute opacity-70  top-[87%] left-[4%]">
-//         <h2 className="text-2xl font-bold dark:text-white opacity-70  ">
-//           Press W A S D to move around
-//         </h2>
-//         <h2 className="text-2xl font-bold dark:text-white opacity-70 ">
-//           Press SPACEBAR to jump
-//         </h2>
-//         <h2 className="text-2xl font-bold dark:text-white opacity-70 ">
-//           Press Esc to show cusor mouse
-//         </h2>
-//       </div>
-//     </div>
-//   );
-// };
-
-// Book Component
-
 export const Book = ({ htmltext, setHtmltext, ...props }) => {
   const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   const ref = useRef();
@@ -671,7 +643,7 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
 
             <group position={[-0.3, 1, -1.5]}>
               {!htmltext ? null : (
-                <Html distanceFactor={2}>
+                <Html distanceFactor={2} zIndexRange={[1, 0]}a>
                   <div className="label noselect">
                     <div className="label__tu">LUNAR's BOOK</div>
                     <div className="label__name">
@@ -695,8 +667,6 @@ export const MBook = ({
   setLoopcameratwo,
   htmltext,
   setHtmltext,
-  playerActive,
-  setPlayerActive,
   setOpenModaltwo,
   ...props
 }) => {
@@ -774,7 +744,7 @@ export const MBook = ({
               />
               <group position={[-2.4, 1.3, -4.2]}>
                 {!htmltext ? null : (
-                  <Html distanceFactor={2}>
+                  <Html distanceFactor={2} zIndexRange={[1, 0]}>
                     <div className="label noselect">
                       <div className="label__tu">CONCEPT</div>
                       <div className="label__name">
@@ -870,7 +840,6 @@ export const Paper = ({ htmltext, setHtmltext, ...props }) => {
               geometry={nodes.pPlane1.geometry}
               material={materials.M_maintable}
             />
-
             <mesh
             position={[1.6,-0.4,-5.7]}
             rotation={[-4.60,-0.4,0.031]}
@@ -903,7 +872,7 @@ export const Paper = ({ htmltext, setHtmltext, ...props }) => {
 
             <group position={[1.6, 1.7, -4.5]}>
               {!htmltext ? null : (
-                <Html distanceFactor={2}>
+                <Html distanceFactor={1.9} zIndexRange={[1, 0]}  >
                   <div className="label noselect">
                     <div className="label__tu">ABOU Us</div>
                     <div className="label__name">

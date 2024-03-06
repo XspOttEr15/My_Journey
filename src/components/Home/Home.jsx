@@ -24,9 +24,9 @@ const Home = () => {
         <Video/>
         <Overlay/>
       </motion.div>
-      <motion.div className=' sections w-full h-screen '>
+      {/* <motion.div className=' sections w-full h-screen '>
         <City/>
-      </motion.div>
+      </motion.div>    */}
     </>
   )
 }

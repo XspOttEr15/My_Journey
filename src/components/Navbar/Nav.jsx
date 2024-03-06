@@ -52,12 +52,12 @@ const Nav = () => {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-8"
+              src="/images/Logo/icon_web.png"
+              className="h-12"
               alt="Flowbite Logo"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-              Flowbite
+              Find the ways
             </span>
           </a>
         </div>
@@ -82,9 +82,9 @@ const Nav = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
@@ -99,7 +99,6 @@ const Nav = () => {
           <Link to={"/roomchapterone"}>Story</Link>
           <Link to={"/concept"}>Concept</Link>
           <Link to={"/about"}>About-Us</Link>
-          <a href="#">Contact</a>
         </div>
       </div>
     </nav>
