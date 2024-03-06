@@ -132,6 +132,7 @@ export const LoadingScreenSkip = () => {
   return (
     <div
       className={`loading-screen ${showScreen ? "" : "loading-screen--hidden"}`}
+      onClick={handleStartClick}
     >
       <video className="loading-screen__background-video" autoPlay loop muted >
         <source src={randomVideo} type="video/mp4" />

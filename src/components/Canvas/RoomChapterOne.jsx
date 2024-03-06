@@ -905,7 +905,7 @@ export const Paper = ({ htmltext, setHtmltext, ...props }) => {
               {!htmltext ? null : (
                 <Html distanceFactor={2}>
                   <div className="label noselect">
-                    <div className="label__tu">ABOUT-US</div>
+                    <div className="label__tu">ABOU Us</div>
                     <div className="label__name">
                       Left Click to Go to About-us page 
                     </div>
