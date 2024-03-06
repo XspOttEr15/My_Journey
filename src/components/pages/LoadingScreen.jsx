@@ -118,6 +118,12 @@ export const LoadingScreenSkip = () => {
     "/videos/vid_loading-city3.mp4",
   ];
 
+  const handleStartClick = () => {
+    setShowScreen(false); // Hide the loading screen when the start button is clicked
+    setHtmltext(true)
+    setIsPassOne(2)
+  };
+
   const randomVideo =
     randomVideos[Math.floor(Math.random() * randomVideos.length)];
 
@@ -155,7 +161,7 @@ export const LoadingScreenSkip = () => {
   );
 };
 
-export const LoadingScreenRoomSkip = ({ setHtmltext}) => {
+export const LoadingScreenRoomSkip = ({ setHtmltext }) => {
   const { progress } = useProgress();
   const [showScreen, setShowScreen] = useState(true); // Control visibility of the loading screen
   const randomVideos = [
