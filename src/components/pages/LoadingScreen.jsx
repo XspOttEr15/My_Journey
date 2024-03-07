@@ -3,31 +3,21 @@ import { useProgress } from "@react-three/drei";
 import "../styles/LoadingScreen.css";
 import { useContext } from "react";
 import { DataContext } from "../../App";
+import bgloaderroom from "/videos/vid_loading_room.mp4"
 
 const LoadingScreen = () => {
   const { progress } = useProgress();
   const [showScreen, setShowScreen] = useState(true); 
-  const randomVideos = [
-    "/videos/vid_loading_room.mp4",
-    "/videos/vid_loading_city1.mp4",
-    "/videos/vid_loading-city2.mp4",
-    "/videos/vid_loading-city3.mp4",
-  ];
+
   const {
     setColseBgmusic,
     setIsPassOne,
   } = useContext(DataContext);
     
-
-  const randomVideo =
-    randomVideos[Math.floor(Math.random() * randomVideos.length)];
-
   const handleStartClick = () => {
     setShowScreen(false); 
     setColseBgmusic(false)
   };
-
-
 
   return (
     <div
@@ -35,7 +25,7 @@ const LoadingScreen = () => {
       onClick={handleStartClick}
     >
       <video className="loading-screen__background-video" autoPlay loop muted preload="auto">
-        <source src={randomVideo} type="video/mp4" />
+        <source src= {bgloaderroom} type="video/mp4" />
       </video>
       <div className="loading-screen__container">
         <h1 className="loading-screen__title">3D Web Agency</h1>
@@ -48,7 +38,7 @@ const LoadingScreen = () => {
         {progress === 100 && (
           <p className="click-to-continue-text">
               Click anywhere to continue
-            </p>
+        </p>
         )}
       </div>
     </div>
@@ -61,19 +51,11 @@ export default LoadingScreen;
 export const LoadingScreenRoom = ({ setHtmltext }) => {
   const { progress } = useProgress();
   const [showScreen, setShowScreen] = useState(true); // Control visibility of the loading screen
-  const randomVideos = [
-    "/videos/vid_loading_room.mp4",
-    "/videos/vid_loading_city1.mp4",
-    "/videos/vid_loading-city2.mp4",
-    "/videos/vid_loading-city3.mp4",
-  ];
 
   const {
     setIsPassOne,
   } = useContext(DataContext);
 
-  const randomVideo =
-    randomVideos[Math.floor(Math.random() * randomVideos.length)];
 
   const handleStartClick = () => {
     setShowScreen(false); 
@@ -88,7 +70,7 @@ export const LoadingScreenRoom = ({ setHtmltext }) => {
       onClick={handleStartClick}
     >
       <video className="loading-screen__background-video" autoPlay loop muted >
-        <source src={randomVideo} type="video/mp4" />
+        <source src="/videos/vid_loading_room.mp4" type="video/mp4" />
       </video>
       <div className="loading-screen__container">
         <h1 className="loading-screen__title">3D Web Agency</h1>
@@ -112,9 +94,6 @@ export const LoadingScreenSkip = () => {
   const { progress } = useProgress();
   const [showScreen, setShowScreen] = useState(true); // Control visibility of the loading screen
   const randomVideos = [
-    "/videos/vid_loading_room.mp4",
-    "/videos/vid_loading_city1.mp4",
-    "/videos/vid_loading-city2.mp4",
     "/videos/vid_loading-city3.mp4",
   ];
 
@@ -123,8 +102,6 @@ export const LoadingScreenSkip = () => {
     setHtmltext(true)
   };
 
-  const randomVideo =
-    randomVideos[Math.floor(Math.random() * randomVideos.length)];
 
 
   // Optional: Automatically show the start button when progress reaches 100%
@@ -140,7 +117,7 @@ export const LoadingScreenSkip = () => {
       onClick={handleStartClick}
     >
       <video className="loading-screen__background-video" autoPlay loop muted >
-        <source src={randomVideo} type="video/mp4" />
+        <source src="/videos/vid_loading-city3.mp4" type="video/mp4" />
       </video>
       <div className="loading-screen__container">
         <h1 className="loading-screen__title">3D Web Agency</h1>
@@ -163,15 +140,6 @@ export const LoadingScreenSkip = () => {
 export const LoadingScreenRoomSkip = ({ setHtmltext }) => {
   const { progress } = useProgress();
   const [showScreen, setShowScreen] = useState(true); // Control visibility of the loading screen
-  const randomVideos = [
-    "/videos/vid_loading_room.mp4",
-    "/videos/vid_loading_city1.mp4",
-    "/videos/vid_loading-city2.mp4",
-    "/videos/vid_loading-city3.mp4",
-  ];
-
-  const randomVideo =
-    randomVideos[Math.floor(Math.random() * randomVideos.length)];
 
 
   // Optional: Automatically show the start button when progress reaches 100%
@@ -189,7 +157,7 @@ export const LoadingScreenRoomSkip = ({ setHtmltext }) => {
       className={`loading-screen ${showScreen ? "" : "loading-screen--hidden"}`}
     >
       <video className="loading-screen__background-video" autoPlay loop muted >
-        <source src={randomVideo} type="video/mp4" />
+        <source src="/videos/vid_loading_room.mp4"  type="video/mp4" />
       </video>
       <div className="loading-screen__container">
         <h1 className="loading-screen__title">3D Web Agency</h1>

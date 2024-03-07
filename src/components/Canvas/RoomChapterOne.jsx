@@ -123,17 +123,6 @@ export const RoomChapterOne = () => {
   
 
   useEffect(() => {
-    const preloadImages = () => {
-      dialogue.forEach((item) => {
-        const img = new Image();
-        img.src = item.bg;
-      });
-    };
-
-    preloadImages();
-  }, [openModal]);
-
-  useEffect(() => {
     setCloseNavbar(true);
     setCloseButtonNavbar(false);
     setColseBgmusic(true);
@@ -166,25 +155,11 @@ export const RoomChapterOne = () => {
           </svg>
         </Button>
       )} */}
-
+      <LoadingScreenRoom/>
       <div className="aim"></div>
-      {isPassOne === 1 ? (
-        <LoadingScreenRoom
-          setHtmltext={setHtmltext}
-        />
-      ) : (
-        <LoadingScreenRoomSkip
-          setHtmltext={setHtmltext}
-        />
-      )}
-      <Suspense>
         <EcctrlJoystick/>
         <Canvas
           shadows="soft"
-          camera={{
-            fov: 45,
-            position: [0, 0, 0],
-          }}
           style={{ width: "100%", height: "100vh" }}
         >
           <color attach="background" args={["#638689"]} />
@@ -204,7 +179,7 @@ export const RoomChapterOne = () => {
                 disableFollowCam={disableFollowCam}
                 disableFollowCamPos={{ x: 0, y: 2, z: 0 }} // Corrected: Camera position when the follow camera feature is disabled
                 disableFollowCamTarget={{ x: 0, y: 0, z: -2 }} // Camera lookAt target when the follow camera feature is disabled
-                position={[-2, 4, 4]}
+                position={[-2, 4, 3]}
               >
                 {/* Replace your model here */}
                 <Player/>
@@ -263,7 +238,6 @@ export const RoomChapterOne = () => {
           </Physics>
           <Lights />
         </Canvas>
-      </Suspense>
       <motion.div
         key={openModal}
         initial={{ opacity: 0 }}
@@ -431,9 +405,9 @@ export const Player = () => {
     <>
       <RigidBody colliders={false} lockRotations>
         <mesh visible={false}>
-          <capsuleGeometry args={[0.1, 0.1]} />
+          <capsuleGeometry args={[0.01, 0.01]} />
           <meshStandardMaterial color="hotpink" />
-          <CapsuleCollider args={[0.1, 0.1]} />
+          <CapsuleCollider args={[0.01, 0.01]} />
         </mesh>
       </RigidBody>
     </>

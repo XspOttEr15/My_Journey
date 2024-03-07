@@ -1,22 +1,40 @@
 import { Link, Route, Routes } from "react-router-dom";
+import {  Suspense, lazy } from 'react';
+import { createContext, useState } from "react";
 import "./App.css";
 import "flowbite-react";
 // page
-import About from "./components/pages/About";
-import Home from "./components/Home/Home";
-import Concept from "./components/pages/Concept";
-import Character from "./components/pages/Character";
-import { createContext, useState } from "react";
-import RoomChapterOne from "./components/Canvas/RoomChapterOne";
-import ChapterOne from "./components/pages/Chapter/ChapterOne";
-import ChapterDialogOne from "./components/pages/Chapter/ChapterDialogOne";
-import ChapterDialogTwo from "./components/pages/Chapter/ChapterDialogTwo";
-import ChapterDialogThree from "./components/pages/Chapter/ChapterDiaologThree";
-import ChapterTwo from "./components/pages/Chapter/ChapterTwo";
-import ChapterThree from "./components/pages/Chapter/ChapterThree";
+// import About from "./components/pages/About";
+// import Home from "./components/Home/Home";
+// import RoomChapterOne from "./components/Canvas/RoomChapterOne";
+// import Character from "./components/pages/Character";
+// import Concept from "./components/pages/Concept";
+// import ChapterOne from "./components/pages/Chapter/ChapterOne";
+// import ChapterDialogOne from "./components/pages/Chapter/ChapterDialogOne";
+// import ChapterDialogTwo from "./components/pages/Chapter/ChapterDialogTwo";
+// import ChapterDialogThree from "./components/pages/Chapter/ChapterDiaologThree";
+// import LoadingScreen from "./components/pages/LoadingScreen";
+// import ChapterTwo from "./components/pages/Chapter/ChapterTwo";
+// import ChapterThree from "./components/pages/Chapter/ChapterThree";
+
+const Home = lazy(() => import('./components/Home/Home'));
+const RoomChapterOne = lazy(() => wait(1000).then(() =>import('./components/Canvas/RoomChapterOne')));
+const Character = lazy(() => import('./components/pages/Character'));
+const Concept = lazy(() => import('./components/pages/Concept'));
+const About = lazy(() => import('./components/pages/About'));
+const ChapterOne = lazy(() => import('./components/pages/Chapter/ChapterOne'));
+const ChapterDialogOne = lazy(() => import('./components/pages/Chapter/ChapterDialogOne'));
+const ChapterDialogTwo = lazy(() => import('./components/pages/Chapter/ChapterDialogTwo'));
+const ChapterDialogThree = lazy(() => import('./components/pages/Chapter/ChapterDiaologThree'));
+const LoadingScreen = lazy(() => import('./components/pages/LoadingScreen'));
+const ChapterTwo = lazy(() => import('./components/pages/Chapter/ChapterTwo'));
+const ChapterThree = lazy(() => import('./components/pages/Chapter/ChapterThree'));
+
+import Nav from "./components/Navbar/Nav";
 import Maps from "./components/pages/Maps";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import Nav from "./components/Navbar/Nav";
+
+
 
 export const DataContext = createContext();
 
@@ -48,6 +66,7 @@ function App() {
         }}
       >
         <div className="main">
+          <Suspense fallback={null}>
           <Nav/>
           <Routes>
             <Route path="/" index element={<Home />} />
@@ -66,10 +85,18 @@ function App() {
             <Route path="/chapterthree" element={<ChapterThree />} />
             <Route path="/roomchapterone" element={<RoomChapterOne />} />
           </Routes>
+          </Suspense>
         </div>
       </DataContext.Provider>
     </>
   );
 }
 
+function wait(time) {
+  return new Promise(resolve => {
+    setTimeout(resolve, time)
+  })
+}
+
 export default App;
+
