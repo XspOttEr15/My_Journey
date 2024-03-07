@@ -48,12 +48,9 @@ function App() {
         }}
       >
         <div className="main">
-          {/* <div className="frame"> 
-          <img src="/images/border-img/frame2.png" className="overlays" />
-          </div> */}
           <Nav/>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" index element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/concept" element={<Concept />} />
             <Route path="/character" element={<Character />} />
