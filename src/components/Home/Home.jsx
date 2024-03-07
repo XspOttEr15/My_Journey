@@ -16,9 +16,7 @@ const Home = () => {
   }, []);
   
   return (
-    <>
-    {isPassOne === 1 && <LoadingScreen />}
-    {isPassOne === 2 && <LoadingScreenSkip />}  
+    <>  
       <motion.div className='sections w-full h-screen'>
         <Video/>
         <Overlay/>

@@ -280,7 +280,8 @@ const CardOne = React.forwardRef(
         className=" sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
       >
         <Modal
-          size={["800px"]}
+          className=" h-96"
+          size={["8xl"]}
           show={openModal}
           onClose={() => {
             setOpenModal(false), play();
