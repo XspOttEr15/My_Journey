@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Modal } from "flowbite-react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { DataContext } from "../../../App";
 import useSound from "use-sound";

@@ -76,9 +76,9 @@ export const LoadingScreenRoom = ({ setHtmltext }) => {
     randomVideos[Math.floor(Math.random() * randomVideos.length)];
 
   const handleStartClick = () => {
-    setShowScreen(false); // Hide the loading screen when the start button is clicked
+    setShowScreen(false); 
     setHtmltext(true)
-    setIsPassOne(2)
+    
   };
 
 
@@ -121,7 +121,6 @@ export const LoadingScreenSkip = () => {
   const handleStartClick = () => {
     setShowScreen(false); // Hide the loading screen when the start button is clicked
     setHtmltext(true)
-    setIsPassOne(2)
   };
 
   const randomVideo =
