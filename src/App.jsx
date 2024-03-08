@@ -66,7 +66,7 @@ function App() {
         }}
       >
         <div className="main">
-          <Suspense fallback={null}>
+          <Suspense fallback={<LoadingScreen/>}>
           <Nav/>
           <Routes>
             <Route path="/" index element={<Home />} />
