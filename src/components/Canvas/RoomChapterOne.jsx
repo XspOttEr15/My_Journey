@@ -63,7 +63,7 @@ export const RoomChapterOne = () => {
     setColseBgmusic,
     setIsNavbarFixed,
   } = useContext(DataContext);
-  const [htmltext, setHtmltext] = useState(false);
+  const [htmltext, setHtmltext] = useState(true);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
   const [dialogue, setDialogue] = useState([
