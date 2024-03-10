@@ -155,7 +155,6 @@ export const RoomChapterOne = () => {
           </svg>
         </Button>
       )} */}
-      <LoadingScreenRoom/>
       <div className="aim"></div>
         <EcctrlJoystick/>
         <Canvas

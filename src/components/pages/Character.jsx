@@ -69,30 +69,29 @@ const Character = () => {
 
   return (
     <>
-      <div className="text-center">
-        <div className=" sections  sm:mt-12  ">
+        <div className="sections  text-center mb-[5rem] mt-[5rem] p-0 ">
           <span className=" text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
             Character
           </span>
         </div>
 
-        <div className=" w-3/4 sm:inline-block m-16 lg:p-10 sm:m-12">
+        <div className=" w-auto text-center mt-12 mb-12 ml-[9rem] mr-[9rem] sections">
           <div className="">
             <Slider {...settings}>
-              <div className="">
+              <div className="text-center">
                 <Link
                   onClick={() => {
                     CardOneClick(), play();
                   }}
                 >
-                  <div className=" max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                  <div className=" max-w-md md:max-w-auto mb-5   border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
                     <img
                       src="/images/Characters/Lunar/Lunar_NormalSuit.png"
                       alt="Lunar"
                       className="p-3"
                     />
                   </div>
-                  <div className="p-5 bg-gray-800 rounded-xl">
+                  <div className=" p-5 bg-gray-800 rounded-xl">
                     <h5 className="mb-2 text-4xl font-bold tracking-tight  text-white ">
                       Lunar
                     </h5>
@@ -134,8 +133,8 @@ const Character = () => {
                       className="p-2"
                     />
                   </div>
-                  <div className="py-4 bg-gray-800 rounded-xl">
-                    <h5 className="mb-5  text-2xl font-bold tracking-tight text-white  ">
+                  <div className="max-w-md  p-5 bg-gray-800 rounded-xl">
+                    <h5 className="mb-3  text-3xl font-bold tracking-tight text-white  ">
                       Supporting Character
                     </h5>
                   </div>
@@ -193,7 +192,7 @@ const Character = () => {
             handleBackClick={handleBackClick}
           />
         )}
-      </div>
+      
     </>
   );
 };
@@ -280,18 +279,16 @@ const CardOne = React.forwardRef(
         className=" sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
       >
         <Modal
-          className=" h-96"
-          size={["8xl"]}
+          size={["7xl"]}
           show={openModal}
           onClose={() => {
             setOpenModal(false), play();
           }}
         >
           <Modal.Header className=" bg-slate-800 ">
-            {" "}
             <span className="text-white">Power by Sketchfab</span>
           </Modal.Header>
-          <Modal.Body className="bg-slate-800">
+          <Modal.Body className="bg-slate-800 h-96">
             <div>
               <ThreeModelOne />
             </div>
@@ -315,7 +312,7 @@ const CardOne = React.forwardRef(
           ]}
         />
 
-        <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800 m-5 ">
+        <div className="lg:max-w-3xl lg:w-1/2 md:max-w-lg bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800 m-5 text-center ">
           <Characterdisplay />
           <button
             type="button"
@@ -338,7 +335,7 @@ const CardOne = React.forwardRef(
           </button>
         </div>
 
-        <div className="lg:flex-1  lg:m-5 ">
+        <div className="lg:flex-1  lg:m-5 text-center ">
           <div className="align-middle">
             <h1 className="text-4xl lg:text-5xl font-extrabold text-white m-5">
               Lunar (Main Charecter)
@@ -399,7 +396,7 @@ const CardTwo = React.forwardRef(
         className=" sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center "
       >
         <Modal
-          size={["800px"]}
+          size={["7xl"]}
           show={openModal}
           onClose={() => {
             setOpenModal(false), play();
@@ -409,7 +406,7 @@ const CardTwo = React.forwardRef(
             {" "}
             <span className="text-white">Power by Sketchfab</span>
           </Modal.Header>
-          <Modal.Body className="bg-slate-800">
+          <Modal.Body className="bg-slate-800 h-96">
             <div>
               <ThreeModelTwo />
             </div>
@@ -429,7 +426,7 @@ const CardTwo = React.forwardRef(
           ]}
         />
 
-        <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5 ">
+        <div className="lg:max-w-3xl lg:w-1/2 md:max-w-xl bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5 text-center ">
           <Characterdisplaytwo />
           <button
             type="button"
@@ -452,7 +449,7 @@ const CardTwo = React.forwardRef(
           </button>
         </div>
 
-        <div className="lg:flex-1  lg:m-0  p-5 ">
+        <div className="lg:flex-1  lg:m-0  p-5 text-center ">
           <div className=" align-middle">
             <h1 className="lg:text-5xl font-extrabold dark:text-white m-5 ssm:text-3xl">
               Rabbet (Lapin-02)
@@ -504,20 +501,20 @@ const CardThee = React.forwardRef(
     return (
       <div
         ref={ref}
-        className="sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
+        className="sections flex flex-col lg:flex-row  lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
       >
         <Modal
-          size={["800px"]}
+          size={["7xl"]}
           show={openModal}
           onClose={() => {
             setOpenModal(false), play();
           }}
         >
           <Modal.Header className=" bg-slate-800 ">
-            {" "}
+           
             <span className="text-white">Power by Sketchfab</span>
           </Modal.Header>
-          <Modal.Body className="bg-slate-800">
+          <Modal.Body className="bg-slate-800 h-96">
             <div className="">
               <ThreeModelThee />
             </div>
@@ -537,7 +534,7 @@ const CardThee = React.forwardRef(
           ]}
         />
 
-        <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5">
+        <div className="lg:max-w-3xl lg:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5 text-center">
           <Characterdisplaythree />
           <div>
             <button
@@ -562,7 +559,7 @@ const CardThee = React.forwardRef(
           </div>
         </div>
 
-        <div className="lg:flex-1  lg:m-0 p-5 ">
+        <div className="lg:flex-1  lg:m-0 p-5 text-center ">
           <div className=" align-middle ">
             <h1 className="lg:text-5xl font-extrabold dark:text-white m-5 ssm:text-3xl ">
               Supporting Character
@@ -613,9 +610,9 @@ const CardFour = React.forwardRef(
     return (
       <div
         ref={ref}
-        className="sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
+        className="sections flex flex-col lg:flex-row  lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center text-center"
       >
-        <div className="xl:max-w-3xl xl:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5">
+        <div className="lg:max-w-3xl lg:w-1/2 md:max-w-xl bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5">
           <Characterdisplayfour />
           <div>
             <button
@@ -639,17 +636,17 @@ const CardFour = React.forwardRef(
             </button>
 
             <Modal
-              size={["800px"]}
+              size={["7xl"]}
               show={openModal}
               onClose={() => {
                 setOpenModal(false), play();
               }}
             >
               <Modal.Header className=" bg-slate-800 ">
-                {" "}
+                
                 <span className="text-white">Power by Sketchfab</span>
               </Modal.Header>
-              <Modal.Body className="bg-slate-800">
+              <Modal.Body className="bg-slate-800 h-96">
                 <ThreeModelFour />
               </Modal.Body>
             </Modal>
@@ -731,7 +728,7 @@ function ThreeModelOne() {
         web-share
         src="https://sketchfab.com/models/ce4af655ce024e83b8ff5fe30e0be4a8/embed"
         width="100%"
-        height="740"
+        height="740px"
       ></iframe>
     </div>
   );
@@ -754,7 +751,7 @@ function ThreeModelTwo() {
         web-share
         src="https://sketchfab.com/models/fd14f883bd0c439c82c01420bfe8c114/embed"
         width="100%"
-        height="740"
+        height="740px"
       ></iframe>
     </div>
   );

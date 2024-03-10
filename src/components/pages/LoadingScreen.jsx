@@ -4,9 +4,12 @@ import "../styles/LoadingScreen.css";
 import { useContext } from "react";
 import { DataContext } from "../../App";
 import bgloaderroom from "/videos/vid_loading_room.mp4"
+import bgloaderc1 from "/videos/vid_loading_city1.mp4"
+import bgloaderc2 from "/videos/vid_loading_city2.mp4"
+import bgloaderc3 from "/videos/vid_loading_city3.mp4"
 
 const LoadingScreen = () => {
-  const { progress } = useProgress();
+  const { progress,active } = useProgress();
   const [showScreen, setShowScreen] = useState(true); 
 
   const {
@@ -15,31 +18,19 @@ const LoadingScreen = () => {
   } = useContext(DataContext);
     
   const handleStartClick = () => {
-    setShowScreen(false); 
     setColseBgmusic(false)
   };
 
   return (
     <div
-      className={`loading-screen ${showScreen ? "" : "loading-screen--hidden"}`}
+      className={`loading-screen`}
       onClick={handleStartClick}
     >
       <video className="loading-screen__background-video" autoPlay loop muted preload="auto">
         <source src= {bgloaderroom} type="video/mp4" />
       </video>
       <div className="loading-screen__container">
-        <h1 className="loading-screen__title">3D Web Agency</h1>
-        <div className="progress__container">
-          <div
-            className="progress__bar"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-        {progress === 100 && (
-          <p className="click-to-continue-text">
-              Click anywhere to continue
-        </p>
-        )}
+        <h1 className="loading-screen__title">Loading Scene...</h1>
       </div>
     </div>
   );
@@ -59,8 +50,6 @@ export const LoadingScreenRoom = ({ setHtmltext }) => {
 
   const handleStartClick = () => {
     setShowScreen(false); 
-    setHtmltext(true)
-    
   };
 
 

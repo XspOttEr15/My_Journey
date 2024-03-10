@@ -51,7 +51,7 @@ const ChapterOne = () => {
 
   return (
     <>
-      {!CloseButtonNavbar && (
+      {/* {!CloseButtonNavbar && (
         <Button
           className="absolute z-50 right-[1%] top-[1.8%] rounded-full  opacity-50"
           gradientDuoTone="purpleToBlue"
@@ -74,7 +74,7 @@ const ChapterOne = () => {
             />
           </svg>
         </Button>
-      )}
+      )} */}
       <div className="w-full items-center">
         <div className="w-full h-screen">
           <ReactPlayer
@@ -87,7 +87,7 @@ const ChapterOne = () => {
             url={"https://www.youtube.com/watch?v=LHCob76kigA"}
             config={{
               youtube: {
-                playerVars: { showinfo: 1, disablekb: 1, fs: 1 },
+                playerVars: { showinfo: 0, disablekb: 1, fs: 1 },
               },
             }}
             onEnded={handleVideoEnded}
