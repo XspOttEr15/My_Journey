@@ -17,18 +17,18 @@ import "flowbite-react";
 // import ChapterTwo from "./components/pages/Chapter/ChapterTwo";
 // import ChapterThree from "./components/pages/Chapter/ChapterThree";
 
-const Home = lazy(() => import('./components/Home/Home'));
+const Home = lazy(() => wait(5000).then(() =>import('./components/Home/Home')));
 const RoomChapterOne = lazy(() => wait(3000).then(() =>import('./components/Canvas/RoomChapterOne')));
-const Character = lazy(() => import('./components/pages/Character'));
-const Concept = lazy(() => import('./components/pages/Concept'));
-const About = lazy(() => import('./components/pages/About'));
-const ChapterOne = lazy(() => import('./components/pages/Chapter/ChapterOne'));
-const ChapterDialogOne = lazy(() => import('./components/pages/Chapter/ChapterDialogOne'));
-const ChapterDialogTwo = lazy(() => import('./components/pages/Chapter/ChapterDialogTwo'));
-const ChapterDialogThree = lazy(() => import('./components/pages/Chapter/ChapterDiaologThree'));
+const Character = lazy(() => wait(2000).then(() =>import('./components/pages/Character')));
+const Concept = lazy(() => wait(2000).then(() =>import('./components/pages/Concept')));
+const About = lazy(() => wait(2000).then(() =>import('./components/pages/About')));
+const ChapterOne = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterOne')));
+const ChapterDialogOne = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterDialogOne')));
+const ChapterDialogTwo = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterDialogTwo')));
+const ChapterDialogThree = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterDiaologThree')));
 const LoadingScreen = lazy(() => import('./components/pages/LoadingScreen'));
-const ChapterTwo = lazy(() => import('./components/pages/Chapter/ChapterTwo'));
-const ChapterThree = lazy(() => import('./components/pages/Chapter/ChapterThree'));
+const ChapterTwo = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterTwo')));
+const ChapterThree = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterThree')));
 
 import Nav from "./components/Navbar/Nav";
 import Maps from "./components/pages/Maps";
