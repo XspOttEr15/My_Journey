@@ -16,7 +16,7 @@
 
 
 .sections {
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   scroll-snap-stop: always;
 }
 

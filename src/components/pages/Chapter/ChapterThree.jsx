@@ -51,7 +51,7 @@ const ChapterThree = () => {
 
   return (
     <>
-      {!CloseButtonNavbar && (
+      {/* {!CloseButtonNavbar && (
         <Button
           className="absolute z-50 right-[1%] top-[1.8%] rounded-full  opacity-50"
           gradientDuoTone="purpleToBlue"
@@ -74,7 +74,7 @@ const ChapterThree = () => {
             />
           </svg>
         </Button>
-      )}
+      )} */}
       <div className="w-full items-center">
         <div className="w-full h-screen">
           <ReactPlayer
