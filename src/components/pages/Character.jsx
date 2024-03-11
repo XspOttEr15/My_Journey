@@ -406,7 +406,7 @@ const CardTwo = React.forwardRef(
             {" "}
             <span className="text-white">Power by Sketchfab</span>
           </Modal.Header>
-          <Modal.Body className="bg-slate-800 h-96">
+          <Modal.Body className="bg-slate-800 ">
             <div className="h-[600px] w-full">
               <ThreeModelTwo />
             </div>
@@ -754,7 +754,7 @@ function ThreeModelTwo() {
         web-share
         src="https://sketchfab.com/models/fd14f883bd0c439c82c01420bfe8c114/embed"
         width="100%"
-        height="740px"
+        height="100%"
       ></iframe>
     </div>
   );
@@ -777,7 +777,7 @@ function ThreeModelThee() {
         web-share
         src="https://sketchfab.com/models/9d1e95ee0e234adb849482ee345bf0ee/embed"
         width="100%"
-        height="740"
+        height="100%"
       ></iframe>
     </div>
   );
@@ -800,7 +800,7 @@ function ThreeModelFour() {
         web-share
         src="https://sketchfab.com/models/e222bb9da46943da9280c1fc4e57fdca/embed"
         width="100%"
-        height="740"
+        height="100%"
       ></iframe>
     </div>
   );

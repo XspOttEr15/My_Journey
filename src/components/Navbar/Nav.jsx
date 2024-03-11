@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import useSound from "use-sound";
 import "../styles/Nav.css";
 import { useState } from "react";
-import AudioPlayer from "./AudioPlayer";
+import AudioPlayers from "./AudioPlayer";
 
 const Nav = () => {
   const soundUrl = "/sound_effects/ButtonPush.mp3";
@@ -31,16 +31,15 @@ const Nav = () => {
         </div>
         
         <div className=" flex  items-center space-x-5  ">
-        <div className=" lg:w-[250px] md:w-[210px] h-auto">
-          <AudioPlayer />
-          </div>
+        <div className="  h-auto">
+          <AudioPlayers />
+        </div>
           <button
             type="button"
             id="sidenavopen"
             onClick={openNav}
             className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
           >
-            <span className="sr-only">Open main menu</span>
             <svg
               className="w-5 h-5"
               aria-hidden="true"
@@ -63,10 +62,10 @@ const Nav = () => {
           <a href="#" className="closebtn" onClick={closeNav}>
             &times;
           </a>
-          <Link to={"/"}>Home</Link>
-          <Link to={"/roomchapterone"}>Story</Link>
-          <Link to={"/concept"}>Concept</Link>
-          <Link to={"/about"}>About-Us</Link>
+          <Link onClick={closeNav} to={"/"}>Home</Link>
+          <Link onClick={closeNav} to={"/roomchapterone"}>Story</Link>
+          <Link onClick={closeNav} to={"/concept"}>Concept</Link>
+          <Link onClick={closeNav} to={"/about"}>About-Us</Link>
         </div>
       </div>
     </nav>
