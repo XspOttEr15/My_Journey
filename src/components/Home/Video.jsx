@@ -9,7 +9,7 @@ import {
 const Video = () => {
   return (
     <>
-      <div className="w-full h-full z-20 relative overflow-hidden">
+      <div className="w-full h-screen z-20 relative ">
         <div className="overlay"></div>
         <MouseParallaxContainer
           resetOnLeave
