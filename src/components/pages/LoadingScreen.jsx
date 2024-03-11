@@ -65,18 +65,7 @@ export const LoadingScreenRoom = ({ setHtmltext }) => {
         <source src="/videos/vid_loading_room.mp4" type="video/mp4" />
       </video>
       <div className="loading-screen__container">
-        <h1 className="loading-screen__title">3D Web Agency</h1>
-        <div className="progress__container">
-          <div
-            className="progress__bar"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-        {progress === 100 && (
-          <p className="click-to-continue-text">
-              Click anywhere to continue
-            </p>
-        )}
+        <h1 className="loading-screen__title">Click to Start</h1>
       </div>
     </div>
   );
