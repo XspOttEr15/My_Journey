@@ -42,7 +42,7 @@ export const DataContext = createContext();
 function App() {
   const [CloseNavbar, setCloseNavbar] = useState(false);
   const [CloseButtonNavbar, setCloseButtonNavbar] = useState(false);
-  const [Volumn, setVolumn] = useState(0.1);
+  const [Volumn, setVolumn] = useState(0.3);
   const [ColseBgmusic, setColseBgmusic] = useState(false);
   const [isNavbarFixed, setIsNavbarFixed] = useState(false);
   const [isPassOne, setIsPassOne] = useState(1)

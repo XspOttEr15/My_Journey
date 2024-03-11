@@ -38,16 +38,23 @@ import { EcctrlJoystick } from "ecctrl";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 export const RoomChapterOne = () => {
+  const [maxVelLimit, setmaxVelLimit] = useState(2.5);
+  const [disableFollowCamPos, setDisableFollowCamPos] = useState({ x: 0, y: 2, z: 0 });
+  const [disableFollowCamTarget, setdisableFollowCamTarget] = useState({ x: 0, y: 0, z: -2 });
+  const [jumpVel, setjumpVel] = useState(4);
   const [openModal, setOpenModal] = useState(false);
   const [openModaltwo, setOpenModaltwo] = useState(false);
   const [openModalthree, setOpenModalthree] = useState(false);
+  const [openModaldoor, setOpenModaldoor] = useState(false);
   const [disableFollowCam, setdisableFollowCam] = useState(false);
   const [loopcamera, setLoopcamera] = useState(false);
   const [loopcameratwo, setLoopcameratwo] = useState(false);
   const [loopcamerathree, setLoopcamerathree] = useState(false);
+  const [loopcamerafour, setLoopcamerafour] = useState(false);
   const [target, setTarget] = useState(1);
   const [targettwo, setTargetwo] = useState(1);
   const [targetthree, setTargethree] = useState(1);
+  const [targetfour, setTargefour] = useState(1);
   const {
     setColseBgmusic,
     ColseBgmusic,
@@ -100,6 +107,12 @@ export const RoomChapterOne = () => {
     }
   };
 
+  const exsitPointerLock = () => {
+    document.exitPointerLock();
+  };
+
+  
+
   const keyboardMap = [
     { name: "forward", keys: ["ArrowUp", "KeyW"] },
     { name: "backward", keys: ["ArrowDown", "KeyS"] },
@@ -147,9 +160,12 @@ export const RoomChapterOne = () => {
               turnSpeed={100} // give it big turning speed to prevent turning wait time
               mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
               disableFollowCam={disableFollowCam}
-              disableFollowCamPos={{ x: 0, y: 2, z: 0 }} // Corrected: Camera position when the follow camera feature is disabled
-              disableFollowCamTarget={{ x: 0, y: 0, z: -2 }} // Camera lookAt target when the follow camera feature is disabled
+              disableFollowCamPos={disableFollowCamPos} // Corrected: Camera position when the follow camera feature is disabled
+              disableFollowCamTarget={disableFollowCamTarget} // Camera lookAt target when the follow camera feature is disabled
               position={[-2, 4, 3]}
+              maxVelLimit={maxVelLimit}
+              jumpVel={jumpVel}
+
             >
               {/* Replace your model here */}
               <Player />
@@ -192,7 +208,7 @@ export const RoomChapterOne = () => {
                 setdisableFollowCam(true),
                 setLoopcameratwo(true),
                 setHtmltext(false);
-              play();
+                play();
             }}
           >
             <MBook
@@ -207,12 +223,21 @@ export const RoomChapterOne = () => {
           </mesh>
           <mesh
             onClick={() => {
+              setdisableFollowCam(true),
+              setLoopcamerafour(true),
+              setHtmltext(false);
               play();
             }}
           >
             <Door
               htmltext={htmltext}
               setHtmltext={setHtmltext}
+              openModaldoor={openModaldoor}
+              setOpenModaldoor={setOpenModaldoor}
+              loopcamerafour={loopcamerafour}
+              setLoopcamerafour={setLoopcamerafour}
+              targetfour={targetfour}
+              setTargefour={setTargefour}
             />
           </mesh>
           <EffectsPost
@@ -421,6 +446,54 @@ export const RoomChapterOne = () => {
                     setdisableFollowCam(false);
                     setHtmltext(true);
                     setTargethree(1);
+                    play();
+                  }}
+                >
+                  ยกเลิก
+                </Button>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
+
+        <Modal
+          show={openModaldoor}
+          size="md"
+          onClose={() => {
+            setOpenModaldoor(false);
+            setdisableFollowCam(false);
+            setHtmltext(true);
+            setTargefour(1);
+            play();
+          }}
+          popup
+        >
+          <Modal.Header className="bg-slate-800" />
+          <Modal.Body className="class bg-slate-800">
+            <div className="text-center">
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
+              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
+                คุณแน่ใจว่าจะไปหน้า Home page ?
+              </h3>
+              <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                <Link to={"/about"}>
+                  <Button
+                    color="failure"
+                    onClick={() => {
+                      setOpenModaldoor(false);
+                      play();
+                    }}
+                  >
+                    {" ไปหน้า Home"}
+                  </Button>
+                </Link>
+                <Button
+                  color="gray"
+                  onClick={() => {
+                    setOpenModaldoor(false);
+                    setdisableFollowCam(false);
+                    setHtmltext(true);
+                    setTargefour(1);
                     play();
                   }}
                 >
@@ -959,76 +1032,75 @@ export const Paper = ({
 };
 
 export const Door = ({
-  targetthree,
-  setTargethree,
-  loopcamerathree,
-  setLoopcamerathree,
+  targetfour,
+  setTargefour,
+  loopcamerafour,
+  setLoopcamerafour,
   htmltext,
   setHtmltext,
-  setOpenModalthree,
+  setOpenModaldoor,
   ...props
 }) => {
   const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
-  const soundUrl = "/sound_effects/ButtonPush.mp3";
-  const [play] = useSound(soundUrl);
 
   useEffect(() => {
     Setcloselabel(htmltext);
   }, [htmltext]);
 
-  // camera  movement
+  // camera book movement
 
-  // useEffect(() => {
-  //   setPaperclicked(loopcamerathree);
-  // }, [loopcamerathree]);
+  useEffect(() => {
+    setDoorclicked(loopcamerafour);
+  }, [loopcamerafour]);
 
-  // useEffect(() => {
-  //   setCurrentTarget(targetthree);
-  // }, [targetthree]);
+  useEffect(() => {
+    setCurrentTarget(targetfour);
+  }, [targetfour]);
 
-  // const [Paperclicked, setPaperclicked] = useState(false);
-  // const [currentTarget, setCurrentTarget] = useState(1);
-  // const [bothTargetsReached, setBothTargetsReached] = useState(false);
-  // const targetPosition1 = new THREE.Vector3(2.5, 2, -2);
-  // const targetPosition2 = new THREE.Vector3(2.6, 2, -3);
-  // let targetPosition;
+  const [Doorclicked, setDoorclicked] = useState(false);
+  const [currentTarget, setCurrentTarget] = useState(1);
+  const [bothTargetsReached, setBothTargetsReached] = useState(false);
+  const targetPosition1 = new THREE.Vector3(-2, 2, 3);
+  const targetPosition2 = new THREE.Vector3(-2, 2, 3);
+  let targetPosition;
 
-  // useFrame((state, delta) => {
-  //   if (Paperclicked) {
-  //     const zoomSpeed = 2.0 * delta; // Adjust the speed for smoother animation
+  useFrame((state, delta) => {
+    if (Doorclicked) {
+      const zoomSpeed = 2.0 * delta; // Adjust the speed for smoother animation
 
-  //     // Set the current target position based on the state
-  //     if (currentTarget === 1) {
-  //       targetPosition = targetPosition1;
-  //     } else {
-  //       targetPosition = targetPosition2;
-  //     }
+      // Set the current target position based on the state
+      if (currentTarget === 1) {
+        targetPosition = targetPosition1;
+      } else {
+        targetPosition = targetPosition2;
+      }
 
-  //     // Interpolate camera position towards the target
-  //     state.camera.position.lerp(targetPosition, zoomSpeed);
-  //     state.camera.lookAt(2, 1.7, -5.2);
-  //     state.camera.updateProjectionMatrix();
+      // Interpolate camera position towards the target
+      state.camera.position.lerp(targetPosition, zoomSpeed);
+      state.camera.lookAt(-2, 1.5, 5);
+      state.camera.updateProjectionMatrix();
 
-  //     // Stop zooming when close to the target
-  //     if (state.camera.position.distanceTo(targetPosition) < 0.1) {
-  //       setCurrentTarget((prevTarget) => (prevTarget === 1 ? 2 : 3));
-  //     }
-  //     // Check if both target positions are reached
-  //     if (currentTarget === 3) {
-  //       setBothTargetsReached(true);
-  //     }
-  //     if (currentTarget === 3) {
-  //       setTargethree(3);
-  //       setOpenModalthree(true);
-  //       setLoopcamerathree(false);
-  //       document.exitPointerLock();
-  //     }
-  //   }
-  // });
+      // Stop zooming when close to the target
+      if (state.camera.position.distanceTo(targetPosition) < 0.3) {
+        setCurrentTarget((prevTarget) => (prevTarget === 1 ? 2 : 3));
+      }
+      // Check if both target positions are reached
+      if (currentTarget === 3) {
+        setBothTargetsReached(true);
+      }
+      if (currentTarget === 3) {
+        setTargefour(3);
+        setOpenModaldoor(true)
+        setLoopcamerafour(false);
+        document.exitPointerLock();
+      }
+    }
+  });
+
+  
 
   return (
     <group {...props} dispose={null}>
@@ -1040,7 +1112,6 @@ export const Door = ({
             {...props}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
-            onClick={() => navigate('/')} // Navigate to Homepage on click
           >
             <mesh
           castShadow
