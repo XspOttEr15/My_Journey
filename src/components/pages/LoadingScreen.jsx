@@ -14,17 +14,16 @@ const LoadingScreen = () => {
 
   const {
     setColseBgmusic,
-    setIsPassOne,
   } = useContext(DataContext);
     
-  const handleStartClick = () => {
+  useEffect(() => {
     setColseBgmusic(false)
-  };
+  }, []);
+  
 
   return (
     <div
       className={`loading-screen`}
-      onClick={handleStartClick}
     >
       <video className="loading-screen__background-video" autoPlay loop muted preload="auto">
         <source src= {bgloaderroom} type="video/mp4" />

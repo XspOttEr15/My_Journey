@@ -13,7 +13,7 @@ export function Overlay() {
   };
 
   return (
-    <div className='absolute z-30  xl:left-[1%] md:left-[5%] md:top-[85%] xl:top-[80%] '>
+    <div className='absolute z-30  xl:left-[1%] md:left-[5%] md:top-[80%] xl:top-[80%] '>
       <motion.header initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={transition}>
       </motion.header>
       <AnimatePresence>
