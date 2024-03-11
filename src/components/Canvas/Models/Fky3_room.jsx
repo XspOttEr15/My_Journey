@@ -615,19 +615,6 @@ export function Room(props) {
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.pCube35.geometry}
-          material={materials.M_scifidoor}
-          
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.pCube28.geometry}
-          material={materials.M_scifidoor}
-        />
-        <mesh
-          castShadow
-          receiveShadow
           geometry={nodes.pCube46.geometry}
           material={materials.M_maintable}
         />
@@ -902,6 +889,11 @@ export function Wall(props) {
     </group>
   );
 }
+
+
+
+
+
 
 
 

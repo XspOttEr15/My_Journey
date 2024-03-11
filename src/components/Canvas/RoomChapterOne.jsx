@@ -35,6 +35,7 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import useSound from "use-sound";
 import Ecctrl from "ecctrl";
 import { EcctrlJoystick } from "ecctrl";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 export const RoomChapterOne = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -202,6 +203,16 @@ export const RoomChapterOne = () => {
               targettwo={targettwo}
               setTargetwo={setTargetwo}
               setOpenModaltwo={setOpenModaltwo}
+            />
+          </mesh>
+          <mesh
+            onClick={() => {
+              play();
+            }}
+          >
+            <Door
+              htmltext={htmltext}
+              setHtmltext={setHtmltext}
             />
           </mesh>
           <EffectsPost
@@ -589,6 +600,9 @@ export const EffectsPost = ({
         <mesh>
           <Paper />
         </mesh>
+        <mesh>
+          <Door />
+        </mesh>
       </Selection>
     </>
   );
@@ -599,6 +613,7 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
+  
 
   useEffect(() => {
     Setcloselabel(htmltext);
@@ -931,6 +946,122 @@ export const Paper = ({
                     <div className="label__tu">ABOU Us</div>
                     <div className="label__name">
                       Left Click to Go to About-us page
+                    </div>
+                  </div>
+                </Html>
+              )}
+            </group>
+          </mesh>
+        </Select>
+      </RigidBody>
+    </group>
+  );
+};
+
+export const Door = ({
+  targetthree,
+  setTargethree,
+  loopcamerathree,
+  setLoopcamerathree,
+  htmltext,
+  setHtmltext,
+  setOpenModalthree,
+  ...props
+}) => {
+  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const ref = useRef();
+  const [hovered, hover] = useState(null);
+  const [closelabel, Setcloselabel] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
+  const soundUrl = "/sound_effects/ButtonPush.mp3";
+  const [play] = useSound(soundUrl);
+
+  useEffect(() => {
+    Setcloselabel(htmltext);
+  }, [htmltext]);
+
+  // camera  movement
+
+  // useEffect(() => {
+  //   setPaperclicked(loopcamerathree);
+  // }, [loopcamerathree]);
+
+  // useEffect(() => {
+  //   setCurrentTarget(targetthree);
+  // }, [targetthree]);
+
+  // const [Paperclicked, setPaperclicked] = useState(false);
+  // const [currentTarget, setCurrentTarget] = useState(1);
+  // const [bothTargetsReached, setBothTargetsReached] = useState(false);
+  // const targetPosition1 = new THREE.Vector3(2.5, 2, -2);
+  // const targetPosition2 = new THREE.Vector3(2.6, 2, -3);
+  // let targetPosition;
+
+  // useFrame((state, delta) => {
+  //   if (Paperclicked) {
+  //     const zoomSpeed = 2.0 * delta; // Adjust the speed for smoother animation
+
+  //     // Set the current target position based on the state
+  //     if (currentTarget === 1) {
+  //       targetPosition = targetPosition1;
+  //     } else {
+  //       targetPosition = targetPosition2;
+  //     }
+
+  //     // Interpolate camera position towards the target
+  //     state.camera.position.lerp(targetPosition, zoomSpeed);
+  //     state.camera.lookAt(2, 1.7, -5.2);
+  //     state.camera.updateProjectionMatrix();
+
+  //     // Stop zooming when close to the target
+  //     if (state.camera.position.distanceTo(targetPosition) < 0.1) {
+  //       setCurrentTarget((prevTarget) => (prevTarget === 1 ? 2 : 3));
+  //     }
+  //     // Check if both target positions are reached
+  //     if (currentTarget === 3) {
+  //       setBothTargetsReached(true);
+  //     }
+  //     if (currentTarget === 3) {
+  //       setTargethree(3);
+  //       setOpenModalthree(true);
+  //       setLoopcamerathree(false);
+  //       document.exitPointerLock();
+  //     }
+  //   }
+  // });
+
+  return (
+    <group {...props} dispose={null}>
+      <RigidBody type="fixed">
+        <Select enabled={hovered}>
+          <mesh
+            castShadow
+            ref={ref}
+            {...props}
+            onPointerOver={() => hover(true)}
+            onPointerOut={() => hover(false)}
+            onClick={() => navigate('/')} // Navigate to Homepage on click
+          >
+            <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube35.geometry}
+          material={materials.M_scifidoor}
+          
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube28.geometry}
+          material={materials.M_scifidoor}
+        />
+            <group position={[-1.35, 1.5, 4.8]}>
+              {!htmltext ? null : (
+                <Html distanceFactor={3} zIndexRange={[1, 0]}>
+                  <div className="label noselect">
+                    <div className="label__tu">HOME PAGE</div>
+                    <div className="label__name">
+                      Left Click to Go to Home page
                     </div>
                   </div>
                 </Html>
