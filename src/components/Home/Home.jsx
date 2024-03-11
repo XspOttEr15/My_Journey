@@ -4,6 +4,7 @@ import { DataContext } from '../../App'
 import { motion } from "framer-motion";
 import { Overlay } from './Overlay';
 import Video from './Video'
+import { LoadingScreenRoom } from '../pages/LoadingScreen';
 
 const Home = () => {
   const { setColseBgmusic,
