@@ -43,9 +43,7 @@ function App() {
   const [CloseNavbar, setCloseNavbar] = useState(false);
   const [CloseButtonNavbar, setCloseButtonNavbar] = useState(false);
   const [Volumn, setVolumn] = useState(0.1);
-  const [ColseBgmusic, setColseBgmusic] = useState();
-  const [isNavbarFixed, setIsNavbarFixed] = useState(false);
-  const [isPassOne, setIsPassOne] = useState(1)
+  const [ColseBgmusic, setColseBgmusic] = useState(false);
 
   return (
     <>
@@ -60,10 +58,6 @@ function App() {
           setColseBgmusic,
           Volumn,
           setVolumn,
-          isNavbarFixed,
-          setIsNavbarFixed,
-          isPassOne, 
-          setIsPassOne
         }}
       >
         <div className="main">

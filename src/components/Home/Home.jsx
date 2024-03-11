@@ -4,7 +4,6 @@ import { DataContext } from '../../App'
 import { motion } from "framer-motion";
 import { Overlay } from './Overlay';
 import Video from './Video'
-import LoadingScreen, { LoadingScreenSkip } from '../pages/LoadingScreen';
 
 const Home = () => {
   const { setColseBgmusic,
