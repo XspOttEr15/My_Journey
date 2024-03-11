@@ -48,12 +48,8 @@ export const RoomChapterOne = () => {
   const [targettwo, setTargetwo] = useState(1);
   const [targetthree, setTargethree] = useState(1);
   const {
-    setCloseNavbar,
-    setCloseButtonNavbar,
-    CloseButtonNavbar,
-    isPassOne,
     setColseBgmusic,
-    setIsNavbarFixed,
+    ColseBgmusic,
   } = useContext(DataContext);
   const [htmltext, setHtmltext] = useState(true);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
@@ -114,12 +110,26 @@ export const RoomChapterOne = () => {
 
   useEffect(() => {
     setColseBgmusic(true);
+  }, [ColseBgmusic]);
+
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
     <>
       <div className="aim"></div>
-      <EcctrlJoystick />
+      {windowWidth < 1440 && <EcctrlJoystick />}
       <Canvas shadows="soft" style={{ width: "100%", height: "100vh" }}>
         <color attach="background" args={["#638689"]} />
         <fog attach="fog" args={["#569BF3", 1, 200]} />

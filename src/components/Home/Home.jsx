@@ -7,13 +7,12 @@ import Video from './Video'
 import LoadingScreen, { LoadingScreenSkip } from '../pages/LoadingScreen';
 
 const Home = () => {
-  const { setCloseNavbar, setCloseButtonNavbar, isPassOne, setIsNavbarFixed, } = useContext(DataContext);
+  const { setColseBgmusic,
+    ColseBgmusic, } = useContext(DataContext);
 
-  useEffect(() => {
-    setCloseNavbar(false);
-    setCloseButtonNavbar(false);
-    setIsNavbarFixed(false)
-  }, []);
+    useEffect(() => {
+      setColseBgmusic(false)
+    }, []);
   
   return (
     <>  
