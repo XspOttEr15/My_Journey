@@ -13,20 +13,21 @@ const LoadingScreen = () => {
   const [showScreen, setShowScreen] = useState(true); 
 
   const {
+    ColseBgmusic,
     setColseBgmusic,
   } = useContext(DataContext);
     
   useEffect(() => {
     setColseBgmusic(false)
-  }, []);
+  }, [ColseBgmusic]);
   
 
   return (
     <div
       className={`loading-screen`}
     >
-      <video className="loading-screen__background-video" autoPlay loop muted preload="auto">
-        <source src= {bgloaderroom} type="video/mp4" />
+      <video className="loading-screen__background-video" autoPlay loop muted preload>
+        <source src={bgloaderroom} type="video/mp4" />
       </video>
       <div className="loading-screen__container">
         <h1 className="loading-screen__title">Loading Scene...</h1>
