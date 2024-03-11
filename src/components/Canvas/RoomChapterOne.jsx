@@ -15,12 +15,7 @@ import {
   KeyboardControls,
 } from "@react-three/drei";
 import { Floor, Room, Wall } from "./Models/Fky3_room";
-import {
-  CapsuleCollider,
-  Physics,
-  RigidBody,
-  useRapier,
-} from "@react-three/rapier";
+import { CapsuleCollider, Physics, RigidBody } from "@react-three/rapier";
 import {
   Selection,
   EffectComposer,
@@ -36,10 +31,6 @@ import { Button, Modal } from "flowbite-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { DataContext } from "../../App";
-import {
-  LoadingScreenRoom,
-  LoadingScreenRoomSkip,
-} from "../pages/LoadingScreen";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import useSound from "use-sound";
 import Ecctrl from "ecctrl";
@@ -48,6 +39,7 @@ import { EcctrlJoystick } from "ecctrl";
 export const RoomChapterOne = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openModaltwo, setOpenModaltwo] = useState(false);
+  const [openModalthree, setOpenModalthree] = useState(false);
   const [disableFollowCam, setdisableFollowCam] = useState(false);
   const [loopcamera, setLoopcamera] = useState(false);
   const [loopcameratwo, setLoopcameratwo] = useState(false);
@@ -119,124 +111,99 @@ export const RoomChapterOne = () => {
     { name: "jump", keys: ["Space"] },
     { name: "run", keys: ["Shift"] },
   ];
-  
-  
 
   useEffect(() => {
-    setCloseNavbar(true);
-    setCloseButtonNavbar(false);
     setColseBgmusic(true);
-    setIsNavbarFixed(true);
   }, []);
 
   return (
     <>
-      {/* {!CloseButtonNavbar && (
-        <Button
-          className="absolute z-50 right-[1%] top-[1.8%] rounded-full  opacity-50"
-          gradientDuoTone="purpleToBlue"
-          onClick={() => {
-            setCloseNavbar(false), setCloseButtonNavbar(true), play();
-          }}
-        >
-          <svg
-            className="w-6 h-6 text-gray-800 dark:text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeWidth="2"
-              d="M5 7h14M5 12h14M5 17h14"
-            />
-          </svg>
-        </Button>
-      )} */}
       <div className="aim"></div>
-        <EcctrlJoystick/>
-        <Canvas
-          shadows="soft"
-          style={{ width: "100%", height: "100vh" }}
-        >
-          <color attach="background" args={["#638689"]} />
-          <fog attach="fog" args={["#569BF3", 1, 200]} />
-          {/* debug */}
-          <Physics  >
-            <KeyboardControls map={keyboardMap}>
-              <Ecctrl
-                camInitDis={-0.01} // camera intial position
-                camInitDir= {{ x: 0, y: -3.1, z: 0 }} // Camera initial rotation direction (in rad)
-                camMaxDis= {-0.03} // Maximum camera distance
-                camMinDis={-0.01} // camera zoom in closest position
-                camFollowMult={100} // give any big number here, so the camera follows the character instantly
-                turnVelMultiplier={1} // character won't move before turn completed
-                turnSpeed={100} // give it big turning speed to prevent turning wait time
-                mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
-                disableFollowCam={disableFollowCam}
-                disableFollowCamPos={{ x: 0, y: 2, z: 0 }} // Corrected: Camera position when the follow camera feature is disabled
-                disableFollowCamTarget={{ x: 0, y: 0, z: -2 }} // Camera lookAt target when the follow camera feature is disabled
-                position={[-2, 4, 3]}
-              >
-                {/* Replace your model here */}
-                <Player/>
-                {/* First Person Camera */}
-                {!disableFollowCam && <PointerLockControls />}
-              </Ecctrl>
-            </KeyboardControls>
-            <Room />
-            <Floor />
-            <Wall />
-            <mesh
-              onClick={() => {
-                  setdisableFollowCam(true),
-                  setLoopcamera(true),
-                  setHtmltext(false),
-                  play();
-              }}
+      <EcctrlJoystick />
+      <Canvas shadows="soft" style={{ width: "100%", height: "100vh" }}>
+        <color attach="background" args={["#638689"]} />
+        <fog attach="fog" args={["#569BF3", 1, 200]} />
+        {/* debug */}
+        <Physics>
+          <KeyboardControls map={keyboardMap}>
+            <Ecctrl
+              camInitDis={-0.01} // camera intial position
+              camInitDir={{ x: 0, y: -3.1, z: 0 }} // Camera initial rotation direction (in rad)
+              camMaxDis={-0.03} // Maximum camera distance
+              camMinDis={-0.01} // camera zoom in closest position
+              camFollowMult={100} // give any big number here, so the camera follows the character instantly
+              turnVelMultiplier={1} // character won't move before turn completed
+              turnSpeed={100} // give it big turning speed to prevent turning wait time
+              mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
+              disableFollowCam={disableFollowCam}
+              disableFollowCamPos={{ x: 0, y: 2, z: 0 }} // Corrected: Camera position when the follow camera feature is disabled
+              disableFollowCamTarget={{ x: 0, y: 0, z: -2 }} // Camera lookAt target when the follow camera feature is disabled
+              position={[-2, 4, 3]}
             >
-              <Book htmltext={htmltext} setHtmltext={setHtmltext} />
-            </mesh>
-            <mesh
-              onClick={() => {
-                  setdisableFollowCam(true),
-                  // setLoopcamera(true),
-                  setHtmltext(false),
-                  play();
-              }}
-            >
-              <Paper htmltext={htmltext} setHtmltext={setHtmltext} />
-            </mesh>
-            <mesh
-              onClick={() => {
-                  setdisableFollowCam(true),
-                  setLoopcameratwo(true),
-                  setHtmltext(false);
+              {/* Replace your model here */}
+              <Player />
+              {/* First Person Camera */}
+              {!disableFollowCam && <PointerLockControls />}
+            </Ecctrl>
+          </KeyboardControls>
+          <Room />
+          <Floor />
+          <Wall />
+          <mesh
+            onClick={() => {
+                setdisableFollowCam(true),
+                setLoopcamera(true),
+                setHtmltext(false),
                 play();
-              }}
-            >
-              <MBook
-                htmltext={htmltext}
-                setHtmltext={setHtmltext}
-                loopcameratwo={loopcameratwo}
-                setLoopcameratwo={setLoopcameratwo}
-                targettwo={targettwo}
-                setTargetwo={setTargetwo}
-                setOpenModaltwo={setOpenModaltwo}
-              />
-            </mesh>
-            <EffectsPost
-              setOpenModal={setOpenModal}
-              loopcamera={loopcamera}
-              setLoopcamera={setLoopcamera}
-              target={target}
-              setTarget={setTarget}
+            }}
+          >
+            <Book htmltext={htmltext} setHtmltext={setHtmltext} />
+          </mesh>
+          <mesh
+            onClick={() => {
+              setdisableFollowCam(true),
+              setHtmltext(false),
+              setLoopcamerathree(true),
+              play();
+            }}
+          >
+            <Paper 
+              htmltext={htmltext}
+              setHtmltext={setHtmltext}
+              loopcamerathree={loopcamerathree}
+              setLoopcamerathree={setLoopcamerathree}
+              targetthree={targetthree}
+              setTargethree={setTargethree}
+              setOpenModalthree={setOpenModalthree} />
+          </mesh>
+          <mesh
+            onClick={() => {
+                setdisableFollowCam(true),
+                setLoopcameratwo(true),
+                setHtmltext(false);
+              play();
+            }}
+          >
+            <MBook
+              htmltext={htmltext}
+              setHtmltext={setHtmltext}
+              loopcameratwo={loopcameratwo}
+              setLoopcameratwo={setLoopcameratwo}
+              targettwo={targettwo}
+              setTargetwo={setTargetwo}
+              setOpenModaltwo={setOpenModaltwo}
             />
-          </Physics>
-          <Lights />
-        </Canvas>
+          </mesh>
+          <EffectsPost
+            setOpenModal={setOpenModal}
+            loopcamera={loopcamera}
+            setLoopcamera={setLoopcamera}
+            target={target}
+            setTarget={setTarget}
+          />
+        </Physics>
+        <Lights />
+      </Canvas>
       <motion.div
         key={openModal}
         initial={{ opacity: 0 }}
@@ -345,6 +312,7 @@ export const RoomChapterOne = () => {
           </Modal.Body>
         </Modal>
 
+
         <Modal
           show={openModaltwo}
           size="md"
@@ -392,11 +360,63 @@ export const RoomChapterOne = () => {
             </div>
           </Modal.Body>
         </Modal>
+
+
+        <Modal
+          show={openModalthree}
+          size="md"
+          onClose={() => {
+            setOpenModalthree(false);
+            setdisableFollowCam(false);
+            setHtmltext(true);
+            setTargethree(1);
+            play();
+          }}
+          popup
+        >
+          <Modal.Header className="bg-slate-800" />
+          <Modal.Body className="class bg-slate-800">
+            <div className="text-center">
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
+              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
+                คุณแน่ใจว่าจะไปหน้า About Us ?
+              </h3>
+              <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                <Link to={"/about"}>
+                  <Button
+                    color="failure"
+                    onClick={() => {
+                      setOpenModalthree(false);
+                      play();
+                    }}
+                  >
+                    {" ไปหน้า About Us"}
+                  </Button>
+                </Link>
+                <Button
+                  color="gray"
+                  onClick={() => {
+                    setOpenModalthree(false);
+                    setdisableFollowCam(false);
+                    setHtmltext(true);
+                    setTargethree(1);
+                    play();
+                  }}
+                >
+                  ยกเลิก
+                </Button>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
       </motion.div>
     </>
   );
 };
 export default RoomChapterOne;
+
+
+
 
 
 export const Player = () => {
@@ -412,6 +432,8 @@ export const Player = () => {
     </>
   );
 };
+
+
 
 // Light
 const Lights = () => {
@@ -457,12 +479,6 @@ const Lights = () => {
     </>
   );
 };
-
-
-
-
-
-
 
 // Effect Compo
 export const EffectsPost = ({
@@ -561,7 +577,7 @@ export const EffectsPost = ({
           <MBook />
         </mesh>
         <mesh>
-          <Paper/>
+          <Paper />
         </mesh>
       </Selection>
     </>
@@ -616,7 +632,7 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
 
             <group position={[-0.3, 1, -1.5]}>
               {!htmltext ? null : (
-                <Html distanceFactor={2} zIndexRange={[1, 0]}a>
+                <Html distanceFactor={2} zIndexRange={[1, 0]} a>
                   <div className="label noselect">
                     <div className="label__tu">LUNAR's BOOK</div>
                     <div className="label__name">
@@ -681,7 +697,7 @@ export const MBook = ({
 
       // Interpolate camera position towards the target
       state.camera.position.lerp(targetPosition, zoomSpeed);
-      state.camera.lookAt(-2, 1.3, -4);
+      state.camera.lookAt(-2.1, 1.3, -4.2);
       state.camera.updateProjectionMatrix();
 
       // Stop zooming when close to the target
@@ -735,8 +751,16 @@ export const MBook = ({
   );
 };
 
-
-export const Paper = ({ htmltext, setHtmltext, ...props }) => {
+export const Paper = ({
+  targetthree,
+  setTargethree,
+  loopcamerathree,
+  setLoopcamerathree,
+  htmltext,
+  setHtmltext,
+  setOpenModalthree,
+  ...props
+}) => {
   const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
@@ -745,6 +769,56 @@ export const Paper = ({ htmltext, setHtmltext, ...props }) => {
   useEffect(() => {
     Setcloselabel(htmltext);
   }, [htmltext]);
+
+  // camera book movement
+
+  useEffect(() => {
+    setPaperclicked(loopcamerathree);
+  }, [loopcamerathree]);
+
+  useEffect(() => {
+    setCurrentTarget(targetthree);
+  }, [targetthree]);
+
+  const [Paperclicked, setPaperclicked] = useState(false);
+  const [currentTarget, setCurrentTarget] = useState(1);
+  const [bothTargetsReached, setBothTargetsReached] = useState(false);
+  const targetPosition1 = new THREE.Vector3(2.5, 2, -2);
+  const targetPosition2 = new THREE.Vector3(2.6, 2, -3);
+  let targetPosition;
+
+  useFrame((state, delta) => {
+    if (Paperclicked) {
+      const zoomSpeed = 2.0 * delta; // Adjust the speed for smoother animation
+
+      // Set the current target position based on the state
+      if (currentTarget === 1) {
+        targetPosition = targetPosition1;
+      } else {
+        targetPosition = targetPosition2;
+      }
+
+      // Interpolate camera position towards the target
+      state.camera.position.lerp(targetPosition, zoomSpeed);
+      state.camera.lookAt(2, 1.7, -5.2);
+      state.camera.updateProjectionMatrix();
+
+      // Stop zooming when close to the target
+      if (state.camera.position.distanceTo(targetPosition) < 0.1) {
+        setCurrentTarget((prevTarget) => (prevTarget === 1 ? 2 : 3));
+      }
+      // Check if both target positions are reached
+      if (currentTarget === 3) {
+        setBothTargetsReached(true);
+      }
+      if (currentTarget === 3) {
+        setTargethree(3);
+        setOpenModalthree(true);
+        setLoopcamerathree(false);
+        document.exitPointerLock();
+      }
+    }
+  });
 
   return (
     <group {...props} dispose={null}>
@@ -758,8 +832,8 @@ export const Paper = ({ htmltext, setHtmltext, ...props }) => {
             onPointerOut={() => hover(false)}
           >
             <mesh
-            position={[2.7,-0.37,-5.6]}
-            rotation={[-4.65,-0.4,0.]}
+              position={[2.7, -0.37, -5.6]}
+              rotation={[-4.65, -0.4, 0]}
               castShadow
               receiveShadow
               geometry={nodes.pPlane2.geometry}
@@ -767,8 +841,8 @@ export const Paper = ({ htmltext, setHtmltext, ...props }) => {
             />
 
             <mesh
-            position={[3.36,-0.33,-5.6]}
-            rotation={[-4.65,0,0.]}
+              position={[3.36, -0.33, -5.6]}
+              rotation={[-4.65, 0, 0]}
               castShadow
               receiveShadow
               geometry={nodes.pPlane2.geometry}
@@ -776,80 +850,77 @@ export const Paper = ({ htmltext, setHtmltext, ...props }) => {
             />
 
             <mesh
-            position={[2.7,-0.2,-5.7]}
-            rotation={[-4.60,-0.4,0.031]}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane3.geometry}
-              material={materials.M_maintable}
-            />
-            
-
-            <mesh
-            position={[2.7,-0.2,-5.7]}
-            rotation={[-4.60,-0.4,0.031]}
-            scale={1}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane1.geometry}
-              material={materials.M_maintable}
-            />
-
-            <mesh
-            position={[1.69,-0.04,-5.7]}
-            rotation={[-4.60,-0.42,0.031]}
-            scale={1}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane1.geometry}
-              material={materials.M_maintable}
-            />
-            <mesh
-            position={[1.4,0,-5.7]}
-            rotation={[-4.60,-0.4,0.031]}
-            scale={1}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane1.geometry}
-              material={materials.M_maintable}
-            />
-            <mesh
-            position={[1.6,-0.4,-5.7]}
-            rotation={[-4.60,-0.4,0.031]}
+              position={[2.7, -0.2, -5.7]}
+              rotation={[-4.6, -0.4, 0.031]}
               castShadow
               receiveShadow
               geometry={nodes.pPlane3.geometry}
               material={materials.M_maintable}
             />
 
-        <mesh
-            position={[1.6,-0.5,-5.7]}
-            rotation={[-4.60,-0.42,0.031]}
-            scale={1}
+            <mesh
+              position={[2.7, -0.2, -5.7]}
+              rotation={[-4.6, -0.4, 0.031]}
+              scale={1}
               castShadow
               receiveShadow
               geometry={nodes.pPlane1.geometry}
               material={materials.M_maintable}
             />
 
+            <mesh
+              position={[1.69, -0.04, -5.7]}
+              rotation={[-4.6, -0.42, 0.031]}
+              scale={1}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane1.geometry}
+              material={materials.M_maintable}
+            />
+            <mesh
+              position={[1.4, 0, -5.7]}
+              rotation={[-4.6, -0.4, 0.031]}
+              scale={1}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane1.geometry}
+              material={materials.M_maintable}
+            />
+            <mesh
+              position={[1.6, -0.4, -5.7]}
+              rotation={[-4.6, -0.4, 0.031]}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane3.geometry}
+              material={materials.M_maintable}
+            />
 
             <mesh
-            position={[2.36,-0.33,-5.6]}
-            rotation={[-4.65,0,0.]}
+              position={[1.6, -0.5, -5.7]}
+              rotation={[-4.6, -0.42, 0.031]}
+              scale={1}
+              castShadow
+              receiveShadow
+              geometry={nodes.pPlane1.geometry}
+              material={materials.M_maintable}
+            />
+
+            <mesh
+              position={[2.36, -0.33, -5.6]}
+              rotation={[-4.65, 0, 0]}
               castShadow
               receiveShadow
               geometry={nodes.pPlane2.geometry}
               material={materials.M_maintable}
             />
-            
 
             <group position={[1.6, 1.7, -4.5]}>
               {!htmltext ? null : (
-                <Html distanceFactor={1.9} zIndexRange={[1, 0]}  >
+                <Html distanceFactor={1.9} zIndexRange={[1, 0]}>
                   <div className="label noselect">
                     <div className="label__tu">ABOU Us</div>
                     <div className="label__name">
-                      Left Click to Go to About-us page 
+                      Left Click to Go to About-us page
                     </div>
                   </div>
                 </Html>
