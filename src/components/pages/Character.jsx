@@ -5,7 +5,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/StorySelect.css";
 import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
 import Lightbox from "yet-another-react-lightbox";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import {
   CharacterCardOne,
   CharacterCardTwo,
@@ -28,7 +30,6 @@ const Character = () => {
       cardRef.current.scrollIntoView({ block: "center", behavior: "smooth" });
     } else {
       setSelectedCard(cardNumber);
-      
     }
   };
 
@@ -49,7 +50,6 @@ const Character = () => {
       }, 200); // Adjust delay as necessary
     }
   }, [selectedCard]);
-  
 
   const CardOneClick = () => {
     handleCardClick(1);
@@ -69,130 +69,129 @@ const Character = () => {
 
   return (
     <>
-        <div className="sections  text-center mb-[5rem] mt-[5rem] p-0 ">
-          <span className=" text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
-            Character
-          </span>
+      <div className="sections  text-center mb-[5rem] mt-[5rem] p-0 ">
+        <span className=" text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
+          Character
+        </span>
+      </div>
+
+      <div className=" w-auto text-center mt-12 mb-12 ml-[9rem] mr-[9rem] sections">
+        <div className="">
+          <Slider {...settings}>
+            <div className="text-center">
+              <Link
+                onClick={() => {
+                  CardOneClick(), play();
+                }}
+              >
+                <div className=" max-w-md md:max-w-auto mb-5   border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                  <img
+                    src="/images/Characters/Lunar/Lunar_NormalSuit.png"
+                    alt="Lunar"
+                    className="p-3"
+                  />
+                </div>
+                <div className=" p-5 bg-gray-800 rounded-xl">
+                  <h5 className="mb-2 text-4xl font-bold tracking-tight  text-white ">
+                    Lunar
+                  </h5>
+                </div>
+              </Link>
+            </div>
+
+            <div className="">
+              <Link
+                onClick={() => {
+                  CardTwoClick(), play();
+                }}
+              >
+                <div className="max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                  <img
+                    src="/images/Characters/Rabbet/Rabbet.png"
+                    alt="Rabbet"
+                    className="p-2"
+                  />
+                </div>
+                <div className="p-5 bg-gray-800 rounded-xl">
+                  <h5 className="mb-2 text-4xl font-bold tracking-tight text-white ">
+                    Rabbet
+                  </h5>
+                </div>
+              </Link>
+            </div>
+
+            <div className="">
+              <Link
+                onClick={() => {
+                  CardTheeClick(), play();
+                }}
+              >
+                <div className=" max-w-md  mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                  <img
+                    src="/images/Characters/SupportingCharacter/SupCharacter.png"
+                    alt="Supporting Character"
+                    className="p-2"
+                  />
+                </div>
+                <div className="max-w-md  p-5 bg-gray-800 rounded-xl">
+                  <h5 className="mb-3  text-3xl font-bold tracking-tight text-white  ">
+                    Supporting Character
+                  </h5>
+                </div>
+              </Link>
+            </div>
+
+            <div>
+              <Link
+                onClick={() => {
+                  CardFourClick(), play();
+                }}
+              >
+                <div className=" max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                  <img
+                    src="/images/Characters/SupportingRobot/SupRobot.png"
+                    alt="Suppoting Robot"
+                    className="p-2"
+                  />
+                </div>
+                <div className="p-5 bg-gray-800 rounded-xl">
+                  <h5 className="mb-2 text-3xl font-bold tracking-tight text-white ">
+                    Suppoting Robot
+                  </h5>
+                </div>
+              </Link>
+            </div>
+          </Slider>
         </div>
-
-        <div className=" w-auto text-center mt-12 mb-12 ml-[9rem] mr-[9rem] sections">
-          <div className="">
-            <Slider {...settings}>
-              <div className="text-center">
-                <Link
-                  onClick={() => {
-                    CardOneClick(), play();
-                  }}
-                >
-                  <div className=" max-w-md md:max-w-auto mb-5   border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
-                    <img
-                      src="/images/Characters/Lunar/Lunar_NormalSuit.png"
-                      alt="Lunar"
-                      className="p-3"
-                    />
-                  </div>
-                  <div className=" p-5 bg-gray-800 rounded-xl">
-                    <h5 className="mb-2 text-4xl font-bold tracking-tight  text-white ">
-                      Lunar
-                    </h5>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="">
-                <Link
-                  onClick={() => {
-                    CardTwoClick(), play();
-                  }}
-                >
-                  <div className="max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
-                    <img
-                      src="/images/Characters/Rabbet/Rabbet.png"
-                      alt="Rabbet"
-                      className="p-2"
-                    />
-                  </div>
-                  <div className="p-5 bg-gray-800 rounded-xl">
-                    <h5 className="mb-2 text-4xl font-bold tracking-tight text-white ">
-                      Rabbet
-                    </h5>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="">
-                <Link
-                  onClick={() => {
-                    CardTheeClick(), play();
-                  }}
-                >
-                  <div className=" max-w-md  mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
-                    <img
-                      src="/images/Characters/SupportingCharacter/SupCharacter.png"
-                      alt="Supporting Character"
-                      className="p-2"
-                    />
-                  </div>
-                  <div className="max-w-md  p-5 bg-gray-800 rounded-xl">
-                    <h5 className="mb-3  text-3xl font-bold tracking-tight text-white  ">
-                      Supporting Character
-                    </h5>
-                  </div>
-                </Link>
-              </div>
-
-              <div>
-                <Link
-                  onClick={() => {
-                    CardFourClick(), play();
-                  }}
-                >
-                  <div className=" max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
-                    <img
-                      src="/images/Characters/SupportingRobot/SupRobot.png"
-                      alt="Suppoting Robot"
-                      className="p-2"
-                    />
-                  </div>
-                  <div className="p-5 bg-gray-800 rounded-xl">
-                    <h5 className="mb-2 text-3xl font-bold tracking-tight text-white ">
-                      Suppoting Robot
-                    </h5>
-                  </div>
-                </Link>
-              </div>
-            </Slider>
-          </div>
-        </div>
-        {selectedCard === 1 && (
-          <CardOne
-            ref={cardRef}
-            handleNextClick={handleNextClick}
-            handleBackClick={handleBackClick}
-          />
-        )}
-        {selectedCard === 2 && (
-          <CardTwo
-            ref={cardRef}
-            handleNextClick={handleNextClick}
-            handleBackClick={handleBackClick}
-          />
-        )}
-        {selectedCard === 3 && (
-          <CardThee
-            ref={cardRef}
-            handleNextClick={handleNextClick}
-            handleBackClick={handleBackClick}
-          />
-        )}
-        {selectedCard === 4 && (
-          <CardFour
-            ref={cardRef}
-            handleNextClick={handleNextClick}
-            handleBackClick={handleBackClick}
-          />
-        )}
-      
+      </div>
+      {selectedCard === 1 && (
+        <CardOne
+          ref={cardRef}
+          handleNextClick={handleNextClick}
+          handleBackClick={handleBackClick}
+        />
+      )}
+      {selectedCard === 2 && (
+        <CardTwo
+          ref={cardRef}
+          handleNextClick={handleNextClick}
+          handleBackClick={handleBackClick}
+        />
+      )}
+      {selectedCard === 3 && (
+        <CardThee
+          ref={cardRef}
+          handleNextClick={handleNextClick}
+          handleBackClick={handleBackClick}
+        />
+      )}
+      {selectedCard === 4 && (
+        <CardFour
+          ref={cardRef}
+          handleNextClick={handleNextClick}
+          handleBackClick={handleBackClick}
+        />
+      )}
     </>
   );
 };
@@ -288,8 +287,8 @@ const CardOne = React.forwardRef(
           <Modal.Header className=" bg-slate-800 ">
             <span className="text-white">Power by Sketchfab</span>
           </Modal.Header>
-          <Modal.Body className="bg-slate-800 h-96">
-            <div>
+          <Modal.Body className="bg-slate-800 h-auto">
+            <div className=" h-[600px] w-full">
               <ThreeModelOne />
             </div>
           </Modal.Body>
@@ -297,6 +296,7 @@ const CardOne = React.forwardRef(
 
         <Lightbox
           open={open}
+          plugins={[Thumbnails]}
           close={() => {
             setOpen(false), play();
           }}
@@ -407,13 +407,14 @@ const CardTwo = React.forwardRef(
             <span className="text-white">Power by Sketchfab</span>
           </Modal.Header>
           <Modal.Body className="bg-slate-800 h-96">
-            <div>
+            <div className="h-[600px] w-full">
               <ThreeModelTwo />
             </div>
           </Modal.Body>
         </Modal>
 
         <Lightbox
+          plugins={[Thumbnails]}
           open={open}
           close={() => {
             setOpen(false), play();
@@ -511,17 +512,17 @@ const CardThee = React.forwardRef(
           }}
         >
           <Modal.Header className=" bg-slate-800 ">
-           
             <span className="text-white">Power by Sketchfab</span>
           </Modal.Header>
           <Modal.Body className="bg-slate-800 h-96">
-            <div className="">
+            <div className="h-[600px] w-full">
               <ThreeModelThee />
             </div>
           </Modal.Body>
         </Modal>
 
         <Lightbox
+          plugins={[Thumbnails]}
           open={open}
           close={() => {
             setOpen(false), play();
@@ -643,15 +644,17 @@ const CardFour = React.forwardRef(
               }}
             >
               <Modal.Header className=" bg-slate-800 ">
-                
                 <span className="text-white">Power by Sketchfab</span>
               </Modal.Header>
-              <Modal.Body className="bg-slate-800 h-96">
-                <ThreeModelFour />
+              <Modal.Body className="bg-slate-800">
+                <div className="h-[600px] w-full">
+                  <ThreeModelFour />
+                </div>
               </Modal.Body>
             </Modal>
 
             <Lightbox
+              plugins={[Thumbnails]}
               open={open}
               close={() => {
                 setOpen(false), play();
@@ -713,7 +716,7 @@ const CardFour = React.forwardRef(
 
 function ThreeModelOne() {
   return (
-    <div className="sketchfab-embed-wrapper">
+    <div className="sketchfab-embed-wrapper w-full h-full">
       <iframe
         className="rounded-3xl"
         title="Cl_Lunar_tosketchfab6"
@@ -728,7 +731,7 @@ function ThreeModelOne() {
         web-share
         src="https://sketchfab.com/models/ce4af655ce024e83b8ff5fe30e0be4a8/embed"
         width="100%"
-        height="740px"
+        height="100%"
       ></iframe>
     </div>
   );
@@ -736,7 +739,7 @@ function ThreeModelOne() {
 
 function ThreeModelTwo() {
   return (
-    <div className="sketchfab-embed-wrapper">
+    <div className="sketchfab-embed-wrapper w-full h-full">
       <iframe
         title="CB_rabbet"
         className="rounded-3xl "
@@ -759,7 +762,7 @@ function ThreeModelTwo() {
 
 function ThreeModelThee() {
   return (
-    <div className="sketchfab-embed-wrapper">
+    <div className="sketchfab-embed-wrapper w-full h-full">
       <iframe
         title="CS_villager"
         className="rounded-3xl "
@@ -782,7 +785,7 @@ function ThreeModelThee() {
 
 function ThreeModelFour() {
   return (
-    <div className="sketchfab-embed-wrapper">
+    <div className="sketchfab-embed-wrapper w-full h-full">
       <iframe
         className="rounded-3xl "
         title="CS_robot"
