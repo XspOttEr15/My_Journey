@@ -13,7 +13,7 @@ export function Overlay() {
   };
 
   return (
-    <div className='absolute z-30  xl:left-[1%] md:left-[5%] md:top-[75%] xl:top-[70%] '>
+    <div className='absolute z-30  xl:left-[1%] md:left-[5%] md:top-[85%] xl:top-[80%] '>
       <motion.header initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={transition}>
       </motion.header>
       <AnimatePresence>
@@ -37,16 +37,13 @@ export function Overlay() {
                     delayChildren: 0.2
                   }}
                 >
-                  <p className='  pb-5  md:text-6xl  xl:text-8xl'>
-                    WELCOME
-                  </p>
                   <Link to={"/roomchapterone"}>
                   <button
                   style={{ cursor: 'url("/images/CustomMouses/pointer.png"), pointer', backgroundColor:'rgb(26, 162, 125)' }}
                     onClick={play}
-                   className='text-white  bg font-medium rounded-lg  text-4xl px-20 py-3.5 text-center mr-5 mb-5 w-full'
+                   className='text-white  bg-font-medium rounded-lg  text-6xl px-20 py-5 text-center mr-5 mb-5 w-full'
                   >
-                    START
+                    Let's Begin
                   </button>
                   </Link>
                 </motion.div>

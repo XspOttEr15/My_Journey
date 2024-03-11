@@ -1,15 +1,44 @@
 import React from "react";
 import "../styles/Video.css";
 import ReactPlayer from "react-player";
-import bgVideo from '/videos/bg.mp4'
+import bgVideo from "/videos/bg.mp4";
+import {
+  MouseParallaxContainer,
+  MouseParallaxChild,
+} from "react-parallax-mouse";
 const Video = () => {
   return (
     <>
-      <div className="w-full h-screen z-20 relative">
+      <div className="w-full h-full z-20 relative overflow-hidden">
         <div className="overlay"></div>
-          <video autoPlay muted loop className="object-cover w-screen h-screen">
+        <MouseParallaxContainer
+          resetOnLeave
+          globalFactorX={0.1}
+          globalFactorY={0.1}
+          containerStyle={{
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <MouseParallaxChild
+            factorX={0.3}
+            factorY={0.5}
+            style={{
+              backgroundImage: 'url(/images/border-img/room.png)',
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+              width: '100%',
+              height: '100%',
+              backfaceVisibility: "hidden",
+              backgroundPositionY: "50%",
+              transform: "scale(1.2)",
+              position: "absolute",
+            }}
+          />
+        </MouseParallaxContainer>
+        {/* <video autoPlay muted loop className="object-cover w-screen h-screen">
             <source src={bgVideo} type="video/mp4"  />
-          </video>
+          </video> */}
       </div>
     </>
   );

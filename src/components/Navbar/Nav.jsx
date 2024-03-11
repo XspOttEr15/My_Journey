@@ -25,7 +25,7 @@ const Nav = () => {
               alt="Flowbite Logo"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-              Find the ways
+              My Journey
             </span>
           </a>
         </div>
