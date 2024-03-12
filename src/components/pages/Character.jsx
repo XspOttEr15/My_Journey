@@ -8,6 +8,7 @@ import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import '../styles/Character.css'
 import {
   CharacterCardOne,
   CharacterCardTwo,
@@ -69,8 +70,9 @@ const Character = () => {
 
   return (
     <>
-      <div className="sections  text-center mb-[5rem] mt-[5rem] p-0 ">
-        <span className=" text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
+    <div className="background">
+      <div className="sections  text-center pb-[0rem] p-[3rem] top-0  ">
+        <span className="  text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
           Character
         </span>
       </div>
@@ -192,6 +194,7 @@ const Character = () => {
           handleBackClick={handleBackClick}
         />
       )}
+      </div>
     </>
   );
 };
@@ -272,10 +275,11 @@ const CardOne = React.forwardRef(
     const [play] = useSound(soundUrl);
     const [open, setOpen] = React.useState(false);
     return (
+      <div className="cardone-bg">
       <div
         ref={ref}
         id="componentCardOne"
-        className=" sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
+        className=" sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:pt-32 lg:pb-32 lg:px-32  items-center"
       >
         <Modal
           size={["7xl"]}
@@ -376,6 +380,7 @@ const CardOne = React.forwardRef(
             </button>
           </div>
         </div>
+      </div>
       </div>
     );
   }

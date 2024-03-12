@@ -9,8 +9,6 @@
 
 
 #root {
-  max-height: 100%;
-  max-width: 100%;
   cursor: url("/images/CustomMouses/default32.png"), default;
 }
 

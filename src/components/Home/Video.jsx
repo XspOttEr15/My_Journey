@@ -9,8 +9,9 @@ import {
 const Video = () => {
   return (
     <>
+    
       <div className="w-full h-screen z-20 relative ">
-        <div className="overlay"></div>
+      <div className="overlay"></div>
         <MouseParallaxContainer
           resetOnLeave
           globalFactorX={0.1}
@@ -33,6 +34,7 @@ const Video = () => {
               backgroundPositionY: "50%",
               transform: "scale(1.2)",
               position: "absolute",
+              
             }}
           />
         </MouseParallaxContainer>

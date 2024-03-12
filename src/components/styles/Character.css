@@ -1,0 +1,19 @@
+.background {
+    width: 100%;
+    height: 100%;
+    background-image: url("/images/StoryRoom/Deepsun1.png");
+    background-size: cover;
+}
+
+.background::before {
+    background-repeat: repeat;
+    filter: blur(5px); /* Adjust the blur level as needed */
+  }
+
+
+.cardone-bg {
+    width: 100%;
+    height: 100%;
+    background-image: url("/images/StoryRoom/Deepsun1.png");
+    background-size: cover;
+}
