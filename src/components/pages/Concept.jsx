@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { DataContext } from "../../App";
 import useSound from "use-sound";
+import '../styles/Concept.css'
 
 
 const Concept = () => {
@@ -16,7 +17,7 @@ const Concept = () => {
     setIsNavbarFixed(false);
   },);
   return (
-    <>
+    <div className="bg">
       <motion.div className=" sections  text-center pt-[8rem]" 
       animate={{ scale: [1, 1.1, 1] }}
       transition={{
@@ -51,7 +52,7 @@ const Concept = () => {
             <button
               onClick={play}
               type="button"
-              className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800   shadow-lg shadow-emerald-800/80 rounded-lg  px-12 py-5 text-center m-5 mt-6  text-3xl font-bold inline-flex  items-center  sm:mx w-auto "
+              className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800   shadow-lg shadow-emerald-800/80 rounded-lg  px-12 py-5 text-center m-5 mt-6  text-3xl font-bold inline-flex  items-center  sm:mx w-auto "
             >
               &nbsp;CHARACTER&nbsp;
             </button>
@@ -80,14 +81,14 @@ const Concept = () => {
         <Link to={"/"}>
           <button
             type="button"
-            className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800   shadow-lg shadow-emerald-800/80 rounded-lg  px-12 py-5 text-center m-5 mt-6  text-3xl font-bold inline-flex  items-center  sm:mx w-auto "
+            className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800   shadow-lg shadow-emerald-800/80 rounded-lg  px-28 py-5 text-center m-5 mt-6  text-3xl font-bold inline-flex  items-center  sm:mx w-auto "
           >
             &nbsp;MAP&nbsp;
           </button>
         </Link>
         </motion.div>
       </div>
-    </>
+      </div>
   );
 };
 
