@@ -263,7 +263,7 @@ const ChapterDialogThree = () => {
               <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
               <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normal text-gray-500 dark:text-gray-400">
                 Chapter 3 จบลงแล้ว กลับไปหน้าเลือก Chapter
-                เพื่อหาความลับที่ซ่อนอยู่ 😎
+                เพื่อหาความลับที่ซ่อนอยู่ 
               </h3>
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/roomchapterone"}>
