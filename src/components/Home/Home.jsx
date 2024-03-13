@@ -16,7 +16,7 @@ const Home = () => {
   
   return (
     <>  
-      <motion.div className='sections w-full  h-full'>
+      <motion.div className=' w-full  h-full'>
         <Video/>
         <Overlay/>
       </motion.div>

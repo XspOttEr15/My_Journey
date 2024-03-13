@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import { DataContext } from "../../App";
 import useSound from "use-sound";
 import '../styles/Concept.css'
+import {
+  MouseParallaxContainer,
+  MouseParallaxChild,
+} from "react-parallax-mouse";
 
 
 const Concept = () => {
@@ -17,6 +21,7 @@ const Concept = () => {
     setIsNavbarFixed(false);
   },);
   return (
+    <div className="w-full lg:h-screen  md:h-auto ">
     <div className="bg">
       <motion.div className=" sections  text-center pt-[8rem]" 
       animate={{ scale: [1, 1.1, 1] }}
@@ -32,7 +37,7 @@ const Concept = () => {
         </span>
       </motion.div>
 
-      <div className=" sections lg:flex lg:flex-row  md:flex md:flex-col gap-10 justify-center align-middle m-10 mt-16 items-center  text-center">
+      <div className=" sections lg:flex lg:flex-row  md:flex md:flex-col gap-10 justify-center align-middle  mt-16 items-center  text-center">
         {/* // Card Layout 1*/}
         <motion.div className=" max-w-sm h-auto" 
         initial={{opacity:0, y:100}}
@@ -89,6 +94,9 @@ const Concept = () => {
         </motion.div>
       </div>
       </div>
+      </div>
+
+
   );
 };
 

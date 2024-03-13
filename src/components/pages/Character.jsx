@@ -71,53 +71,51 @@ const Character = () => {
   return (
     <>
     <div className="background">
-      <div className="sections  text-center pb-[0rem] p-[3rem] top-0  ">
+      <div className="sections  text-center pb-[0rem] pt-[8rem] top-0  ">
         <span className="  text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
           Character
         </span>
       </div>
 
-      <div className=" w-auto text-center mt-12 mb-12 ml-[9rem] mr-[9rem] sections">
+      <div className="  text-center mt-12 mb-12 ml-[9rem] mr-[9rem] sections">
         <div className="">
           <Slider {...settings}>
-            <div className="text-center">
+            
+            <div className="text-center relative">
               <Link
                 onClick={() => {
                   CardOneClick(), play();
                 }}
               >
-                <div className=" max-w-md md:max-w-auto mb-5   border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                <div className=" border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
                   <img
-                    src="/images/Characters/Lunar/Lunar_NormalSuit.png"
+                    src="/images/Characters/Lunar/lunar.png"
                     alt="Lunar"
-                    className="p-3"
+                    className=""
                   />
+                  <div className=" ring-4 ring-green-400 text-6xl py-8 px-24 bg-gray-800 bg-opacity-90 rounded-xl absolute  top-[78%] left-[3%]">
+                   Lunar
+                  </div>
                 </div>
-                <div className=" p-5 bg-gray-800 rounded-xl">
-                  <h5 className="mb-2 text-4xl font-bold tracking-tight  text-white ">
-                    Lunar
-                  </h5>
-                </div>
+                
               </Link>
             </div>
 
-            <div className="">
+            <div className="text-center relative">
               <Link
                 onClick={() => {
                   CardTwoClick(), play();
                 }}
               >
-                <div className="max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                <div className=" border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
                   <img
-                    src="/images/Characters/Rabbet/Rabbet.png"
+                    src="/images/Characters/Rabbet/Rabbet2.png"
                     alt="Rabbet"
-                    className="p-2"
+                    className="h-full w-full"
                   />
                 </div>
-                <div className="p-5 bg-gray-800 rounded-xl">
-                  <h5 className="mb-2 text-4xl font-bold tracking-tight text-white ">
-                    Rabbet
-                  </h5>
+                <div className=" ring-4 ring-green-400 text-6xl py-8 px-20 bg-gray-800 bg-opacity-90 rounded-xl absolute  top-[78%] left-[3%]">
+                   Rabbet
                 </div>
               </Link>
             </div>
@@ -128,18 +126,17 @@ const Character = () => {
                   CardTheeClick(), play();
                 }}
               >
-                <div className=" max-w-md  mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                <div className=" relative mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
                   <img
-                    src="/images/Characters/SupportingCharacter/SupCharacter.png"
+                    src="/images/Characters/SupportingCharacter/village.png"
                     alt="Supporting Character"
-                    className="p-2"
+                    className="relative"
                   />
+                  <div className=" ring-4 ring-green-400 text-4xl py-5 px-0 bg-gray-800 bg-opacity-90 rounded-xl absolute  top-[78%] left-[4%] right-[4%]">
+                  Supporting Character
+                  </div>
                 </div>
-                <div className="max-w-md  p-5 bg-gray-800 rounded-xl">
-                  <h5 className="mb-3  text-3xl font-bold tracking-tight text-white  ">
-                    Supporting Character
-                  </h5>
-                </div>
+                
               </Link>
             </div>
 
@@ -149,22 +146,21 @@ const Character = () => {
                   CardFourClick(), play();
                 }}
               >
-                <div className=" max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                <div className=" relative max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
                   <img
-                    src="/images/Characters/SupportingRobot/SupRobot.png"
+                    src="/images/Characters/SupportingRobot/robot.png"
                     alt="Suppoting Robot"
-                    className="p-2"
+                    className=""
                   />
-                </div>
-                <div className="p-5 bg-gray-800 rounded-xl">
-                  <h5 className="mb-2 text-3xl font-bold tracking-tight text-white ">
-                    Suppoting Robot
-                  </h5>
+                  <div className=" ring-4 ring-green-400 text-4xl py-10 px-7 bg-gray-800 bg-opacity-90 rounded-xl absolute  top-[78%] left-[3%] ">
+                    Supporting Robot
+                  </div>
                 </div>
               </Link>
             </div>
           </Slider>
         </div>
+      </div>
       </div>
       {selectedCard === 1 && (
         <CardOne
@@ -194,7 +190,6 @@ const Character = () => {
           handleBackClick={handleBackClick}
         />
       )}
-      </div>
     </>
   );
 };
@@ -275,11 +270,12 @@ const CardOne = React.forwardRef(
     const [play] = useSound(soundUrl);
     const [open, setOpen] = React.useState(false);
     return (
-      <div className="cardone-bg">
+      <div className=" w-full h-screen sections relative z-20">
+        <div className="cardone-bg"></div>
       <div
         ref={ref}
         id="componentCardOne"
-        className=" sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:pt-32 lg:pb-32 lg:px-32  items-center"
+        className="  flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-32 lg:px-32  items-center"
       >
         <Modal
           size={["7xl"]}
@@ -315,8 +311,7 @@ const CardOne = React.forwardRef(
             { src: "/images/Characters/Lunar/Lunar_Undressed_back.png" },
           ]}
         />
-
-        <div className="lg:max-w-3xl lg:w-1/2 md:max-w-lg bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800 m-5 text-center ">
+        <div className="lg:max-w-3xl  lg:w-1/2 md:max-w-lg bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800 m-5 text-center ">
           <Characterdisplay />
           <button
             type="button"
@@ -395,10 +390,12 @@ const CardTwo = React.forwardRef(
     const soundUrl = "/sound_effects/ButtonPush.mp3";
     const [play] = useSound(soundUrl);
     return (
+      <div className=" w-full h-screen sections relative ">
+        <div className="cardone-bg"></div>
       <div
         ref={ref}
         id="componentCardTwo"
-        className=" sections flex flex-col xl:flex-row lgg:flex-col lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center "
+        className=" flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-32 lg:px-32  items-center "
       >
         <Modal
           size={["7xl"]}
@@ -492,6 +489,7 @@ const CardTwo = React.forwardRef(
           </div>
         </div>
       </div>
+      </div>
     );
   }
 );
@@ -505,9 +503,11 @@ const CardThee = React.forwardRef(
     const soundUrl = "/sound_effects/ButtonPush.mp3";
     const [play] = useSound(soundUrl);
     return (
+      <div className=" w-full h-screen sections">
+        <div className="cardone-bg"></div>
       <div
         ref={ref}
-        className="sections flex flex-col lg:flex-row  lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center"
+        className="flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-32 lg:px-32  items-center"
       >
         <Modal
           size={["7xl"]}
@@ -571,12 +571,7 @@ const CardThee = React.forwardRef(
               Supporting Character
             </h1>
             <p className=" text-2xl text-justify pt-5 ssm:text-center ssm:text-xl">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting,
+            เป็นตัวละครเสริมภายในฉาก มีรูปร่างคล้ายมนุษย์ แต่ร่างกายเป็นหุ่นยนต์ โดยตัวละครนี้จะถูกนำไปประกอบฉากเพื่อให้ตัวเมืองดูเป็นธรรมชาติมากขึ้น มีผู้คนทำงาน โดยสามารถดัดแปลงให้ตัวละครนี้ถืออุปกรณ์หลาย ๆ แบบเผื่อใช้ในสถานการณ์ที่แตกต่างกันได้
             </p>
           </div>
           <div className=" flex  justify-around m-10 ">
@@ -601,6 +596,7 @@ const CardThee = React.forwardRef(
           </div>
         </div>
       </div>
+      </div>
     );
   }
 );
@@ -614,9 +610,11 @@ const CardFour = React.forwardRef(
     const soundUrl = "/sound_effects/ButtonPush.mp3";
     const [play] = useSound(soundUrl);
     return (
+      <div className="w-full h-screen sections text-center">
+        <div className="cardone-bg"></div>
       <div
         ref={ref}
-        className="sections flex flex-col lg:flex-row  lg:m-10 lg:mt-32 lg:mb-32 lg:mx-32 m-10 items-center text-center"
+        className="flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-32 lg:px-32  items-center"
       >
         <div className="lg:max-w-3xl lg:w-1/2 md:max-w-xl bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5">
           <Characterdisplayfour />
@@ -682,13 +680,7 @@ const CardFour = React.forwardRef(
               Suppoting Robot
             </h1>
             <p className="text-2xl text-justify pt-5 ">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s
+            เป็นตัวละครเสริมภายในฉาก รูปร่างเป็นหุ่นยนต์ที่มีความสูงมากกว่ามนุษย์ ตรงกลางอกสามารถเปิดเพื่อเก็บของได้ โดยตัวละครนี้จะถูกนำไปประกอบฉากเช่นเดียวกัน เพื่อให้เมืองดูมีชีวิตชีวา โดยสามารถดัดแปลงให้ตัวละครนี้ถืออุปกรณฺ์หลาย ๆ แบบให้ใช้ในสถานการณ์ที่แตกต่างกันได้เหมือนกับตัว Supporting character
             </p>
           </div>
           <div className=" flex  justify-around m-10 ">
@@ -712,6 +704,7 @@ const CardFour = React.forwardRef(
             </button>
           </div>
         </div>
+      </div>
       </div>
     );
   }

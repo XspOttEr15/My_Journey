@@ -10,7 +10,7 @@
   padding-top: 80px;
   text-align: center;
   transition: 0.5s;
-  background: rgb(255, 255, 255, 0.09);
+  background: rgba(17, 24, 39,0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -36,7 +36,7 @@
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-  color: #147a5d;
+  color: #34d399; 
 }
 
 /* Position and style the close button (top right corner) */
