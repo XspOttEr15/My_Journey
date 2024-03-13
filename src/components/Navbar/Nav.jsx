@@ -12,7 +12,7 @@ const Nav = () => {
   const closeNav = () => setIsOpen(false);
 
   return (
-    <nav className="sections fixed top-0 left-0 w-full z-30">
+    <nav className=" fixed top-0 left-0 w-full z-30">
       <div className=" flex flex-wrap items-center  justify-between mx-8 mt-4 p-4 ">
         <div>
           <a

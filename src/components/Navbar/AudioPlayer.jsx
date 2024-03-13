@@ -67,7 +67,7 @@ const AudioPlayer = () => {
           className="volume"
           min="0"
           max="1"
-          step="0.1"
+          step="0.01"
           value={Volumn}
           onChange={handleVolumeChange}
         />

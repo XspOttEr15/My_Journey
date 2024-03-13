@@ -221,9 +221,9 @@ const ChapterDialogThree = () => {
           </svg>
         </Button>
       )} */}
-      <div className="w-full h-screen text-center">
+      <div className="w-full h-full text-center">
         <Link onClick={handleNext}>
-          <div className="w-full h-screen relative">
+          <div className="w-full h-full relative">
             <div
               className=" absolute w-full top-[70%]  left-0 right-0 bottom-0 bg-opacity-50 z-20"
               style={{
@@ -243,7 +243,7 @@ const ChapterDialogThree = () => {
             <img
               src={dialogue[currentDialogueIndex].bg}
               alt="image description"
-              className="w-screen h-screen"
+              className="w-full h-full"
             />
           </div>
         </Link>

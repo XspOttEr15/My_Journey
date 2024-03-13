@@ -5,9 +5,6 @@
   scroll-behavior: smooth;
 }
 
-
-
-
 #root {
   cursor: url("/images/CustomMouses/default32.png"), default;
 }
@@ -15,7 +12,7 @@
 
 .sections {
   scroll-snap-align: center;
-  scroll-snap-stop: always;
+  scroll-snap-stop: normal;
 }
 
 button {
@@ -34,4 +31,5 @@ a {
   scroll-snap-type: y mandatory;
   overflow-y: auto;
   position: relative;
+  max-width: 1920px;
 }
