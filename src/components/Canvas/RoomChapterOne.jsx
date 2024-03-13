@@ -35,12 +35,19 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import useSound from "use-sound";
 import Ecctrl from "ecctrl";
 import { EcctrlJoystick } from "ecctrl";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 export const RoomChapterOne = () => {
   const [maxVelLimit, setmaxVelLimit] = useState(2.5);
-  const [disableFollowCamPos, setDisableFollowCamPos] = useState({ x: 0, y: 2, z: 0 });
-  const [disableFollowCamTarget, setdisableFollowCamTarget] = useState({ x: 0, y: 0, z: -2 });
+  const [disableFollowCamPos, setDisableFollowCamPos] = useState({
+    x: 0,
+    y: 2,
+    z: 0,
+  });
+  const [disableFollowCamTarget, setdisableFollowCamTarget] = useState({
+    x: 0,
+    y: 0,
+    z: -2,
+  });
   const [jumpVel, setjumpVel] = useState(4);
   const [openModal, setOpenModal] = useState(false);
   const [openModaltwo, setOpenModaltwo] = useState(false);
@@ -55,10 +62,7 @@ export const RoomChapterOne = () => {
   const [targettwo, setTargetwo] = useState(1);
   const [targetthree, setTargethree] = useState(1);
   const [targetfour, setTargefour] = useState(1);
-  const {
-    setColseBgmusic,
-    ColseBgmusic,
-  } = useContext(DataContext);
+  const { setColseBgmusic, ColseBgmusic } = useContext(DataContext);
   const [htmltext, setHtmltext] = useState(true);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
@@ -111,8 +115,6 @@ export const RoomChapterOne = () => {
     document.exitPointerLock();
   };
 
-  
-
   const keyboardMap = [
     { name: "forward", keys: ["ArrowUp", "KeyW"] },
     { name: "backward", keys: ["ArrowDown", "KeyS"] },
@@ -126,7 +128,6 @@ export const RoomChapterOne = () => {
     setColseBgmusic(true);
   }, [ColseBgmusic]);
 
-
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -134,10 +135,10 @@ export const RoomChapterOne = () => {
       setWindowWidth(window.innerWidth);
     }
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Clean up the event listener on component unmount
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -147,17 +148,17 @@ export const RoomChapterOne = () => {
       <Canvas shadows="soft" style={{ width: "100%", height: "100vh" }}>
         <color attach="background" args={["#638689"]} />
         <fog attach="fog" args={["#569BF3", 1, 200]} />
-        {/* debug */}
-        <Physics>
+        {/* debug */} 
+        <Physics timeStep={"vary"}  gravity={[0, -8, 0]} >
           <KeyboardControls map={keyboardMap}>
             <Ecctrl
               camInitDis={-0.01} // camera intial position
               camInitDir={{ x: 0, y: -3.1, z: 0 }} // Camera initial rotation direction (in rad)
               camMaxDis={-0.03} // Maximum camera distance
               camMinDis={-0.01} // camera zoom in closest position
-              camFollowMult={100} // give any big number here, so the camera follows the character instantly
+              camFollowMult={15} // give any big number here, so the camera follows the character instantly
               turnVelMultiplier={1} // character won't move before turn completed
-              turnSpeed={100} // give it big turning speed to prevent turning wait time
+              turnSpeed={15} // give it big turning speed to prevent turning wait time
               mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
               disableFollowCam={disableFollowCam}
               disableFollowCamPos={disableFollowCamPos} // Corrected: Camera position when the follow camera feature is disabled
@@ -165,7 +166,6 @@ export const RoomChapterOne = () => {
               position={[-2, 4, 3]}
               maxVelLimit={maxVelLimit}
               jumpVel={jumpVel}
-
             >
               {/* Replace your model here */}
               <Player />
@@ -178,7 +178,7 @@ export const RoomChapterOne = () => {
           <Wall />
           <mesh
             onClick={() => {
-                setdisableFollowCam(true),
+              setdisableFollowCam(true),
                 setLoopcamera(true),
                 setHtmltext(false),
                 play();
@@ -189,26 +189,27 @@ export const RoomChapterOne = () => {
           <mesh
             onClick={() => {
               setdisableFollowCam(true),
-              setHtmltext(false),
-              setLoopcamerathree(true),
-              play();
+                setHtmltext(false),
+                setLoopcamerathree(true),
+                play();
             }}
           >
-            <Paper 
+            <Paper
               htmltext={htmltext}
               setHtmltext={setHtmltext}
               loopcamerathree={loopcamerathree}
               setLoopcamerathree={setLoopcamerathree}
               targetthree={targetthree}
               setTargethree={setTargethree}
-              setOpenModalthree={setOpenModalthree} />
+              setOpenModalthree={setOpenModalthree}
+            />
           </mesh>
           <mesh
             onClick={() => {
-                setdisableFollowCam(true),
+              setdisableFollowCam(true),
                 setLoopcameratwo(true),
                 setHtmltext(false);
-                play();
+              play();
             }}
           >
             <MBook
@@ -224,8 +225,8 @@ export const RoomChapterOne = () => {
           <mesh
             onClick={() => {
               setdisableFollowCam(true),
-              setLoopcamerafour(true),
-              setHtmltext(false);
+                setLoopcamerafour(true),
+                setHtmltext(false);
               play();
             }}
           >
@@ -358,7 +359,6 @@ export const RoomChapterOne = () => {
           </Modal.Body>
         </Modal>
 
-
         <Modal
           show={openModaltwo}
           size="md"
@@ -406,7 +406,6 @@ export const RoomChapterOne = () => {
             </div>
           </Modal.Body>
         </Modal>
-
 
         <Modal
           show={openModalthree}
@@ -509,10 +508,6 @@ export const RoomChapterOne = () => {
 };
 export default RoomChapterOne;
 
-
-
-
-
 export const Player = () => {
   return (
     <>
@@ -526,8 +521,6 @@ export const Player = () => {
     </>
   );
 };
-
-
 
 // Light
 const Lights = () => {
@@ -686,7 +679,6 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
-  
 
   useEffect(() => {
     Setcloselabel(htmltext);
@@ -694,7 +686,7 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed">
+      <RigidBody type="fixed" >
         <Select enabled={hovered}>
           <mesh
             castShadow
@@ -1093,14 +1085,12 @@ export const Door = ({
       }
       if (currentTarget === 3) {
         setTargefour(3);
-        setOpenModaldoor(true)
+        setOpenModaldoor(true);
         setLoopcamerafour(false);
         document.exitPointerLock();
       }
     }
   });
-
-  
 
   return (
     <group {...props} dispose={null}>
@@ -1114,18 +1104,17 @@ export const Door = ({
             onPointerOut={() => hover(false)}
           >
             <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.pCube35.geometry}
-          material={materials.M_scifidoor}
-          
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.pCube28.geometry}
-          material={materials.M_scifidoor}
-        />
+              castShadow
+              receiveShadow
+              geometry={nodes.pCube35.geometry}
+              material={materials.M_scifidoor}
+            />
+            <mesh
+              castShadow
+              receiveShadow
+              geometry={nodes.pCube28.geometry}
+              material={materials.M_scifidoor}
+            />
             <group position={[-1.35, 1.5, 4.8]}>
               {!htmltext ? null : (
                 <Html distanceFactor={3} zIndexRange={[1, 0]}>

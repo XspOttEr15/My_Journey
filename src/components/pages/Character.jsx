@@ -71,68 +71,63 @@ const Character = () => {
   return (
     <>
     <div className="background">
-      <div className="sections  text-center pb-[0rem] pt-[8rem] top-0  ">
+      <div className="sections text-center mb-[3rem] pt-[3rem]   ">
         <span className="  text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
           Character
         </span>
       </div>
 
-      <div className="  text-center mt-12 mb-12 ml-[9rem] mr-[9rem] sections">
-        <div className="">
+      <div className="  text-center  m-16 sections">
           <Slider {...settings}>
-            
-            <div className="text-center relative">
               <Link
                 onClick={() => {
                   CardOneClick(), play();
                 }}
               >
-                <div className=" border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                <div className=" relative  w-full h-auto border-2 border-emerald-800 rounded-lg shadow-lg hover:border-emerald-400 bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-emerald-200/60">
                   <img
                     src="/images/Characters/Lunar/lunar.png"
                     alt="Lunar"
-                    className=""
+                    className="w-full h-full "
                   />
-                  <div className=" ring-4 ring-green-400 text-6xl py-8 px-24 bg-gray-800 bg-opacity-90 rounded-xl absolute  top-[78%] left-[3%]">
+                  <div className=" flex justify-center items-center  ring-4 ring-green-400 text-6xl w-full  max-h-28 h-full bg-gray-800 bg-opacity-90 rounded-xl absolute  bottom-0  ">
                    Lunar
                   </div>
                 </div>
-                
               </Link>
-            </div>
 
-            <div className="text-center relative">
+            <div className="text-center relative w-full h-full">
               <Link
                 onClick={() => {
                   CardTwoClick(), play();
                 }}
               >
-                <div className=" border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                <div className="  relative  w-full h-auto border-2 border-emerald-800 rounded-lg shadow-lg hover:border-emerald-400 bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-emerald-200/60">
                   <img
                     src="/images/Characters/Rabbet/Rabbet2.png"
                     alt="Rabbet"
-                    className="h-full w-full"
+                    className="w-full h-full"
                   />
                 </div>
-                <div className=" ring-4 ring-green-400 text-6xl py-8 px-20 bg-gray-800 bg-opacity-90 rounded-xl absolute  top-[78%] left-[3%]">
+                <div className=" flex justify-center items-center  ring-4 ring-green-400 text-6xl w-full  max-h-28 h-full bg-gray-800 bg-opacity-90 rounded-xl absolute  bottom-0 ">
                    Rabbet
                 </div>
               </Link>
             </div>
 
-            <div className="">
+            <div className="text-center relative w-full h-full ">
               <Link
                 onClick={() => {
                   CardTheeClick(), play();
                 }}
               >
-                <div className=" relative mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                <div className=" relative  w-full h-auto border-2 border-emerald-800 rounded-lg shadow-lg hover:border-emerald-400 bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-emerald-200/60">
                   <img
                     src="/images/Characters/SupportingCharacter/village.png"
                     alt="Supporting Character"
-                    className="relative"
+                    className="w-full h-full "
                   />
-                  <div className=" ring-4 ring-green-400 text-4xl py-5 px-0 bg-gray-800 bg-opacity-90 rounded-xl absolute  top-[78%] left-[4%] right-[4%]">
+                  <div className=" flex justify-center items-center  ring-4 ring-green-400 text-4xl w-full  max-h-28 h-full bg-gray-800 bg-opacity-90 rounded-xl absolute  bottom-0">
                   Supporting Character
                   </div>
                 </div>
@@ -140,19 +135,19 @@ const Character = () => {
               </Link>
             </div>
 
-            <div>
+            <div className="text-center relative w-full h-full">
               <Link
                 onClick={() => {
                   CardFourClick(), play();
                 }}
               >
-                <div className=" relative max-w-md md:max-w-auto mb-5  border border-emerald-800 rounded-lg shadow-lg hover:border-rose-600  bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-rose-600/60">
+                <div className="relative  w-full h-auto border-2 border-emerald-800 rounded-lg shadow-lg hover:border-emerald-400 bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-emerald-200/60">
                   <img
                     src="/images/Characters/SupportingRobot/robot.png"
                     alt="Suppoting Robot"
-                    className=""
+                    className="w-full h-full"
                   />
-                  <div className=" ring-4 ring-green-400 text-4xl py-10 px-7 bg-gray-800 bg-opacity-90 rounded-xl absolute  top-[78%] left-[3%] ">
+                  <div className=" flex justify-center items-center  ring-4 ring-green-400 text-4xl w-full  max-h-28 h-full bg-gray-800 bg-opacity-90 rounded-xl absolute  bottom-0">
                     Supporting Robot
                   </div>
                 </div>
@@ -160,7 +155,6 @@ const Character = () => {
             </div>
           </Slider>
         </div>
-      </div>
       </div>
       {selectedCard === 1 && (
         <CardOne
@@ -229,28 +223,10 @@ const settings = {
       },
     },
     {
-      breakpoint: 976, // iPad Pro portrait mode and iPad Mini
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        infinite: true,
-        dots: true,
-      },
-    },
-    {
       breakpoint: 1024, // iPad Pro portrait mode and iPad Mini
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
-        infinite: true,
-        dots: true,
-      },
-    },
-    {
-      breakpoint: 1440, // Typical large desktop, adjust as needed
-      settings: {
-        slidesToShow: 4,
-        slidesToScroll: 4,
         infinite: true,
         dots: true,
       },
