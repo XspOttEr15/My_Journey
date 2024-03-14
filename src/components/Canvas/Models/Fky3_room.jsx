@@ -850,13 +850,12 @@ export function Room(props) {
     </group>
   );
 }
-useGLTF.preload("/models/fky3_room.glb");
 
 export function Floor(props) {
   const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
-      <RigidBody type="fixed" colliders="trimesh" >
+      <RigidBody type="fixed" >
         <mesh
           castShadow
           receiveShadow

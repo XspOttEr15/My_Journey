@@ -34,6 +34,8 @@ const ChapterThree = lazy(() => wait(2000).then(() =>import('./components/pages/
 import Nav from "./components/Navbar/Nav";
 import Maps from "./components/pages/Maps";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { useGLTF } from "@react-three/drei";
+useGLTF.preload("/models/fky3_room.glb");
 
 
 

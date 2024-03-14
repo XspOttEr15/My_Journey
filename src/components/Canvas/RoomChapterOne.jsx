@@ -145,7 +145,7 @@ export const RoomChapterOne = () => {
     <>
       <div className="aim"></div>
       {windowWidth < 1440 && <EcctrlJoystick />}
-      <Canvas shadows="soft" style={{ width: "100%", height: "100vh" }}>
+      <Canvas shadows="soft" style={{ width: "100%", height: "100%" }}>
         <color attach="background" args={["#638689"]} />
         <fog attach="fog" args={["#569BF3", 1, 200]} />
         {/* debug */} 
@@ -156,9 +156,9 @@ export const RoomChapterOne = () => {
               camInitDir={{ x: 0, y: -3.1, z: 0 }} // Camera initial rotation direction (in rad)
               camMaxDis={-0.03} // Maximum camera distance
               camMinDis={-0.01} // camera zoom in closest position
-              camFollowMult={15} // give any big number here, so the camera follows the character instantly
+              camFollowMult={10000} // give any big number here, so the camera follows the character instantly
               turnVelMultiplier={1} // character won't move before turn completed
-              turnSpeed={15} // give it big turning speed to prevent turning wait time
+              turnSpeed={10000} // give it big turning speed to prevent turning wait time
               mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
               disableFollowCam={disableFollowCam}
               disableFollowCamPos={disableFollowCamPos} // Corrected: Camera position when the follow camera feature is disabled
@@ -511,11 +511,11 @@ export default RoomChapterOne;
 export const Player = () => {
   return (
     <>
-      <RigidBody colliders={false} lockRotations>
+      <RigidBody type="fixed">
         <mesh visible={false}>
-          <capsuleGeometry args={[0.01, 0.01]} />
+          <capsuleGeometry args={[1, 1]} />
           <meshStandardMaterial color="hotpink" />
-          <CapsuleCollider args={[0.01, 0.01]} />
+          <CapsuleCollider args={[1, 1]} />
         </mesh>
       </RigidBody>
     </>
