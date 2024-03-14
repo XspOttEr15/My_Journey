@@ -70,7 +70,7 @@ const Character = () => {
 
   return (
     <>
-    <div className="background">
+    <div className="bg">
       <div className="sections text-center mb-[3rem] pt-[3rem]   ">
         <span className="  text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
           Character
@@ -156,6 +156,7 @@ const Character = () => {
           </Slider>
         </div>
       </div>
+      
       {selectedCard === 1 && (
         <CardOne
           ref={cardRef}
