@@ -2,7 +2,9 @@
     width: 100%;
     height: 100%;
     background-image: url("/images/border-img/room.png");
-    background-size: cover;
+    position: absolute;
+    z-index: -1;
+    filter: blur(4px);
 }
 
 
