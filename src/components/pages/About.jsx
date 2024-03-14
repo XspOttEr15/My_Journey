@@ -13,9 +13,11 @@ const About = () => {
   }, []);
   return (
     <>
-      <div className="sections h-screen md:h-auto overflow-y-hidden overflow-x-hidden text-center lg:pt-20">
+      <div className="w-full lg:h-screen md:h-auto relative">
+      <div className="bg1"></div>
+      <div className="sections md:h-auto overflow-y-hidden overflow-x-hidden text-center lg:pt-20 ">
       <motion.div
-        className="lg:mt-[0rem] md:mt-[10rem] "
+        className="lg:pt-[0rem] md:pt-[10rem] "
         animate={{ scale: [1, 1.1, 1] }}
         transition={{
           duration: 2,
@@ -49,7 +51,7 @@ const About = () => {
           />
           <motion.button
             type="button"
-            className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800 shadow-lg   shadow-emerald-800/80 rounded-lg  px-10 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto lg:w-auto "
+            className="text-emerald-400  bg-gray-900    ring-4 outline-none  ring-emerald-800 shadow-lg   shadow-emerald-800/80 rounded-lg  px-10 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto lg:w-auto "
           >
             <div className="text-xl">
             63080500230
@@ -80,7 +82,7 @@ const About = () => {
           />
           <motion.button
             type="button"
-            className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800 shadow-lg   shadow-emerald-800/80 rounded-lg  px-14 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto "
+            className="text-emerald-400  bg-gray-900  ring-4 focus:outline-none  ring-emerald-800 shadow-lg   shadow-emerald-800/80 rounded-lg  px-14 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto "
           >
             <div className="text-xl">
             63080500242
@@ -111,7 +113,7 @@ const About = () => {
           />
           <motion.button
             type="button"
-            className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800 shadow-lg   shadow-emerald-800/80 rounded-lg  px-14 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto  "
+            className="text-emerald-400  bg-gray-900   bg-gradient-to-br ring-4 outline-none  ring-emerald-800 shadow-lg   shadow-emerald-800/80 rounded-lg  px-14 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto  "
           >
             <div className="text-xl">
             63080500269
@@ -123,11 +125,13 @@ const About = () => {
         </motion.div>
       </div>
       </div>
+      </div>
 
+      <div className="w-full lg:h-screen md:h-auto sections relative">
+      <div className="bg1"></div>
+      <div className=" lg:pt-[100px] md:pt-0 text-center md:p-8 lg:mt-0">
 
-      <div className="sections lg:h-screen md:h-auto  lg:pt-[100px] md:pt-0 text-center md:m-20">
-
-      <div className="md:flex md:flex-col lg:flex lg:flex-row lg:m-10   ">
+      <div className="md:flex md:flex-col lg:flex lg:flex-row lg:m-10 md:p-14 lg:p-0   ">
         <motion.div className=" lg:w-1/2 md:w-full  md:max-w-none bg-gray-800 rounded-3xl p-3 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 lg:ml-8  md:ml-0"
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0,  }}
@@ -181,10 +185,12 @@ const About = () => {
         </motion.div>
       </div>
       </div>
+      </div>
 
-
+      <div className="w-full h-screen relative">
+      <div className="bg1"></div>
       <div className="sections lg:h-screen md:h-screen text-center">
-      <motion.h1 className="text-6xl font-extrabold text-white m-12 pt-24" 
+      <motion.h1 className="text-6xl font-extrabold text-white  pt-28  pb-12" 
         initial={{ opacity: 0, x: -500 }}
         whileInView={{ opacity: 1, x: 0,  }}
         viewport={{ once: false }}
@@ -197,8 +203,8 @@ const About = () => {
         }}>
           Contact
         </motion.h1>
-      <motion.div className="mx-20 " >
-        
+
+      <motion.div className="mx-20 ">
          <motion.div className="   w-full bg-gray-800 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 rounded-3xl p-3 "
         initial={{ opacity: 0, x: 500 }}
         whileInView={{ opacity: 1, x: 0,  }}
@@ -224,6 +230,7 @@ const About = () => {
           ></iframe>
         </motion.div>
       </motion.div>
+      </div>
       </div>
     </>
   );
