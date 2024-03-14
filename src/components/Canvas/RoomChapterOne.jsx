@@ -77,14 +77,14 @@ export const RoomChapterOne = () => {
     },
     {
       speaker: "-- Solarwind2 --",
-      text: "Solarwind3 สภาพแวดล้อม เกือบจะดีแต่มีฝุ่นควันจากชั้นล่างบนบังทัศนวิสัยถึงแม้จะมีการกรองอากาศไปบ้างแล้วเมืองนี้จะเริ่มมีการเพาะปลูกพืชพรรณ และใช้พลังงานจากลมเป็นหลัก",
+      text: "Solarwind2 สภาพแวดล้อม เกือบจะดีแต่มีฝุ่นควันจากชั้นล่างบนบังทัศนวิสัยถึงแม้จะมีการกรองอากาศไปบ้างแล้วเมืองนี้จะเริ่มมีการเพาะปลูกพืชพรรณ และใช้พลังงานจากลมเป็นหลัก",
       bg: "/images/StoryRoom/Solarwind2.jpg",
       button: "Choose Chapter 2",
       link: "/chaptertwo",
     },
     {
       speaker: "-- PeaceFusion3 --",
-      text: "PeaceFusion4 เป็นเมืองที่มีวิทยาการสูงที่สุด มีผู้คนหนาแน่นมีตึกสูงมากมายใช้พลังงานจากเตาปติกรเป็นหลัก ผสมผสานระหว่างธรรมชาติและเทคโนโลยี เป็นเมืองที่ทุกคนใฝ่ฝันอยากเข้ามาอยู่อาศัย",
+      text: "PeaceFusion3 เป็นเมืองที่มีวิทยาการสูงที่สุด มีผู้คนหนาแน่นมีตึกสูงมากมายใช้พลังงานจากเตาปติกรเป็นหลัก ผสมผสานระหว่างธรรมชาติและเทคโนโลยี เป็นเมืองที่ทุกคนใฝ่ฝันอยากเข้ามาอยู่อาศัย",
       bg: "/images/StoryRoom/PeaceFusion3.jpg",
       button: "Choose Chapter 3",
       link: "/chapterthree",
@@ -143,13 +143,19 @@ export const RoomChapterOne = () => {
 
   return (
     <>
+      <div className=" w-full h-screen ">
+      <div className="tutorial"> 
+        <h3 className=" text-2xl mt-1">Press ESC to show CursorMouse</h3>
+        <h3 className=" text-2xl mt-1">Press W A S D  to Move Around</h3>
+        <h3 className=" text-2xl mt-1">Press SPACEBAR to Jump</h3>
+      </div>
       <div className="aim"></div>
       {windowWidth < 1440 && <EcctrlJoystick />}
-      <Canvas shadows="soft" style={{ width: "100%", height: "100%" }}>
+      <Canvas shadows="soft" camera={false} style={{ width: "100%", height: "100%", display: "relative" }}>
         <color attach="background" args={["#638689"]} />
         <fog attach="fog" args={["#569BF3", 1, 200]} />
         {/* debug */} 
-        <Physics timeStep={"vary"}  gravity={[0, -8, 0]} >
+        <Physics gravity={[0, -9, 0]} >
           <KeyboardControls map={keyboardMap}>
             <Ecctrl
               camInitDis={-0.01} // camera intial position
@@ -168,7 +174,6 @@ export const RoomChapterOne = () => {
               jumpVel={jumpVel}
             >
               {/* Replace your model here */}
-              <Player />
               {/* First Person Camera */}
               {!disableFollowCam && <PointerLockControls />}
             </Ecctrl>
@@ -503,24 +508,12 @@ export const RoomChapterOne = () => {
           </Modal.Body>
         </Modal>
       </motion.div>
+      </div>
     </>
   );
 };
 export default RoomChapterOne;
 
-export const Player = () => {
-  return (
-    <>
-      <RigidBody type="fixed">
-        <mesh visible={false}>
-          <capsuleGeometry args={[1, 1]} />
-          <meshStandardMaterial color="hotpink" />
-          <CapsuleCollider args={[1, 1]} />
-        </mesh>
-      </RigidBody>
-    </>
-  );
-};
 
 // Light
 const Lights = () => {

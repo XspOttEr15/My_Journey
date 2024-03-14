@@ -10,6 +10,13 @@
     z-index: 2;
 }
 
+.tutorial {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.8;
+    top: 80%;
+    left: 3%;
+}
 
 
 
