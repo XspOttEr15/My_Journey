@@ -70,14 +70,16 @@ const Character = () => {
 
   return (
     <>
-    <div className="bg">
-      <div className="sections text-center mb-[3rem] pt-[3rem]   ">
+    <div className=" w-full lg:h-screen md:h-auto relative ">
+    <div className="bg"></div>
+
+      <div className=" text-center mb-[0rem] pt-[3rem]  sections ">
         <span className="  text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
           Character
         </span>
       </div>
 
-      <div className="  text-center  m-16 sections">
+      <div className="  text-center  lg:p-0 lg:m-16 md:p-[8rem] sections">
           <Slider {...settings}>
               <Link
                 onClick={() => {
@@ -186,6 +188,7 @@ const Character = () => {
         />
       )}
     </>
+    
   );
 };
 
@@ -232,6 +235,15 @@ const settings = {
         dots: true,
       },
     },
+    {
+      breakpoint: 1920, // iPad Pro portrait mode and iPad Mini
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        infinite: true,
+        dots: true,
+      },
+    },
   ],
 };
 export default Character;
@@ -247,12 +259,12 @@ const CardOne = React.forwardRef(
     const [play] = useSound(soundUrl);
     const [open, setOpen] = React.useState(false);
     return (
-      <div className=" w-full h-screen sections relative z-20">
+      <div className=" w-full lg:h-screen  md:h-auto sections relative z-20">
         <div className="cardone-bg"></div>
       <div
         ref={ref}
         id="componentCardOne"
-        className="  flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-32 lg:px-32  items-center"
+        className="flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-32 lg:px-32  items-center"
       >
         <Modal
           size={["7xl"]}
@@ -288,14 +300,14 @@ const CardOne = React.forwardRef(
             { src: "/images/Characters/Lunar/Lunar_Undressed_back.png" },
           ]}
         />
-        <div className="lg:max-w-3xl  lg:w-1/2 md:max-w-lg bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800 m-5 text-center ">
+        <div className="lg:max-w-3xl  lg:w-1/2 md:max-w-lg bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800   text-center md:mt-16 lg:mt-0">
           <Characterdisplay />
           <button
             type="button"
             onClick={() => {
               setOpenModal(true), play();
             }}
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800   shadow-lg shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800   shadow-lg shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center mt-5  mb-2 mx-2"
           >
             {openModal ? "Close" : "Inspect 3D"}
           </button>
@@ -311,7 +323,7 @@ const CardOne = React.forwardRef(
           </button>
         </div>
 
-        <div className="lg:flex-1  lg:m-5 text-center ">
+        <div className="lg:flex-1  lg:m-5  text-center md:flex-1 md:p-20 ">
           <div className="align-middle">
             <h1 className="text-4xl lg:text-5xl font-extrabold text-white m-5">
               Lunar (Main Charecter)
@@ -367,12 +379,12 @@ const CardTwo = React.forwardRef(
     const soundUrl = "/sound_effects/ButtonPush.mp3";
     const [play] = useSound(soundUrl);
     return (
-      <div className=" w-full h-screen sections relative ">
+      <div className=" w-full lg:h-screen  md:h-auto sections relative z-20">
         <div className="cardone-bg"></div>
       <div
         ref={ref}
         id="componentCardTwo"
-        className=" flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-32 lg:px-32  items-center "
+        className="  flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-32 lg:px-32  items-center "
       >
         <Modal
           size={["7xl"]}
@@ -406,14 +418,14 @@ const CardTwo = React.forwardRef(
           ]}
         />
 
-        <div className="lg:max-w-3xl lg:w-1/2 md:max-w-xl bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5 text-center ">
+        <div className="lg:max-w-3xl  lg:w-1/2 md:max-w-lg bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800   text-center md:mt-16 lg:mt-0">
           <Characterdisplaytwo />
           <button
             type="button"
             onClick={() => {
               setOpenModal(true), play();
             }}
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800   shadow-lg shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center mt-5  mb-2 mx-2"
           >
             {openModal ? "Close" : "Inspect 3D"}
           </button>
@@ -423,15 +435,15 @@ const CardTwo = React.forwardRef(
             onClick={() => {
               setOpen(true), play();
             }}
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800   shadow-lg shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center mt-5  mb-2 mx-2"
           >
             {open ? "Close" : "Inspect 2D"}
           </button>
         </div>
 
-        <div className="lg:flex-1  lg:m-0  p-5 text-center ">
+        <div className="lg:flex-1  lg:m-5  text-center md:flex-1 md:p-20  ">
           <div className=" align-middle">
-            <h1 className="lg:text-5xl font-extrabold dark:text-white m-5 ssm:text-3xl">
+            <h1 className="text-4xl lg:text-5xl font-extrabold text-white m-5">
               Rabbet (Lapin-02)
             </h1>
             <p className="  text-2xl text-justify pt-5 ssm:text-center ssm:text-xl ">
@@ -441,6 +453,7 @@ const CardTwo = React.forwardRef(
               แต่ด้วยความที่ไม่เสถียรจึงจะนำไปทำลายที่เมืองด้านล่างสุดด้วยระบบอัตโนมัติ
               แต่เกิดข้อผิดพลาดจึงกลายเป็น Rabbet
               ที่มีระบบไม่สมบูรณ์จึงไม่ทำลายตัวเองในหลุมลาวา
+              
             </p>
           </div>
 
@@ -480,7 +493,7 @@ const CardThee = React.forwardRef(
     const soundUrl = "/sound_effects/ButtonPush.mp3";
     const [play] = useSound(soundUrl);
     return (
-      <div className=" w-full h-screen sections">
+      <div className=" w-full lg:h-screen  md:h-auto sections relative z-20">
         <div className="cardone-bg"></div>
       <div
         ref={ref}
@@ -517,7 +530,7 @@ const CardThee = React.forwardRef(
           ]}
         />
 
-        <div className="lg:max-w-3xl lg:w-1/2 ssm:max-w-xs bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5 text-center">
+        <div className="lg:max-w-3xl  lg:w-1/2 md:max-w-lg bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800   text-center md:mt-16 lg:mt-0">
           <Characterdisplaythree />
           <div>
             <button
@@ -525,7 +538,7 @@ const CardThee = React.forwardRef(
                 setOpenModal(true), play();
               }}
               type="button"
-              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2 "
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800   shadow-lg shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center mt-5  mb-2 mx-2"
             >
               {openModal ? "Close" : "Inspect 3D"}
             </button>
@@ -535,16 +548,16 @@ const CardThee = React.forwardRef(
               onClick={() => {
                 setOpen(true), play();
               }}
-              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800   shadow-lg shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center mt-5  mb-2 mx-2"
             >
               {open ? "Close" : "Inspect 2D"}
             </button>
           </div>
         </div>
 
-        <div className="lg:flex-1  lg:m-0 p-5 text-center ">
+        <div className="lg:flex-1  lg:m-5  text-center md:flex-1 md:p-20  ">
           <div className=" align-middle ">
-            <h1 className="lg:text-5xl font-extrabold dark:text-white m-5 ssm:text-3xl ">
+            <h1 className="text-4xl lg:text-5xl font-extrabold text-white m-5 ">
               Supporting Character
             </h1>
             <p className=" text-2xl text-justify pt-5 ssm:text-center ssm:text-xl">
@@ -587,13 +600,13 @@ const CardFour = React.forwardRef(
     const soundUrl = "/sound_effects/ButtonPush.mp3";
     const [play] = useSound(soundUrl);
     return (
-      <div className="w-full h-screen sections text-center">
+      <div className="w-full lg:h-screen  md:h-auto sections relative z-20">
         <div className="cardone-bg"></div>
       <div
         ref={ref}
         className="flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-32 lg:px-32  items-center"
       >
-        <div className="lg:max-w-3xl lg:w-1/2 md:max-w-xl bg-gray-800 rounded-3xl p-5 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 m-5">
+        <div className="lg:max-w-3xl  lg:w-1/2 md:max-w-lg bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800   text-center md:mt-16 lg:mt-0">
           <Characterdisplayfour />
           <div>
             <button
@@ -601,7 +614,7 @@ const CardFour = React.forwardRef(
                 setOpenModal(true), play();
               }}
               type="button"
-              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2 "
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800   shadow-lg shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center mt-5  mb-2 mx-2"
             >
               {openModal ? "Close" : "Inspect 3D"}
             </button>
@@ -611,7 +624,7 @@ const CardFour = React.forwardRef(
               onClick={() => {
                 setOpen(true), play();
               }}
-              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center  mb-2 mx-2"
+              className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-green-800   shadow-lg shadow-green-800/80 font-bold rounded-lg text-xl px-12 py-3 text-center mt-5  mb-2 mx-2"
             >
               {open ? "Close" : "Inspect 2D"}
             </button>
@@ -651,9 +664,9 @@ const CardFour = React.forwardRef(
           </div>
         </div>
 
-        <div className="lg:flex-1  lg:m-5 pt-10  ">
+        <div className="lg:flex-1  lg:m-5  text-center md:flex-1 md:p-20  ">
           <div className=" align-middle">
-            <h1 className="text-4xl lg:text-5xl font-extrabold dark:text-white m-5">
+            <h1 className="text-4xl lg:text-5xl font-extrabold text-white m-5">
               Suppoting Robot
             </h1>
             <p className="text-2xl text-justify pt-5 ">

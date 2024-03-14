@@ -131,7 +131,7 @@ const About = () => {
       <div className="bg1"></div>
       <div className=" lg:pt-[100px] md:pt-0 text-center md:p-8 lg:mt-0">
 
-      <div className="md:flex md:flex-col lg:flex lg:flex-row lg:m-10 md:p-14 lg:p-0   ">
+      <div className="md:flex md:flex-col lg:flex lg:flex-row lg:m-10 md:p-14 md:pt-12  lg:pt-20   ">
         <motion.div className=" lg:w-1/2 md:w-full  md:max-w-none bg-gray-800 rounded-3xl p-3 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 lg:ml-8  md:ml-0"
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0,  }}
@@ -146,7 +146,7 @@ const About = () => {
         >
           <motion.img
             className="rounded-3xl h-full w-full object-cover  shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80"
-            src="https://images.unsplash.com/photo-1701861970903-7c4312a0b807?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="/images/AboutUs/renderer1.png"
             alt=""
           />
         </motion.div>
@@ -162,7 +162,7 @@ const About = () => {
           damping: 10,
         }}
         >
-          <h1 className=" lg:text-5xl md:text-4xl font-extrabold text-white m-8">
+          <h1 className="lg:text-5xl md:text-4xl font-extrabold text-white m-8">
             About Project
           </h1>
           <p className="text-sm lg:text-base md:text-justify">
