@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.2.10 ./public/models/fky3_room.glb
 
 import React, { useEffect } from "react";
 import { Html, useGLTF } from "@react-three/drei";
-import { RigidBody } from "@react-three/rapier";
+import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import "../styles/Fky3_room.css";
 import "/audios/bgm_room.mp3"
 import useSound from "use-sound";
@@ -855,7 +855,7 @@ export function Floor(props) {
   const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
-      <RigidBody type="fixed" >
+      <RigidBody type="fixed"  name="ground" colliders="trimesh" ccd>
         <mesh
           castShadow
           receiveShadow
@@ -877,7 +877,7 @@ export function Wall(props) {
   const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
-      <RigidBody type="fixed" colliders="trimesh">
+      <RigidBody type="fixed" colliders="trimesh" ccd>
         <mesh
           castShadow
           receiveShadow
@@ -888,6 +888,7 @@ export function Wall(props) {
     </group>
   );
 }
+
 
 
 

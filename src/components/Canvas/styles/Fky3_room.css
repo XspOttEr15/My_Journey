@@ -1,22 +1,27 @@
 .label {
     padding: 0.5rem 1.5rem;
-    background-color: rgba(0, 0, 0, 0.349);
+    background-color: rgba(0, 0, 0, 0.644);
     border-radius: 0.5rem;
-    box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.815);
+    box-shadow: 0 0 0.8rem rgb(127, 255, 212);
     pointer-events: none;
     text-align: center;
     width: 20rem;
-
+    transition: transform 0.2s, opacity 0.42s;
   }
   .label__tu {
     font-size: 1rem;
     font-weight: bold;
-    color:aquamarine;
+    color:rgb(127, 255, 202);
   }
   
   .label__name {
     font-size: 0.8rem;
     color: #ffffff;
+  }
+
+  .label--hidden {
+    opacity: 0;
+    transform: scale(0.42);
   }
 
   .noselect {
@@ -28,3 +33,5 @@
     user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
   }
+
+  

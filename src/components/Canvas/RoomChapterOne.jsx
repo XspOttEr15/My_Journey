@@ -15,7 +15,12 @@ import {
   KeyboardControls,
 } from "@react-three/drei";
 import { Floor, Room, Wall } from "./Models/Fky3_room";
-import { CapsuleCollider, Physics, RigidBody } from "@react-three/rapier";
+import {
+  CapsuleCollider,
+  CuboidCollider,
+  Physics,
+  RigidBody,
+} from "@react-three/rapier";
 import {
   Selection,
   EffectComposer,
@@ -35,6 +40,8 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import useSound from "use-sound";
 import Ecctrl from "ecctrl";
 import { EcctrlJoystick } from "ecctrl";
+import { Perf } from "r3f-perf";
+import Instructions from "./Instructions";
 
 export const RoomChapterOne = () => {
   const [maxVelLimit, setmaxVelLimit] = useState(2.5);
@@ -141,379 +148,409 @@ export const RoomChapterOne = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const [isLocked, setIsLocked] = useState(false);
+
+  
+
   return (
     <>
-      <div className=" w-full h-screen ">
-      <div className="tutorial"> 
-        <h3 className=" text-2xl mt-1">Press ESC to show CursorMouse</h3>
-        <h3 className=" text-2xl mt-1">Press W A S D  to Move Around</h3>
-        <h3 className=" text-2xl mt-1">Press SPACEBAR to Jump</h3>
-      </div>
-      <div className="aim"></div>
-      {windowWidth < 1440 && <EcctrlJoystick />}
-      <Canvas shadows="soft" camera={false} style={{ width: "100%", height: "100%", display: "relative" }}>
-        <color attach="background" args={["#638689"]} />
-        <fog attach="fog" args={["#569BF3", 1, 200]} />
-        {/* debug */} 
-        <Physics gravity={[0, -9, 0]} >
-          <KeyboardControls map={keyboardMap}>
-            <Ecctrl
-              camInitDis={-0.01} // camera intial position
-              camInitDir={{ x: 0, y: -3.1, z: 0 }} // Camera initial rotation direction (in rad)
-              camMaxDis={-0.03} // Maximum camera distance
-              camMinDis={-0.01} // camera zoom in closest position
-              camFollowMult={10000} // give any big number here, so the camera follows the character instantly
-              turnVelMultiplier={1} // character won't move before turn completed
-              turnSpeed={10000} // give it big turning speed to prevent turning wait time
-              mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
-              disableFollowCam={disableFollowCam}
-              disableFollowCamPos={disableFollowCamPos} // Corrected: Camera position when the follow camera feature is disabled
-              disableFollowCamTarget={disableFollowCamTarget} // Camera lookAt target when the follow camera feature is disabled
-              position={[-2, 4, 3]}
-              maxVelLimit={maxVelLimit}
-              jumpVel={jumpVel}
-            >
-              {/* Replace your model here */}
-              {/* First Person Camera */}
-              {!disableFollowCam && <PointerLockControls />}
-            </Ecctrl>
-          </KeyboardControls>
-          <Room />
-          <Floor />
-          <Wall />
-          <mesh
-            onClick={() => {
-              setdisableFollowCam(true),
-                setLoopcamera(true),
-                setHtmltext(false),
-                play();
-            }}
-          >
-            <Book htmltext={htmltext} setHtmltext={setHtmltext} />
-          </mesh>
-          <mesh
-            onClick={() => {
-              setdisableFollowCam(true),
-                setHtmltext(false),
-                setLoopcamerathree(true),
-                play();
-            }}
-          >
-            <Paper
-              htmltext={htmltext}
-              setHtmltext={setHtmltext}
-              loopcamerathree={loopcamerathree}
-              setLoopcamerathree={setLoopcamerathree}
-              targetthree={targetthree}
-              setTargethree={setTargethree}
-              setOpenModalthree={setOpenModalthree}
-            />
-          </mesh>
-          <mesh
-            onClick={() => {
-              setdisableFollowCam(true),
-                setLoopcameratwo(true),
-                setHtmltext(false);
-              play();
-            }}
-          >
-            <MBook
-              htmltext={htmltext}
-              setHtmltext={setHtmltext}
-              loopcameratwo={loopcameratwo}
-              setLoopcameratwo={setLoopcameratwo}
-              targettwo={targettwo}
-              setTargetwo={setTargetwo}
-              setOpenModaltwo={setOpenModaltwo}
-            />
-          </mesh>
-          <mesh
-            onClick={() => {
-              setdisableFollowCam(true),
-                setLoopcamerafour(true),
-                setHtmltext(false);
-              play();
-            }}
-          >
-            <Door
-              htmltext={htmltext}
-              setHtmltext={setHtmltext}
-              openModaldoor={openModaldoor}
-              setOpenModaldoor={setOpenModaldoor}
-              loopcamerafour={loopcamerafour}
-              setLoopcamerafour={setLoopcamerafour}
-              targetfour={targetfour}
-              setTargefour={setTargefour}
-            />
-          </mesh>
-          <EffectsPost
-            setOpenModal={setOpenModal}
-            loopcamera={loopcamera}
-            setLoopcamera={setLoopcamera}
-            target={target}
-            setTarget={setTarget}
-          />
-        </Physics>
-        <Lights />
-      </Canvas>
-      <motion.div
-        key={openModal}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <Modal
-          size={"7xl"}
-          show={openModal}
-          onClose={() => {
-            setOpenModal(false);
-            setdisableFollowCam(false);
-            setHtmltext(true);
-            setTarget(1);
-            play();
-          }}
-          style={{
-            cursor: 'url("/images/CustomMouses/default32.png"), pointer',
-          }}
+      {/* <div className=" w-full h-screen ">
+        <div className="tutorial">
+          <h3 className=" text-2xl mt-1">กด ESC เพื่อแสดง Cursor Mouse</h3>
+          <h3 className=" text-2xl mt-1">กด W A S D เพื่อเดินไปรอบ ๆ </h3>
+          <h3 className=" text-2xl mt-1">กด SPACEBAR เพื่อกระโดด</h3>
+        </div> */}
+        <div className="aim"></div>
+        {windowWidth < 1440 && <EcctrlJoystick />}
+        {  <Instructions onPlayClick={() => setIsLocked(true)} isVisible={!isLocked}  /> }
+        <Canvas
+          shadows="soft"
+          camera={false}
+          style={{ width: "100%", height: "100%", display: "relative" }}
         >
-          <motion.svg
-            className="w-12 h-12  text-white absolute top-[50%] bottom-[50%] left-[0%] opacity-60 z-[50]"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 10 16"
-            onClick={() => {
-              handleBack(), play();
-            }}
-            whileHover={{ scale: 1.5 }}
-            whileTap={{ scale: 0.9 }}
-            style={{
-              cursor: 'url("/images/CustomMouses/pointer32.png"), pointer',
-            }}
-          >
-            <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
-          </motion.svg>
-
-          <motion.svg
-            className="w-12 h-12 text-white absolute top-[50%] bottom-[50%] right-[0%] opacity-60 z-[50]"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 10 16"
-            onClick={() => {
-              handleNext(), play();
-            }}
-            whileHover={{ scale: 1.5 }}
-            whileTap={{ scale: 0.9 }}
-            style={{
-              cursor: 'url("/images/CustomMouses/pointer32.png"), pointer',
-            }}
-          >
-            <path d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z" />
-          </motion.svg>
-          <Modal.Header className=" bg-slate-800">
-            <span className="text-white">SELECT CHAPTER PAGE</span>
-          </Modal.Header>
-
-          <Modal.Body className="bg-slate-800 relative">
-            <div id="city" className="lg:flex mx-5 m-5  ">
-              <div className=" w-full h-auto m-2 ">
-                <motion.img
-                  src={dialogue[currentDialogueIndex].bg}
-                  alt="..."
-                  className="rounded-3xl h-full w-full z-10"
-                  key={currentDialogueIndex}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 50 }}
-                  transition={{ duration: 0.4 }}
-                />
-              </div>
-
-              <motion.div
-                className="m-2 bg-gray-700 rounded-xl w-[100%] flex flex-col items-center justify-center"
-                key={currentDialogueIndex}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 25 }}
-                transition={{ duration: 0.6 }}
+          <color attach="background" args={["#638689"]} />
+          <fog attach="fog" args={["#569BF3", 1, 200]} />
+          {/* <Perf position="top-left" /> */}
+          {/* debug */}
+          <Physics gravity={[0, -11, 0]}>
+            <KeyboardControls map={keyboardMap}>
+              <Ecctrl
+                debug="false"
+                camInitDis={-0.01} // camera intial position
+                camInitDir={{ x: 0, y: -3.1, z: 0 }} // Camera initial rotation direction (in rad)
+                camMaxDis={-0.03} // Maximum camera distance
+                camMinDis={-0.01} // camera zoom in closest position
+                camFollowMult={100} // give any big number here, so the camera follows the character instantly
+                turnVelMultiplier={1} // character won't move before turn completed
+                turnSpeed={100} // give it big turning speed to prevent turning wait time
+                mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
+                disableFollowCam={disableFollowCam}
+                disableFollowCamPos={disableFollowCamPos} // Corrected: Camera position when the follow camera feature is disabled
+                disableFollowCamTarget={disableFollowCamTarget} // Camera lookAt target when the follow camera feature is disabled
+                position={[-2, 4, 3]}
+                maxVelLimit={maxVelLimit}
+                jumpVel={jumpVel}
+                dampingC={0.12}
+                floatingDis="auto"
               >
-                <motion.h1 className="text-4xl lg:text-4xl font-extrabold text-white text-center pt-5">
-                  {dialogue[currentDialogueIndex].speaker}
-                </motion.h1>
-                <motion.p className="lg:text-xl p-6 text-center">
-                  {dialogue[currentDialogueIndex].text}
-                </motion.p>
-                <Link to={dialogue[currentDialogueIndex].link}>
-                  <div className="text-center m-3">
-                    <button
-                      onClick={play}
-                      style={{
-                        cursor:
-                          'url("/images/CustomMouses/pointer.png"), pointer',
-                      }}
-                      type="button"
-                      className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none  focus:ring-blue-800 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
-                    >
-                      {dialogue[currentDialogueIndex].button}
-                    </button>
-                  </div>
-                </Link>
-              </motion.div>
-            </div>
-          </Modal.Body>
-        </Modal>
-
-        <Modal
-          show={openModaltwo}
-          size="md"
-          onClose={() => {
-            setOpenModaltwo(false);
-            setdisableFollowCam(false);
-            setHtmltext(true);
-            setTargetwo(1);
-            play();
-          }}
-          popup
+                {/* Replace your model here */}
+                <Player />
+                {/* First Person Camera */}
+                {!disableFollowCam &&
+                  <PointerLockControls
+                    onLock={() => setIsLocked(true)}
+                    onUnlock={() => setIsLocked(false)}
+                    selector="#button"
+                  />
+                }
+              </Ecctrl>
+            </KeyboardControls>
+            <Room />
+            <Floor />
+            <Wall />
+            <mesh
+              onDoubleClick={() => {
+                setdisableFollowCam(true),
+                  setLoopcamera(true),
+                  setHtmltext(false),
+                  play();
+              }}
+            >
+              <Book htmltext={htmltext} setHtmltext={setHtmltext} />
+            </mesh>
+            <mesh
+              onDoubleClick={() => {
+                setdisableFollowCam(true),
+                  setHtmltext(false),
+                  setLoopcamerathree(true),
+                  play();
+              }}
+            >
+              <Paper
+                htmltext={htmltext}
+                setHtmltext={setHtmltext}
+                loopcamerathree={loopcamerathree}
+                setLoopcamerathree={setLoopcamerathree}
+                targetthree={targetthree}
+                setTargethree={setTargethree}
+                setOpenModalthree={setOpenModalthree}
+              />
+            </mesh>
+            <mesh
+              onDoubleClick={() => {
+                setdisableFollowCam(true),
+                  setLoopcameratwo(true),
+                  setHtmltext(false);
+                play();
+              }}
+            >
+              <MBook
+                htmltext={htmltext}
+                setHtmltext={setHtmltext}
+                loopcameratwo={loopcameratwo}
+                setLoopcameratwo={setLoopcameratwo}
+                targettwo={targettwo}
+                setTargetwo={setTargetwo}
+                setOpenModaltwo={setOpenModaltwo}
+              />
+            </mesh>
+            <mesh
+              onDoubleClick={() => {
+                setdisableFollowCam(true),
+                  setLoopcamerafour(true),
+                  setHtmltext(false);
+                play();
+              }}
+            >
+              <Door
+                htmltext={htmltext}
+                setHtmltext={setHtmltext}
+                openModaldoor={openModaldoor}
+                setOpenModaldoor={setOpenModaldoor}
+                loopcamerafour={loopcamerafour}
+                setLoopcamerafour={setLoopcamerafour}
+                targetfour={targetfour}
+                setTargefour={setTargefour}
+              />
+            </mesh>
+            <EffectsPost
+              setOpenModal={setOpenModal}
+              loopcamera={loopcamera}
+              setLoopcamera={setLoopcamera}
+              target={target}
+              setTarget={setTarget}
+            />
+          </Physics>
+          <Lights />
+        </Canvas>
+        <motion.div
+          key={openModal}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
         >
-          <Modal.Header className="bg-slate-800" />
-          <Modal.Body className="class bg-slate-800">
-            <div className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
-              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
-                คุณแน่ใจว่าจะไปหน้า Concept ?
-              </h3>
-              <div className="flex flex-col md:flex-row justify-center gap-4 ">
-                <Link to={"/concept"}>
+          <Modal
+            size={"7xl"}
+            show={openModal}
+            onClose={() => {
+              setOpenModal(false);
+              setdisableFollowCam(false);
+              setIsLocked(false)
+              setHtmltext(true);
+              setTarget(1);
+              play();
+            }}
+            style={{
+              cursor: 'url("/images/CustomMouses/default32.png"), pointer',
+            }}
+          >
+            <motion.svg
+              className="w-12 h-12  text-white absolute top-[50%] bottom-[50%] left-[0%] opacity-60 z-[50]"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 10 16"
+              onClick={() => {
+                handleBack(), play();
+              }}
+              whileHover={{ scale: 1.5 }}
+              whileTap={{ scale: 0.9 }}
+              style={{
+                cursor: 'url("/images/CustomMouses/pointer32.png"), pointer',
+              }}
+            >
+              <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
+            </motion.svg>
+
+            <motion.svg
+              className="w-12 h-12 text-white absolute top-[50%] bottom-[50%] right-[0%] opacity-60 z-[50]"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 10 16"
+              onClick={() => {
+                handleNext(), play();
+              }}
+              whileHover={{ scale: 1.5 }}
+              whileTap={{ scale: 0.9 }}
+              style={{
+                cursor: 'url("/images/CustomMouses/pointer32.png"), pointer',
+              }}
+            >
+              <path d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z" />
+            </motion.svg>
+            <Modal.Header className=" bg-slate-800">
+              <span className="text-white">SELECT CHAPTER PAGE</span>
+            </Modal.Header>
+
+            <Modal.Body className="bg-slate-800 relative">
+              <div id="city" className="lg:flex md:flex mx-5 m-5  ">
+                <div className=" w-full h-auto m-2 ">
+                  <motion.img
+                    src={dialogue[currentDialogueIndex].bg}
+                    alt="..."
+                    className="rounded-3xl h-full w-full z-10"
+                    key={currentDialogueIndex}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 50 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </div>
+
+                <motion.div
+                  className="m-2 bg-gray-700 rounded-xl w-[100%] flex flex-col items-center justify-center"
+                  key={currentDialogueIndex}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 25 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <motion.h1 className="text-4xl lg:text-4xl font-extrabold text-white text-center pt-5">
+                    {dialogue[currentDialogueIndex].speaker}
+                  </motion.h1>
+                  <motion.p className="lg:text-xl p-6 text-center">
+                    {dialogue[currentDialogueIndex].text}
+                  </motion.p>
+                  <Link to={dialogue[currentDialogueIndex].link}>
+                    <div className="text-center m-3">
+                      <button
+                        onClick={play}
+                        style={{
+                          cursor:
+                            'url("/images/CustomMouses/pointer.png"), pointer',
+                        }}
+                        type="button"
+                        className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none  focus:ring-blue-800 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
+                      >
+                        {dialogue[currentDialogueIndex].button}
+                      </button>
+                    </div>
+                  </Link>
+                </motion.div>
+              </div>
+            </Modal.Body>
+          </Modal>
+
+          <Modal
+            show={openModaltwo}
+            size="md"
+            onClose={() => {
+              setOpenModaltwo(false);
+              setdisableFollowCam(false);
+              setHtmltext(true);
+              setTargetwo(1);
+              play();
+            }}
+            popup
+          >
+            <Modal.Header className="bg-slate-800" />
+            <Modal.Body className="class bg-slate-800">
+              <div className="text-center">
+                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
+                <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
+                  คุณแน่ใจว่าจะไปหน้า Concept ?
+                </h3>
+                <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                  <Link to={"/concept"}>
+                    <Button
+                      color="failure"
+                      onClick={() => {
+                        setOpenModaltwo(false);
+                        play();
+                      }}
+                    >
+                      {" ไปหน้า Concept"}
+                    </Button>
+                  </Link>
                   <Button
-                    color="failure"
+                    color="gray"
                     onClick={() => {
                       setOpenModaltwo(false);
+                      setdisableFollowCam(false);
+                      setHtmltext(true);
+                      setTargetwo(1);
                       play();
                     }}
                   >
-                    {" ไปหน้า Concept"}
+                    ยกเลิก
                   </Button>
-                </Link>
-                <Button
-                  color="gray"
-                  onClick={() => {
-                    setOpenModaltwo(false);
-                    setdisableFollowCam(false);
-                    setHtmltext(true);
-                    setTargetwo(1);
-                    play();
-                  }}
-                >
-                  ยกเลิก
-                </Button>
+                </div>
               </div>
-            </div>
-          </Modal.Body>
-        </Modal>
+            </Modal.Body>
+          </Modal>
 
-        <Modal
-          show={openModalthree}
-          size="md"
-          onClose={() => {
-            setOpenModalthree(false);
-            setdisableFollowCam(false);
-            setHtmltext(true);
-            setTargethree(1);
-            play();
-          }}
-          popup
-        >
-          <Modal.Header className="bg-slate-800" />
-          <Modal.Body className="class bg-slate-800">
-            <div className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
-              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
-                คุณแน่ใจว่าจะไปหน้า About Us ?
-              </h3>
-              <div className="flex flex-col md:flex-row justify-center gap-4 ">
-                <Link to={"/about"}>
+          <Modal
+            show={openModalthree}
+            size="md"
+            onClose={() => {
+              setOpenModalthree(false);
+              setdisableFollowCam(false);
+              setHtmltext(true);
+              setTargethree(1);
+              play();
+            }}
+            popup
+          >
+            <Modal.Header className="bg-slate-800" />
+            <Modal.Body className="class bg-slate-800">
+              <div className="text-center">
+                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
+                <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
+                  คุณแน่ใจว่าจะไปหน้า About Us ?
+                </h3>
+                <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                  <Link to={"/about"}>
+                    <Button
+                      color="failure"
+                      onClick={() => {
+                        setOpenModalthree(false);
+                        play();
+                      }}
+                    >
+                      {" ไปหน้า About Us"}
+                    </Button>
+                  </Link>
                   <Button
-                    color="failure"
+                    color="gray"
                     onClick={() => {
                       setOpenModalthree(false);
+                      setdisableFollowCam(false);
+                      setHtmltext(true);
+                      setTargethree(1);
                       play();
                     }}
                   >
-                    {" ไปหน้า About Us"}
+                    ยกเลิก
                   </Button>
-                </Link>
-                <Button
-                  color="gray"
-                  onClick={() => {
-                    setOpenModalthree(false);
-                    setdisableFollowCam(false);
-                    setHtmltext(true);
-                    setTargethree(1);
-                    play();
-                  }}
-                >
-                  ยกเลิก
-                </Button>
+                </div>
               </div>
-            </div>
-          </Modal.Body>
-        </Modal>
+            </Modal.Body>
+          </Modal>
 
-        <Modal
-          show={openModaldoor}
-          size="md"
-          onClose={() => {
-            setOpenModaldoor(false);
-            setdisableFollowCam(false);
-            setHtmltext(true);
-            setTargefour(1);
-            play();
-          }}
-          popup
-        >
-          <Modal.Header className="bg-slate-800" />
-          <Modal.Body className="class bg-slate-800">
-            <div className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
-              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
-                คุณแน่ใจว่าจะไปหน้า Home page ?
-              </h3>
-              <div className="flex flex-col md:flex-row justify-center gap-4 ">
-                <Link to={"/"}>
+          <Modal
+            show={openModaldoor}
+            size="md"
+            onClose={() => {
+              setOpenModaldoor(false);
+              setdisableFollowCam(false);
+              setHtmltext(true);
+              setTargefour(1);
+              play();
+            }}
+            popup
+          >
+            <Modal.Header className="bg-slate-800" />
+            <Modal.Body className="class bg-slate-800">
+              <div className="text-center">
+                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
+                <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
+                  คุณแน่ใจว่าจะไปหน้า Home page ?
+                </h3>
+                <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                  <Link to={"/"}>
+                    <Button
+                      color="failure"
+                      onClick={() => {
+                        setOpenModaldoor(false);
+                        play();
+                      }}
+                    >
+                      {" ไปหน้า Home"}
+                    </Button>
+                  </Link>
                   <Button
-                    color="failure"
+                    color="gray"
                     onClick={() => {
                       setOpenModaldoor(false);
+                      setdisableFollowCam(false);
+                      setHtmltext(true);
+                      setTargefour(1);
                       play();
                     }}
                   >
-                    {" ไปหน้า Home"}
+                    ยกเลิก
                   </Button>
-                </Link>
-                <Button
-                  color="gray"
-                  onClick={() => {
-                    setOpenModaldoor(false);
-                    setdisableFollowCam(false);
-                    setHtmltext(true);
-                    setTargefour(1);
-                    play();
-                  }}
-                >
-                  ยกเลิก
-                </Button>
+                </div>
               </div>
-            </div>
-          </Modal.Body>
-        </Modal>
-      </motion.div>
-      </div>
+            </Modal.Body>
+          </Modal>
+        </motion.div>
     </>
   );
 };
 export default RoomChapterOne;
 
+const Player = () => {
+  const playerRef = useRef;
+
+  return (
+    <mesh position={[0, 0, 0]} visible={false}>
+      <capsuleGeometry args={[0.3, 0.7, 1]} />
+      <meshStandardMaterial color="yellow" />
+    </mesh>
+  );
+};
 
 // Light
 const Lights = () => {
@@ -672,6 +709,7 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
     Setcloselabel(htmltext);
@@ -679,7 +717,7 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed" >
+      <RigidBody type="fixed">
         <Select enabled={hovered}>
           <mesh
             castShadow
@@ -715,11 +753,23 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
 
             <group position={[-0.3, 1, -1.5]}>
               {!htmltext ? null : (
-                <Html distanceFactor={2} zIndexRange={[1, 0]} a>
-                  <div className="label noselect">
+                <Html
+                  occlude
+                  zIndexRange={[1, 0]}
+                  sprite={false}
+                  onOcclude={setHidden}
+                  position={[0.3, 0, -0.2]}
+                  scale={0.1}
+                  transform
+                >
+                  <div
+                    className={`label noselect ${
+                      hidden ? "label--hidden" : ""
+                    }`}
+                  >
                     <div className="label__tu">LUNAR's BOOK</div>
                     <div className="label__name">
-                      Left Click to Start your Journey
+                      DoubleClick to Start your Journey
                     </div>
                   </div>
                 </Html>
@@ -748,6 +798,7 @@ export const MBook = ({
   const [closelabel, Setcloselabel] = useState(false);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
     Setcloselabel(htmltext);
@@ -816,11 +867,23 @@ export const MBook = ({
               />
               <group position={[-2.4, 1.3, -4.2]}>
                 {!htmltext ? null : (
-                  <Html distanceFactor={2} zIndexRange={[1, 0]}>
-                    <div className="label noselect">
-                      <div className="label__tu">CONCEPT</div>
+                  <Html
+                    occlude
+                    zIndexRange={[1, 0]}
+                    onOcclude={setHidden}
+                    position={[0.3, 0, 0.1]}
+                    scale={0.1}
+                    transform
+                    sprite={false}
+                  >
+                    <div
+                      className={`label noselect ${
+                        hidden ? "label--hidden" : ""
+                      }`}
+                    >
+                      <div className="label__tu">Concept</div>
                       <div className="label__name">
-                        Left Click to Go to Concept Page
+                        DoubleClick to Go to Concept page
                       </div>
                     </div>
                   </Html>
@@ -848,6 +911,7 @@ export const Paper = ({
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
     Setcloselabel(htmltext);
@@ -997,13 +1061,25 @@ export const Paper = ({
               material={materials.M_maintable}
             />
 
-            <group position={[1.6, 1.7, -4.5]}>
+            <group position={[1.6, 0, -4.5]}>
               {!htmltext ? null : (
-                <Html distanceFactor={1.9} zIndexRange={[1, 0]}>
-                  <div className="label noselect">
-                    <div className="label__tu">ABOU Us</div>
+                <Html
+                  occlude
+                  onOcclude={setHidden}
+                  position={[0.9, 1.6, 0]}
+                  zIndexRange={[1, 0]}
+                  scale={0.2}
+                  transform
+                  sprite={false}
+                >
+                  <div
+                    className={`label noselect ${
+                      hidden ? "label--hidden" : ""
+                    }`}
+                  >
+                    <div className="label__tu">About Us</div>
                     <div className="label__name">
-                      Left Click to Go to About-us page
+                      DoubleClick to Go to About-us page
                     </div>
                   </div>
                 </Html>
@@ -1030,6 +1106,7 @@ export const Door = ({
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
     Setcloselabel(htmltext);
@@ -1108,13 +1185,26 @@ export const Door = ({
               geometry={nodes.pCube28.geometry}
               material={materials.M_scifidoor}
             />
-            <group position={[-1.35, 1.5, 4.8]}>
+            <group position={[0, 0, 0]}>
               {!htmltext ? null : (
-                <Html distanceFactor={3} zIndexRange={[1, 0]}>
-                  <div className="label noselect">
+                <Html
+                  occlude
+                  onOcclude={setHidden}
+                  zIndexRange={[1, 0]}
+                  position={[-1.75, 1.5, 4.5]}
+                  rotation={[0, 3.2, 0]}
+                  scale={0.2}
+                  transform
+                  sprite={false}
+                >
+                  <div
+                    className={`label noselect ${
+                      hidden ? "label--hidden" : ""
+                    }`}
+                  >
                     <div className="label__tu">HOME PAGE</div>
                     <div className="label__name">
-                      Left Click to Go to Home page
+                      DoubleClick to Go to Home page
                     </div>
                   </div>
                 </Html>
