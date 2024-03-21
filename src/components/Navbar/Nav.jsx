@@ -79,7 +79,7 @@ const Nav = () => {
           <a href="#" className="closebtn" onClick={closeNav}>
             &times;
           </a>
-          <Link onClick={closeNav} to={"/"}>Home</Link>
+          <Link onClick={closeNav} to={"/home"}>Home</Link>
           <Link onClick={closeNav} to={"/roomchapterone"}>Story</Link>
           <Link onClick={closeNav} to={"/concept"}>Concept</Link>
           <Link onClick={closeNav} to={"/about"}>About-Us</Link>

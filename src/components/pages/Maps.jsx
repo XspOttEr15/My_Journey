@@ -30,7 +30,7 @@ export const Maps = () => {
           <div className="  lg:flex  md:inline-block sm:inline-block gap-0 ">
             {/* // Card Layout 1*/}
             <div className=" md:w-full lg:w-1/3  ssm:w-full lgg:w-full h-screen relative  ">
-              <Link to={"/"}>
+              <Link to={"/home"}>
                 <img
                   className="h-screen"
                   // onClick={scrollToStoryboard}
@@ -49,7 +49,7 @@ export const Maps = () => {
             {/* // Card Layout 2*/}
 
             <div className=" xl:w-1/3 ssm:w-full  relative   h-screen">
-              <Link to={"/"}>
+              <Link to={"/home"}>
                 <img
                   className="h-screen"
                   // onClick={scrollToChareacter}
@@ -65,9 +65,8 @@ export const Maps = () => {
             </div>
 
             {/* // Card Layout 3*/}
-
             <div className=" xl:w-1/3 ssm:w-full  relative  h-screen">
-              <Link to={"/"}>
+              <Link to={"/home"}>
                 <img
                   className=" h-screen"
                   // onClick={scrollToCity}
