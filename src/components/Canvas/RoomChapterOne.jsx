@@ -508,7 +508,7 @@ export const RoomChapterOne = () => {
                   คุณแน่ใจว่าจะไปหน้า Home page ?
                 </h3>
                 <div className="flex flex-col md:flex-row justify-center gap-4 ">
-                  <Link to={"/"}>
+                  <Link to={"/home"}>
                     <Button
                       color="failure"
                       onClick={() => {

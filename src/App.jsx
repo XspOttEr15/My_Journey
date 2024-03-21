@@ -30,12 +30,11 @@ const ChapterDialogThree = lazy(() => wait(2000).then(() =>import('./components/
 const LoadingScreen = lazy(() => import('./components/pages/LoadingScreen'));
 const ChapterTwo = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterTwo')));
 const ChapterThree = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterThree')));
+const Intro = lazy(() => wait(2000).then(() =>import('./components/pages/intro')));
 
 import Nav from "./components/Navbar/Nav";
 import Maps from "./components/pages/Maps";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { useGLTF } from "@react-three/drei";
-useGLTF.preload("/models/fky3_room.glb");
 
 
 
@@ -72,7 +71,8 @@ function App() {
           <Suspense fallback={<LoadingScreen/>}>
           <Nav/>
           <Routes>
-            <Route path="/" index element={<Home />} />
+          <Route path="/" index element={<Intro/>} />
+            <Route path="/home"  element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/concept" element={<Concept />} />
             <Route path="/character" element={<Character />} />
