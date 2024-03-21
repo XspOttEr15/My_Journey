@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useSound from "use-sound";
 import "../styles/Nav.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AudioPlayers from "./AudioPlayer";
 
 const Nav = () => {
@@ -10,6 +10,23 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openNav = () => setIsOpen(true);
   const closeNav = () => setIsOpen(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        
+        openNav();
+      } else if (e.key === "Enter") { // Example key for opening the nav
+        closeNav();
+      }
+    };
+  
+    document.addEventListener("keydown", handleKeyDown);
+  
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <nav className=" fixed top-0 left-0 w-full z-30">
