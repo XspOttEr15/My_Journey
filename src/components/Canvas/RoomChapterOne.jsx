@@ -162,7 +162,7 @@ export const RoomChapterOne = () => {
         </div> */}
         <div className="aim"></div>
         {windowWidth < 1440 && <EcctrlJoystick />}
-        {  <Instructions onPlayClick={() => setIsLocked(true)} isVisible={!isLocked}  /> }
+        <Instructions onPlayClick={() => setIsLocked(true)} isVisible={!isLocked}  /> 
         <Canvas
           shadows="soft"
           camera={false}
