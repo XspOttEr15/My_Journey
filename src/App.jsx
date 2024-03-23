@@ -30,7 +30,7 @@ const ChapterDialogThree = lazy(() => wait(2000).then(() =>import('./components/
 const LoadingScreen = lazy(() => import('./components/pages/LoadingScreen'));
 const ChapterTwo = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterTwo')));
 const ChapterThree = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterThree')));
-const Intro = lazy(() => wait(2000).then(() =>import('./components/pages/intro')));
+const Intro = lazy(() => wait(0).then(() =>import('./components/pages/intro')));
 
 import Nav from "./components/Navbar/Nav";
 import Maps from "./components/pages/Maps";

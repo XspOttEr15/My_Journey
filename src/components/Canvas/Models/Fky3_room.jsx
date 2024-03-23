@@ -889,6 +889,8 @@ export function Wall(props) {
   );
 }
 
+useGLTF.preload("/models/fky3_room.glb");
+
 
 
 

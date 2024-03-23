@@ -1,7 +1,5 @@
 import React from "react";
 import "../styles/Video.css";
-import ReactPlayer from "react-player";
-import bgVideo from "/videos/bg.mp4";
 import {
   MouseParallaxContainer,
   MouseParallaxChild,
@@ -53,7 +51,7 @@ const Video = () => {
             }}
           >
           <video autoPlay muted loop className="object-cover w-screen h-screen">
-            <source src={bgVideo} type="video/mp4"  />
+            <source src="https://ik.imagekit.io/vsfmz5htw/bg.mp4?updatedAt=1711183031026" type="video/mp4"  />
           </video> 
           </MouseParallaxChild>
           

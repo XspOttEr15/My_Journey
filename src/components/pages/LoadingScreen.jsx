@@ -3,32 +3,13 @@ import { useProgress } from "@react-three/drei";
 import "../styles/LoadingScreen.css";
 import { useContext } from "react";
 import { DataContext } from "../../App";
-import bgloaderroom from "/videos/vid_loading_room.mp4"
 
 const LoadingScreen = () => {
-  const { progress, active } = useProgress();
-  const [showScreen, setShowScreen] = useState(true);
-
-  const { ColseBgmusic, setColseBgmusic } = useContext(DataContext);
-
-  // Simulate click action on page load
-  useEffect(() => {
-    setColseBgmusic(false);
-    
-    // Assuming you want to perform an action similar to a click, call it here
-    autoClickAction();
-  }, []);
-
-  const autoClickAction = () => {
-    // Your "click" action logic here
-    console.log("Auto click action performed on load");
-    // For example, start playing video, toggle a modal, etc.
-  };
-
+  
   return (
     <div className={`loading-screen`}>
       <video className="loading-screen__background-video" autoPlay loop muted preload>
-        <source src={bgloaderroom} type="video/mp4" />
+        <source src="https://ik.imagekit.io/vsfmz5htw/vid_loading_room.mp4?updatedAt=1711183026855" type="video/mp4" />
       </video>
       <div className="loading-screen__container">
         <h1 className="loading-screen__title">Loading Scene...</h1>
