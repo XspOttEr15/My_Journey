@@ -88,7 +88,7 @@ const Character = () => {
               >
                 <div className=" relative  w-full h-auto border-2 border-emerald-800 rounded-lg shadow-lg hover:border-emerald-400 bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-emerald-200/60">
                   <img
-                    src="/images/Characters/Lunar/lunar.png"
+                    src="https://ik.imagekit.io/vsfmz5htw/Characters/Lunar/lunar.png?updatedAt=1711183024894"
                     alt="Lunar"
                     className="w-full h-full "
                   />
@@ -106,7 +106,7 @@ const Character = () => {
               >
                 <div className="  relative  w-full h-auto border-2 border-emerald-800 rounded-lg shadow-lg hover:border-emerald-400 bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-emerald-200/60">
                   <img
-                    src="/images/Characters/Rabbet/Rabbet2.png"
+                    src="https://ik.imagekit.io/vsfmz5htw/Characters/Rabbet/Rabbet2.png?updatedAt=1711183032139"
                     alt="Rabbet"
                     className="w-full h-full"
                   />
@@ -125,7 +125,7 @@ const Character = () => {
               >
                 <div className=" relative  w-full h-auto border-2 border-emerald-800 rounded-lg shadow-lg hover:border-emerald-400 bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-emerald-200/60">
                   <img
-                    src="/images/Characters/SupportingCharacter/village.png"
+                    src="https://ik.imagekit.io/vsfmz5htw/Characters/SupportingCharacter/village.png?updatedAt=1711183034649"
                     alt="Supporting Character"
                     className="w-full h-full "
                   />
@@ -145,7 +145,7 @@ const Character = () => {
               >
                 <div className="relative  w-full h-auto border-2 border-emerald-800 rounded-lg shadow-lg hover:border-emerald-400 bg-gray-800 shadow-green-600/60  focus:ring-green-800  hover:shadow-xl  hover:shadow-emerald-200/60">
                   <img
-                    src="/images/Characters/SupportingRobot/robot.png"
+                    src="https://ik.imagekit.io/vsfmz5htw/Characters/SupportingRobot/robot.png?updatedAt=1711183035531"
                     alt="Suppoting Robot"
                     className="w-full h-full"
                   />

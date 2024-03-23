@@ -77,7 +77,7 @@ export const RoomChapterOne = () => {
     {
       speaker: "-- Deepsun1 --",
       text: "Deepsun1 ภาพแวดล้อมย่ำแย่มีแต่หมอกควัน มีฝุ่นจากอุตสาหกรรมมีการก่อสร้างบ้านเมืองแบบยุคเก่าใช้พลังงานจากน้ำมันปิโตรเลียมใช้แท่นขุดเจาะน้ำมันแบบขวานและแบบเสาดิ่ง",
-      bg: "/images/StoryRoom/Deepsun1.png",
+      bg: "https://ik.imagekit.io/vsfmz5htw/StoryRoom/Deepsun1.png?updatedAt=1711183025564",
       button: "Choose Chapter 1",
       link: "/chapterone",
       style: "",
@@ -85,14 +85,14 @@ export const RoomChapterOne = () => {
     {
       speaker: "-- Solarwind2 --",
       text: "Solarwind2 สภาพแวดล้อม เกือบจะดีแต่มีฝุ่นควันจากชั้นล่างบนบังทัศนวิสัยถึงแม้จะมีการกรองอากาศไปบ้างแล้วเมืองนี้จะเริ่มมีการเพาะปลูกพืชพรรณ และใช้พลังงานจากลมเป็นหลัก",
-      bg: "/images/StoryRoom/Solarwind2.jpg",
+      bg: "https://ik.imagekit.io/vsfmz5htw/StoryRoom/Solarwind2.jpg?updatedAt=1711183025189",
       button: "Choose Chapter 2",
       link: "/chaptertwo",
     },
     {
       speaker: "-- PeaceFusion3 --",
       text: "PeaceFusion3 เป็นเมืองที่มีวิทยาการสูงที่สุด มีผู้คนหนาแน่นมีตึกสูงมากมายใช้พลังงานจากเตาปติกรเป็นหลัก ผสมผสานระหว่างธรรมชาติและเทคโนโลยี เป็นเมืองที่ทุกคนใฝ่ฝันอยากเข้ามาอยู่อาศัย",
-      bg: "/images/StoryRoom/PeaceFusion3.jpg",
+      bg: "https://ik.imagekit.io/vsfmz5htw/StoryRoom/PeaceFusion3.jpg?updatedAt=1711183024150",
       button: "Choose Chapter 3",
       link: "/chapterthree",
     },
@@ -154,12 +154,12 @@ export const RoomChapterOne = () => {
 
   return (
     <>
-      {/* <div className=" w-full h-screen ">
+      <div className=" w-full h-screen ">
         <div className="tutorial">
           <h3 className=" text-2xl mt-1">กด ESC เพื่อแสดง Cursor Mouse</h3>
           <h3 className=" text-2xl mt-1">กด W A S D เพื่อเดินไปรอบ ๆ </h3>
           <h3 className=" text-2xl mt-1">กด SPACEBAR เพื่อกระโดด</h3>
-        </div> */}
+        </div>
         <div className="aim"></div>
         {windowWidth < 1440 && <EcctrlJoystick />}
         <Instructions onPlayClick={() => setIsLocked(true)} isVisible={!isLocked}  /> 
@@ -200,7 +200,8 @@ export const RoomChapterOne = () => {
                   <PointerLockControls
                     onLock={() => setIsLocked(true)}
                     onUnlock={() => setIsLocked(false)}
-                    selector="#button"
+                    selector=".instructions-overlay"
+                    
                   />
                 }
               </Ecctrl>
@@ -209,7 +210,7 @@ export const RoomChapterOne = () => {
             <Floor />
             <Wall />
             <mesh
-              onDoubleClick={() => {
+              onClick={() => {
                 setdisableFollowCam(true),
                   setLoopcamera(true),
                   setHtmltext(false),
@@ -219,7 +220,7 @@ export const RoomChapterOne = () => {
               <Book htmltext={htmltext} setHtmltext={setHtmltext} />
             </mesh>
             <mesh
-              onDoubleClick={() => {
+              onClick={() => {
                 setdisableFollowCam(true),
                   setHtmltext(false),
                   setLoopcamerathree(true),
@@ -237,7 +238,7 @@ export const RoomChapterOne = () => {
               />
             </mesh>
             <mesh
-              onDoubleClick={() => {
+              onClick={() => {
                 setdisableFollowCam(true),
                   setLoopcameratwo(true),
                   setHtmltext(false);
@@ -255,7 +256,7 @@ export const RoomChapterOne = () => {
               />
             </mesh>
             <mesh
-              onDoubleClick={() => {
+              onClick={() => {
                 setdisableFollowCam(true),
                   setLoopcamerafour(true),
                   setHtmltext(false);
@@ -295,7 +296,7 @@ export const RoomChapterOne = () => {
             onClose={() => {
               setOpenModal(false);
               setdisableFollowCam(false);
-              setIsLocked(false)
+              setIsLocked(true),
               setHtmltext(true);
               setTarget(1);
               play();
@@ -536,6 +537,7 @@ export const RoomChapterOne = () => {
             </Modal.Body>
           </Modal>
         </motion.div>
+        </div>
     </>
   );
 };
@@ -769,7 +771,7 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
                   >
                     <div className="label__tu">LUNAR's BOOK</div>
                     <div className="label__name">
-                      DoubleClick to Start your Journey
+                    Click to Start your Journey
                     </div>
                   </div>
                 </Html>
@@ -883,7 +885,7 @@ export const MBook = ({
                     >
                       <div className="label__tu">Concept</div>
                       <div className="label__name">
-                        DoubleClick to Go to Concept page
+                        Click to Go to Concept page
                       </div>
                     </div>
                   </Html>
@@ -1079,7 +1081,7 @@ export const Paper = ({
                   >
                     <div className="label__tu">About Us</div>
                     <div className="label__name">
-                      DoubleClick to Go to About-us page
+                      Click to Go to About-us page
                     </div>
                   </div>
                 </Html>
@@ -1204,7 +1206,7 @@ export const Door = ({
                   >
                     <div className="label__tu">HOME PAGE</div>
                     <div className="label__name">
-                      DoubleClick to Go to Home page
+                      Click to Go to Home page
                     </div>
                   </div>
                 </Html>

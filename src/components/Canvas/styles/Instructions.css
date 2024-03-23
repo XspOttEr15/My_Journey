@@ -8,19 +8,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background: rgba(0, 0, 0, 0.5);  */
-    background-image: url("/images/border-img/room.png");
-    background-size: cover;
+    background: rgba(0, 0, 0, 0.5); 
     backdrop-filter: blur(10px);
     color: white;
     z-index: 10; /* Ensure it's above the canvas */
-    transition: opacity 0.3s linear; /* Transition effect for opacity */
     opacity: 0;
+    transition: opacity 0.5s linear;
   }
 
   .instructions-overlay.visible {
-    transition: opacity 0.3s linear;
-    opacity: 1; /* Fully visible when the class "visible" is added */
+    transition: opacity 0.6s linear;
+    opacity: 1;
     
   }
   

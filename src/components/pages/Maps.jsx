@@ -34,7 +34,7 @@ export const Maps = () => {
                 <img
                   className="h-screen"
                   // onClick={scrollToStoryboard}
-                  src="/images/Maps/chapter1.jpg"
+                  src="https://ik.imagekit.io/vsfmz5htw/Maps/chapter1.jpg?updatedAt=1711183022133"
                   alt=""
                 />
 
@@ -53,7 +53,7 @@ export const Maps = () => {
                 <img
                   className="h-screen"
                   // onClick={scrollToChareacter}
-                  src="/images/Maps/chapter2.jpg"
+                  src="https://ik.imagekit.io/vsfmz5htw/Maps/chapter2.jpg?updatedAt=1711183023021"
                   alt=""
                 />
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
@@ -70,7 +70,7 @@ export const Maps = () => {
                 <img
                   className=" h-screen"
                   // onClick={scrollToCity}
-                  src="/images/Maps/chapter3.jpg"
+                  src="https://ik.imagekit.io/vsfmz5htw/Maps/chapter3.jpg?updatedAt=1711183023362"
                   alt=""
                 />
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">

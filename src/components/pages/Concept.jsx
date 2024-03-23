@@ -4,10 +4,6 @@ import { motion } from "framer-motion";
 import { DataContext } from "../../App";
 import useSound from "use-sound";
 import '../styles/Concept.css'
-import {
-  MouseParallaxContainer,
-  MouseParallaxChild,
-} from "react-parallax-mouse";
 
 
 const Concept = () => {
@@ -46,7 +42,7 @@ const Concept = () => {
           <Link to={"/character"}>
             <motion.img
               className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 "
-              src="/images/Concepts/character.png"
+              src="https://ik.imagekit.io/vsfmz5htw/Concepts/character.png?updatedAt=1711183016990"
               alt="Character"
               whileHover={{scale: 1.1}}
               transition={{duration:0.5}}
@@ -75,8 +71,9 @@ const Concept = () => {
         <Link to={"/maps"}>
           <motion.img
             className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 "
-            src="/images/Concepts/map.png"
+            src="https://ik.imagekit.io/vsfmz5htw/Concepts/map.png?updatedAt=1711183019710"
             alt="map"
+            loading="eager"
             whileHover={{scale: 1.1}}
             transition={{duration:0.5}}
             onClick={play}
