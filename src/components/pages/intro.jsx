@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../styles/intro.css";
 import { useNavigate } from "react-router-dom";
 import { useGLTF } from "@react-three/drei";
+import { DataContext } from "../../App";
 useGLTF.preload("/models/fky3_room.glb");
 
 
@@ -9,6 +10,12 @@ useGLTF.preload("/models/fky3_room.glb");
 const Intro = () => {
   const [fadeEffect, setFadeEffect] = useState("fade-enter");
   const navigate = useNavigate();
+  const { setColseBgmusic,
+    ColseBgmusic, } = useContext(DataContext);
+
+    useEffect(() => {
+      setColseBgmusic(true)
+    }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -50,6 +57,7 @@ const Intro = () => {
         เข้าสู่เว็บไซต์
       </button>
     </div>
+    
   );
 };
 
