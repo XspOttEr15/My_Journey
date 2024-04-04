@@ -7,14 +7,12 @@ import '../styles/Concept.css'
 
 
 const Concept = () => {
-  const { setCloseNavbar, setCloseButtonNavbar,setColseBgmusic,setIsNavbarFixed } = useContext(DataContext);
+  const { setCloseNavbar,setColseBgmusic, } = useContext(DataContext);
   const soundUrl = '/sound_effects/ButtonPush.mp3';
   const [play] = useSound(soundUrl);
   useEffect(() => {
-    setCloseNavbar(false);
-    setCloseButtonNavbar(false);
+    setCloseNavbar("showall");
     setColseBgmusic(false);
-    setIsNavbarFixed(false);
   },);
   return (
     <div className="w-full lg:h-screen  md:h-auto ">

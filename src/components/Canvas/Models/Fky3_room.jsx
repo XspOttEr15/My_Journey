@@ -13,7 +13,6 @@ import useSound from "use-sound";
 
 export function Room(props) {
   const { nodes, materials } = useGLTF("/models/fky3_room.glb");
-  const [playBgm, { stop: stopBgm }] = useSound("/audios/bgm_room.mp3", { volume: 0.06, loop: true });
   useEffect(() => {
     // materials.M_scifidoor.emissive.multiplyScalar(1.7);
     // materials.M_mainpipe.emissive.multiplyScalar(1.7);
@@ -28,13 +27,8 @@ export function Room(props) {
     // materials.M_cubboard.emissive.multiplyScalar(1.7);
     // materials.M_bigtable.emissive.multiplyScalar(1.7);
     // materials.M_glasscarpet.emissive.multiplyScalar(1.7);
-    playBgm();
-    return () => {
-      // Stop the background music when the component is unmounted
-      stopBgm();
-
-    };
-  }, [materials,  playBgm, stopBgm]);
+  
+  }, [materials]);
   
   
 

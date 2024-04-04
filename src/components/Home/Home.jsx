@@ -7,11 +7,11 @@ import Video from './Video'
 import { LoadingScreenRoom } from '../pages/LoadingScreen';
 
 const Home = () => {
-  const { setColseBgmusic,
-    ColseBgmusic, } = useContext(DataContext);
+  const { setColseBgmusic,setCloseNavbar } = useContext(DataContext);
 
     useEffect(() => {
       setColseBgmusic(false)
+      setCloseNavbar("showall")
     }, []);
   
   return (

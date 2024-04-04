@@ -10,8 +10,7 @@ useGLTF.preload("/models/fky3_room.glb");
 const Intro = () => {
   const [fadeEffect, setFadeEffect] = useState("fade-enter");
   const navigate = useNavigate();
-  const { setColseBgmusic,
-    ColseBgmusic, } = useContext(DataContext);
+  const { setColseBgmusic,CloseNavbar,setCloseNavbar } = useContext(DataContext);
 
     useEffect(() => {
       setColseBgmusic(true)
@@ -33,9 +32,8 @@ const Intro = () => {
 
   return (
     <div className={`instructions-overlay ${fadeEffect}`}>
-      <div className="overlay"></div>
       <div className="lg:text-5xl lg:mb-10 md:text-4xl md:mb-5 ">
-        คำเตือน: สิ่งที่ควรทราบก่อนเข้าเว็บไซต์
+        คำชี้แจง: สิ่งที่ควรทราบก่อนเข้าเว็บไซต์
       </div>
       <hr />
       <p className="lg:text-2xl md:text-lg text-center pt-5  lg:px-44 md:px-24">

@@ -41,18 +41,22 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 export const DataContext = createContext();
 
 function App() {
-  const [CloseNavbar, setCloseNavbar] = useState(false);
+  const [CloseNavbar, setCloseNavbar] = useState("hidden");
   const [CloseButtonNavbar, setCloseButtonNavbar] = useState(false);
-  const [Volumn, setVolumn] = useState(0.35);
+  const [Volumn, setVolumn] = useState(0.1);
+  const [RoomVolumn, setRoomVolumn] = useState(0.1);
   const [ColseBgmusic, setColseBgmusic] = useState(false);
   const [isNavbarFixed, setIsNavbarFixed] = useState(false);
   const [isPassOne, setIsPassOne] = useState(1)
+  const [isLocked, setIsLocked] = useState(false);
 
   return (
     <>
       <SpeedInsights />
       <DataContext.Provider
         value={{
+          RoomVolumn, 
+          setRoomVolumn,
           CloseNavbar,
           setCloseNavbar,
           CloseButtonNavbar,
@@ -64,7 +68,9 @@ function App() {
           isNavbarFixed,
           setIsNavbarFixed,
           isPassOne, 
-          setIsPassOne
+          setIsPassOne,
+          isLocked, 
+          setIsLocked,        
         }}
       >
         <div className="main">

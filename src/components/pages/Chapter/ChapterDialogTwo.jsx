@@ -23,133 +23,113 @@ const ChapterDialogTwo = () => {
   const [play] = useSound(soundUrl);
   const [dialogue, setDialogue] = useState([
     {
-      speaker: "-- Character Name --",
-      text: ".....ฉันอยู่ที่ไหน......",
+      speaker: "-- Lunar --",
+      text: "ใกล้จะถึงเขตชาญเมืองแล้วแหละนะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img2.png?updatedAt=1711190708064",
     },
     {
-      speaker: "-- Character Name --",
-      text: "/กำลังแก้ไขข้อผิดพลาด/(✖▂✖)",
+      speaker: "-- Lunar --",
+      text: "ฉันอยากจะรู้จังเลยนะ ว่าเมืองด้านบนจะมีคุณภาพชีวิตที่ดีกว่าเมืองด้านล่างขนาดไหน",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
-      speaker: "-- Lunar --",
-      text: "คุณเป็นอะไรรึเปล่า",
+      speaker: "-- Rabbet --",
+      text: "ที่เมืองด้านบนนั้นก็ใช่ว่าจะดีเสมอไปหรอกนะ มันก็มีสิ่งที่ต้องแลกมาหลายๆ อย่างอยู่เสมอซะทุกอย่างหน่ะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img2.png?updatedAt=1711190708064",
     },
     {
-      speaker: "-- Character Name --",
-      text: ".../ระบบขัดข้อง Memory บางส่วนเกิดความเสียหายไม่สามารถกู้ระบบได้/...",
+      speaker: "-- Lunar --",
+      text: "ใกล้จะถึงเขตชายเมืองแล้วแหละนะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Lunar --",
-      text: "ทำไมนายถึงตกลงมาที่ชั้นล่างสุดที่นี่หล่ะ ?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Name ?? --",
-      text: "ฉัน....จำไม่ได้......ดูเหมือนว่าระบบความทรงจำของฉันจะเสียหาย",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Name ?? --",
-      text: "เธอ...ชื่อว่าอะไรหรอ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "อะ.....เอ่อ ฉันชื่อ [Lunar]",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Name ?? --",
-      text: "[Lunar] ...... ส่วนฉัน....... ขอโทษนะฉันจำเรื่องของตัวเองไม่ได้เลย ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Name ?? --",
-      text: "ถ้าไม่เป็นการรบกวน เธอช่วยตั้งชื่อใหม่ให้ฉันหน่อยได้ไหม ?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "จะดีหรอ.....เอ่อ.....",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "นายมีหูเหมือนกระต่าย และเป็นหุ่นยนต์... ถ้างั้นชื่อ [Rabbet] ใช้ได้รึเปล่า?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Name ?? --",
-      text: "[Rabbet] ใช้ได้เลยหนิ ขอบคุณนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "แล้วจากนี้ไปนายจะทำยังไงต่อ จะกลับขึ้นไปที่เมืองด้านบนไหม?",
+      text:"มันพอจะมีวิธีแก้ไขสิ่งเหล่านี้บ้างไหม",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Rabbet --",
-      text: "ถึงจะจำเหตุผลไม่ได้ แต่ฉันก็คงต้องกลับขึ้นไปแหละนะ",
+      text: "ตราบเท่าที่มนุษย์ยังต้องพึ่งพาการผลิตพลังงานเหล่านี้อยู่ ก็จะสร้างมลพิษพวกนี้แบบไม่รู้จบ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Lunar --",
-      text: ".......",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "ถ้าอย่างนั้น ฉันขอออกเดินทางไปด้วยได้ไหม ?",
+      text: "สภาพอากาศที่เลวร้ายอย่างนี้ไม่มีวิธีแก้ไขมันเลยหรอ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Rabbet --",
-      text: "หะ!! เธอแน่ใจแล้วหรอ",
+      text: "เกรงว่าจะไม่ ถ้าหากเราไม่ได้แก้ไขที่จุดเริ่มต้นของมัน",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Lunar --",
-      text: "มันเคยเป็นความฝันของฉันหน่ะ วันหนึ่งฉันอยากออกเดินทาง อยากจะพบเจอสิ่งใหม่ๆ ก่อนที่จะอายุ 18 หน่ะ",
+      text: "แล้วถ้าเราเปลี่ยนวิธีการผลิตพลังงานหล่ะ?",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Rabbet --",
-      text: "ถ้าเธอออกเดินทางไป แล้วผู้คนที่นี่จะไม่เป็นห่วงเธอเอาหรอ ?",
+      text: "กระบวนการ การเปลี่ยนแปลงระบบมันไม่ได้ง่ายดายขนาดนั้นหรอกนะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Lunar --",
-      text: "ไม่เป็นไร ฉันไม่มีครอบครัว หรือเพื่อนที่คอยห่วงใยหรอก",
+      text: "ตะ..แต่ว่า...",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Rabbet --",
-      text: "ฉันขอโทษนะที่ทำให้นึกถึงเรื่องนั้น",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "อื้อ ไม่เป็นไร",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "ถ้าอย่างงั้น ขอฝากเนื้อ ฝากตัวด้วยนะ",
+      text: "คิดซะว่านี่คือกรรมตามสนองที่มนุษย์กระทำกับโลกนี้ไว้ก็ได้",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Rabbet --",
-      text: "เช่นกันนะ ขอให้เป็นการเดินทางที่น่าจดจำ",
+      text: "มนุษย์นี่สื่ออารมณ์ผ่านสีหน้าง่ายจังเลยนะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Lunar --",
-      text: "ฉันจับมือของ [Rabbet] และเรื่องราวของพวกเรากำลังจะเริ่มต้นขึ้น",
+      text: ".....ก็ใช่อยู่หรอกนะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "ถึงจะช่วยได้ไม่มากแต่สิ่งนี้คงจะเป็นประโยชน์ต่ออนาคต",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "อะไรหล่ะนั่น",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "แคปซูลต้นไม้หล่ะมั้ง",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "ต้นไม้งั้นหรอ พืชที่มีลักษณะสีเขียว ๆ นั้นหน่ะหรอ!?",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "นายมีมันได้ยังไงหน่ะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "ฉันน่าจะมีมันติดมาในตัวเครื่องของฉันเพื่อให้ฉันทำอะไรสักอย่าง มันอาจจะช่วยเกี่ยวกับพื้นที่แห่งนี้ละมั้งนะ ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "ถึงแม้ว่าฉันจะไม่ค่อยเข้าใจก็เถอะแต่มันคงเป็นเรื่องของอนาคตสักวันหนึ่งละนะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "ฉันยิ้มและรู้สึกดีใจที่จะมีพอจะมีอะไรบางอย่างที่ทำได้บ้าง ถึงแม้ฉันจะไม่สามารถทำได้แต่ฉันก็อยากจะเห็นความเปลี่ยนแปลงเหมือนกัน",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     // Add more dialogue objects as needed
