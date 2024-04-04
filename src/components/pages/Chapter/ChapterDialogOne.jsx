@@ -13,21 +13,23 @@ import alarmSound from "/audios/chapterOne/alarm.mp3";
 const ChapterDialogOne = () => {
   const [isSliderVisible, setIsSliderVisible] = useState(false);
   const audioRef = useRef(null);
+  const { setColseBgmusic} =
+    useContext(DataContext);
   const [isOpen, setIsOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth); // State to store window width
   const openNav = () => setIsOpen(true);
   const closeNav = () => setIsOpen(false);
-  const [volume, setVolume] = useState(10); // Initial volume value
+  const [volume, setVolume] = useState(0.1); // Initial volume value
   const [playwalkingSound, { stop: stopWalkingSound }] = useSound(
     walkingSound,
-    { volume: volume / 100, loop: false }
+    { volume: volume , loop: false }
   );
   const [playpunchSound, { stop: stopPunchSound }] = useSound(punchSound, {
-    volume: volume / 100,
+    volume: volume,
     loop: false,
   });
   const [playalarmSound, { stop: stopAlarmSound }] = useSound(alarmSound, {
-    volume: volume / 100,
+    volume: volume,
     loop: false,
   });
   const [playBgm, { pause: pauseBgm, stop: stopBgm }] = useSound(bgmSound, {
@@ -193,6 +195,14 @@ const ChapterDialogOne = () => {
   }, []);
 
   useEffect(() => {
+    return () => {
+      handleStopBgm(); // หยุดการเล่นเพลงพื้นหลัง
+      handleStopSoundEffects(); // หยุดการเล่นเอฟเฟกต์เสียงทั้งหมด
+    };
+  }, []);
+
+  useEffect(() => {
+    setColseBgmusic(false);
     playBgm();
     return () => {
       stopBgm();
@@ -218,7 +228,7 @@ const ChapterDialogOne = () => {
   };
 
   const handleVolumeChange = (e) => {
-    const newVolume = parseInt(e.target.value);
+    const newVolume = (e.target.value);
     setVolume(newVolume);
   };
 
@@ -453,8 +463,8 @@ const ChapterDialogOne = () => {
                         type="range"
                         className="volume"
                         min="0"
-                        max="100"
-                        step="10"
+                        max="1"
+                        step="0.01"
                         value={volume}
                         onChange={handleVolumeChange}
                       />
