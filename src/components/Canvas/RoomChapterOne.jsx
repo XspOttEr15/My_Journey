@@ -1,9 +1,4 @@
-import React, {
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   PointerLockControls,
@@ -13,10 +8,7 @@ import {
   KeyboardControls,
 } from "@react-three/drei";
 import { Floor, Room, Wall } from "./Models/Fky3_room";
-import {
-  Physics,
-  RigidBody,
-} from "@react-three/rapier";
+import { Physics, RigidBody } from "@react-three/rapier";
 import {
   Selection,
   EffectComposer,
@@ -67,7 +59,8 @@ export const RoomChapterOne = () => {
   const [targettwo, setTargetwo] = useState(1);
   const [targetthree, setTargethree] = useState(1);
   const [targetfour, setTargefour] = useState(1);
-  const { setColseBgmusic, setCloseNavbar, isLocked, setIsLocked } = useContext(DataContext);
+  const { setColseBgmusic, setCloseNavbar, isLocked, setIsLocked } =
+    useContext(DataContext);
   const [htmltext, setHtmltext] = useState(true);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
@@ -152,7 +145,7 @@ export const RoomChapterOne = () => {
       // End of dialogue
     }
   };
-  
+
   const handleBackT = () => {
     if (currentDialogueTIndex > 0) {
       setCurrentDialogueTIndex(currentDialogueTIndex - 1);
@@ -161,8 +154,6 @@ export const RoomChapterOne = () => {
       // End of dialogue
     }
   };
-  
-
 
   const keyboardMap = [
     { name: "forward", keys: ["ArrowUp", "KeyW"] },
@@ -175,9 +166,9 @@ export const RoomChapterOne = () => {
 
   useEffect(() => {
     setColseBgmusic(false);
-    setCloseNavbar("Room")
+    setCloseNavbar("Room");
+    setIsLocked(false);
   }, []);
-
 
   useEffect(() => {
     function handleResize() {
@@ -190,10 +181,6 @@ export const RoomChapterOne = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  
-
-  
-
   return (
     <>
       <div className=" w-full h-screen ">
@@ -201,8 +188,15 @@ export const RoomChapterOne = () => {
           <h3 className=" text-2xl mt-1">กด ESC เพื่อแสดง Menu Tutorial</h3>
         </div>
         <div className="aim"></div>
-        {windowWidth < 1440 && <EcctrlJoystick />} 
-        <Instructions onPlayClick={() => setIsLocked(true)} isVisible={!isLocked} setOpenModalTutorial={setOpenModalTutorial} setIsLocked={setIsLocked} isLocked={isLocked} setSelector={setSelector}/> 
+        {windowWidth < 1440 && <EcctrlJoystick />}
+        <Instructions
+          onPlayClick={() => setIsLocked(true)}
+          isVisible={!isLocked}
+          setOpenModalTutorial={setOpenModalTutorial}
+          setIsLocked={setIsLocked}
+          isLocked={isLocked}
+          setSelector={setSelector}
+        />
         <Canvas
           shadows="soft"
           camera={false}
@@ -235,13 +229,15 @@ export const RoomChapterOne = () => {
                 {/* Replace your model here */}
                 <Player />
                 {/* First Person Camera */}
-                {!disableFollowCam &&
+                {!disableFollowCam && (
                   <PointerLockControls
                     onLock={() => setIsLocked(true)}
-                    onUnlock={() => {setIsLocked(false) ,setSelector("#Skip")}}
+                    onUnlock={() => {
+                      setIsLocked(false), setSelector("#Skip");
+                    }}
                     selector={selector}
                   />
-                }
+                )}
               </Ecctrl>
             </KeyboardControls>
             <Room />
@@ -249,7 +245,7 @@ export const RoomChapterOne = () => {
             <Wall />
             <mesh
               onClick={() => {
-                  setdisableFollowCam(true),
+                setdisableFollowCam(true),
                   setLoopcamera(true),
                   setHtmltext(false),
                   play();
@@ -323,12 +319,8 @@ export const RoomChapterOne = () => {
           <Lights />
         </Canvas>
 
-
-
-
-
-      {/* Modal tutorial */}
-      <motion.div
+        {/* Modal tutorial */}
+        <motion.div
           key={openModalTutorial}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -340,8 +332,7 @@ export const RoomChapterOne = () => {
             onClose={() => {
               setOpenModalTutorial(false);
               setdisableFollowCam(false);
-              setIsLocked(false),
-              play();
+              setIsLocked(false), play();
             }}
             style={{
               cursor: 'url("/images/CustomMouses/default32.png"), pointer',
@@ -415,6 +406,7 @@ export const RoomChapterOne = () => {
                   <motion.p className="lg:text-xl p-6 text-center">
                     {dialogueT[currentDialogueTIndex].text}
                   </motion.p>
+                  {currentDialogueTIndex === 3 && (
                     <div className="text-center m-3">
                       <button
                         onClick={() => {
@@ -427,21 +419,17 @@ export const RoomChapterOne = () => {
                         }}
                         type="button"
                         id="Skip"
-                        className="  text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none  focus:ring-blue-800 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
+                        className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
                       >
                         {dialogueT[currentDialogueTIndex].button}
                       </button>
                     </div>
+                  )}
                 </motion.div>
               </div>
             </Modal.Body>
           </Modal>
-          </motion.div>
-
-
-
-
-
+        </motion.div>
 
         {/* Modal book */}
         <motion.div
@@ -456,11 +444,10 @@ export const RoomChapterOne = () => {
             onClose={() => {
               setOpenModal(false);
               setdisableFollowCam(false);
-              setIsLocked(true),
-              setHtmltext(true);
+              setIsLocked(true), setHtmltext(true);
               setTarget(1);
               play();
-              setSelector(".instructions-overlay")
+              setSelector(".instructions-overlay");
             }}
             style={{
               cursor: 'url("/images/CustomMouses/default32.png"), pointer',
@@ -553,199 +540,162 @@ export const RoomChapterOne = () => {
               </div>
             </Modal.Body>
           </Modal>
-          </motion.div>
+        </motion.div>
 
+        {/* Modal book Concept */}
 
-
-
-
-
-
-
-
-
-          {/* Modal book Concept */}
-
-          <Modal
-            show={openModaltwo}
-            size="md"
-            onClose={() => {
-              setOpenModaltwo(false);
-              setdisableFollowCam(false);
-              setHtmltext(true);
-              setTargetwo(1);
-              play();
-              setIsLocked(true),
-              setSelector(".instructions-overlay")
-            }}
-            popup
-          >
-            <Modal.Header className="bg-slate-800" />
-            <Modal.Body className="class bg-slate-800">
-              <div className="text-center">
-                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
-                <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
-                  คุณแน่ใจว่าจะไปหน้า Concept ?
-                </h3>
-                <div className="flex flex-col md:flex-row justify-center gap-4 ">
-                  <Link to={"/concept"}>
-                    <Button
-                      color="failure"
-                      onClick={() => {
-                        setOpenModaltwo(false);
-                        play();
-                      }}
-                    >
-                      {" ไปหน้า Concept"}
-                    </Button>
-                  </Link>
+        <Modal
+          show={openModaltwo}
+          size="md"
+          onClose={() => {
+            setOpenModaltwo(false);
+            setdisableFollowCam(false);
+            setHtmltext(true);
+            setTargetwo(1);
+            play();
+            setIsLocked(true), setSelector(".instructions-overlay");
+          }}
+          popup
+        >
+          <Modal.Header className="bg-slate-800" />
+          <Modal.Body className="class bg-slate-800">
+            <div className="text-center">
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
+              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
+                คุณแน่ใจว่าจะไปหน้า Concept ?
+              </h3>
+              <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                <Link to={"/concept"}>
                   <Button
-                    color="gray"
+                    color="failure"
                     onClick={() => {
                       setOpenModaltwo(false);
-                      setdisableFollowCam(false);
-                      setHtmltext(true);
-                      setTargetwo(1);
                       play();
                     }}
                   >
-                    ยกเลิก
+                    {" ไปหน้า Concept"}
                   </Button>
-                </div>
+                </Link>
+                <Button
+                  color="gray"
+                  onClick={() => {
+                    setOpenModaltwo(false);
+                    setdisableFollowCam(false);
+                    setHtmltext(true);
+                    setTargetwo(1);
+                    play();
+                  }}
+                >
+                  ยกเลิก
+                </Button>
               </div>
-            </Modal.Body>
-          </Modal>
+            </div>
+          </Modal.Body>
+        </Modal>
 
+        {/* Modal book Concept */}
 
-
-
-
-
-
-
-
-
-           {/* Modal book Concept */}
-
-          <Modal
-            show={openModalthree}
-            size="md"
-            onClose={() => {
-              setOpenModalthree(false);
-              setdisableFollowCam(false);
-              setHtmltext(true);
-              setTargethree(1);
-              play();
-              setIsLocked(true),
-              setSelector(".instructions-overlay")
-            }}
-            popup
-          >
-            <Modal.Header className="bg-slate-800" />
-            <Modal.Body className="class bg-slate-800">
-              <div className="text-center">
-                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
-                <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
-                  คุณแน่ใจว่าจะไปหน้า About Us ?
-                </h3>
-                <div className="flex flex-col md:flex-row justify-center gap-4 ">
-                  <Link to={"/about"}>
-                    <Button
-                      color="failure"
-                      onClick={() => {
-                        setOpenModalthree(false);
-                        play();
-                      }}
-                    >
-                      {" ไปหน้า About Us"}
-                    </Button>
-                  </Link>
+        <Modal
+          show={openModalthree}
+          size="md"
+          onClose={() => {
+            setOpenModalthree(false);
+            setdisableFollowCam(false);
+            setHtmltext(true);
+            setTargethree(1);
+            play();
+            setIsLocked(true), setSelector(".instructions-overlay");
+          }}
+          popup
+        >
+          <Modal.Header className="bg-slate-800" />
+          <Modal.Body className="class bg-slate-800">
+            <div className="text-center">
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
+              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
+                คุณแน่ใจว่าจะไปหน้า About Us ?
+              </h3>
+              <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                <Link to={"/about"}>
                   <Button
-                    color="gray"
+                    color="failure"
                     onClick={() => {
                       setOpenModalthree(false);
-                      setdisableFollowCam(false);
-                      setHtmltext(true);
-                      setTargethree(1);
                       play();
                     }}
                   >
-                    ยกเลิก
+                    {" ไปหน้า About Us"}
                   </Button>
-                </div>
+                </Link>
+                <Button
+                  color="gray"
+                  onClick={() => {
+                    setOpenModalthree(false);
+                    setdisableFollowCam(false);
+                    setHtmltext(true);
+                    setTargethree(1);
+                    play();
+                  }}
+                >
+                  ยกเลิก
+                </Button>
               </div>
-            </Modal.Body>
-          </Modal>
+            </div>
+          </Modal.Body>
+        </Modal>
 
+        {/* Modal Doors Home */}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-           {/* Modal Doors Home */}
-
-          <Modal
-            show={openModaldoor}
-            size="md"
-            onClose={() => {
-              setOpenModaldoor(false);
-              setdisableFollowCam(false);
-              setHtmltext(true);
-              setTargefour(1);
-              play();
-              setSelector(".instructions-overlay")
-            }}
-            popup
-          >
-            <Modal.Header className="bg-slate-800" />
-            <Modal.Body className="class bg-slate-800">
-              <div className="text-center">
-                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
-                <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
-                  คุณแน่ใจว่าจะไปหน้า Home page ?
-                </h3>
-                <div className="flex flex-col md:flex-row justify-center gap-4 ">
-                  <Link to={"/home"}>
-                    <Button
-                      color="failure"
-                      onClick={() => {
-                        setOpenModaldoor(false);
-                        play();
-                      }}
-                    >
-                      {" ไปหน้า Home"}
-                    </Button>
-                  </Link>
+        <Modal
+          show={openModaldoor}
+          size="md"
+          onClose={() => {
+            setOpenModaldoor(false);
+            setdisableFollowCam(false);
+            setHtmltext(true);
+            setTargefour(1);
+            play();
+            setSelector(".instructions-overlay");
+          }}
+          popup
+        >
+          <Modal.Header className="bg-slate-800" />
+          <Modal.Body className="class bg-slate-800">
+            <div className="text-center">
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
+              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normaltext-gray-400">
+                คุณแน่ใจว่าจะไปหน้า Home page ?
+              </h3>
+              <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                <Link to={"/home"}>
                   <Button
-                    color="gray"
+                    color="failure"
                     onClick={() => {
                       setOpenModaldoor(false);
-                      setdisableFollowCam(false);
-                      setHtmltext(true);
-                      setTargefour(1);
                       play();
-                      setIsLocked(true),
-                      setSelector(".instructions-overlay")
                     }}
                   >
-                    ยกเลิก
+                    {" ไปหน้า Home"}
                   </Button>
-                </div>
+                </Link>
+                <Button
+                  color="gray"
+                  onClick={() => {
+                    setOpenModaldoor(false);
+                    setdisableFollowCam(false);
+                    setHtmltext(true);
+                    setTargefour(1);
+                    play();
+                    setIsLocked(true), setSelector(".instructions-overlay");
+                  }}
+                >
+                  ยกเลิก
+                </Button>
               </div>
-            </Modal.Body>
-          </Modal>
-          
-       
-        </div>
+            </div>
+          </Modal.Body>
+        </Modal>
+      </div>
     </>
   );
 };
@@ -979,7 +929,7 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
                   >
                     <div className="label__tu">LUNAR's BOOK</div>
                     <div className="label__name">
-                    Click to Start your Journey
+                      Click to Start your Journey
                     </div>
                   </div>
                 </Html>
@@ -1413,9 +1363,7 @@ export const Door = ({
                     }`}
                   >
                     <div className="label__tu">HOME PAGE</div>
-                    <div className="label__name">
-                      Click to Go to Home page
-                    </div>
+                    <div className="label__name">Click to Go to Home page</div>
                   </div>
                 </Html>
               )}

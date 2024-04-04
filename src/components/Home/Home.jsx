@@ -4,14 +4,13 @@ import { DataContext } from '../../App'
 import { motion } from "framer-motion";
 import { Overlay } from './Overlay';
 import Video from './Video'
-import { LoadingScreenRoom } from '../pages/LoadingScreen';
 
 const Home = () => {
-  const { setColseBgmusic,setCloseNavbar } = useContext(DataContext);
-
+  const { setColseBgmusic,setCloseNavbar,setIsLocked } = useContext(DataContext);
     useEffect(() => {
-      setColseBgmusic(false)
-      setCloseNavbar("showall")
+      setColseBgmusic(false);
+      setCloseNavbar("showall");
+      setIsLocked(true);
     }, []);
   
   return (

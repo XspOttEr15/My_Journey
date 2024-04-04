@@ -48,7 +48,7 @@ function App() {
   const [ColseBgmusic, setColseBgmusic] = useState(false);
   const [isNavbarFixed, setIsNavbarFixed] = useState(false);
   const [isPassOne, setIsPassOne] = useState(1)
-  const [isLocked, setIsLocked] = useState(false);
+  const [isLocked, setIsLocked] = useState();
 
   return (
     <>
