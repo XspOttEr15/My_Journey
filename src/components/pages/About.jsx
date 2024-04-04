@@ -4,12 +4,10 @@ import "../styles/About.css";
 import { motion } from "framer-motion";
 import { DataContext } from "../../App";
 const About = () => {
-  const { setCloseNavbar, setCloseButtonNavbar,setColseBgmusic,setIsNavbarFixed} = useContext(DataContext);
+  const { setCloseNavbar, setColseBgmusic,} = useContext(DataContext);
   useEffect(() => {
-    setCloseNavbar(false);
-    setCloseButtonNavbar(false);
+    setCloseNavbar("showall");
     setColseBgmusic(false);
-    setIsNavbarFixed(false);
   }, []);
   return (
     <>

@@ -1,11 +1,9 @@
 import React, {
-  Suspense,
   useContext,
   useEffect,
   useRef,
   useState,
 } from "react";
-import * as RAPIER from "@dimforge/rapier3d-compat";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   PointerLockControls,
@@ -16,8 +14,6 @@ import {
 } from "@react-three/drei";
 import { Floor, Room, Wall } from "./Models/Fky3_room";
 import {
-  CapsuleCollider,
-  CuboidCollider,
   Physics,
   RigidBody,
 } from "@react-three/rapier";
@@ -40,10 +36,10 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import useSound from "use-sound";
 import Ecctrl from "ecctrl";
 import { EcctrlJoystick } from "ecctrl";
-import { Perf } from "r3f-perf";
 import Instructions from "./Instructions";
 
 export const RoomChapterOne = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [maxVelLimit, setmaxVelLimit] = useState(2.5);
   const [disableFollowCamPos, setDisableFollowCamPos] = useState({
     x: 0,
@@ -56,10 +52,12 @@ export const RoomChapterOne = () => {
     z: -2,
   });
   const [jumpVel, setjumpVel] = useState(4);
+  const [selector, setSelector] = useState("#Skip");
   const [openModal, setOpenModal] = useState(false);
   const [openModaltwo, setOpenModaltwo] = useState(false);
   const [openModalthree, setOpenModalthree] = useState(false);
   const [openModaldoor, setOpenModaldoor] = useState(false);
+  const [openModalTutorial, setOpenModalTutorial] = useState(false);
   const [disableFollowCam, setdisableFollowCam] = useState(false);
   const [loopcamera, setLoopcamera] = useState(false);
   const [loopcameratwo, setLoopcameratwo] = useState(false);
@@ -69,7 +67,7 @@ export const RoomChapterOne = () => {
   const [targettwo, setTargetwo] = useState(1);
   const [targetthree, setTargethree] = useState(1);
   const [targetfour, setTargefour] = useState(1);
-  const { setColseBgmusic, ColseBgmusic } = useContext(DataContext);
+  const { setColseBgmusic, setCloseNavbar, isLocked, setIsLocked } = useContext(DataContext);
   const [htmltext, setHtmltext] = useState(true);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
@@ -80,7 +78,6 @@ export const RoomChapterOne = () => {
       bg: "https://ik.imagekit.io/vsfmz5htw/StoryRoom/Deepsun1.png?updatedAt=1711183025564",
       button: "Choose Chapter 1",
       link: "/chapterone",
-      style: "",
     },
     {
       speaker: "-- Solarwind2 --",
@@ -118,9 +115,54 @@ export const RoomChapterOne = () => {
     }
   };
 
-  const exsitPointerLock = () => {
-    document.exitPointerLock();
+  const [dialogueT, setDialogueT] = useState([
+    {
+      speaker: "-- Control (PC) --",
+      text: " กดปุ่ม W A S D ในการขยับ , กดปุ่ม Shift ค้างร่วมกับปุ่ม W A S D ในการวิ่ง และกดปุ่ม SPACEBAR เพื่อกระโดด ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Tutorial/1.png?updatedAt=1712174319081",
+      button: "Close Tutorial",
+    },
+    {
+      speaker: "-- Control (Tablet) --",
+      text: "ใช้ปุ่ม Joystick ด้านซ้ายในการขยับ หากเลื่อน Joystick เพียงเล็กน้อยจะเป็นการเดิน หากเลื่อน Joystick มากจะเป็นการวิ่ง และปุ่มด้านขวาใช้ในการกระโดด",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Tutorial/2.png?updatedAt=1712174319110",
+      button: "Close Tutorial",
+    },
+    {
+      speaker: "-- How to play --",
+      text: "ผู้ใช้จะต้องอินเทอร์แรคท์กับวัตถุต่าง ๆ ภายในห้อง โดยวัตถุที่สามารถอินเทอร์แรคท์ได้จะมีแสงออกมาเมื่อนำ Cursor Mouse กลางจอไปวางบนวัตถุดังกล่าว ดังภาพ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Tutorial/3.png?updatedAt=1712174659426",
+      button: "Close Tutorial",
+    },
+    {
+      speaker: "-- Tutorial --",
+      text: "กดปุ่ม ESC จะเป็นการแสดงหน้า Tutorial และ SildeBar",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Tutorial/4.png?updatedAt=1712174319122",
+      button: "Close Tutorial",
+    },
+    // Add more dialogue objects as needed
+  ]);
+
+  const [currentDialogueTIndex, setCurrentDialogueTIndex] = useState(0);
+  const handleNextT = () => {
+    if (currentDialogueTIndex < dialogueT.length - 1) {
+      setCurrentDialogueTIndex(currentDialogueTIndex + 1);
+      // Handle choices or character changes based on the dialogue progress
+    } else {
+      // End of dialogue
+    }
   };
+  
+  const handleBackT = () => {
+    if (currentDialogueTIndex > 0) {
+      setCurrentDialogueTIndex(currentDialogueTIndex - 1);
+      // Handle choices or character changes based on the dialogue progress
+    } else {
+      // End of dialogue
+    }
+  };
+  
+
 
   const keyboardMap = [
     { name: "forward", keys: ["ArrowUp", "KeyW"] },
@@ -132,10 +174,10 @@ export const RoomChapterOne = () => {
   ];
 
   useEffect(() => {
-    setColseBgmusic(true);
-  }, [ColseBgmusic]);
+    setColseBgmusic(false);
+    setCloseNavbar("Room")
+  }, []);
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     function handleResize() {
@@ -148,7 +190,7 @@ export const RoomChapterOne = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const [isLocked, setIsLocked] = useState(false);
+  
 
   
 
@@ -156,13 +198,11 @@ export const RoomChapterOne = () => {
     <>
       <div className=" w-full h-screen ">
         <div className="tutorial">
-          <h3 className=" text-2xl mt-1">กด ESC เพื่อแสดง Cursor Mouse</h3>
-          <h3 className=" text-2xl mt-1">กด W A S D เพื่อเดินไปรอบ ๆ </h3>
-          <h3 className=" text-2xl mt-1">กด SPACEBAR เพื่อกระโดด</h3>
+          <h3 className=" text-2xl mt-1">กด ESC เพื่อแสดง Menu Tutorial</h3>
         </div>
         <div className="aim"></div>
-        {windowWidth < 1440 && <EcctrlJoystick />}
-        <Instructions onPlayClick={() => setIsLocked(true)} isVisible={!isLocked}  /> 
+        {windowWidth < 1440 && <EcctrlJoystick />} 
+        <Instructions onPlayClick={() => setIsLocked(true)} isVisible={!isLocked} setOpenModalTutorial={setOpenModalTutorial} setIsLocked={setIsLocked} isLocked={isLocked} setSelector={setSelector}/> 
         <Canvas
           shadows="soft"
           camera={false}
@@ -170,7 +210,6 @@ export const RoomChapterOne = () => {
         >
           <color attach="background" args={["#638689"]} />
           <fog attach="fog" args={["#569BF3", 1, 200]} />
-          {/* <Perf position="top-left" /> */}
           {/* debug */}
           <Physics gravity={[0, -11, 0]}>
             <KeyboardControls map={keyboardMap}>
@@ -199,9 +238,8 @@ export const RoomChapterOne = () => {
                 {!disableFollowCam &&
                   <PointerLockControls
                     onLock={() => setIsLocked(true)}
-                    onUnlock={() => setIsLocked(false)}
-                    selector=".instructions-overlay"
-                    
+                    onUnlock={() => {setIsLocked(false) ,setSelector("#Skip")}}
+                    selector={selector}
                   />
                 }
               </Ecctrl>
@@ -211,7 +249,7 @@ export const RoomChapterOne = () => {
             <Wall />
             <mesh
               onClick={() => {
-                setdisableFollowCam(true),
+                  setdisableFollowCam(true),
                   setLoopcamera(true),
                   setHtmltext(false),
                   play();
@@ -284,6 +322,128 @@ export const RoomChapterOne = () => {
           </Physics>
           <Lights />
         </Canvas>
+
+
+
+
+
+      {/* Modal tutorial */}
+      <motion.div
+          key={openModalTutorial}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <Modal
+            size={"7xl"}
+            show={openModalTutorial}
+            onClose={() => {
+              setOpenModalTutorial(false);
+              setdisableFollowCam(false);
+              setIsLocked(false),
+              play();
+            }}
+            style={{
+              cursor: 'url("/images/CustomMouses/default32.png"), pointer',
+            }}
+          >
+            <motion.svg
+              className="w-12 h-12  text-white absolute top-[50%] bottom-[50%] left-[0%] opacity-60 z-[50]"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 10 16"
+              onClick={() => {
+                handleBackT(), play();
+              }}
+              whileHover={{ scale: 1.5 }}
+              whileTap={{ scale: 0.9 }}
+              style={{
+                cursor: 'url("/images/CustomMouses/pointer32.png"), pointer',
+              }}
+            >
+              <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
+            </motion.svg>
+
+            <motion.svg
+              className="w-12 h-12 text-white absolute top-[50%] bottom-[50%] right-[0%] opacity-60 z-[50]"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 10 16"
+              onClick={() => {
+                handleNextT(), play();
+              }}
+              whileHover={{ scale: 1.5 }}
+              whileTap={{ scale: 0.9 }}
+              style={{
+                cursor: 'url("/images/CustomMouses/pointer32.png"), pointer',
+              }}
+            >
+              <path d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z" />
+            </motion.svg>
+            <Modal.Header className=" bg-slate-800">
+              <span className="text-white">Tutorial</span>
+            </Modal.Header>
+
+            <Modal.Body className="bg-slate-800 relative">
+              <div id="city" className="lg:flex md:flex mx-5 m-5  ">
+                <div className=" w-full h-auto m-2 ">
+                  <motion.img
+                    src={dialogueT[currentDialogueTIndex].bg}
+                    alt="..."
+                    className="rounded-3xl h-full w-full z-10"
+                    key={currentDialogueTIndex}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 50 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </div>
+
+                <motion.div
+                  className="m-2 bg-gray-700 rounded-xl w-[100%] flex flex-col items-center justify-center"
+                  key={currentDialogueTIndex}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 25 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <motion.h1 className="text-4xl lg:text-4xl font-extrabold text-white text-center pt-5">
+                    {dialogueT[currentDialogueTIndex].speaker}
+                  </motion.h1>
+                  <motion.p className="lg:text-xl p-6 text-center">
+                    {dialogueT[currentDialogueTIndex].text}
+                  </motion.p>
+                    <div className="text-center m-3">
+                      <button
+                        onClick={() => {
+                          play();
+                          setOpenModalTutorial(false);
+                        }}
+                        style={{
+                          cursor:
+                            'url("/images/CustomMouses/pointer.png"), pointer',
+                        }}
+                        type="button"
+                        id="Skip"
+                        className="  text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none  focus:ring-blue-800 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
+                      >
+                        {dialogueT[currentDialogueTIndex].button}
+                      </button>
+                    </div>
+                </motion.div>
+              </div>
+            </Modal.Body>
+          </Modal>
+          </motion.div>
+
+
+
+
+
+
+        {/* Modal book */}
         <motion.div
           key={openModal}
           initial={{ opacity: 0 }}
@@ -300,6 +460,7 @@ export const RoomChapterOne = () => {
               setHtmltext(true);
               setTarget(1);
               play();
+              setSelector(".instructions-overlay")
             }}
             style={{
               cursor: 'url("/images/CustomMouses/default32.png"), pointer',
@@ -392,6 +553,18 @@ export const RoomChapterOne = () => {
               </div>
             </Modal.Body>
           </Modal>
+          </motion.div>
+
+
+
+
+
+
+
+
+
+
+          {/* Modal book Concept */}
 
           <Modal
             show={openModaltwo}
@@ -402,6 +575,8 @@ export const RoomChapterOne = () => {
               setHtmltext(true);
               setTargetwo(1);
               play();
+              setIsLocked(true),
+              setSelector(".instructions-overlay")
             }}
             popup
           >
@@ -441,6 +616,17 @@ export const RoomChapterOne = () => {
             </Modal.Body>
           </Modal>
 
+
+
+
+
+
+
+
+
+
+           {/* Modal book Concept */}
+
           <Modal
             show={openModalthree}
             size="md"
@@ -450,6 +636,8 @@ export const RoomChapterOne = () => {
               setHtmltext(true);
               setTargethree(1);
               play();
+              setIsLocked(true),
+              setSelector(".instructions-overlay")
             }}
             popup
           >
@@ -489,6 +677,22 @@ export const RoomChapterOne = () => {
             </Modal.Body>
           </Modal>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           {/* Modal Doors Home */}
+
           <Modal
             show={openModaldoor}
             size="md"
@@ -498,6 +702,7 @@ export const RoomChapterOne = () => {
               setHtmltext(true);
               setTargefour(1);
               play();
+              setSelector(".instructions-overlay")
             }}
             popup
           >
@@ -528,6 +733,8 @@ export const RoomChapterOne = () => {
                       setHtmltext(true);
                       setTargefour(1);
                       play();
+                      setIsLocked(true),
+                      setSelector(".instructions-overlay")
                     }}
                   >
                     ยกเลิก
@@ -536,7 +743,8 @@ export const RoomChapterOne = () => {
               </div>
             </Modal.Body>
           </Modal>
-        </motion.div>
+          
+       
         </div>
     </>
   );
