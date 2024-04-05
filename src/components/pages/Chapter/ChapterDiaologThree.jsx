@@ -1,46 +1,69 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Modal } from "flowbite-react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { DataContext } from "../../../App";
 import useSound from "use-sound";
+import "./styles/ChapterOne.css";
+import bgmSound from "/audios/chapterOne/bgm1.mp3";
+import walkingSound from "/audios/chapterOne/walking.mp3";
+import punchSound from "/audios/chapterOne/punch.mp3";
+import alarmSound from "/audios/chapterOne/alarm.mp3";
 
 const ChapterDialogThree = () => {
+  const [isSliderVisible, setIsSliderVisible] = useState(false);
+  const audioRef = useRef(null);
+  const { setColseBgmusic,setCloseNavbar} =
+    useContext(DataContext);
+  const [isOpen, setIsOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth); // State to store window width
+  const openNav = () => setIsOpen(true);
+  const closeNav = () => setIsOpen(false);
+  const [volume, setVolume] = useState(0.1); // Initial volume value
+  const [playwalkingSound, { stop: stopWalkingSound }] = useSound(
+    walkingSound,
+    { volume: volume , loop: false }
+  );
+  const [playpunchSound, { stop: stopPunchSound }] = useSound(punchSound, {
+    volume: volume,
+    loop: false,
+  });
+  const [playalarmSound, { stop: stopAlarmSound }] = useSound(alarmSound, {
+    volume: volume,
+    loop: false,
+  });
+  const [playBgm, { pause: pauseBgm, stop: stopBgm }] = useSound(bgmSound, {
+    volume: 0.05,
+    loop: true,
+  });
   const [textFullyTyped, setTextFullyTyped] = useState(false);
   const [currentDialogueIndex, setCurrentDialogueIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState(""); // Track displayed text
   const [typingSpeed, setTypingSpeed] = useState(30); // Adjust typing speed as needed
   const [openModal, setOpenModal] = useState(false);
-  const {
-    setCloseNavbar,
-    setCloseButtonNavbar,
-    CloseButtonNavbar,
-    setIsNavbarFixed,
-    setColseBgmusic,
-  } = useContext(DataContext);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [dialogue, setDialogue] = useState([
     {
       speaker: "-- Character Name --",
       text: ".....ฉันอยู่ที่ไหน......",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img2.png?updatedAt=1711190708064",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Character Name --",
       text: "/กำลังแก้ไขข้อผิดพลาด/(✖▂✖)",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img2.png?updatedAt=1711190708064",
     },
     {
       speaker: "-- Lunar --",
       text: "คุณเป็นอะไรรึเปล่า",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img2.png?updatedAt=1711190708064",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
     },
     {
       speaker: "-- Character Name --",
       text: ".../ระบบขัดข้อง Memory บางส่วนเกิดความเสียหายไม่สามารถกู้ระบบได้/...",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img2.png?updatedAt=1711190708064",
     },
     {
       speaker: "-- Lunar --",
@@ -155,21 +178,73 @@ const ChapterDialogThree = () => {
     // Add more dialogue objects as needed
   ]);
 
+  const toggleSliderVisibility = () => {
+    setIsSliderVisible(!isSliderVisible);
+  };
+
   useEffect(() => {
-    setCloseNavbar(true);
-    setCloseButtonNavbar(false);
-    setColseBgmusic(true);
-    setIsNavbarFixed(true);
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+  useEffect(() => {
+    return () => {
+      handleStopBgm(); // หยุดการเล่นเพลงพื้นหลัง
+      handleStopSoundEffects(); // หยุดการเล่นเอฟเฟกต์เสียงทั้งหมด
+    };
+  }, []);
+
+  useEffect(() => {
+    setColseBgmusic(false);
+    playBgm();
+    return () => {
+      stopBgm();
+    };
+  }, [playBgm, stopBgm]);
+
+  const handlePauseBgm = () => {
+    pauseBgm();
+  };
+
+  const handlePlayBgm = () => {
+    playBgm();
+  };
+
+  const handleStopBgm = () => {
+    stopBgm();
+  };
+
+  const handleStopSoundEffects = () => {
+    stopWalkingSound();
+    stopPunchSound();
+    stopAlarmSound();
+  };
+
+  const handleVolumeChange = (e) => {
+    const newVolume = (e.target.value);
+    setVolume(newVolume);
+  };
 
   const handleNext = () => {
     if (textFullyTyped && currentDialogueIndex < dialogue.length - 1) {
+      handleStopSoundEffects();
       setCurrentDialogueIndex(currentDialogueIndex + 1);
+      play();
+      setIsAnimating(true); // เริ่มเล่นอนิเมชัน
       // Reset textFullyTyped state for the next dialogue
       setTextFullyTyped(false);
+      setTimeout(() => setIsAnimating(false), 1000); // หยุดเล่นอนิเมชันหลังจาก 1 วินาที
     } else if (textFullyTyped && currentDialogueIndex === dialogue.length - 1) {
       // Show the modal when user clicks on the last dialogue
       setOpenModal(true);
+      handleStopSoundEffects();
     }
   };
 
@@ -195,35 +270,257 @@ const ChapterDialogThree = () => {
     return () => clearInterval(typingInterval);
   }, [currentDialogueIndex, dialogue, typingSpeed]);
 
+  const [fadeEffect, setFadeEffect] = useState("fade-enter");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setFadeEffect(fadeEffect + " fade-enter-active");
+    }, 1000);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const handleButtonClickRoom = () => {
+    setFadeEffect("fade-exit-active");
+    setTimeout(() => {
+      navigate("/roomchapterone");
+    }, 3000); // 3000ms is the duration of the fade-out effect
+  };
+
+  const handleButtonClickNext = () => {
+    setFadeEffect("fade-exit-active");
+    setTimeout(() => {
+      navigate("/chapterthree");
+    }, 3000); // 3000ms is the duration of the fade-out effect
+  };
+
+  useEffect(() => {
+    if (currentDialogueIndex === 0) {
+      handlePlayBgm();
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 1) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+      handlePauseBgm();
+    } else if (currentDialogueIndex === 2) {
+      setTimeout(() => {
+        playpunchSound();
+      }, 1000);
+      handlePlayBgm();
+    } else if (currentDialogueIndex === 3) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 4) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 5) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 6) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 7) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 8) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 9) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 10) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 11) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 12) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 13) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 14) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 15) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 16) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 17) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 18) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 19) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 20) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 21) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 22) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 23) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 24) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 25) {
+      setTimeout(() => {
+        playwalkingSound();
+      }, 1000);
+    } else if (currentDialogueIndex === 26) {
+      setTimeout(() => {
+        playalarmSound();
+      }, 1000);
+    }
+  }, [currentDialogueIndex]);
+
   return (
     <>
-      {/* {!CloseButtonNavbar && (
-        <Button
-          className="absolute z-50 right-[1%] top-[1.8%] rounded-full  opacity-50"
-          gradientDuoTone="purpleToBlue"
-          onClick={() => {
-            setCloseNavbar(false), setCloseButtonNavbar(true), play();
-          }}
+      <nav id="Navbar" className="fixed top-0 left-0 w-full z-30">
+        <div
+          id="Logo"
+          className="flex flex-wrap items-center justify-between mx-8 mt-4 p-4"
         >
-          <svg
-            class="w-6 h-6 text-gray-800 dark:text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeWidth="2"
-              d="M5 7h14M5 12h14M5 17h14"
-            />
-          </svg>
-        </Button>
-      )} */}
-      <div className="w-full h-full text-center">
+          <div>
+            <Link
+              to={"/home"}
+              className="flex items-center space-x-3 rtl:space-x-reverse"
+            >
+              <img
+                src="/images/Logo/icon_web.png"
+                className="h-12"
+                alt="Flowbite Logo"
+              />
+              <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
+                My Journey
+              </span>
+            </Link>
+          </div>
+
+          <div className="flex items-center space-x-5">
+            {/* Conditionally render AudioRoom based on window width */}
+            {windowWidth >= 1440 && (
+              <div id="audios" className="h-auto">
+                <div className="relative" onClick={toggleSliderVisibility}>
+                  <button
+                    type="button"
+                    id="sidenavopen"
+                    className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15.5 8.4a5 5 0 0 1 0 7.1m2.9 2.9a9 9 0 0 0 0-12.8m-6.4.5V18a1 1 0 0 1-1.6.7L6 15H4a1 1 0 0 1-1-1v-4c0-.6.4-1 1-1h2l4.4-3.6A1 1 0 0 1 12 6Z"
+                      />
+                    </svg>
+                  </button>
+                  {isSliderVisible && (
+                    <div className="volume-slider">
+                      <input
+                        type="range"
+                        className="volume"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value={volume}
+                        onChange={handleVolumeChange}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+            <button
+              type="button"
+              id="sidenavopen"
+              onClick={openNav}
+              className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            >
+              <svg
+                className="w-5 h-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 14"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 1h15M1 7h15M1 13h15"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div id="mySidenav" className={`sidenav ${isOpen ? "open" : ""}`}>
+            <a href="#" className="closebtn" onClick={closeNav}>
+              &times;
+            </a>
+            <Link onClick={closeNav} to={"/home"}>
+              Home
+            </Link>
+            <Link onClick={closeNav} to={"/roomchapterone"}>
+              Story
+            </Link>
+            <Link onClick={closeNav} to={"/concept"}>
+              Concept
+            </Link>
+            <Link onClick={closeNav} to={"/about"}>
+              About-Us
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      <div id="page" className={`w-screen h-screen text-center ${fadeEffect}`}>
         <Link onClick={handleNext}>
-          <div className="w-full h-full relative">
+          <div className="w-full h-screen relative">
             <div
               className=" absolute w-full top-[70%]  left-0 right-0 bottom-0 bg-opacity-50 z-20"
               style={{
@@ -239,11 +536,30 @@ const ChapterDialogThree = () => {
                   ? dialogue[currentDialogueIndex].text
                   : displayedText}
               </p>
+              <svg
+                className={`w-8 h-8 absolute top-[75%] bottom-0 left-[49%] right-0 text-white ${
+                  isAnimating ? "animate-ping" : "animate-bounce"
+                }`}
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7.119 8h9.762a1 1 0 0 1 .772 1.636l-4.881 5.927a1 1 0 0 1-1.544 0l-4.88-5.927A1 1 0 0 1 7.118 8Z"
+                />
+              </svg>
             </div>
             <img
               src={dialogue[currentDialogueIndex].bg}
               alt="image description"
-              className="w-full h-full"
+              className="w-screen h-screen"
             />
           </div>
         </Link>
@@ -256,6 +572,7 @@ const ChapterDialogThree = () => {
             play();
           }}
           popup
+          fade
         >
           <Modal.Header className="bg-slate-800" />
           <Modal.Body className="bg-slate-800">

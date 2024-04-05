@@ -244,6 +244,7 @@ const ChapterDialogOne = () => {
     } else if (textFullyTyped && currentDialogueIndex === dialogue.length - 1) {
       // Show the modal when user clicks on the last dialogue
       setOpenModal(true);
+      handleStopSoundEffects();
     }
   };
 
