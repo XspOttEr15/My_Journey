@@ -30,7 +30,7 @@ export const Maps = () => {
           <div className="  lg:flex  md:inline-block sm:inline-block gap-0 ">
             {/* // Card Layout 1*/}
             <div className=" md:w-full lg:w-1/3  ssm:w-full lgg:w-full h-screen relative  ">
-              <Link to={"/home"}>
+              <Link to={"/chapteronemap"}>
                 <img
                   className="h-screen"
                   // onClick={scrollToStoryboard}

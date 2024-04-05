@@ -35,6 +35,7 @@ const Intro = lazy(() => wait(0).then(() =>import('./components/pages/intro')));
 import Nav from "./components/Navbar/Nav";
 import Maps from "./components/pages/Maps";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import ChapterOneMap from "./components/pages/Maps/ChapterOneMap";
 
 
 
@@ -93,6 +94,7 @@ function App() {
             <Route path="/chaptertwo" element={<ChapterTwo />} />
             <Route path="/chapterthree" element={<ChapterThree />} />
             <Route path="/roomchapterone" element={<RoomChapterOne />} />
+            <Route path="/chapteronemap" element={<ChapterOneMap/>} />
           </Routes>
           </Suspense>
         </div>

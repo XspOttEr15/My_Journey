@@ -19,6 +19,7 @@
     "@react-three/rapier": "^1.2.1",
     "@types/three": "^0.157.0",
     "@vercel/speed-insights": "^1.0.10",
+    "antd": "^5.16.0",
     "ecctrl": "^1.0.67",
     "flowbite": "^1.8.1",
     "flowbite-react": "^0.6.4",
