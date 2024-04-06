@@ -199,14 +199,33 @@ export const RoomChapterOne = () => {
         />
         <Canvas
           concurrent 
-          shadows="soft"
-          camera={{ position: [0, 2, 0] }}
+          camera={false}
           style={{ width: "100%", height: "100%", display: "relative" }}
         >
-          <color attach="background" args={["#638689"]} />
-          <fog attach="fog" args={["#569BF3", 1, 200]} />
+          {/* <color attach="background" args={["#638689"]} /> */}
+          {/* <fog attach="fog" args={["#569BF3", 1, 200]} /> */}
           {/* debug */}
           <Physics gravity={[0, -11, 0]}>
+            <KeyboardControls map={keyboardMap}>
+              <Ecctrl
+                debug="false"
+                camInitDis={-0.01} // camera intial position
+                camInitDir={{ x: 0, y: -3.1, z: 0 }} // Camera initial rotation direction (in rad)
+                camMaxDis={-0.03} // Maximum camera distance
+                camMinDis={-0.01} // camera zoom in closest position
+                camFollowMult={100} // give any big number here, so the camera follows the character instantly
+                turnVelMultiplier={1} // character won't move before turn completed
+                turnSpeed={100} // give it big turning speed to prevent turning wait time
+                mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
+                disableFollowCam={disableFollowCam}
+                disableFollowCamPos={disableFollowCamPos} // Corrected: Camera position when the follow camera feature is disabled
+                disableFollowCamTarget={disableFollowCamTarget} // Camera lookAt target when the follow camera feature is disabled
+                position={[-2, 4, 3]}
+                maxVelLimit={maxVelLimit}
+                jumpVel={jumpVel}
+                dampingC={0.12}
+                floatingDis="auto"
+              >
                 {/* Replace your model here */}
                 <Player />
                 {/* First Person Camera */}
@@ -219,6 +238,8 @@ export const RoomChapterOne = () => {
                     selector={selector}
                   />
                 )}
+              </Ecctrl>
+            </KeyboardControls>
             <Room />
             <Floor />
             <Wall />
