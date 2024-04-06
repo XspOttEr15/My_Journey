@@ -201,11 +201,12 @@ export const RoomChapterOne = () => {
           shadows="soft"
           camera={false}
           style={{ width: "100%", height: "100%", display: "relative" }}
+          frameloop="demand"
         >
           <color attach="background" args={["#638689"]} />
           <fog attach="fog" args={["#569BF3", 1, 200]} />
           {/* debug */}
-          <Physics paused gravity={[0, -11, 0]}>
+          <Physics  interpolation={false} colliders={false} timeStep="vary"  gravity={[0, -9.81, 0]}>
             <KeyboardControls map={keyboardMap}>
               <Ecctrl
                 debug="false"
