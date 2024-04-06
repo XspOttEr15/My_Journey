@@ -93,7 +93,10 @@ function Portals({setFadeOut,fadeOut}) {
 
   const handleClick = () => {
     if (link === 3) {
-      window.location.href = "/home";
+      setFadeOut(true);
+      setTimeout(() => {
+        window.location.href = "/home";
+      }, 800);
     } else {
       // For other links, just update the state
       setTimeout(() => {
@@ -107,7 +110,10 @@ function Portals({setFadeOut,fadeOut}) {
   const handleClickB = () => {
     if (linkB === 1) {
       // Navigate to "/Chapter 2" when link 3 is clicked
-      window.location.href = "/maps";
+      setFadeOut(true);
+      setTimeout(() => {
+        window.location.href = "/maps";
+      }, 800);
     } else {
       setTimeout(() => {
       setWhich((prevWhich) => Math.max(0, prevWhich - 1)); 

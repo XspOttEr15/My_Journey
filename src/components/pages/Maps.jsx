@@ -26,13 +26,13 @@ export const Maps = () => {
 
   return (
     <>
-        <div className="sections">
-          <div className="  lg:flex  md:inline-block sm:inline-block gap-0 ">
+        <div className=" w-full h-screen">
+          <div className="  lg:flex md:w-full  sm:inline-block gap-0 ">
             {/* // Card Layout 1*/}
-            <div className=" md:w-full lg:w-1/3  ssm:w-full lgg:w-full h-screen relative  ">
+            <div className=" md:w-full md:h-full  lg:w-1/3 ssm:w-full lgg:w-full lg:h-screen relative  ">
               <Link to={"/chapteronemap"}>
                 <img
-                  className="h-screen"
+                  className="h-screen w-full object-cover"
                   // onClick={scrollToStoryboard}
                   src="https://ik.imagekit.io/vsfmz5htw/Maps/chapter1.jpg?updatedAt=1711183022133"
                   alt=""
@@ -48,10 +48,10 @@ export const Maps = () => {
 
             {/* // Card Layout 2*/}
 
-            <div className=" xl:w-1/3 ssm:w-full  relative   h-screen">
+            <div className=" md:w-full md:h-full  lg:w-1/3 ssm:w-full lgg:w-full lg:h-screen relative">
               <Link to={"/home"}>
                 <img
-                  className="h-screen"
+                  className="h-screen w-full object-cover"
                   // onClick={scrollToChareacter}
                   src="https://ik.imagekit.io/vsfmz5htw/Maps/chapter2.jpg?updatedAt=1711183023021"
                   alt=""
@@ -65,10 +65,10 @@ export const Maps = () => {
             </div>
 
             {/* // Card Layout 3*/}
-            <div className=" xl:w-1/3 ssm:w-full  relative  h-screen">
+            <div className=" md:w-full md:h-full  lg:w-1/3 ssm:w-full lgg:w-full lg:h-screen relative">
               <Link to={"/home"}>
                 <img
-                  className=" h-screen"
+                  className=" h-screen w-full object-cover"
                   // onClick={scrollToCity}
                   src="https://ik.imagekit.io/vsfmz5htw/Maps/chapter3.jpg?updatedAt=1711183023362"
                   alt=""

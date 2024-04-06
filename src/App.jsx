@@ -17,6 +17,8 @@ import "flowbite-react";
 // import LoadingScreen from "./components/pages/LoadingScreen";
 // import ChapterTwo from "./components/pages/Chapter/ChapterTwo";
 // import ChapterThree from "./components/pages/Chapter/ChapterThree";
+// import Maps from "./components/pages/Maps";
+// import ChapterOneMap from "./components/pages/Maps/ChapterOneMap";
 
 const Home = lazy(() => wait(5000).then(() =>import('./components/Home/Home')));
 const RoomChapterOne = lazy(() => wait(3000).then(() =>import('./components/Canvas/RoomChapterOne')));
@@ -31,11 +33,11 @@ const LoadingScreen = lazy(() => import('./components/pages/LoadingScreen'));
 const ChapterTwo = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterTwo')));
 const ChapterThree = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterThree')));
 const Intro = lazy(() => wait(0).then(() =>import('./components/pages/intro')));
-
+const ChapterOneMap = lazy(() => wait(1000).then(() =>import('./components/pages/Maps/ChapterOneMap')));
+const Maps = lazy(() => wait(1000).then(() =>import('./components/pages/Maps')));
 import Nav from "./components/Navbar/Nav";
-import Maps from "./components/pages/Maps";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import ChapterOneMap from "./components/pages/Maps/ChapterOneMap";
+
 
 
 
