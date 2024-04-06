@@ -206,7 +206,7 @@ export const RoomChapterOne = () => {
           <color attach="background" args={["#638689"]} />
           <fog attach="fog" args={["#569BF3", 1, 200]} />
           {/* debug */}
-          <Physics  interpolation={false} colliders={false} timeStep="vary"  gravity={[0, -9.81, 0]}>
+          <Physics  interpolation={false} colliders={false} timeStep="vary" gravity={[0, -11, 0]}>
             <KeyboardControls map={keyboardMap}>
               <Ecctrl
                 debug="false"
