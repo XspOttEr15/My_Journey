@@ -240,9 +240,7 @@ export const RoomChapterOne = () => {
                 )}
               </Ecctrl>
             </KeyboardControls>
-            <Room />
             <Floor />
-            <Wall />
             <mesh
               onClick={() => {
                 setdisableFollowCam(true),
@@ -806,12 +804,43 @@ export const EffectsPost = ({
   const targetPosition2 = new THREE.Vector3(0, 2, -1);
   let targetPosition;
 
-  
+  useFrame((state, delta) => {
+    if (clicked) {
+      const zoomSpeed = 2.0 * delta; // Adjust the speed for smoother animation
+
+      // Set the current target position based on the state
+      if (currentTarget === 1) {
+        targetPosition = targetPosition1;
+      } else {
+        targetPosition = targetPosition2;
+      }
+
+      // Interpolate camera position towards the target
+      state.camera.position.lerp(targetPosition, zoomSpeed);
+      state.camera.lookAt(0, 0, -1.9);
+      state.camera.updateProjectionMatrix();
+
+      // Stop zooming when close to the target
+      if (state.camera.position.distanceTo(targetPosition) < 0.1) {
+        setCurrentTarget((prevTarget) => (prevTarget === 1 ? 2 : 3));
+      }
+      // Check if both target positions are reached
+      if (currentTarget === 3) {
+        setBothTargetsReached(true);
+      }
+      if (currentTarget === 3) {
+        setOpenModal(true);
+        setLoopcamera(false); // Stop zooming after both targets are reached
+        setTarget(3);
+        document.exitPointerLock();
+      }
+    }
+  });
 
   return (
     <>
       <Selection>
-        <EffectComposer  autoClear={false}>
+        <EffectComposer disableNormalPass multisampling={8} autoClear={false}>
           {vignetteConfig.enabled && <Vignette {...vignetteConfig} />}
           {bloomConfig.enabled && <Bloom {...bloomConfig} />}
           {outline.enabled && <Outline {...outline} />}
@@ -947,6 +976,35 @@ export const MBook = ({
   const targetPosition2 = new THREE.Vector3(-2.8, 1.2, -3.5);
   let targetPosition;
 
+  useFrame((state, delta) => {
+    if (Ebookclicked) {
+      const zoomSpeed = 2.0 * delta; // Adjust the speed for smoother animation
+
+      // Set the current target position based on the state
+      if (currentTarget === 1) {
+        targetPosition = targetPosition1;
+      } else {
+        targetPosition = targetPosition2;
+      }
+
+      // Interpolate camera position towards the target
+      state.camera.position.lerp(targetPosition, zoomSpeed);
+      state.camera.lookAt(-2.1, 1.3, -4.2);
+      state.camera.updateProjectionMatrix();
+
+      // Stop zooming when close to the target
+      if (state.camera.position.distanceTo(targetPosition) < 0.1) {
+        setCurrentTarget((prevTarget) => (prevTarget === 1 ? 2 : 3));
+      }
+      // Check if both target positions are reached
+      if (currentTarget === 3) {
+        setTargetwo(3);
+        setOpenModaltwo(true);
+        setLoopcameratwo(false);
+        document.exitPointerLock();
+      }
+    }
+  });
 
   return (
     <>
@@ -1034,7 +1092,38 @@ export const Paper = ({
   const targetPosition2 = new THREE.Vector3(2.6, 2, -3);
   let targetPosition;
 
-  
+  useFrame((state, delta) => {
+    if (Paperclicked) {
+      const zoomSpeed = 2.0 * delta; // Adjust the speed for smoother animation
+
+      // Set the current target position based on the state
+      if (currentTarget === 1) {
+        targetPosition = targetPosition1;
+      } else {
+        targetPosition = targetPosition2;
+      }
+
+      // Interpolate camera position towards the target
+      state.camera.position.lerp(targetPosition, zoomSpeed);
+      state.camera.lookAt(2, 1.7, -5.2);
+      state.camera.updateProjectionMatrix();
+
+      // Stop zooming when close to the target
+      if (state.camera.position.distanceTo(targetPosition) < 0.1) {
+        setCurrentTarget((prevTarget) => (prevTarget === 1 ? 2 : 3));
+      }
+      // Check if both target positions are reached
+      if (currentTarget === 3) {
+        setBothTargetsReached(true);
+      }
+      if (currentTarget === 3) {
+        setTargethree(3);
+        setOpenModalthree(true);
+        setLoopcamerathree(false);
+        document.exitPointerLock();
+      }
+    }
+  });
 
   return (
     <group {...props} dispose={null}>
@@ -1198,7 +1287,38 @@ export const Door = ({
   const targetPosition2 = new THREE.Vector3(-2, 2, 3);
   let targetPosition;
 
+  useFrame((state, delta) => {
+    if (Doorclicked) {
+      const zoomSpeed = 2.0 * delta; // Adjust the speed for smoother animation
 
+      // Set the current target position based on the state
+      if (currentTarget === 1) {
+        targetPosition = targetPosition1;
+      } else {
+        targetPosition = targetPosition2;
+      }
+
+      // Interpolate camera position towards the target
+      state.camera.position.lerp(targetPosition, zoomSpeed);
+      state.camera.lookAt(-2, 1.5, 5);
+      state.camera.updateProjectionMatrix();
+
+      // Stop zooming when close to the target
+      if (state.camera.position.distanceTo(targetPosition) < 0.3) {
+        setCurrentTarget((prevTarget) => (prevTarget === 1 ? 2 : 3));
+      }
+      // Check if both target positions are reached
+      if (currentTarget === 3) {
+        setBothTargetsReached(true);
+      }
+      if (currentTarget === 3) {
+        setTargefour(3);
+        setOpenModaldoor(true);
+        setLoopcamerafour(false);
+        document.exitPointerLock();
+      }
+    }
+  });
 
   return (
     <group {...props} dispose={null}>
