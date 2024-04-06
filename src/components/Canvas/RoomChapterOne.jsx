@@ -199,11 +199,12 @@ export const RoomChapterOne = () => {
         />
         <Canvas
           concurrent 
+          shadows="soft"
           camera={false}
           style={{ width: "100%", height: "100%", display: "relative" }}
         >
-          {/* <color attach="background" args={["#638689"]} /> */}
-          {/* <fog attach="fog" args={["#569BF3", 1, 200]} /> */}
+          <color attach="background" args={["#638689"]} />
+          <fog attach="fog" args={["#569BF3", 1, 200]} />
           {/* debug */}
           <Physics gravity={[0, -11, 0]}>
             <KeyboardControls map={keyboardMap}>
@@ -765,19 +766,7 @@ export const EffectsPost = ({
   target,
   setTarget,
 }) => {
-  const vignetteConfig = useControls("vignette", {
-    enabled: true,
-    offset: { value: 0.1, min: 0, max: 1 },
-    darkness: { value: 0.92, min: 0, max: 1 },
-  });
-  const bloomConfig = useControls("bloom", {
-    enabled: true,
-    luminanceThreshold: { value: 0.35, min: 0, max: 2 },
-    luminanceSmoothing: { value: 0.01, min: 0, max: 2 },
-    intensity: { value: 1.4, min: 0, max: 2 },
-    mipmapBlur: true,
-  });
-
+  
   const outline = useControls("outline", {
     enabled: true,
     visibleEdgeColor: "#ffffff",
@@ -843,8 +832,6 @@ export const EffectsPost = ({
     <>
       <Selection>
         <EffectComposer disableNormalPass multisampling={8} autoClear={false}>
-          {vignetteConfig.enabled && <Vignette {...vignetteConfig} />}
-          {bloomConfig.enabled && <Bloom {...bloomConfig} />}
           {outline.enabled && <Outline {...outline} />}
         </EffectComposer>
         <mesh>
