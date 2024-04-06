@@ -13,22 +13,22 @@ import useSound from "use-sound";
 
 export function Room(props) {
   const { nodes, materials } = useGLTF("/models/fky3_room.glb");
-  useEffect(() => {
-    // materials.M_scifidoor.emissive.multiplyScalar(1.7);
-    // materials.M_mainpipe.emissive.multiplyScalar(1.7);
-    // materials.M_middlelight.emissive.multiplyScalar(1.7);
-    // materials.M_bookcase.emissive.multiplyScalar(1.7);
-    // materials.M_TVmap.emissive.multiplyScalar(1.7);
-    // materials.M_maintable.emissive.multiplyScalar(1.7);
-    // materials.M_lamp.emissive.multiplyScalar(1.7);
-    // materials.M_sofas.emissive.multiplyScalar(1.7); 
-    // materials.M_sofa_chair.emissive.multiplyScalar(1.7);
-    // materials.M_fireplace.emissive.multiplyScalar(1.7);
-    // materials.M_cubboard.emissive.multiplyScalar(1.7);
-    // materials.M_bigtable.emissive.multiplyScalar(1.7);
-    // materials.M_glasscarpet.emissive.multiplyScalar(1.7);
+  // useEffect(() => {
+  //   // materials.M_scifidoor.emissive.multiplyScalar(1.7);
+  //   // materials.M_mainpipe.emissive.multiplyScalar(1.7);
+  //   // materials.M_middlelight.emissive.multiplyScalar(1.7);
+  //   // materials.M_bookcase.emissive.multiplyScalar(1.7);
+  //   // materials.M_TVmap.emissive.multiplyScalar(1.7);
+  //   // materials.M_maintable.emissive.multiplyScalar(1.7);
+  //   // materials.M_lamp.emissive.multiplyScalar(1.7);
+  //   // materials.M_sofas.emissive.multiplyScalar(1.7); 
+  //   // materials.M_sofa_chair.emissive.multiplyScalar(1.7);
+  //   // materials.M_fireplace.emissive.multiplyScalar(1.7);
+  //   // materials.M_cubboard.emissive.multiplyScalar(1.7);
+  //   // materials.M_bigtable.emissive.multiplyScalar(1.7);
+  //   // materials.M_glasscarpet.emissive.multiplyScalar(1.7);
   
-  }, [materials]);
+  // }, [materials]);
   
   
 
