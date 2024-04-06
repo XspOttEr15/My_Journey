@@ -199,7 +199,7 @@ export const RoomChapterOne = () => {
         />
         <Canvas
           shadows="soft"
-          camera={false}
+          camera={{ position: [3, 3, 3], near:0.1 , far:50  }}
           style={{ width: "100%", height: "100%", display: "relative" }}
         >
           <color attach="background" args={["#638689"]} />
@@ -240,7 +240,9 @@ export const RoomChapterOne = () => {
                 )}
               </Ecctrl>
             </KeyboardControls>
+            <Room />
             <Floor />
+            <Wall />
             <mesh
               onClick={() => {
                 setdisableFollowCam(true),
