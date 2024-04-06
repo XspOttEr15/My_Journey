@@ -12,28 +12,28 @@ const store = [
     name: "Next Place",
     color: "lightpink",
     position: [10, 0, -15],
-    url: "/images/Maps/chapterOne/2294472375_24a3b8ef46_o (1).jpg",
+    url: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     link: 1,
   },
   {
     name: "Next Place",
     color: "lightblue",
     position: [0, 0, 15],
-    url: "/images/Maps/chapterOne/Photosphere1.jpg",
+    url: "/images/Maps/chapterOne/2294472375_24a3b8ef46_o (1).jpg",
     link: 2,
   },
   {
-    name: "Chapter 2",
+    name: " Maps Page",
     color: "lightblue",
     position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    url: "/images/Maps/chapterOne/Photosphere1.jpg",
     link: 3,
   },
 ];
 
 const storeB = [
   {
-    nameB: "Back to Maps",
+    nameB: "Chapter 2",
     positionB: [80, 0, -15],
     urlB: "/images/Maps/chapterOne/2294472375_24a3b8ef46_o (1).jpg",
     linkB:1,
@@ -95,7 +95,7 @@ function Portals({setFadeOut,fadeOut}) {
     if (link === 3) {
       setFadeOut(true);
       setTimeout(() => {
-        window.location.href = "/chaptertwomap";
+        window.location.href = "/maps";
       }, 800);
     } else {
       // For other links, just update the state
@@ -112,7 +112,7 @@ function Portals({setFadeOut,fadeOut}) {
       // Navigate to "/Chapter 2" when link 3 is clicked
       setFadeOut(true);
       setTimeout(() => {
-        window.location.href = "/maps";
+        window.location.href = "/chaptertwomap";
       }, 800);
     } else {
       setTimeout(() => {
@@ -138,7 +138,7 @@ function Portals({setFadeOut,fadeOut}) {
 }
 
 
-export default function ChapterOneMap() {
+export default function ChapterThreeMap() {
   const [fadeOut, setFadeOut] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const { setColseBgmusic,setCloseNavbar,setIsLocked } = useContext(DataContext);

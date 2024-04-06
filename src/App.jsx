@@ -33,8 +33,10 @@ const LoadingScreen = lazy(() => import('./components/pages/LoadingScreen'));
 const ChapterTwo = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterTwo')));
 const ChapterThree = lazy(() => wait(2000).then(() =>import('./components/pages/Chapter/ChapterThree')));
 const Intro = lazy(() => wait(0).then(() =>import('./components/pages/intro')));
-const ChapterOneMap = lazy(() => wait(1000).then(() =>import('./components/pages/Maps/ChapterOneMap')));
-const Maps = lazy(() => wait(1000).then(() =>import('./components/pages/Maps')));
+const ChapterOneMap = lazy(() => wait(2000).then(() =>import('./components/pages/Maps/ChapterOneMap')));
+const ChapterTwoMap = lazy(() => wait(2000).then(() =>import('./components/pages/Maps/ChapterTwoMap')));
+const ChapterThreeMap = lazy(() => wait(2000).then(() =>import('./components/pages/Maps/ChapterThreeMap')));
+const Maps = lazy(() => wait(2000).then(() =>import('./components/pages/Maps')));
 import Nav from "./components/Navbar/Nav";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -97,6 +99,8 @@ function App() {
             <Route path="/chapterthree" element={<ChapterThree />} />
             <Route path="/roomchapterone" element={<RoomChapterOne />} />
             <Route path="/chapteronemap" element={<ChapterOneMap/>} />
+            <Route path="/chaptertwomap" element={<ChapterTwoMap/>} />
+            <Route path="/chapterthreemap" element={<ChapterThreeMap/>} />
           </Routes>
           </Suspense>
         </div>

@@ -49,7 +49,7 @@ export const Maps = () => {
             {/* // Card Layout 2*/}
 
             <div className=" md:w-full md:h-full  lg:w-1/3 ssm:w-full lgg:w-full lg:h-screen relative">
-              <Link to={"/home"}>
+              <Link to={"/chaptertwomap"}>
                 <img
                   className="h-screen w-full object-cover"
                   // onClick={scrollToChareacter}
@@ -66,7 +66,7 @@ export const Maps = () => {
 
             {/* // Card Layout 3*/}
             <div className=" md:w-full md:h-full  lg:w-1/3 ssm:w-full lgg:w-full lg:h-screen relative">
-              <Link to={"/home"}>
+              <Link to={"/chapterthreemap"}>
                 <img
                   className=" h-screen w-full object-cover"
                   // onClick={scrollToCity}
