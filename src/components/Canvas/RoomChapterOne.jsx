@@ -168,7 +168,6 @@ export const RoomChapterOne = () => {
     setColseBgmusic(false);
     setCloseNavbar("Room");
     setIsLocked(false);
-    setdisableFollowCam(false);
   }, []);
 
   useEffect(() => {
@@ -203,7 +202,11 @@ export const RoomChapterOne = () => {
           <color attach="background" args={["#638689"]} />
           <fog attach="fog" args={["#569BF3", 1, 200]} />
           {/* debug */}
-          <Physics  interpolation={false} colliders={false}  gravity={[0, -11, 0]}>
+          <Physics
+            interpolation={false}
+            colliders={false}
+            gravity={[0, -11, 0]}
+          >
             <KeyboardControls map={keyboardMap}>
               <Ecctrl
                 debug="false"
@@ -227,15 +230,13 @@ export const RoomChapterOne = () => {
                 {/* Replace your model here */}
                 <Player />
                 {/* First Person Camera */}
-                
+                {!disableFollowCam && (
                   <PointerLockControls
                     onLock={() => setIsLocked(true)}
-                    onUnlock={() => {
-                      setIsLocked(false), setSelector("#Skip");
-                    }}
-                    selector={selector}
+                    onUnlock={() => setIsLocked(false)}
+                    {...(windowWidth >= 1440 && { selector })}
                   />
-                
+                )}
               </Ecctrl>
             </KeyboardControls>
             <Room />
@@ -253,8 +254,7 @@ export const RoomChapterOne = () => {
             </mesh>
             <mesh
               onClick={() => {
-                  setdisableFollowCam(true),
-
+                setdisableFollowCam(true),
                   setHtmltext(false),
                   setLoopcamerathree(true),
                   play();
@@ -552,8 +552,7 @@ export const RoomChapterOne = () => {
             setHtmltext(true);
             setTargetwo(1);
             play();
-            setIsLocked(true), 
-            setSelector(".instructions-overlay");
+            setIsLocked(true), setSelector(".instructions-overlay");
           }}
           popup
         >
@@ -635,7 +634,6 @@ export const RoomChapterOne = () => {
                     setHtmltext(true);
                     setTargethree(1);
                     play();
-                    setIsLocked(true), setSelector(".instructions-overlay");
                   }}
                 >
                   ยกเลิก
@@ -656,7 +654,7 @@ export const RoomChapterOne = () => {
             setHtmltext(true);
             setTargefour(1);
             play();
-            setIsLocked(true), setSelector(".instructions-overlay");
+            setSelector(".instructions-overlay");
           }}
           popup
         >
