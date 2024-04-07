@@ -227,7 +227,7 @@ export const RoomChapterOne = () => {
                 {/* Replace your model here */}
                 <Player />
                 {/* First Person Camera */}
-                {!disableFollowCam && (
+                
                   <PointerLockControls
                     onLock={() => setIsLocked(true)}
                     onUnlock={() => {
@@ -235,7 +235,7 @@ export const RoomChapterOne = () => {
                     }}
                     selector={selector}
                   />
-                )}
+                
               </Ecctrl>
             </KeyboardControls>
             <Room />
@@ -253,7 +253,8 @@ export const RoomChapterOne = () => {
             </mesh>
             <mesh
               onClick={() => {
-                setdisableFollowCam(true),
+                  setdisableFollowCam(true),
+
                   setHtmltext(false),
                   setLoopcamerathree(true),
                   play();
@@ -551,7 +552,8 @@ export const RoomChapterOne = () => {
             setHtmltext(true);
             setTargetwo(1);
             play();
-            setIsLocked(true), setSelector(".instructions-overlay");
+            setIsLocked(true), 
+            setSelector(".instructions-overlay");
           }}
           popup
         >
@@ -633,6 +635,7 @@ export const RoomChapterOne = () => {
                     setHtmltext(true);
                     setTargethree(1);
                     play();
+                    setIsLocked(true), setSelector(".instructions-overlay");
                   }}
                 >
                   ยกเลิก
@@ -653,7 +656,7 @@ export const RoomChapterOne = () => {
             setHtmltext(true);
             setTargefour(1);
             play();
-            setSelector(".instructions-overlay");
+            setIsLocked(true), setSelector(".instructions-overlay");
           }}
           popup
         >
