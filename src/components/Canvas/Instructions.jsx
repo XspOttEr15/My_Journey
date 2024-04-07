@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./styles/Instructions.css";
+import { DataContext } from "../../App";
 
-const Instructions = ({ isVisible, setOpenModalTutorial,setIsLocked,isLocked,setSelector }) => {
+const Instructions = ({ isVisible, setOpenModalTutorial,setSelector }) => {
   // Initialize the animation class state
   const [animationClass, setAnimationClass] = useState("animate-bounce");
   const [header, setHeader] = useState("คลิกปุ่มด้านล่างเพื่อเข้าสู่หน้า Tutorial");
   const [skipButton, setSkipButton] = useState("Skip Tutorial (ข้าม) ");
+  const {  isLocked, setIsLocked } =
+    useContext(DataContext);
 
   // Handle click to change animation to animate-ping
   const handleClick = () => {

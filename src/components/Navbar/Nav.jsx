@@ -22,14 +22,13 @@ const Nav = () => {
     } else {
       closeNav();
     }
-}, [isLocked]);
-
+  }, [isLocked]);
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
- 
+
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -65,8 +64,12 @@ const Nav = () => {
 
           <div className="flex items-center space-x-5">
             {/* Conditionally render AudioPlayers based on window width */}
-            {windowWidth >= 1440 && (
+            {windowWidth >= 1440 ? (
               <div id="audios" className="h-auto">
+                <AudioPlayers />
+              </div>
+            ) : (
+              <div style={{ display: "none" }}>
                 <AudioPlayers />
               </div>
             )}
@@ -139,8 +142,12 @@ const Nav = () => {
 
           <div className="flex items-center space-x-5">
             {/* Conditionally render AudioRoom based on window width */}
-            {windowWidth >= 1440 && (
+            {windowWidth >= 1440 ? (
               <div id="audios" className="h-auto">
+                <AudioRoom />
+              </div>
+            ) : (
+              <div style={{ display: "none" }}>
                 <AudioRoom />
               </div>
             )}
@@ -188,7 +195,7 @@ const Nav = () => {
         </div>
       </nav>
     );
-  } 
+  }
 };
 
 export default Nav;
