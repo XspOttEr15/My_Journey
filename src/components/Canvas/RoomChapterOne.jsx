@@ -190,16 +190,13 @@ export const RoomChapterOne = () => {
         <div className="aim"></div>
         {windowWidth < 1440 && <EcctrlJoystick />}
         <Instructions
-          onPlayClick={() => setIsLocked(true)}
           isVisible={!isLocked}
           setOpenModalTutorial={setOpenModalTutorial}
-          setIsLocked={setIsLocked}
-          isLocked={isLocked}
           setSelector={setSelector}
         />
         <Canvas
           shadows="soft"
-          camera={{ position: [3, 3, 3], near:0.1 , far:50  }}
+          camera={false}
           style={{ width: "100%", height: "100%", display: "relative" }}
         >
           <color attach="background" args={["#638689"]} />
