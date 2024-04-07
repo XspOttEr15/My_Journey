@@ -168,6 +168,7 @@ export const RoomChapterOne = () => {
     setColseBgmusic(false);
     setCloseNavbar("Room");
     setIsLocked(false);
+    setdisableFollowCam(false);
   }, []);
 
   useEffect(() => {
