@@ -61,9 +61,9 @@ const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector }) 
       </button>
 
       <button
-        disabled={isLocked}
+        // disabled={isLocked}
         onClick={() => {
-          setIsLocked(false)
+          setIsLocked(true)
           setTimeout(() => {
             setSkipButton("Resume (เข้าสู่ห้อง)");
           }, 3000); // 5000 milliseconds = 5 seconds
