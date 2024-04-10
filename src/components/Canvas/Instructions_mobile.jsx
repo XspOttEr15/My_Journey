@@ -2,13 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import "./styles/Instructions.css";
 import { DataContext } from "../../App";
 
-const InstructionsT = ({ isVisible, setOpenModalTutorial,setSelector,selector }) => {
+const InstructionsT = ({ isVisible, setOpenModalTutorial, setSelector, selector }) => {
   // Initialize the animation class state
   const [animationClass, setAnimationClass] = useState("animate-bounce");
   const [header, setHeader] = useState("คลิกปุ่มด้านล่างเพื่อเข้าสู่หน้า Tutorial");
-  const [skipButton, setSkipButton] = useState("Skip Tutorial (ข้าม) ");
-  const {  isLocked, setIsLocked } =
-    useContext(DataContext);
+  const [skipButton, setSkipButton] = useState("Skip Tutorial (ข้าม)");
+  const { isLocked, setIsLocked } = useContext(DataContext);
 
   // Handle click to change animation to animate-ping
   const handleClick = () => {
@@ -28,11 +27,9 @@ const InstructionsT = ({ isVisible, setOpenModalTutorial,setSelector,selector })
   }, [animationClass]); // This effect depends on the animationClass state
 
   return (
-    <div
-      className={`instructions-overlay${isVisible ? " visible" : ""}`}
-    >
+    <div className={`instructions-overlay${isVisible ? " visible" : ""}${isLocked ? " locked" : ""}`}>
       <div className="overlay"></div>
-      <div  className=" animate-pulse text-green-400 text-6xl mb-5 text-center pointer-events-none">
+      <div className="animate-pulse text-green-400 text-6xl mb-5 text-center pointer-events-none">
         {header}
       </div>
       <svg
@@ -48,27 +45,24 @@ const InstructionsT = ({ isVisible, setOpenModalTutorial,setSelector,selector })
       </svg>
       <button
         onClick={() => {
-          setOpenModalTutorial(true)
-          setSkipButton("Resume (เข้าสู่ห้อง)")
+          setOpenModalTutorial(true);
+          setSkipButton("Resume (เข้าสู่ห้อง)");
         }}
-        // animate-pulse
-        type="button" 
-        className="   text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
+        type="button"
+        className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
       >
         Tutorial (วิธีการเล่น)
       </button>
 
       <button
-        // disabled={isLocked}
         onClick={() => {
-          setIsLocked(true)
+          setIsLocked(true);
           setTimeout(() => {
             setSkipButton("Resume (เข้าสู่ห้อง)");
           }, 3000); // 5000 milliseconds = 5 seconds
         }}
         type="button"
-        id="Skip"
-        className="mt-2  cursor-not-allowed text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
+        className="mt-2 cursor-not-allowed text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
       >
         {skipButton}
       </button>
