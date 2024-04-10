@@ -29,6 +29,7 @@ import useSound from "use-sound";
 import Ecctrl from "ecctrl";
 import { EcctrlJoystick } from "ecctrl";
 import Instructions from "./Instructions";
+import InstructionsT from "./Instructions_mobile";
 
 export const RoomChapterOne = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -189,12 +190,18 @@ export const RoomChapterOne = () => {
         </div>
         <div className="aim"></div>
         {windowWidth < 1440 && <EcctrlJoystick />}
+        {windowWidth >= 1440 &&
         <Instructions
           isVisible={!isLocked}
           setOpenModalTutorial={setOpenModalTutorial}
           setSelector={setSelector}
-          Selector={selector}
-        />
+        />}
+        {windowWidth < 1440 &&
+        <InstructionsT
+          isVisible={!isLocked}
+          setOpenModalTutorial={setOpenModalTutorial}
+          setSelector={setSelector}
+        />}
         <Canvas
           shadows="soft"
           camera={false}
@@ -231,13 +238,13 @@ export const RoomChapterOne = () => {
                 {/* Replace your model here */}
                 <Player />
                 {/* First Person Camera */}
-                {/* {!disableFollowCam && (
+                {!disableFollowCam && (
                   <PointerLockControls
-                  onLock={() => setIsLocked(true)}
-                  onUnlock={() => setIsLocked(false)}
-                  selector={selector}
+                    onLock={() => setIsLocked(true)}
+                    onUnlock={() => setIsLocked(false)}
+                    selector={selector}
                   />
-                )} */}
+                )}
               </Ecctrl>
             </KeyboardControls>
             <Room />

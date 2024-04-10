@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./styles/Instructions.css";
 import { DataContext } from "../../App";
 
-const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector }) => {
+const InstructionsT = ({ isVisible, setOpenModalTutorial,setSelector,selector }) => {
   // Initialize the animation class state
   const [animationClass, setAnimationClass] = useState("animate-bounce");
   const [header, setHeader] = useState("คลิกปุ่มด้านล่างเพื่อเข้าสู่หน้า Tutorial");
@@ -47,10 +47,8 @@ const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector }) 
         <path d="M14.5 3 12 7.156 9.857 3H2l10 18L22 3h-7.5ZM4.486 4.5h2.4L12 13.8l5.107-9.3h2.4L12 18.021 4.486 4.5Z" />
       </svg>
       <button
-        disabled={isLocked}
         onClick={() => {
           setOpenModalTutorial(true)
-          setSelector("#Skip")
           setSkipButton("Resume (เข้าสู่ห้อง)")
         }}
         // animate-pulse
@@ -61,9 +59,9 @@ const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector }) 
       </button>
 
       <button
-        disabled={isLocked}
+        // disabled={isLocked}
         onClick={() => {
-          setIsLocked(false)
+          setIsLocked(true)
           setTimeout(() => {
             setSkipButton("Resume (เข้าสู่ห้อง)");
           }, 3000); // 5000 milliseconds = 5 seconds
@@ -78,4 +76,4 @@ const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector }) 
   );
 };
 
-export default Instructions;
+export default InstructionsT;
