@@ -12,30 +12,58 @@ const store = [
     name: "Next Place",
     color: "lightpink",
     position: [10, 0, -15],
-    url: "/images/Maps/chapterOne/Photosphere1.jpg",
+    url: "/images/Maps/chapterOne/Garbage.png",
     link: 1,
   },
   {
     name: "Next Place",
     color: "lightblue",
     position: [0, 0, 15],
-    url: "/images/Maps/chapterOne/2294472375_24a3b8ef46_o (1).jpg",
+    url: "/images/Maps/chapterOne/Top.png",
     link: 2,
   },
   {
-    name: "Chapter 3",
+    name: " Maps Page",
     color: "lightblue",
     position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    url: "/images/Maps/chapterOne/bridge.png",
     link: 3,
+  },
+  {
+    name: " Maps Page",
+    color: "lightblue",
+    position: [15, 0, 15],
+    url: "/images/Maps/chapterOne/factory.png",
+    link: 4,
+  },
+  {
+    name: " Maps Page",
+    color: "lightblue",
+    position: [15, 0, 15],
+    url: "/images/Maps/chapterOne/village1.png",
+    link: 5,
+  },
+  {
+    name: " Maps Page",
+    color: "lightblue",
+    position: [15, 0, 15],
+    url: "/images/Maps/chapterOne/village2.png",
+    link: 6,
+  },
+  {
+    name: " Maps Page",
+    color: "lightblue",
+    position: [15, 0, 15],
+    url: "/images/Maps/chapterOne/Lunar_with_Rabbet.png",
+    link: 7,
   },
 ];
 
 const storeB = [
   {
-    nameB: "Back to Maps Page",
+    nameB: "Chapter 2",
     positionB: [80, 0, -15],
-    urlB: "/images/Maps/chapterOne/2294472375_24a3b8ef46_o (1).jpg",
+    urlB: "/images/Maps/chapterOne/Garbage.png",
     linkB:1,
   },
   {
@@ -50,6 +78,31 @@ const storeB = [
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:3,
   },
+  {
+    nameB: "Previous Maps",
+    positionB: [-30, 0, 15],
+    urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    linkB:4,
+  },
+  {
+    nameB: "Previous Maps",
+    positionB: [-30, 0, 15],
+    urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    linkB:5,
+  },
+  {
+    nameB: "Previous Maps",
+    positionB: [-30, 0, 15],
+    urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    linkB:6,
+  },
+  {
+    nameB: "Previous Maps",
+    positionB: [-30, 0, 15],
+    urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    linkB:7,
+  },
+  
 ];
 
 
@@ -92,7 +145,7 @@ function Portals({setFadeOut,fadeOut}) {
   const maps = useLoader(THREE.TextureLoader, store.map((entry) => entry.url));
 
   const handleClick = () => {
-    if (link === 3) {
+    if (link === 7) {
       setFadeOut(true);
       setTimeout(() => {
         window.location.href = "/chapterthreemap";
