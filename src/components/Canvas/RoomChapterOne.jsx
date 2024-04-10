@@ -193,6 +193,7 @@ export const RoomChapterOne = () => {
           isVisible={!isLocked}
           setOpenModalTutorial={setOpenModalTutorial}
           setSelector={setSelector}
+          Selector={selector}
         />
         <Canvas
           shadows="soft"
@@ -234,7 +235,7 @@ export const RoomChapterOne = () => {
                   <PointerLockControls
                     onLock={() => setIsLocked(true)}
                     onUnlock={() => setIsLocked(false)}
-                    {...(windowWidth >= 1440 && { selector })}
+                    selector={selector}
                   />
                 )}
               </Ecctrl>

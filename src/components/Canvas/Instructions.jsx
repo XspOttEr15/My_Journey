@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./styles/Instructions.css";
 import { DataContext } from "../../App";
 
-const Instructions = ({ isVisible, setOpenModalTutorial,setSelector }) => {
+const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector }) => {
   // Initialize the animation class state
   const [animationClass, setAnimationClass] = useState("animate-bounce");
   const [header, setHeader] = useState("คลิกปุ่มด้านล่างเพื่อเข้าสู่หน้า Tutorial");
