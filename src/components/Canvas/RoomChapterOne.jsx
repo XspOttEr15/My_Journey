@@ -231,13 +231,13 @@ export const RoomChapterOne = () => {
                 {/* Replace your model here */}
                 <Player />
                 {/* First Person Camera */}
-                {!disableFollowCam && (
+                {/* {!disableFollowCam && (
                   <PointerLockControls
-                    onLock={() => setIsLocked(true)}
-                    onUnlock={() => setIsLocked(false)}
-                    selector={selector}
+                  onLock={() => setIsLocked(true)}
+                  onUnlock={() => setIsLocked(false)}
+                  selector={selector}
                   />
-                )}
+                )} */}
               </Ecctrl>
             </KeyboardControls>
             <Room />
