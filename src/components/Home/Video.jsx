@@ -51,7 +51,7 @@ const Video = () => {
             }}
           >
           <video autoPlay muted loop className="object-cover w-screen h-screen">
-            <source src="https://ik.imagekit.io/vsfmz5htw/bg.mp4?updatedAt=1711183031026" type="video/mp4"  />
+            <source src="https://ik.imagekit.io/vsfmz5htw/Video/home/bg.mp4?updatedAt=1712911799149" type="video/mp4"  />
           </video> 
           </MouseParallaxChild>
           
