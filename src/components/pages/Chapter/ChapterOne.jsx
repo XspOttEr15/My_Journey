@@ -14,7 +14,7 @@ const ChapterOne = () => {
     setCloseNavbar,
     setCloseButtonNavbar,
     CloseButtonNavbar,
-    setColseBgmusic, 
+    setColseBgmusic,
     setIsNavbarFixed,
   } = useContext(DataContext);
   const playerRef = useRef(null);
@@ -27,7 +27,14 @@ const ChapterOne = () => {
     });
     setTimeout(() => {
       setOpenModal(true);
+      exitFullScreen();
     });
+  };
+
+  const exitFullScreen = () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
   };
 
   const handleReplayVideo = () => {
@@ -45,7 +52,7 @@ const ChapterOne = () => {
   useEffect(() => {
     setCloseNavbar(true);
     setCloseButtonNavbar(false);
-    setIsNavbarFixed(true)
+    setIsNavbarFixed(true);
     setColseBgmusic(true);
   }, []);
 
@@ -78,16 +85,22 @@ const ChapterOne = () => {
       <div className="w-full items-center">
         <div className="w-full h-screen">
           <ReactPlayer
-            ref={playerRef} // Set the ref to access the ReactPlayer component
-            playing={!videoEnded} // Start playing only if videoEnded is false
-            controls
+            ref={playerRef}
+            playing={!videoEnded}
             volume={0.3}
             width="100%"
             height="100%"
             url={"https://www.youtube.com/watch?v=LHCob76kigA"}
             config={{
               youtube: {
-                playerVars: { showinfo: 0, disablekb: 1, fs: 1 },
+                playerVars: {
+                  showinfo: 0,
+                  disablekb: 1,
+                  fs: 1,
+                  modestbranding: 0,
+                  controlsList: "nodownload",
+                  controls: 1,
+                },
               },
             }}
             onEnded={handleVideoEnded}

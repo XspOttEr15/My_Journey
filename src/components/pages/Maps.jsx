@@ -1,5 +1,8 @@
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { DataContext } from "../../App";
+import { useEffect } from "react";
 
 
 export const Maps = () => {
@@ -23,6 +26,13 @@ export const Maps = () => {
   //     cityElement.scrollIntoView({ behavior: "smooth" }); // เลื่อนไปยัง storyboard ด้วยการใช้ scrollIntoView
   //   }
   // };
+
+  const { setColseBgmusic,setCloseNavbar,setIsLocked } = useContext(DataContext);
+    useEffect(() => {
+      setColseBgmusic(false);
+      setCloseNavbar("showall");
+      setIsLocked(true);
+    }, []);
 
   return (
     <>
