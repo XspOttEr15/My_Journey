@@ -27,7 +27,14 @@ const ChapterTwo = () => {
     });
     setTimeout(() => {
       setOpenModal(true);
+      exitFullScreen();
     });
+  };
+
+  const exitFullScreen = () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
   };
 
   const handleReplayVideo = () => {

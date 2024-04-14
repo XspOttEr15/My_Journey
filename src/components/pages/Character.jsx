@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Modal } from "flowbite-react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -21,10 +21,17 @@ import {
 } from "../Canvas/CharacterCard";
 import { Link } from "react-router-dom";
 import useSound from "use-sound";
+import { DataContext } from "../../App";
 
 const Character = () => {
   const [selectedCard, setSelectedCard] = useState(0);
   const cardRef = useRef(null);
+  const { setColseBgmusic,setCloseNavbar,setIsLocked } = useContext(DataContext);
+    useEffect(() => {
+      setColseBgmusic(false);
+      setCloseNavbar("showall");
+      setIsLocked(true);
+    }, []);
 
   const handleCardClick = (cardNumber) => {
     if (selectedCard === cardNumber && cardRef.current) {
