@@ -4,8 +4,8 @@ import "./styles/ChapterOne.css";
 import { Button, Modal } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
-import { DataContext } from "../../../App";
 import useSound from "use-sound";
+import { DataContext } from "../../../App";
 
 const ChapterThree = () => {
   const [videoEnded, setVideoEnded] = useState(false);
@@ -111,15 +111,15 @@ const ChapterThree = () => {
           <Modal.Header className="bg-slate-800" />
           <Modal.Body className="bg-slate-800">
             <div className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normal text-gray-500 dark:text-gray-400">
-                วิดิโอลงจบแล้ว กดปุ่มถัดไปเพื่อดำเนินเนื้อเรื่องต่อ หรือ
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
+              <h3 className="mb-5 p-1 md:text-lg lg:text-xl font-normal text-gray-400">
+                วิดิโอลงจบแล้ว กดปุ่มถัดไปเพื่อดำเนินเนื้อเรื่องต่อ หรือ 
                 กลับไปรับชมอีกรอบ
               </h3>
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/chapterthreedialog"}>
                   <Button
-                    color="failure"
+                    color="success"
                     onClick={() => {
                       setOpenModal(false);
                       play();

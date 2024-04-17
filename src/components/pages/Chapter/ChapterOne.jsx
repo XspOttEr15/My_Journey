@@ -118,14 +118,13 @@ const ChapterOne = () => {
           <Modal.Body className="bg-slate-800">
             <div className="text-center">
               <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normal text-gray-500 dark:text-gray-400">
-                วิดิโอลงจบแล้ว กดปุ่มถัดไปเพื่อดำเนินเนื้อเรื่องต่อ หรือ
-                กลับไปรับชมอีกรอบ
+              <h3 className="mb-5 text md:text-lg  lg:text-base font-normal text-gray-500 dark:text-gray-400">
+                วิดิโอลงจบแล้ว กดปุ่มถัดไปเพื่อดำเนินเนื้อเรื่องต่อ หรือ กลับไปรับชมอีกรอบ
               </h3>
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/chapteronedialog"}>
                   <Button
-                    color="failure"
+                    color="success"
                     onClick={() => {
                       setOpenModal(false), play();
                     }}

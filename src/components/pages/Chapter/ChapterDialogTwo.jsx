@@ -41,140 +41,233 @@ const ChapterDialogTwo = () => {
   const [displayedText, setDisplayedText] = useState(""); // Track displayed text
   const [typingSpeed, setTypingSpeed] = useState(30); // Adjust typing speed as needed
   const [openModal, setOpenModal] = useState(false);
+  const [openModalt, setOpenModalt] = useState(false);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
   const [isAnimating, setIsAnimating] = useState(false);
   const [dialogue, setDialogue] = useState([
     {
-      speaker: "-- Character Name --",
-      text: ".....ฉันอยู่ที่ไหน......",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Character Name --",
-      text: "/กำลังแก้ไขข้อผิดพลาด/(✖▂✖)",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img2.png?updatedAt=1711190708064",
-    },
-    {
       speaker: "-- Lunar --",
-      text: "คุณเป็นอะไรรึเปล่า",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Character Name --",
-      text: ".../ระบบขัดข้อง Memory บางส่วนเกิดความเสียหายไม่สามารถกู้ระบบได้/...",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img2.png?updatedAt=1711190708064",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "ทำไมนายถึงตกลงมาที่ชั้นล่างสุดที่นี่หล่ะ ?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Name ?? --",
-      text: "ฉัน....จำไม่ได้......ดูเหมือนว่าระบบความทรงจำของฉันจะเสียหาย",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Name ?? --",
-      text: "เธอ...ชื่อว่าอะไรหรอ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "อะ.....เอ่อ ฉันชื่อ [Lunar]",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Name ?? --",
-      text: "[Lunar] ...... ส่วนฉัน....... ขอโทษนะฉันจำเรื่องของตัวเองไม่ได้เลย ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Name ?? --",
-      text: "ถ้าไม่เป็นการรบกวน เธอช่วยตั้งชื่อใหม่ให้ฉันหน่อยได้ไหม ?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "จะดีหรอ.....เอ่อ.....",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "นายมีหูเหมือนกระต่าย และเป็นหุ่นยนต์... ถ้างั้นชื่อ [Rabbet] ใช้ได้รึเปล่า?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Name ?? --",
-      text: "[Rabbet] ใช้ได้เลยหนิ ขอบคุณนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "แล้วจากนี้ไปนายจะทำยังไงต่อ จะกลับขึ้นไปที่เมืองด้านบนไหม?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      text: "แล้วจากนี้ไปนายจะทำยังไงต่อ จะกลับขึ้นไปที่เมืองด้านบนไหม",
+      bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126',
     },
     {
       speaker: "-- Rabbet --",
       text: "ถึงจะจำเหตุผลไม่ได้ แต่ฉันก็คงต้องกลับขึ้นไปแหละนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_2.png?updatedAt=1712913575129",
     },
     {
       speaker: "-- Lunar --",
-      text: ".......",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "ถ้าอย่างนั้น ฉันขอออกเดินทางไปด้วยได้ไหม ?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      text: "ถ้าอย่างนั้น ฉันขอออกเดินทางไปด้วยได้ไหม?",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126",
     },
     {
       speaker: "-- Rabbet --",
-      text: "หะ!! เธอแน่ใจแล้วหรอ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      text: "หะ เธอแน่ใจแล้วหรอ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126",
     },
     {
       speaker: "-- Lunar --",
-      text: "มันเคยเป็นความฝันของฉันหน่ะ วันหนึ่งฉันอยากออกเดินทาง อยากจะพบเจอสิ่งใหม่ๆ ก่อนที่จะอายุ 18 หน่ะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      text:  "มันเคยเป็นความฝันของฉันหน่ะ วันหนึ่งฉันอยากออกเดินทาง อยากจะพบเจอสิ่งใหม่ๆ ก่อนที่จะอายุ 18 หน่ะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126",
     },
     {
       speaker: "-- Rabbet --",
-      text: "ถ้าเธอออกเดินทางไป แล้วผู้คนที่นี่จะไม่เป็นห่วงเธอเอาหรอ ?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      text: "ถ้าเธอออกเดินทางไป แล้วผู้คนที่นี่จะไม่เป็นห่วงเธอเอาหรอ?",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_4.png?updatedAt=1712913575242",
     },
     {
       speaker: "-- Lunar --",
       text: "ไม่เป็นไร ฉันไม่มีครอบครัว หรือเพื่อนที่คอยห่วงใยหรอก",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_4.png?updatedAt=1712913575242",
     },
     {
       speaker: "-- Rabbet --",
-      text: "ฉันขอโทษนะที่ทำให้นึกถึงเรื่องนั้น",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      text:  "ฉันขอโทษนะที่ทำให้นึกถึงเรื่องนั้น",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_5.png?updatedAt=1712913575277",
     },
     {
       speaker: "-- Lunar --",
-      text: "อื้อ ไม่เป็นไร",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "ถ้าอย่างงั้น ขอฝากเนื้อ ฝากตัวด้วยนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      text:  "ไม่เป็นไรหรอก ถึงแม้จะรู้สึกผูกพันกับที่นี่ แต่ก็อยากออกไปท่อง โลก บ้างหน่ะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_5.png?updatedAt=1712913575277",
     },
     {
       speaker: "-- Rabbet --",
-      text: "เช่นกันนะ ขอให้เป็นการเดินทางที่น่าจดจำ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      text: "“โลก... งั้นหรอ”",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_6.png?updatedAt=1712913575138",
     },
     {
       speaker: "-- Lunar --",
-      text: "ฉันจับมือของ [Rabbet] และเรื่องราวของพวกเรากำลังจะเริ่มต้นขึ้น",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/img1.png?updatedAt=1711190708389",
+      text: "ถ้าอย่างงั้น ขอฝากเนื้อฝากตัวด้วยนะเพื่อนใหม่ของฉัน",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_7%20.png?updatedAt=1712913575261",
     },
+    {
+      speaker: "-- Rabbet --",
+      text:  "เช่นกันนะ ขอให้เป็นการเดินทางที่น่าจดจำ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_7%20.png?updatedAt=1712913575261",
+    },
+    {
+      speaker: "-- Lunar --",
+      text:  "ฉันจับมือของ  Rabbet และเรื่องราวของพวกเรากำลังจะเริ่มต้นขึ้น",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_7%20.png?updatedAt=1712913575261",
+    },
+    // fade out and fade in 
+    {
+      speaker: "-- Lunar --",
+      text: "หลังจากได้ตัดสินใจที่จะออกเดินทางไปพร้อมกับ [Rabbet]",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_8%20.png?updatedAt=1712913575270",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "การเดินทางของพวกเรานั้นฉันเข้าใจว่ามันจะไม่ได้ออกมาสวยหรูมากนัก แต่ฉันมั่นใจว่าฉันเลือกในสิ่งที่ฉันอยากจะทำมันมานานแล้วและจะไม่เสียใจภายหลังแน่นอน",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_8%20.png?updatedAt=1712913575270",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "ก่อนจะออกเดินทางฉันพา [Rabbet] ไปช่วยเก็บของที่บ้านของฉันก่อนที่เขตพักอาศัยก่อน แล้วจึงได้เริ่มออกเดินทาง ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_9.png?updatedAt=1712913575276",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "[Rabbet] ยังใช้พลังบางอย่างในการปกป้องตัวฉัน มันเป็นเหมือนพลังงานที่สามารถช่วยป้องกันจากอากาศและมลพิษให้กับฉันได้",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_10%20.png?updatedAt=1712913578266",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "จากนั้นฉันได้บอกลาเพื่อนร่วมงานของฉันก่อนจะออกเดินทาง",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_11.png?updatedAt=1712913579324",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "ระหว่างการเดินทางออกจากเมืองนี้ Rabbet ก็ได้พบกับการผลิตพลังงาน และอุตสาหกรรมต่างๆ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_12.png?updatedAt=1712913578440",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "ที่นี่ดูเหมือนจะใช้วิธีการผลิตพลังงานแบบยุคเก่า ที่สร้างมลพิษอยู่ตลอดเวลา",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_13%20.png?updatedAt=1712913579063",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: " ใกล้จะถึงเขตชาญเมืองแล้วแหละนะ ฉันพูดพลางปาดเหงื่อ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_14.png?updatedAt=1712913578502",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: " ฉันอยากจะรู้จังเลยนะ ว่าเมืองด้านบนจะมีคุณภาพชีวิตที่ดีกว่าเมืองด้านล่างขนาดไหน",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_14.png?updatedAt=1712913578502",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text:  "ที่เมืองด้านบนนั้นก็ใช่ว่าจะดีเสมอไปหรอกนะ มันก็มีสิ่งที่ต้องแลกมาหลายๆ อย่างอยู่เสมอซะทุกอย่างหน่ะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_14.png?updatedAt=1712913578502",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "หลังจากที่พวกเราเดินทางผ่านเมืองกันมาก็ได้มาถึงน้ำพุใจกลางของเมือง",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_15%20.png?updatedAt=1712913579095",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: " ใกล้จะถึงเขตชายเมืองแล้วแหละนะ ฉันพูดพลางหยุดที่ด้านหน้าน้ำพุ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_15%20.png?updatedAt=1712913579095",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: " สภาพอากาศดูเลวร้ายกว่าที่ประเมินเอาไว้มาก ผู้คนที่นี่ต้องทนอยู่กับมลพิษขนาดไหนกันนะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_15%20.png?updatedAt=1712913579095",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "มันพอจะมีวิธีแก้ไขสิ่งเหล่านี้บ้างไหม",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_16.png?updatedAt=1712913578619",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "ตราบเท่าที่มนุษย์ยังต้องพึ่งพาการผลิตพลังงานเหล่านี้อยู่ ก็จะสร้างมลพิษพวกนี้แบบไม่รู้จบ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_16.png?updatedAt=1712913578619",
+    },
+    {
+      speaker: "-- Lunar --",
+      text:  "สภาพอากาศที่เลวร้ายอย่างนี้ไม่มีวิธีแก้ไขมันเลยหรอ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_16.png?updatedAt=1712913578619",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text:  "เกรงว่าจะไม่ ถ้าหากเราไม่ได้แก้ไขที่จุดเริ่มต้นของมัน",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_16.png?updatedAt=1712913578619",
+    },
+    {
+      speaker: "-- Lunar --",
+      text:  "แล้วถ้าเราเปลี่ยนวิธีการผลิตพลังงานหล่ะ?",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel%20_17.png?updatedAt=1712913575097",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text:   "กระบวนการ การเปลี่ยนแปลงระบบมันไม่ได้ง่ายดายขนาดนั้นหรอกนะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel%20_17.png?updatedAt=1712913575097",
+    },
+    {
+      speaker: "-- Lunar --",
+      text:  "ตะ..แต่ว่า...",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_18%20.png?updatedAt=1712913579289",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text:  "คิดซะว่านี่คือกรรมตามสนองที่มนุษย์กระทำกับโลกนี้ไว้ก็ได้",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_18%20.png?updatedAt=1712913579289",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "ฉันคิดตามในสิ่งที่ [Rabbet] พูด ภายในใจว่าถ้าทำอะไรสักอย่างได้ก็คงจะดี พลางคิดในหัวตัดพ้อตัวเองว่าฉันก็ไม่ได้มีความสามารถ หรือความรู้อะไรสักหน่อย",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_19%20.png?updatedAt=1712913579324",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "มนุษย์นี่สื่ออารมณ์ผ่านสีหน้าง่ายจังเลยนะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_20.png?updatedAt=1712913579292",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: ".....ก็ใช่อยู่หรอกนะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_21%20.png?updatedAt=1712913581555",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "ขอโทษที่ทำให้เธอคิดมากนะ  ฉันแค่อยากสื่อสารว่าเรื่องพวกนี้ไม่ใช่ว่าแก้ไขไม่ได้ แต่การปรับเปลี่ยนนั้นต้องใช้ทั้งทรัพยากร และเวลา",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_22.png?updatedAt=1712913581705",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "อื้อไม่เป็นไร ฉันต่างหากที่ต้องขอโทษด้วย งั้นเรื่องนี้เจ๊ากันนะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_22.png?updatedAt=1712913581705",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: " อีกนิดก็จะถึงลิฟต์ขนส่งแล้ว ฉันว่าเราพักกันสักเดี๋ยวก่อนนะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_23%20.png?updatedAt=1712913581817",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "ถึงนายขะเป็นหุ่นยนต์ติด AI ก็ดูพูดคล่องกว่าหุ่นยนต์ตัวอื่นๆมากเลยนะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_24%20.png?updatedAt=1712913581838",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "ฉันก็อยากรู้เหมือนกันว่าฉันถูกสร้างขึ้นมาเพื่อจุดประสงค์อะไรกันแน่นะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_24%20.png?updatedAt=1712913581838",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "ถึงแม้ว่าฉันจะไม่รู้จุดประสงค์ของการทำอุตสาหกรรมจำนวนมากขนาดนี้ แต่ฉันคิดว่ามันต้องมีเหตผลอะไรแน่นอน",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_25.png?updatedAt=1712913575274",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "เพราะฉนั้น เราถึงต้องไปหาความจริงที่โลกภายนอกยังไงหล่ะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_25.png?updatedAt=1712913575274",
+    },
+    //Fade ดำ ปิด chapetert 1
     // Add more dialogue objects as needed
   ]);
 
@@ -203,7 +296,7 @@ const ChapterDialogTwo = () => {
 
   useEffect(() => {
     setColseBgmusic(false);
-    playBgm();
+    // playBgm(); 
     return () => {
       stopBgm();
     };
@@ -294,120 +387,120 @@ const ChapterDialogTwo = () => {
     }, 3000); // 3000ms is the duration of the fade-out effect
   };
 
-  useEffect(() => {
-    if (currentDialogueIndex === 0) {
-      handlePlayBgm();
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 1) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-      handlePauseBgm();
-    } else if (currentDialogueIndex === 2) {
-      setTimeout(() => {
-        playpunchSound();
-      }, 1000);
-      handlePlayBgm();
-    } else if (currentDialogueIndex === 3) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 4) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 5) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 6) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 7) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 8) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 9) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 10) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 11) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 12) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 13) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 14) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 15) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 16) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 17) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 18) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 19) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 20) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 21) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 22) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 23) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 24) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 25) {
-      setTimeout(() => {
-        playwalkingSound();
-      }, 1000);
-    } else if (currentDialogueIndex === 26) {
-      setTimeout(() => {
-        playalarmSound();
-      }, 1000);
-    }
-  }, [currentDialogueIndex]);
+  // useEffect(() => {
+  //   if (currentDialogueIndex === 0) {
+  //     handlePlayBgm();
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 1) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //     handlePauseBgm();
+  //   } else if (currentDialogueIndex === 2) {
+  //     setTimeout(() => {
+  //       playpunchSound();
+  //     }, 1000);
+  //     handlePlayBgm();
+  //   } else if (currentDialogueIndex === 3) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 4) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 5) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 6) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 7) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 8) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 9) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 10) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 11) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 12) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 13) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 14) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 15) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 16) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 17) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 18) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 19) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 20) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 21) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 22) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 23) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 24) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 25) {
+  //     setTimeout(() => {
+  //       playwalkingSound();
+  //     }, 1000);
+  //   } else if (currentDialogueIndex === 26) {
+  //     setTimeout(() => {
+  //       playalarmSound();
+  //     }, 1000);
+  //   }
+  // }, [currentDialogueIndex]);
 
   return (
     <>
@@ -517,27 +610,33 @@ const ChapterDialogTwo = () => {
           </div>
         </div>
       </nav>
-
-      <div id="page" className={`w-screen h-screen text-center ${fadeEffect}`}>
-        <Link onClick={handleNext}>
-          <div className="w-full h-screen relative">
+      
+      <div id="page" className={`w-full h-full  text-center items-center ${fadeEffect}`}>
+      <div className=" w-full h-full bg-no-repeat lg:bg-cover md:bg-contain  bg-center	" style={{ backgroundImage: `url(${dialogue[currentDialogueIndex].bg})` }}>
+        <Link>
+          <div className="w-full h-full relative">
             <div
               className=" absolute w-full top-[70%]  left-0 right-0 bottom-0 bg-opacity-50 z-20"
               style={{
-                background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 100%)`,
+                background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 1) 100%)`,
               }}
-              onClick={handleUserClick}
+              
+              onClick={() => {
+                handleUserClick();
+                handleNext();
+              }}
             >
-              <h1 className="absolute top-[15%] bottom-0 left-0 right-0 font-bold text-2xl sm:text-xs lg:text-5xl opacity-90">
+              <h1 className="absolute top-[15%] bottom-0 left-0 right-0 font-bold text-2xl  md:text-3xl lg:text-5xl opacity-90">
                 {dialogue[currentDialogueIndex].speaker}
               </h1>
-              <p className="absolute top-[50%] bottom-0 left-0 right-0 text-base md:text-2xl lg:text-3xl px-5 ">
+              <p className="absolute top-[50%] bottom-0 left-0 right-0 text-base md:text-2xl lg:text-2xl px-5 ">
                 {textFullyTyped
                   ? dialogue[currentDialogueIndex].text
                   : displayedText}
               </p>
+              <div>
               <svg
-                className={`w-8 h-8 absolute top-[75%] bottom-0 left-[49%] right-0 text-white ${
+                className={`w-8 h-8 absolute md:top-[85%] lg:top-[75%] bottom-0 left-[49%] right-0 text-white ${
                   isAnimating ? "animate-ping" : "animate-bounce"
                 }`}
                 aria-hidden="true"
@@ -555,12 +654,23 @@ const ChapterDialogTwo = () => {
                   d="M7.119 8h9.762a1 1 0 0 1 .772 1.636l-4.881 5.927a1 1 0 0 1-1.544 0l-4.88-5.927A1 1 0 0 1 7.118 8Z"
                 />
               </svg>
+              </div>
             </div>
-            <img
+            {/* <img
               src={dialogue[currentDialogueIndex].bg}
               alt="image description"
-              className="w-screen h-screen"
-            />
+              className="h-full w-full  bg-contain"
+            /> */}
+            <button
+              type="button"
+              onClick={() => {
+                play();
+                setOpenModalt(true)
+              }}
+              className=" absolute  lg:top-[72%] z-40  border-dashed border-2  border-emerald-500 lg:left-[92%] md:top-[74%] md:left-[88%]  opacity-[100%]   lg:w-28 md:w-[5rem] h-10 text-base  text-white rounded-lg focus:outline-none focus:ring-2 hover:bg-emerald-600 hover:border-white "
+            >
+              Skip {">>"}
+            </button>
           </div>
         </Link>
         <Modal
@@ -579,8 +689,8 @@ const ChapterDialogTwo = () => {
             <div className="text-center">
               <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
               <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normal text-gray-500 dark:text-gray-400">
-                Chapter 2 จบลงแล้ว กดปุ่มถัดไปเพื่อดำเนินเนื้อเรื่องต่อใน
-                Chapter 3 หรือ กลับไปหน้าเลือก Chapter
+                Chapter 1 จบลงแล้ว กดปุ่มถัดไปเพื่อดำเนินเนื้อเรื่องต่อใน
+                Chapter 2 หรือ กลับไปหน้าเลือก Chapter
               </h3>
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Button
@@ -607,6 +717,52 @@ const ChapterDialogTwo = () => {
             </div>
           </Modal.Body>
         </Modal>
+
+        <Modal
+          show={openModalt}
+          size="md"
+          onClose={() => {
+            play(), setOpenModalt(false);
+            handleStopBgm();
+          }}
+          popup={true}
+          fade={true}
+        >
+          <Modal.Header className=" bg-slate-800" />
+          <Modal.Body className="bg-slate-800">
+            <div className="text-center">
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14   text-emerald-700 " />
+              <h3 className="mb-5 md:text-lg lg:text-xl  text-white">
+                ต้องการข้าม Chapter 2  ? กดปุ่ม Skip &nbsp; 
+                เพื่อดำเนินเนื้อเรื่องต่อใน
+                Chapter 3 หรือ 
+                Cancel เพื่อชม Chapter 2 
+              </h3>
+              <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                <Button
+                  color="success"
+                  onClick={() => {
+                    play();
+                    setOpenModalt(false);
+                    handleButtonClickNext();
+                  }}
+                >
+                  {" Skip "}
+                </Button>
+                <Button
+                  color="gray"
+                  onClick={() => {
+                    play();
+                    setOpenModalt(false);
+                  }}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
+      </div>
       </div>
     </>
   );

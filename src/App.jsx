@@ -37,6 +37,7 @@ const ChapterOneMap = lazy(() => wait(2000).then(() =>import('./components/pages
 const ChapterTwoMap = lazy(() => wait(2000).then(() =>import('./components/pages/Maps/ChapterTwoMap')));
 const ChapterThreeMap = lazy(() => wait(2000).then(() =>import('./components/pages/Maps/ChapterThreeMap')));
 const Maps = lazy(() => wait(2000).then(() =>import('./components/pages/Maps')));
+const IntroTwo = lazy(() => wait(0).then(() =>import('./components/pages/introTwo.jsx')));
 import Nav from "./components/Navbar/Nav";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -83,6 +84,7 @@ function App() {
           <Nav/>
           <Routes>
           <Route path="/" index element={<Intro/>} />
+          <Route path="/introTwo" index element={<IntroTwo/>} />
             <Route path="/home"  element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/concept" element={<Concept />} />

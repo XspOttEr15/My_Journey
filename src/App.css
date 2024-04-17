@@ -31,5 +31,4 @@ a {
   scroll-snap-type: y mandatory;
   overflow-y: auto;
   position: relative;
-  max-width: 1920px;
 }
