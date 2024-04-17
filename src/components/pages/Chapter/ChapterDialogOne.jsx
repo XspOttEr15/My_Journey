@@ -41,6 +41,7 @@ const ChapterDialogOne = () => {
   const [displayedText, setDisplayedText] = useState(""); // Track displayed text
   const [typingSpeed, setTypingSpeed] = useState(30); // Adjust typing speed as needed
   const [openModal, setOpenModal] = useState(false);
+  const [openModalt, setOpenModalt] = useState(false);
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -48,7 +49,7 @@ const ChapterDialogOne = () => {
     {
       speaker: "-- Lunar --",
       text: "แล้วจากนี้ไปนายจะทำยังไงต่อ จะกลับขึ้นไปที่เมืองด้านบนไหม",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126",
+      bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126',
     },
     {
       speaker: "-- Rabbet --",
@@ -110,6 +111,7 @@ const ChapterDialogOne = () => {
       text:  "ฉันจับมือของ  Rabbet และเรื่องราวของพวกเรากำลังจะเริ่มต้นขึ้น",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_7%20.png?updatedAt=1712913575261",
     },
+
     // fade out and fade in 
     {
       speaker: "-- Lunar --",
@@ -267,12 +269,13 @@ const ChapterDialogOne = () => {
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_25.png?updatedAt=1712913575274",
     },
     //Fade ดำ ปิด chapetert 1
-    // Add more dialogue objects as needed
   ]);
 
   const toggleSliderVisibility = () => {
     setIsSliderVisible(!isSliderVisible);
   };
+
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -325,7 +328,24 @@ const ChapterDialogOne = () => {
   };
 
   const handleNext = () => {
-    if (textFullyTyped && currentDialogueIndex < dialogue.length - 1) {
+    if (textFullyTyped && currentDialogueIndex <= 11) {
+      handleStopSoundEffects();
+      setCurrentDialogueIndex(currentDialogueIndex + 1);
+      play();
+      setIsAnimating(true); // เริ่มเล่นอนิเมชัน
+      // Reset textFullyTyped state for the next dialogue
+      setTextFullyTyped(false);
+      setTimeout(() => setIsAnimating(false), 1000); // หยุดเล่นอนิเมชันหลังจาก 1 วินาที
+    } else if (textFullyTyped && currentDialogueIndex === 12) {
+      setFadeEffect("fade-exit-active");
+      setTimeout(() => {
+        setCurrentDialogueIndex(currentDialogueIndex + 1);
+        setFadeEffect("fade-enter-active");
+      }, 3000); // 3000ms is the duration of the fade-out effect      
+      play();
+      setTextFullyTyped(true);
+      setTimeout(() => setIsAnimating(false), 1000); // หยุดเล่นอนิเมชันหลังจาก 1 วินาที
+    } else if (textFullyTyped && currentDialogueIndex > 12 && currentDialogueIndex !== dialogue.length - 1) {
       handleStopSoundEffects();
       setCurrentDialogueIndex(currentDialogueIndex + 1);
       play();
@@ -334,16 +354,24 @@ const ChapterDialogOne = () => {
       setTextFullyTyped(false);
       setTimeout(() => setIsAnimating(false), 1000); // หยุดเล่นอนิเมชันหลังจาก 1 วินาที
     } else if (textFullyTyped && currentDialogueIndex === dialogue.length - 1) {
-      // Show the modal when user clicks on the last dialogue
-      setOpenModal(true);
-      handleStopSoundEffects();
-    }
+        // Show the modal when user clicks on the last dialogue
+        setFadeEffect("fade-exit-active");
+        setTimeout(() => {
+          setOpenModal(true);
+        }, 4000); 
+        handleStopSoundEffects();
+      }
   };
+  
+  
 
   const handleUserClick = () => {
     // Set textFullyTyped to true when user clicks to show full text
     setTextFullyTyped(true);
   };
+  
+  
+
 
   useEffect(() => {
     let currentIndex = 0;
@@ -364,6 +392,7 @@ const ChapterDialogOne = () => {
 
   const [fadeEffect, setFadeEffect] = useState("fade-enter");
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -609,16 +638,21 @@ const ChapterDialogOne = () => {
           </div>
         </div>
       </nav>
-
-      <div id="page" className={`w-full h-full text-center ${fadeEffect}`}>
-        <Link onClick={handleNext}>
+      
+      <div id="page" className={`w-full h-full  text-center items-center ${fadeEffect}`}>
+      <div className=" w-full h-full bg-no-repeat lg:bg-cover md:bg-contain  bg-center	" style={{ backgroundImage: `url(${dialogue[currentDialogueIndex].bg})` }}>
+        <Link>
           <div className="w-full h-full relative">
             <div
               className=" absolute w-full top-[70%]  left-0 right-0 bottom-0 bg-opacity-50 z-20"
               style={{
-                background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 100%)`,
+                background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 1) 100%)`,
               }}
-              onClick={handleUserClick}
+              
+              onClick={() => {
+                handleUserClick();
+                handleNext();
+              }}
             >
               <h1 className="absolute top-[15%] bottom-0 left-0 right-0 font-bold text-2xl  md:text-3xl lg:text-5xl opacity-90">
                 {dialogue[currentDialogueIndex].speaker}
@@ -650,11 +684,21 @@ const ChapterDialogOne = () => {
               </svg>
               </div>
             </div>
-            <img
+            {/* <img
               src={dialogue[currentDialogueIndex].bg}
               alt="image description"
-              className="w-full h-full"
-            />
+              className="h-full w-full  bg-contain"
+            /> */}
+            <button
+              type="button"
+              onClick={() => {
+                play();
+                setOpenModalt(true)
+              }}
+              className=" absolute  lg:top-[72%] z-40  border-dashed border-2  border-emerald-500 lg:left-[92%] md:top-[74%] md:left-[88%]  opacity-[100%]   lg:w-28 md:w-[5rem] h-10 text-base  text-white rounded-lg focus:outline-none focus:ring-2 hover:bg-emerald-600 hover:border-white "
+            >
+              Skip {">>"}
+            </button>
           </div>
         </Link>
         <Modal
@@ -664,6 +708,7 @@ const ChapterDialogOne = () => {
             play(), setOpenModal(false);
             setCurrentDialogueIndex(0); // Reset currentIndex to 0
             handleStopBgm();
+            setFadeEffect("fade-enter-active");
           }}
           popup={true}
           fade={true}
@@ -678,7 +723,7 @@ const ChapterDialogOne = () => {
               </h3>
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Button
-                  color="failure"
+                  color="success"
                   onClick={() => {
                     play();
                     setOpenModal(false);
@@ -701,6 +746,52 @@ const ChapterDialogOne = () => {
             </div>
           </Modal.Body>
         </Modal>
+
+        <Modal
+          show={openModalt}
+          size="md"
+          onClose={() => {
+            play(), setOpenModalt(false);
+            handleStopBgm();
+          }}
+          popup={true}
+          fade={true}
+        >
+          <Modal.Header className=" bg-slate-800" />
+          <Modal.Body className="bg-slate-800">
+            <div className="text-center">
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14   text-emerald-700 " />
+              <h3 className="mb-5 md:text-lg lg:text-xl  text-white">
+                ต้องการข้าม Chapter 1  ? กดปุ่ม Skip &nbsp; 
+                เพื่อดำเนินเนื้อเรื่องต่อใน
+                Chapter 2 หรือ 
+                ยกเลิก เพื่อชม Chapter 1 
+              </h3>
+              <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                <Button
+                  color="success"
+                  onClick={() => {
+                    play();
+                    setOpenModalt(false);
+                    handleButtonClickNext();
+                  }}
+                >
+                  {" Skip "}
+                </Button>
+                <Button
+                  color="gray"
+                  onClick={() => {
+                    play();
+                    setOpenModalt(false);
+                  }}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
+      </div>
       </div>
     </>
   );
