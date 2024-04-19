@@ -872,7 +872,7 @@ export const EffectsPost = ({
 };
 
 export const Book = ({ htmltext, setHtmltext, ...props }) => {
-  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -959,7 +959,7 @@ export const MBook = ({
   setOpenModaltwo,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
   const [hovered, hover] = useState(null);
   const ref = useRef();
   const [closelabel, Setcloselabel] = useState(false);
@@ -1074,7 +1074,7 @@ export const Paper = ({
   setOpenModalthree,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -1269,7 +1269,7 @@ export const Door = ({
   setOpenModaldoor,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
