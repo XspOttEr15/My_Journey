@@ -7,53 +7,57 @@ import { DataContext } from "../../../App";
 
 
 
+
+
 const store = [
   {
     name: "Next Place",
     color: "lightpink",
-    position: [10, 0, -15],
-    url: "/images/Maps/chapterOne/Garbage.png",
+    position: [0, 0, 15],
+    Camposition: [0, 0, 5],
+    
+    url: "/images/Maps/chapterOne/Top.png ",
     link: 1,
   },
   {
     name: "Next Place",
     color: "lightblue",
-    position: [0, 0, 15],
-    url: "/images/Maps/chapterOne/Top.png",
+    position: [10, -4.5, 1.5],
+    url: "/images/Maps/chapterOne/bridge.png",
     link: 2,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/bridge.png",
+    position: [500, 0, -200],
+    url: "/images/Maps/chapterOne/factory.png" ,
     link: 3,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/factory.png",
+    position: [-20, 0, 15],
+    url: "/images/Maps/chapterOne/village1.png" ,
     link: 4,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/village1.png",
+    position: [15, 3, 15],
+    url:  "/images/Maps/chapterOne/village2.png",
     link: 5,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/village2.png",
+    position: [100, 0, -90],
+    url: "/images/Maps/chapterOne/Garbage.png",
     link: 6,
   },
   {
     name: " Maps Page",
     color: "lightblue",
-    position: [15, 0, 15],
+    position: [80, 0, 120],
     url: "/images/Maps/chapterOne/Lunar_with_Rabbet.png",
     link: 7,
   },
@@ -61,44 +65,44 @@ const store = [
 
 const storeB = [
   {
-    nameB: "Chapter 2",
-    positionB: [80, 0, -15],
+    nameB: "Chapter Page",
+    positionB: [0, 0, -15],
     urlB: "/images/Maps/chapterOne/Garbage.png",
     linkB:1,
   },
   {
     nameB: " Previous Maps ",
-    positionB: [-50, 0, 15],
+    positionB: [0, 0, -15],
     urlB: "/images/Maps/chapterOne/Photosphere1.jpg",
     linkB:2,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
+    positionB: [-500, 120, -15],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:3,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
+    positionB: [200,0,-100],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:4,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
+    positionB: [-1, 0, -250],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:5,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
+    positionB: [0, 0, 160],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:6,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
+    positionB: [-100, 0, -60],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:7,
   },
@@ -106,7 +110,7 @@ const storeB = [
 ];
 
 
-function Dome({ name, position, texture, handleClick ,nameB, positionB,handleClickB}) {
+function Dome({ name, position, texture, handleClick ,nameB, positionB,handleClickB,setCameraTarget}) {
   return (
     <group>
       <mesh>
@@ -114,7 +118,7 @@ function Dome({ name, position, texture, handleClick ,nameB, positionB,handleCli
         <meshBasicMaterial map={texture} side={THREE.BackSide} />
       </mesh>
       <mesh position={position}>
-        <Html center>
+        <Html center >
           <div className={`labelM  animate-pulse`}>
             <a href="#" className="label__tuM" onClick={handleClick}>
               {name}
@@ -137,7 +141,7 @@ function Dome({ name, position, texture, handleClick ,nameB, positionB,handleCli
 
 
 
-function Portals({setFadeOut,fadeOut}) {
+function Portals({setFadeOut,fadeOut,setCameraTarget}) {
   const [whichB, setWhichB] = useState(0);
   const [which, setWhich] = useState(0);
   const { linkB, ...propss } = storeB[whichB];
@@ -150,7 +154,8 @@ function Portals({setFadeOut,fadeOut}) {
       setTimeout(() => {
         window.location.href = "/chaptertwomap";
       }, 800);
-    } else {
+    } 
+    else {
       // For other links, just update the state
       setTimeout(() => {
       setWhich((prevWhich) => Math.max(0, prevWhich + 1)); 
@@ -185,15 +190,22 @@ function Portals({setFadeOut,fadeOut}) {
       return () => clearTimeout(timer);
     }
   }, [fadeOut]);
+
+  useEffect(() => {
+    // เมื่อมีการคลิกลิงก์ ให้ทำการ fade-out
+    if (link === 7) {
+      setCameraTarget([-14,-10,10])
+    }
+  }, [link]);
   
 
-  return <Dome handleClick={handleClick} handleClickB={handleClickB} {...props} {...propss} texture={maps[which]}  />;
-}
+  return <Dome handleClick={handleClick} handleClickB={handleClickB} {...props} {...propss} texture={maps[which]} setCameraTarget={setCameraTarget} />;}
 
 
 export default function ChapterOneMap() {
   const [fadeOut, setFadeOut] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [cameraTarget, setCameraTarget] = useState([0,0,1]);
   const { setColseBgmusic,setCloseNavbar,setIsLocked } = useContext(DataContext);
   useEffect(() => {
     setColseBgmusic(false);
@@ -220,11 +232,12 @@ export default function ChapterOneMap() {
         enableDamping
         dampingFactor={0.2}
         autoRotate={false}
-        rotateSpeed={-0.5}
+        rotateSpeed={-0.4}
+        target={cameraTarget}
       />
       <Suspense fallback={null}>
         <Preload all />
-        <Portals setFadeOut={setFadeOut} fadeOut={fadeOut}/>
+        <Portals setFadeOut={setFadeOut} fadeOut={fadeOut} setCameraTarget={setCameraTarget}/>
       </Suspense>
     </Canvas>
     </div>

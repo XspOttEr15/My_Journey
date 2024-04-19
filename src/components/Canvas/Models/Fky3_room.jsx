@@ -12,7 +12,7 @@ import useSound from "use-sound";
 
 
 export function Room(props) {
-  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
   // useEffect(() => {
   //   // materials.M_scifidoor.emissive.multiplyScalar(1.7);
   //   // materials.M_mainpipe.emissive.multiplyScalar(1.7);
