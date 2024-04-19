@@ -3,7 +3,7 @@ import "../styles/intro.css";
 import { useNavigate } from "react-router-dom";
 import { useGLTF } from "@react-three/drei";
 import { DataContext } from "../../App";
-useGLTF.preload("/models/fky3_room.glb");
+useGLTF.preload("https://0802992036.sirv.com/3D/fky3_room.glb");
 
 
 

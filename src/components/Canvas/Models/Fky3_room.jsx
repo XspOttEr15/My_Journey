@@ -846,7 +846,7 @@ export function Room(props) {
 }
 
 export function Floor(props) {
-  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
       <RigidBody type="fixed"  name="ground" colliders="trimesh" ccd>
@@ -868,7 +868,7 @@ export function Floor(props) {
 }
 
 export function Wall(props) {
-  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
       <RigidBody type="fixed" colliders="trimesh" ccd>
@@ -883,7 +883,7 @@ export function Wall(props) {
   );
 }
 
-useGLTF.preload("/models/fky3_room.glb");
+useGLTF.preload("https://0802992036.sirv.com/3D/fky3_room.glb");
 
 
 
