@@ -6,6 +6,8 @@ import {
   useGLTF,
   Html,
   KeyboardControls,
+  Stats, 
+  StatsGl
 } from "@react-three/drei";
 import { Floor, Room, Wall } from "./Models/Fky3_room";
 import { Physics, RigidBody } from "@react-three/rapier";
@@ -30,6 +32,7 @@ import Ecctrl from "ecctrl";
 import { EcctrlJoystick } from "ecctrl";
 import Instructions from "./Instructions";
 import InstructionsT from "./Instructions_mobile";
+import { Perf } from "r3f-perf";
 
 export const RoomChapterOne = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -203,10 +206,12 @@ export const RoomChapterOne = () => {
           setSelector={setSelector}
         />}
         <Canvas
+          frameloop="demand"
           shadows="soft"
-          camera={false}
+          camera={[0,3,0]}
           style={{ width: "100%", height: "100%", display: "relative" }}
         >
+          {/* <StatsGl/> */}
           <color attach="background" args={["#638689"]} />
           <fog attach="fog" args={["#569BF3", 1, 200]} />
           {/* debug */}
@@ -709,7 +714,6 @@ export const RoomChapterOne = () => {
 export default RoomChapterOne;
 
 const Player = () => {
-  const playerRef = useRef;
 
   return (
     <mesh position={[0, 0, 0]} visible={false}>
@@ -790,8 +794,8 @@ export const EffectsPost = ({
     visibleEdgeColor: "#ffffff",
     hiddenEdgeColor: "#ffffff",
     blur: true,
-    width: { value: 1000, min: 0, max: 2000 },
-    edgeStrength: { value: 1000, min: 0, max: 2000 },
+    width: { value: 1000,},
+    edgeStrength: { value: 2.5, },
   });
 
   // camera book movement
@@ -849,21 +853,15 @@ export const EffectsPost = ({
   return (
     <>
       <Selection>
-        <EffectComposer disableNormalPass multisampling={8} autoClear={false}>
+        <EffectComposer disableNormalPass autoClear={false}>
           {vignetteConfig.enabled && <Vignette {...vignetteConfig} />}
           {bloomConfig.enabled && <Bloom {...bloomConfig} />}
           {outline.enabled && <Outline {...outline} />}
         </EffectComposer>
         <mesh>
           <Book />
-        </mesh>
-        <mesh>
           <MBook />
-        </mesh>
-        <mesh>
           <Paper />
-        </mesh>
-        <mesh>
           <Door />
         </mesh>
       </Selection>
@@ -872,7 +870,7 @@ export const EffectsPost = ({
 };
 
 export const Book = ({ htmltext, setHtmltext, ...props }) => {
-  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
+  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -959,7 +957,7 @@ export const MBook = ({
   setOpenModaltwo,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
+  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   const [hovered, hover] = useState(null);
   const ref = useRef();
   const [closelabel, Setcloselabel] = useState(false);
@@ -1074,7 +1072,7 @@ export const Paper = ({
   setOpenModalthree,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
+  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -1269,7 +1267,7 @@ export const Door = ({
   setOpenModaldoor,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
+  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);

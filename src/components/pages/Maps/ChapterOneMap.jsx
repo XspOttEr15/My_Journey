@@ -65,7 +65,7 @@ const store = [
 
 const storeB = [
   {
-    nameB: "Chapter Page",
+    nameB: "Maps Page",
     positionB: [0, 0, -15],
     urlB: "/images/Maps/chapterOne/Garbage.png",
     linkB:1,

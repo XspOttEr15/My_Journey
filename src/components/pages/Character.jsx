@@ -3,6 +3,7 @@ import { Button, Modal } from "flowbite-react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { motion } from "framer-motion";
 import "../styles/StorySelect.css";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
@@ -80,11 +81,20 @@ const Character = () => {
     <div className=" w-full lg:h-screen md:h-auto relative ">
     <div className="bg"></div>
 
-      <div className=" text-center mb-[0rem] pt-[3rem]  sections ">
-        <span className="  text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
-          Character
+    <motion.div className="  text-center mb-[0rem] pt-[4%]   sections" 
+      animate={{ scale: [1, 1.1, 1] }}
+      transition={{
+        duration: 2,
+        ease: "easeInOut",
+        times: [0, 1],
+        repeat: Infinity,
+      }}
+      >
+        <span className="  text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-4 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
+        CONCEPT
         </span>
-      </div>
+      </motion.div>
+      
 
       <div className="  text-center  lg:p-0 lg:m-16 md:p-[8rem] sections">
           <Slider {...settings}>
@@ -281,7 +291,7 @@ const CardOne = React.forwardRef(
           }}
         >
           <Modal.Header className=" bg-slate-800 ">
-            <span className="text-white">Power by Sketchfab</span>
+            <span className="text-white">Powered by Sketchfab</span>
           </Modal.Header>
           <Modal.Body className="bg-slate-800 h-auto">
             <div className=" h-[600px] w-full">
@@ -402,7 +412,7 @@ const CardTwo = React.forwardRef(
         >
           <Modal.Header className=" bg-slate-800 ">
             {" "}
-            <span className="text-white">Power by Sketchfab</span>
+            <span className="text-white">Powered by Sketchfab</span>
           </Modal.Header>
           <Modal.Body className="bg-slate-800 ">
             <div className="h-[600px] w-full">
@@ -514,7 +524,7 @@ const CardThee = React.forwardRef(
           }}
         >
           <Modal.Header className=" bg-slate-800 ">
-            <span className="text-white">Power by Sketchfab</span>
+            <span className="text-white">Powered by Sketchfab</span>
           </Modal.Header>
           <Modal.Body className="bg-slate-800 h-96">
             <div className="h-[600px] w-full">
@@ -644,7 +654,7 @@ const CardFour = React.forwardRef(
               }}
             >
               <Modal.Header className=" bg-slate-800 ">
-                <span className="text-white">Power by Sketchfab</span>
+                <span className="text-white">Powered by Sketchfab</span>
               </Modal.Header>
               <Modal.Body className="bg-slate-800">
                 <div className="h-[600px] w-full">

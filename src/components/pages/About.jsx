@@ -24,7 +24,7 @@ const About = () => {
           repeat: Infinity,
         }}
       >
-        <motion.span className="text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900  pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800">
+        <motion.span className="text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900  pl-12 pr-12  pt-4 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800">
           ABOUT US
         </motion.span>
       </motion.div>
@@ -163,22 +163,9 @@ const About = () => {
           <h1 className="lg:text-5xl md:text-4xl font-extrabold text-white m-8">
             About Project
           </h1>
-          <p className="text-sm lg:text-base md:text-justify">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply
-            dummy text of the printing and typesetting industry. Lorem Ipsum has
-            been the industry's standard dummy text ever since the 1500s, when
-            an unknown printer took a galley of type and scrambled it to make a
-            type specimen book. It has survived not only five centuries, but
-            also the leap into electronic typesetting, remaining essentially
-            unchanged. 
+          <p className=" md:text-base lg:text-lg lg:text-center md:text-justify">
+          Website The Journey เกิดจากแนวคิดวิธีการนำเสนอสื่อรูปแบบการประยุกต์ จากการใช้สื่อที่มีการผสมผสานกันระหว่าง เว็บไซต์ และ แอนิมชัน จะสามารถทำให้ผู้ชมมีการปฏิสัมพันธ์กับตัวสื่อที่ใช้ และยังสามารถเพิ่มรูปแบบการนำเสนอที่นอกเหนือจาการใช้เว็บไซต์แบบปกติให้เปลี่ยนเป็น เว็บไซต์แบบสามมิติ
+          โดยการใช้ Three.js เพื่อใช้แสดงผลวัตถุสามมิติในเว็บไซต์ และใช้ React เพื่อช่วยให้เว็บไซต์สามารถโหลดข้อมูลได้อย่างต่อเนื่องและรวดเร็ว เมื่อผู้ชมสามารถดูวัตถุสามมิติในรูปแบบของเว็บไซต์คาดว่าจะสามารถช่วยให้เกิดความเข้าใจในเนื้อหาและ เข้าใจถึงรูปร่างของฉาก และตัวละครมากยิ่งขึ้น ด้วยวิธีการดังกล่าวจะสามารถทำให้ควบคุมพื้นที่ในการนำเสนอให้เป็นเปรียบเสมือนกับโลกจำลองของเนื้อเรื่องภายในเว็บไซต์ได้อีกด้วย 
           </p>
         </motion.div>
       </div>
