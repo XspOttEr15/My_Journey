@@ -26,7 +26,7 @@ const Concept = () => {
         repeat: Infinity,
       }}
       >
-        <span className=" text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-2 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
+        <span className=" text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-4 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
           CONCEPT
         </span>
       </motion.div>

@@ -12,7 +12,7 @@ import useSound from "use-sound";
 
 
 export function Room(props) {
-  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
+  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   // useEffect(() => {
   //   // materials.M_scifidoor.emissive.multiplyScalar(1.7);
   //   // materials.M_mainpipe.emissive.multiplyScalar(1.7);
@@ -846,10 +846,10 @@ export function Room(props) {
 }
 
 export function Floor(props) {
-  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
+  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
-      <RigidBody type="fixed"  name="ground" colliders="trimesh" ccd>
+      <RigidBody type="fixed"  name="ground" colliders="trimesh" >
         <mesh
           castShadow
           receiveShadow
@@ -868,10 +868,10 @@ export function Floor(props) {
 }
 
 export function Wall(props) {
-  const { nodes, materials } = useGLTF("https://0802992036.sirv.com/3D/fky3_room.glb");
+  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
-      <RigidBody type="fixed" colliders="trimesh" ccd>
+      <RigidBody type="fixed" colliders="trimesh" >
         <mesh
           castShadow
           receiveShadow
@@ -883,7 +883,6 @@ export function Wall(props) {
   );
 }
 
-useGLTF.preload("https://0802992036.sirv.com/3D/fky3_room.glb");
 
 
 

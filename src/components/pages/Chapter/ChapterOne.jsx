@@ -42,12 +42,14 @@ const ChapterOne = () => {
     setOpenModal(false);
     // Use the playerRef to seek to the beginning of the video and play
     if (playerRef.current) {
+      console.log(playerRef.current); // Add this line for debugging
       playerRef.current.seekTo(0);
       setTimeout(() => {
-        playerRef.current.play();
+        playerRef.current.play;
       }, 100); // Delay for a short time before playing to ensure seekTo takes effect
     }
   };
+  
 
   useEffect(() => {
     setCloseNavbar(true);

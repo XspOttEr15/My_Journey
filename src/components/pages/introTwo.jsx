@@ -66,7 +66,7 @@ const IntroTwo = () => {
 
   return (
     <div className={`instructions-overlays ${fadeEffects}`}>
-      <div className="lg:text-5xl font-bold lg:mb-5 md:text-4xl md:pb-5 md:pt-[19rem] lg:pb-0 lg:pt-0  ">
+      <div className="lg:text-5xl font-bold lg:mb-5 md:text-2xl md:pb-5 md:pt-[15%] lg:pb-0 lg:pt-0 text-center  ">
         <h1>
           คำชี้แจง: สิ่งที่ควรทราบก่อนเข้าเว็บไซต์ (ตัวเร่งกราฟิก บน Browser)
         </h1>
@@ -74,14 +74,14 @@ const IntroTwo = () => {
       <hr />
 
       <div className=" flex lg:flex-row md:flex-col  mx-20 mt-8  rounded-xl items-center justify-center lg:bg-emerald-700 md:bg-none m-2 ">
-        <div className="w-[66%]">
+        <div className=" lg:w-[66%] md:w-[95%]">
           <img
-            className="  max-w-[1440px] w-full h-auto rounded-xl "
+            className="  max-w-[1440px] md:w-full   lg:w-full h-auto rounded-xl "
             src={dialogueT[currentDialogueTIndex].bg}
           />
         </div>
-        <div className=" w-[33%] m-5 text-center">
-          <h1 className="text-4xl lg:text-4xl font-extrabold text-white text-center pt-5">
+        <div className="  lg:w-[33%]  md:w-[100%] m-5 text-center">
+          <h1 className="md:text-2xl lg:text-4xl font-extrabold text-white text-center pt-5">
             {dialogueT[currentDialogueTIndex].speaker}
           </h1>
           <p className="lg:text-2xl md:text-lg text-center m-2">

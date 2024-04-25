@@ -8,7 +8,7 @@ const LoadingScreen = () => {
   
   return (
     <div className={`loading-screen`}>
-      <video className="loading-screen__background-video" autoPlay loop muted preload>
+      <video className="loading-screen__background-video" autoPlay loop muted >
         <source src="https://ik.imagekit.io/vsfmz5htw/Video/Loading/vid_loading_room.mp4?updatedAt=1712911800087" type="video/mp4" />
       </video>
       <div className="loading-screen__container">

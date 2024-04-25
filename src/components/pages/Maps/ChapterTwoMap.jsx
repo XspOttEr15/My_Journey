@@ -12,7 +12,7 @@ const store = [
     name: "Next Place",
     color: "lightpink",
     position: [10, 0, -15],
-    url: "/images/Maps/chapterOne/Garbage.png",
+    url: "/images/Maps/chapterTwo/City2_Scene01_HDRI_Tex.png",
     link: 1,
   },
   {
