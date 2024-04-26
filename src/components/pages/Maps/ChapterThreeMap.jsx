@@ -11,102 +11,90 @@ const store = [
   {
     name: "Next Place",
     color: "lightpink",
-    position: [10, 0, -15],
-    url: "/images/Maps/chapterOne/Garbage.png",
+    position: [25, 1, 15],
+    url: "/images/Maps/chapterThree/1.png",
     link: 1,
   },
   {
     name: "Next Place",
     color: "lightblue",
-    position: [0, 0, 15],
-    url: "/images/Maps/chapterOne/Top.png",
+    position: [1, 15, 40],
+    url: "/images/Maps/chapterThree/2.png",
     link: 2,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/bridge.png",
+    position: [1.5, 3.5, 15],
+    url: "/images/Maps/chapterThree/3.png",
     link: 3,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/factory.png",
+    position: [1, 0, -15],
+    url: "/images/Maps/chapterThree/4.png",
     link: 4,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/village1.png",
+    position: [30, -16, -15],
+    url: "/images/Maps/chapterThree/5.png",
     link: 5,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/village2.png",
+    position: [-15, 0, -8],
+    url: "/images/Maps/chapterThree/6.png",
     link: 6,
   },
-  {
-    name: " Maps Page",
-    color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/Lunar_with_Rabbet.png",
-    link: 7,
-  },
+  
 ];
 
 const storeB = [
   {
     nameB: "Chapter 2",
-    positionB: [80, 0, -15],
+    positionB: [-20, -1, -11],
     urlB: "/images/Maps/chapterOne/Garbage.png",
     linkB:1,
   },
   {
     nameB: " Previous Maps ",
-    positionB: [-50, 0, 15],
-    urlB: "/images/Maps/chapterOne/Photosphere1.jpg",
+    positionB: [27, -34, -15],
+    urlB: "/images/Maps/chapterThree/1.png",
     linkB:2,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
-    urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    positionB: [1.5, 0, -15],
+    urlB: "/images/Maps/chapterThree/2.png",
     linkB:3,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
+    positionB: [1, 3.5, 15],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:4,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
+    positionB: [1, 4, 15],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:5,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
+    positionB: [15, 0, 10],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:6,
   },
-  {
-    nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
-    urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
-    linkB:7,
-  },
-  
+
 ];
 
 
-function Dome({ name, position, texture, handleClick ,nameB, positionB,handleClickB}) {
+function Dome({ name, position, texture, handleClick ,nameB, positionB,handleClickB,setCameraTarget}) {
   return (
     <group>
       <mesh>
@@ -137,7 +125,7 @@ function Dome({ name, position, texture, handleClick ,nameB, positionB,handleCli
 
 
 
-function Portals({setFadeOut,fadeOut}) {
+function Portals({setFadeOut,fadeOut,setCameraTarget}) {
   const [whichB, setWhichB] = useState(0);
   const [which, setWhich] = useState(0);
   const { linkB, ...propss } = storeB[whichB];
@@ -185,14 +173,22 @@ function Portals({setFadeOut,fadeOut}) {
       return () => clearTimeout(timer);
     }
   }, [fadeOut]);
+
+  // useEffect(() => {
+  //   // เมื่อมีการคลิกลิงก์ ให้ทำการ fade-out
+  //   if (link === 7) {
+  //     setCameraTarget([-14,-10,10])
+  //   }
+  // }, [link]);
   
 
-  return <Dome handleClick={handleClick} handleClickB={handleClickB} {...props} {...propss} texture={maps[which]}  />;
+  return <Dome handleClick={handleClick} handleClickB={handleClickB} {...props} {...propss} texture={maps[which]} setCameraTarget={setCameraTarget}  />;
 }
 
 
 export default function ChapterThreeMap() {
   const [fadeOut, setFadeOut] = useState(false);
+  const [cameraTarget, setCameraTarget] = useState([1.2,0,1]);
   const [loaded, setLoaded] = useState(false);
   const { setColseBgmusic,setCloseNavbar,setIsLocked } = useContext(DataContext);
   useEffect(() => {
@@ -211,6 +207,8 @@ export default function ChapterThreeMap() {
     return () => clearTimeout(timer);
   }, []);
 
+  
+
   return (
     <div className={`page ${loaded ? "fade-in" : ""} ${fadeOut ? "fade-out" : ""}`}>
     <Canvas frameloop="demand" camera={{ position: [0, 0, 0.1] }}>
@@ -221,10 +219,11 @@ export default function ChapterThreeMap() {
         dampingFactor={0.2}
         autoRotate={false}
         rotateSpeed={-0.5}
+        target={cameraTarget}
       />
       <Suspense fallback={null}>
         <Preload all />
-        <Portals setFadeOut={setFadeOut} fadeOut={fadeOut}/>
+        <Portals setFadeOut={setFadeOut} fadeOut={fadeOut} setCameraTarget={setCameraTarget}/>
       </Suspense>
     </Canvas>
     </div>

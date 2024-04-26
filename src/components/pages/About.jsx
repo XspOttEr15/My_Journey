@@ -44,7 +44,7 @@ const About = () => {
         >
           <motion.img
             className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 w-full h-[480px] "
-            src="https://static.vecteezy.com/system/resources/thumbnails/006/892/622/small_2x/discord-logo-icons-editorial-collection-free-vector.jpg"
+            src="/images/AboutUs/left_1.png"
             alt=""
           />
           <motion.button
@@ -75,7 +75,7 @@ const About = () => {
         >
           <motion.img
             className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 w-full h-[480px]  "
-            src="https://static.vecteezy.com/system/resources/thumbnails/006/892/622/small_2x/discord-logo-icons-editorial-collection-free-vector.jpg"
+            src="/images/AboutUs/midle_2.png"
             alt=""
           />
           <motion.button
@@ -83,10 +83,10 @@ const About = () => {
             className="text-emerald-400  bg-gray-900  ring-4 focus:outline-none  ring-emerald-800 shadow-lg   shadow-emerald-800/80 rounded-lg  px-14 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto "
           >
             <div className="text-xl">
-            63080500242
+            63080500269
             </div>
             <div className="text-xl">
-              นายภูบดินทร์ ดิศพัฒน์
+            นายนรุตม์ สุวรรณ
             </div>
           </motion.button>
         </motion.div>
@@ -106,7 +106,7 @@ const About = () => {
         >
           <motion.img
             className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 w-full h-[480px]  "
-            src="https://static.vecteezy.com/system/resources/thumbnails/006/892/622/small_2x/discord-logo-icons-editorial-collection-free-vector.jpg"
+            src="/images/AboutUs/Ri_3.png"
             alt=""
           />
           <motion.button
@@ -114,10 +114,10 @@ const About = () => {
             className="text-emerald-400  bg-gray-900   bg-gradient-to-br ring-4 outline-none  ring-emerald-800 shadow-lg   shadow-emerald-800/80 rounded-lg  px-14 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto  "
           >
             <div className="text-xl">
-            63080500269
+            63080500242
             </div>
             <div className="text-xl">
-              นายนรุตม์ สุวรรณ
+              นายภูบดินทร์ ดิศพัฒน์
             </div>
           </motion.button>
         </motion.div>
@@ -163,7 +163,7 @@ const About = () => {
           <h1 className="lg:text-5xl md:text-4xl font-extrabold text-white m-8">
             About Project
           </h1>
-          <p className=" md:text-base lg:text-lg lg:text-center md:text-justify">
+          <p className=" md:text-base lg:text-xl lg:text-center md:text-justify">
           Website The Journey เกิดจากแนวคิดวิธีการนำเสนอสื่อรูปแบบการประยุกต์ จากการใช้สื่อที่มีการผสมผสานกันระหว่าง เว็บไซต์ และ แอนิมชัน จะสามารถทำให้ผู้ชมมีการปฏิสัมพันธ์กับตัวสื่อที่ใช้ และยังสามารถเพิ่มรูปแบบการนำเสนอที่นอกเหนือจาการใช้เว็บไซต์แบบปกติให้เปลี่ยนเป็น เว็บไซต์แบบสามมิติ
           โดยการใช้ Three.js เพื่อใช้แสดงผลวัตถุสามมิติในเว็บไซต์ และใช้ React เพื่อช่วยให้เว็บไซต์สามารถโหลดข้อมูลได้อย่างต่อเนื่องและรวดเร็ว เมื่อผู้ชมสามารถดูวัตถุสามมิติในรูปแบบของเว็บไซต์คาดว่าจะสามารถช่วยให้เกิดความเข้าใจในเนื้อหาและ เข้าใจถึงรูปร่างของฉาก และตัวละครมากยิ่งขึ้น ด้วยวิธีการดังกล่าวจะสามารถทำให้ควบคุมพื้นที่ในการนำเสนอให้เป็นเปรียบเสมือนกับโลกจำลองของเนื้อเรื่องภายในเว็บไซต์ได้อีกด้วย 
           </p>

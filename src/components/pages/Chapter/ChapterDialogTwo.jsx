@@ -5,10 +5,8 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { DataContext } from "../../../App";
 import useSound from "use-sound";
 import "./styles/ChapterOne.css";
-import bgmSound from "/audios/chapterOne/bgm1.mp3";
-import walkingSound from "/audios/chapterOne/walking.mp3";
-import punchSound from "/audios/chapterOne/punch.mp3";
-import alarmSound from "/audios/chapterOne/alarm.mp3";
+import bgm2Sound from "/audios/chapterTwo/touch_some_grass_.mp3";
+
 
 const ChapterDialogTwo = () => {
   const [isSliderVisible, setIsSliderVisible] = useState(false);
@@ -20,20 +18,14 @@ const ChapterDialogTwo = () => {
   const openNav = () => setIsOpen(true);
   const closeNav = () => setIsOpen(false);
   const [volume, setVolume] = useState(0.1); // Initial volume value
-  const [playwalkingSound, { stop: stopWalkingSound }] = useSound(
-    walkingSound,
-    { volume: volume , loop: false }
-  );
-  const [playpunchSound, { stop: stopPunchSound }] = useSound(punchSound, {
-    volume: volume,
-    loop: false,
-  });
-  const [playalarmSound, { stop: stopAlarmSound }] = useSound(alarmSound, {
-    volume: volume,
-    loop: false,
-  });
-  const [playBgm, { pause: pauseBgm, stop: stopBgm }] = useSound(bgmSound, {
-    volume: 0.05,
+  
+  // const [playalarmSound, { stop: stopAlarmSound }] = useSound(alarmSound, {
+  //   volume: volume,
+  //   loop: false,
+  // });
+
+  const [playBgm, { pause: pauseBgm, stop: stopBgm }] = useSound(bgm2Sound, {
+    volume: 0.4,
     loop: true,
   });
   const [textFullyTyped, setTextFullyTyped] = useState(false);
@@ -201,9 +193,10 @@ const ChapterDialogTwo = () => {
 
   useEffect(() => {
     setColseBgmusic(false);
-    // playBgm(); 
+     playBgm(); 
     return () => {
       stopBgm();
+      handleStopSoundEffects();
     };
   }, [playBgm, stopBgm]);
 
@@ -220,9 +213,7 @@ const ChapterDialogTwo = () => {
   };
 
   const handleStopSoundEffects = () => {
-    stopWalkingSound();
-    stopPunchSound();
-    stopAlarmSound();
+    
   };
 
   const handleVolumeChange = (e) => {
@@ -308,124 +299,123 @@ const ChapterDialogTwo = () => {
   const handleButtonClickNext = () => {
     setFadeEffect("fade-exit-active");
     setTimeout(() => {
-      navigate("/chapterthree");
+      navigate("/chapterthreedialog");
     }, 3000); // 3000ms is the duration of the fade-out effect
   };
 
-  // useEffect(() => {
-  //   if (currentDialogueIndex === 0) {
-  //     handlePlayBgm();
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 1) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //     handlePauseBgm();
-  //   } else if (currentDialogueIndex === 2) {
-  //     setTimeout(() => {
-  //       playpunchSound();
-  //     }, 1000);
-  //     handlePlayBgm();
-  //   } else if (currentDialogueIndex === 3) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 4) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 5) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 6) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 7) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 8) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 9) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 10) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 11) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 12) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 13) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 14) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 15) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 16) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 17) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 18) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 19) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 20) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 21) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 22) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 23) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 24) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 25) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 26) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   }
-  // }, [currentDialogueIndex]);
+  useEffect(() => {
+    if (currentDialogueIndex === 0) {
+      handlePlayBgm();
+      setTimeout(() => {
+       
+      }, 1000);
+    } else if (currentDialogueIndex === 1) {
+      setTimeout(() => {
+       
+      }, 1000);
+      
+    } else if (currentDialogueIndex === 2) {
+      setTimeout(() => {
+        
+      }, 1000);
+      handlePlayBgm();
+    } else if (currentDialogueIndex === 3) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 4) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 5) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 6) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 7) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 8) {
+      setTimeout(() => {
+       
+      }, 1000);
+    } else if (currentDialogueIndex === 9) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 10) {
+      setTimeout(() => {
+       
+      }, 1000);
+    } else if (currentDialogueIndex === 11) {
+      setTimeout(() => {
+       
+      }, 1000);
+    } else if (currentDialogueIndex === 12) {
+      setTimeout(() => {
+       
+      }, 1000);
+    } else if (currentDialogueIndex === 13) {
+      setTimeout(() => {
+      }, 1000);
+    } else if (currentDialogueIndex === 14) {
+      setTimeout(() => {
+     
+      }, 1000);
+    } else if (currentDialogueIndex === 15) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 16) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 17) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 18) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 19) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 20) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 21) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 22) {
+      setTimeout(() => {
+     
+      }, 1000);
+    } else if (currentDialogueIndex === 23) {
+      setTimeout(() => {
+     
+      }, 1000);
+    } else if (currentDialogueIndex === 24) {
+      setTimeout(() => {
+   
+      }, 1000);
+    } else if (currentDialogueIndex === 25) {
+      setTimeout(() => {
+   
+      }, 1000);
+    } else if (currentDialogueIndex === 26) {
+      setTimeout(() => {
+
+      }, 1000);
+    }
+  }, [currentDialogueIndex]);
 
   return (
     <>
@@ -554,7 +544,7 @@ const ChapterDialogTwo = () => {
               <h1 className="absolute top-[15%] bottom-0 left-0 right-0 font-bold text-2xl  md:text-3xl lg:text-5xl opacity-90">
                 {dialogue[currentDialogueIndex].speaker}
               </h1>
-              <p className="absolute top-[50%] bottom-0 left-0 right-0 text-base md:text-2xl lg:text-2xl px-5 ">
+              <p className="absolute top-[50%] bottom-0 left-0 right-0 text-base md:text-2xl lg:text-3xl px-5 ">
                 {textFullyTyped
                   ? dialogue[currentDialogueIndex].text
                   : displayedText}

@@ -5,37 +5,30 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { DataContext } from "../../../App";
 import useSound from "use-sound";
 import "./styles/ChapterOne.css";
-import bgmSound from "/audios/chapterOne/bgm1.mp3";
-import walkingSound from "/audios/chapterOne/walking.mp3";
-import punchSound from "/audios/chapterOne/punch.mp3";
-import alarmSound from "/audios/chapterOne/alarm.mp3";
+import bgmSound from "/audios/chapterOne/Factory_amb.mp3";
 
 const ChapterDialogOne = () => {
   const [isSliderVisible, setIsSliderVisible] = useState(false);
   const audioRef = useRef(null);
-  const { setColseBgmusic} =
-    useContext(DataContext);
+  const { setColseBgmusic } = useContext(DataContext);
   const [isOpen, setIsOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth); // State to store window width
   const openNav = () => setIsOpen(true);
   const closeNav = () => setIsOpen(false);
   const [volume, setVolume] = useState(0.1); // Initial volume value
-  const [playwalkingSound, { stop: stopWalkingSound }] = useSound(
-    walkingSound,
-    { volume: volume , loop: false }
-  );
-  const [playpunchSound, { stop: stopPunchSound }] = useSound(punchSound, {
-    volume: volume,
-    loop: false,
-  });
-  const [playalarmSound, { stop: stopAlarmSound }] = useSound(alarmSound, {
-    volume: volume,
-    loop: false,
-  });
+
+
+  // const [playpunchSound, { stop: stopPunchSound }] = useSound(punchSound, {
+  //   volume: volume,
+  //   loop: false,
+  // });
+
   const [playBgm, { pause: pauseBgm, stop: stopBgm }] = useSound(bgmSound, {
     volume: 0.05,
     loop: true,
   });
+
+
   const [textFullyTyped, setTextFullyTyped] = useState(false);
   const [currentDialogueIndex, setCurrentDialogueIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState(""); // Track displayed text
@@ -49,7 +42,7 @@ const ChapterDialogOne = () => {
     {
       speaker: "-- Lunar --",
       text: "แล้วจากนี้ไปนายจะทำยังไงต่อ จะกลับขึ้นไปที่เมืองด้านบนไหม",
-      bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126',
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126",
     },
     {
       speaker: "-- Rabbet --",
@@ -68,7 +61,7 @@ const ChapterDialogOne = () => {
     },
     {
       speaker: "-- Lunar --",
-      text:  "มันเคยเป็นความฝันของฉันหน่ะ วันหนึ่งฉันอยากออกเดินทาง อยากจะพบเจอสิ่งใหม่ๆ ก่อนที่จะอายุ 18 หน่ะ",
+      text: "มันเคยเป็นความฝันของฉันหน่ะ วันหนึ่งฉันอยากออกเดินทาง อยากจะพบเจอสิ่งใหม่ๆ ก่อนที่จะอายุ 18 หน่ะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126",
     },
     {
@@ -83,12 +76,12 @@ const ChapterDialogOne = () => {
     },
     {
       speaker: "-- Rabbet --",
-      text:  "ฉันขอโทษนะที่ทำให้นึกถึงเรื่องนั้น",
+      text: "ฉันขอโทษนะที่ทำให้นึกถึงเรื่องนั้น",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_5.png?updatedAt=1712913575277",
     },
     {
       speaker: "-- Lunar --",
-      text:  "ไม่เป็นไรหรอก ถึงแม้จะรู้สึกผูกพันกับที่นี่ แต่ก็อยากออกไปท่อง โลก บ้างหน่ะ",
+      text: "ไม่เป็นไรหรอก ถึงแม้จะรู้สึกผูกพันกับที่นี่ แต่ก็อยากออกไปท่อง โลก บ้างหน่ะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_5.png?updatedAt=1712913575277",
     },
     {
@@ -103,16 +96,16 @@ const ChapterDialogOne = () => {
     },
     {
       speaker: "-- Rabbet --",
-      text:  "เช่นกันนะ ขอให้เป็นการเดินทางที่น่าจดจำ",
+      text: "เช่นกันนะ ขอให้เป็นการเดินทางที่น่าจดจำ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_7%20.png?updatedAt=1712913575261",
     },
     {
       speaker: "-- Lunar --",
-      text:  "ฉันจับมือของ  Rabbet และเรื่องราวของพวกเรากำลังจะเริ่มต้นขึ้น",
+      text: "ฉันจับมือของ  Rabbet และเรื่องราวของพวกเรากำลังจะเริ่มต้นขึ้น",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_7%20.png?updatedAt=1712913575261",
     },
 
-    // fade out and fade in 
+    // fade out and fade in
     {
       speaker: "-- Lunar --",
       text: "หลังจากได้ตัดสินใจที่จะออกเดินทางไปพร้อมกับ [Rabbet]",
@@ -160,7 +153,7 @@ const ChapterDialogOne = () => {
     },
     {
       speaker: "-- Rabbet --",
-      text:  "ที่เมืองด้านบนนั้นก็ใช่ว่าจะดีเสมอไปหรอกนะ มันก็มีสิ่งที่ต้องแลกมาหลายๆ อย่างอยู่เสมอซะทุกอย่างหน่ะ",
+      text: "ที่เมืองด้านบนนั้นก็ใช่ว่าจะดีเสมอไปหรอกนะ มันก็มีสิ่งที่ต้องแลกมาหลายๆ อย่างอยู่เสมอซะทุกอย่างหน่ะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_14.png?updatedAt=1712913578502",
     },
     {
@@ -190,32 +183,32 @@ const ChapterDialogOne = () => {
     },
     {
       speaker: "-- Lunar --",
-      text:  "สภาพอากาศที่เลวร้ายอย่างนี้ไม่มีวิธีแก้ไขมันเลยหรอ",
+      text: "สภาพอากาศที่เลวร้ายอย่างนี้ไม่มีวิธีแก้ไขมันเลยหรอ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_16.png?updatedAt=1712913578619",
     },
     {
       speaker: "-- Rabbet --",
-      text:  "เกรงว่าจะไม่ ถ้าหากเราไม่ได้แก้ไขที่จุดเริ่มต้นของมัน",
+      text: "เกรงว่าจะไม่ ถ้าหากเราไม่ได้แก้ไขที่จุดเริ่มต้นของมัน",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_16.png?updatedAt=1712913578619",
     },
     {
       speaker: "-- Lunar --",
-      text:  "แล้วถ้าเราเปลี่ยนวิธีการผลิตพลังงานหล่ะ?",
+      text: "แล้วถ้าเราเปลี่ยนวิธีการผลิตพลังงานหล่ะ?",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel%20_17.png?updatedAt=1712913575097",
     },
     {
       speaker: "-- Rabbet --",
-      text:   "กระบวนการ การเปลี่ยนแปลงระบบมันไม่ได้ง่ายดายขนาดนั้นหรอกนะ",
+      text: "กระบวนการ การเปลี่ยนแปลงระบบมันไม่ได้ง่ายดายขนาดนั้นหรอกนะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel%20_17.png?updatedAt=1712913575097",
     },
     {
       speaker: "-- Lunar --",
-      text:  "ตะ..แต่ว่า...",
+      text: "ตะ..แต่ว่า...",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_18%20.png?updatedAt=1712913579289",
     },
     {
       speaker: "-- Rabbet --",
-      text:  "คิดซะว่านี่คือกรรมตามสนองที่มนุษย์กระทำกับโลกนี้ไว้ก็ได้",
+      text: "คิดซะว่านี่คือกรรมตามสนองที่มนุษย์กระทำกับโลกนี้ไว้ก็ได้",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_18%20.png?updatedAt=1712913579289",
     },
     {
@@ -275,8 +268,6 @@ const ChapterDialogOne = () => {
     setIsSliderVisible(!isSliderVisible);
   };
 
-
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -298,7 +289,7 @@ const ChapterDialogOne = () => {
 
   useEffect(() => {
     setColseBgmusic(false);
-    // playBgm(); 
+    playBgm();
     return () => {
       stopBgm();
     };
@@ -317,13 +308,11 @@ const ChapterDialogOne = () => {
   };
 
   const handleStopSoundEffects = () => {
-    stopWalkingSound();
-    stopPunchSound();
-    stopAlarmSound();
+    
   };
 
   const handleVolumeChange = (e) => {
-    const newVolume = (e.target.value);
+    const newVolume = e.target.value;
     setVolume(newVolume);
   };
 
@@ -341,11 +330,15 @@ const ChapterDialogOne = () => {
       setTimeout(() => {
         setCurrentDialogueIndex(currentDialogueIndex + 1);
         setFadeEffect("fade-enter-active");
-      }, 3000); // 3000ms is the duration of the fade-out effect      
+      }, 3000); // 3000ms is the duration of the fade-out effect
       play();
       setTextFullyTyped(true);
       setTimeout(() => setIsAnimating(false), 1000); // หยุดเล่นอนิเมชันหลังจาก 1 วินาที
-    } else if (textFullyTyped && currentDialogueIndex > 12 && currentDialogueIndex !== dialogue.length - 1) {
+    } else if (
+      textFullyTyped &&
+      currentDialogueIndex > 12 &&
+      currentDialogueIndex !== dialogue.length - 1
+    ) {
       handleStopSoundEffects();
       setCurrentDialogueIndex(currentDialogueIndex + 1);
       play();
@@ -354,24 +347,20 @@ const ChapterDialogOne = () => {
       setTextFullyTyped(false);
       setTimeout(() => setIsAnimating(false), 1000); // หยุดเล่นอนิเมชันหลังจาก 1 วินาที
     } else if (textFullyTyped && currentDialogueIndex === dialogue.length - 1) {
-        // Show the modal when user clicks on the last dialogue
-        setFadeEffect("fade-exit-active");
-        setTimeout(() => {
-          setOpenModal(true);
-        }, 4000); 
-        handleStopSoundEffects();
-      }
+      // Show the modal when user clicks on the last dialogue
+      setFadeEffect("fade-exit-active");
+      setTimeout(() => {
+        setOpenModal(true);
+        handlePauseBgm();
+      }, 4000);
+      handleStopSoundEffects();
+    }
   };
-  
-  
 
   const handleUserClick = () => {
     // Set textFullyTyped to true when user clicks to show full text
     setTextFullyTyped(true);
   };
-  
-  
-
 
   useEffect(() => {
     let currentIndex = 0;
@@ -392,7 +381,6 @@ const ChapterDialogOne = () => {
 
   const [fadeEffect, setFadeEffect] = useState("fade-enter");
   const navigate = useNavigate();
-
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -415,120 +403,120 @@ const ChapterDialogOne = () => {
     }, 3000); // 3000ms is the duration of the fade-out effect
   };
 
-  // useEffect(() => {
-  //   if (currentDialogueIndex === 0) {
-  //     handlePlayBgm();
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 1) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //     handlePauseBgm();
-  //   } else if (currentDialogueIndex === 2) {
-  //     setTimeout(() => {
-  //       playpunchSound();
-  //     }, 1000);
-  //     handlePlayBgm();
-  //   } else if (currentDialogueIndex === 3) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 4) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 5) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 6) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 7) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 8) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 9) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 10) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 11) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 12) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 13) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 14) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 15) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 16) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 17) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 18) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 19) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 20) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 21) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 22) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 23) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 24) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 25) {
-  //     setTimeout(() => {
-  //       playwalkingSound();
-  //     }, 1000);
-  //   } else if (currentDialogueIndex === 26) {
-  //     setTimeout(() => {
-  //       playalarmSound();
-  //     }, 1000);
-  //   }
-  // }, [currentDialogueIndex]);
+  useEffect(() => {
+    if (currentDialogueIndex === 0) {
+      handlePlayBgm();
+      setTimeout(() => {
+       
+      }, 1000);
+    } else if (currentDialogueIndex === 1) {
+      setTimeout(() => {
+       
+      }, 1000);
+      
+    } else if (currentDialogueIndex === 2) {
+      setTimeout(() => {
+        
+      }, 1000);
+      handlePlayBgm();
+    } else if (currentDialogueIndex === 3) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 4) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 5) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 6) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 7) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 8) {
+      setTimeout(() => {
+       
+      }, 1000);
+    } else if (currentDialogueIndex === 9) {
+      setTimeout(() => {
+        
+      }, 1000);
+    } else if (currentDialogueIndex === 10) {
+      setTimeout(() => {
+       
+      }, 1000);
+    } else if (currentDialogueIndex === 11) {
+      setTimeout(() => {
+       
+      }, 1000);
+    } else if (currentDialogueIndex === 12) {
+      setTimeout(() => {
+        handlePauseBgm()
+      }, 1000);
+    } else if (currentDialogueIndex === 13) {
+      setTimeout(() => {
+        handlePlayBgm()
+      }, 1000);
+    } else if (currentDialogueIndex === 14) {
+      setTimeout(() => {
+     
+      }, 1000);
+    } else if (currentDialogueIndex === 15) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 16) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 17) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 18) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 19) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 20) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 21) {
+      setTimeout(() => {
+      
+      }, 1000);
+    } else if (currentDialogueIndex === 22) {
+      setTimeout(() => {
+     
+      }, 1000);
+    } else if (currentDialogueIndex === 23) {
+      setTimeout(() => {
+     
+      }, 1000);
+    } else if (currentDialogueIndex === 24) {
+      setTimeout(() => {
+   
+      }, 1000);
+    } else if (currentDialogueIndex === 25) {
+      setTimeout(() => {
+   
+      }, 1000);
+    } else if (currentDialogueIndex === 26) {
+      setTimeout(() => {
+
+      }, 1000);
+    }
+  }, [currentDialogueIndex]);
 
   return (
     <>
@@ -638,160 +626,166 @@ const ChapterDialogOne = () => {
           </div>
         </div>
       </nav>
-      
-      <div id="page" className={`w-full h-full  text-center items-center ${fadeEffect}`}>
-      <div className=" w-full h-full bg-no-repeat lg:bg-cover md:bg-contain  bg-center	" style={{ backgroundImage: `url(${dialogue[currentDialogueIndex].bg})` }}>
-        <Link>
-          <div className="w-full h-full relative">
-            <div
-              className=" absolute w-full top-[70%]  left-0 right-0 bottom-0 bg-opacity-50 z-20"
-              style={{
-                background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 1) 100%)`,
-              }}
-              
-              onClick={() => {
-                handleUserClick();
-                handleNext();
-              }}
-            >
-              <h1 className="absolute top-[15%] bottom-0 left-0 right-0 font-bold text-2xl  md:text-3xl lg:text-5xl opacity-90">
-                {dialogue[currentDialogueIndex].speaker}
-              </h1>
-              <p className="absolute top-[50%] bottom-0 left-0 right-0 text-base md:text-2xl lg:text-2xl px-5 ">
-                {textFullyTyped
-                  ? dialogue[currentDialogueIndex].text
-                  : displayedText}
-              </p>
-              <div>
-              <svg
-                className={`w-8 h-8 absolute md:top-[85%] lg:top-[75%] bottom-0 left-[49%] right-0 text-white ${
-                  isAnimating ? "animate-ping" : "animate-bounce"
-                }`}
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
+
+      <div
+        id="page"
+        className={`w-full h-full  text-center items-center ${fadeEffect}`}
+      >
+        <div
+          className=" w-full h-full bg-no-repeat lg:bg-cover md:bg-contain  bg-center	"
+          style={{
+            backgroundImage: `url(${dialogue[currentDialogueIndex].bg})`,
+          }}
+        >
+          <Link>
+            <div className="w-full h-full relative">
+              <div
+                className=" absolute w-full top-[70%]  left-0 right-0 bottom-0 bg-opacity-50 z-20"
+                style={{
+                  background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 1) 100%)`,
+                }}
+                onClick={() => {
+                  handleUserClick();
+                  handleNext();
+                }}
               >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M7.119 8h9.762a1 1 0 0 1 .772 1.636l-4.881 5.927a1 1 0 0 1-1.544 0l-4.88-5.927A1 1 0 0 1 7.118 8Z"
-                />
-              </svg>
+                <h1 className="absolute top-[15%] bottom-0 left-0 right-0 font-bold text-2xl  md:text-3xl lg:text-5xl opacity-90">
+                  {dialogue[currentDialogueIndex].speaker}
+                </h1>
+                <p className="absolute top-[50%] bottom-0 left-0 right-0 text-base md:text-2xl lg:text-3xl   px-5 ">
+                  {textFullyTyped
+                    ? dialogue[currentDialogueIndex].text
+                    : displayedText}
+                </p>
+                <div>
+                  <svg
+                    className={`w-8 h-8 absolute md:top-[85%] lg:top-[75%] bottom-0 left-[49%] right-0 text-white ${
+                      isAnimating ? "animate-ping" : "animate-bounce"
+                    }`}
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M7.119 8h9.762a1 1 0 0 1 .772 1.636l-4.881 5.927a1 1 0 0 1-1.544 0l-4.88-5.927A1 1 0 0 1 7.118 8Z"
+                    />
+                  </svg>
+                </div>
               </div>
-            </div>
-            {/* <img
+              {/* <img
               src={dialogue[currentDialogueIndex].bg}
               alt="image description"
               className="h-full w-full  bg-contain"
             /> */}
-            <button
-              type="button"
-              onClick={() => {
-                play();
-                setOpenModalt(true)
-              }}
-              className=" absolute  lg:top-[72%] z-40  border-dashed border-2  border-emerald-500 lg:left-[92%] md:top-[74%] md:left-[88%]  opacity-[100%]   lg:w-28 md:w-[5rem] h-10 text-base  text-white rounded-lg focus:outline-none focus:ring-2 hover:bg-emerald-600 hover:border-white "
-            >
-              Skip {">>"}
-            </button>
-          </div>
-        </Link>
-        <Modal
-          show={openModal}
-          size="md"
-          onClose={() => {
-            play(), setOpenModal(false);
-            setCurrentDialogueIndex(0); // Reset currentIndex to 0
-            handleStopBgm();
-            setFadeEffect("fade-enter-active");
-          }}
-          popup={true}
-          fade={true}
-        >
-          <Modal.Header className=" bg-slate-800" />
-          <Modal.Body className="bg-slate-800">
-            <div className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normal text-gray-500 dark:text-gray-400">
-                Chapter 1 จบลงแล้ว กดปุ่มถัดไปเพื่อดำเนินเนื้อเรื่องต่อใน
-                Chapter 2 หรือ กลับไปหน้าเลือก Chapter
-              </h3>
-              <div className="flex flex-col md:flex-row justify-center gap-4 ">
-                <Button
-                  color="success"
-                  onClick={() => {
-                    play();
-                    setOpenModal(false);
-                    handleButtonClickNext();
-                  }}
-                >
-                  {" ดำเนินเนื้อเรื่อง "}
-                </Button>
-                <Button
-                  color="gray"
-                  onClick={() => {
-                    play();
-                    setOpenModal(false);
-                    handleButtonClickRoom();
-                  }}
-                >
-                  กลับไปหน้าเลือก Chapter
-                </Button>
-              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  play();
+                  setOpenModalt(true);
+                }}
+                className=" absolute  lg:top-[72%] z-40  border-dashed border-2  border-emerald-500 lg:left-[92%] md:top-[74%] md:left-[88%]  opacity-[100%]   lg:w-28 md:w-[5rem] h-10 text-base  text-white rounded-lg focus:outline-none focus:ring-2 hover:bg-emerald-600 hover:border-white "
+              >
+                Skip {">>"}
+              </button>
             </div>
-          </Modal.Body>
-        </Modal>
+          </Link>
+          <Modal
+            show={openModal}
+            size="md"
+            onClose={() => {
+              play(), setOpenModal(false);
+              setCurrentDialogueIndex(0); // Reset currentIndex to 0
+              handleStopBgm();
+              setFadeEffect("fade-enter-active");
+            }}
+            popup={true}
+            fade={true}
+          >
+            <Modal.Header className=" bg-slate-800" />
+            <Modal.Body className="bg-slate-800">
+              <div className="text-center">
+                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+                <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normal text-gray-500 dark:text-gray-400">
+                  Chapter 1 จบลงแล้ว กดปุ่มถัดไปเพื่อดำเนินเนื้อเรื่องต่อใน
+                  Chapter 2 หรือ กลับไปหน้าเลือก Chapter
+                </h3>
+                <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                  <Button
+                    color="success"
+                    onClick={() => {
+                      play();
+                      setOpenModal(false);
+                      handleButtonClickNext();
+                    }}
+                  >
+                    {" ดำเนินเนื้อเรื่อง "}
+                  </Button>
+                  <Button
+                    color="gray"
+                    onClick={() => {
+                      play();
+                      setOpenModal(false);
+                      handleButtonClickRoom();
+                    }}
+                  >
+                    กลับไปหน้าเลือก Chapter
+                  </Button>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
 
-        <Modal
-          show={openModalt}
-          size="md"
-          onClose={() => {
-            play(), setOpenModalt(false);
-            handleStopBgm();
-          }}
-          popup={true}
-          fade={true}
-        >
-          <Modal.Header className=" bg-slate-800" />
-          <Modal.Body className="bg-slate-800">
-            <div className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14   text-emerald-700 " />
-              <h3 className="mb-5 md:text-lg lg:text-xl  text-white">
-                ต้องการข้าม Chapter 1  ? กดปุ่ม Skip &nbsp; 
-                เพื่อดำเนินเนื้อเรื่องต่อใน
-                Chapter 2 หรือ 
-                ยกเลิก เพื่อชม Chapter 1 
-              </h3>
-              <div className="flex flex-col md:flex-row justify-center gap-4 ">
-                <Button
-                  color="success"
-                  onClick={() => {
-                    play();
-                    setOpenModalt(false);
-                    handleButtonClickNext();
-                  }}
-                >
-                  {" Skip "}
-                </Button>
-                <Button
-                  color="gray"
-                  onClick={() => {
-                    play();
-                    setOpenModalt(false);
-                  }}
-                >
-                  Cancel
-                </Button>
+          <Modal
+            show={openModalt}
+            size="md"
+            onClose={() => {
+              play(), setOpenModalt(false);
+              handleStopBgm();
+            }}
+            popup={true}
+            fade={true}
+          >
+            <Modal.Header className=" bg-slate-800" />
+            <Modal.Body className="bg-slate-800">
+              <div className="text-center">
+                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14   text-emerald-700 " />
+                <h3 className="mb-5 md:text-lg lg:text-xl  text-white">
+                  ต้องการข้าม Chapter 1 ? กดปุ่ม Skip &nbsp;
+                  เพื่อดำเนินเนื้อเรื่องต่อใน Chapter 2 หรือ ยกเลิก เพื่อชม
+                  Chapter 1
+                </h3>
+                <div className="flex flex-col md:flex-row justify-center gap-4 ">
+                  <Button
+                    color="success"
+                    onClick={() => {
+                      play();
+                      setOpenModalt(false);
+                      handleButtonClickNext();
+                    }}
+                  >
+                    {" Skip "}
+                  </Button>
+                  <Button
+                    color="gray"
+                    onClick={() => {
+                      play();
+                      setOpenModalt(false);
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </div>
               </div>
-            </div>
-          </Modal.Body>
-        </Modal>
-      </div>
+            </Modal.Body>
+          </Modal>
+        </div>
       </div>
     </>
   );

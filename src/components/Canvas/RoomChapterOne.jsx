@@ -88,7 +88,7 @@ export const RoomChapterOne = () => {
       text: "PeaceFusion3 เป็นเมืองที่มีวิทยาการสูงที่สุด มีผู้คนหนาแน่นมีตึกสูงมากมายใช้พลังงานจากเตาปติกรเป็นหลัก ผสมผสานระหว่างธรรมชาติและเทคโนโลยี เป็นเมืองที่ทุกคนใฝ่ฝันอยากเข้ามาอยู่อาศัย",
       bg: "https://ik.imagekit.io/vsfmz5htw/StoryRoom/PeaceFusion3.jpg?updatedAt=1711183024150",
       button: "Choose Chapter 3",
-      link: "/chapterthree",
+      link: "/chapterthreedialog",
     },
     // Add more dialogue objects as needed
   ]);
@@ -565,7 +565,7 @@ export const RoomChapterOne = () => {
             setHtmltext(true);
             setTargetwo(1);
             play();
-            setIsLocked(true), setSelector(".instructions-overlay");
+            setSelector(".instructions-overlay");
           }}
           popup
         >
@@ -579,7 +579,7 @@ export const RoomChapterOne = () => {
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/concept"}>
                   <Button
-                    color="failure"
+                    color="success"
                     onClick={() => {
                       setOpenModaltwo(false);
                       play();
@@ -605,7 +605,7 @@ export const RoomChapterOne = () => {
           </Modal.Body>
         </Modal>
 
-        {/* Modal book Concept */}
+        {/* Modal board Concept */}
 
         <Modal
           show={openModalthree}
@@ -616,7 +616,7 @@ export const RoomChapterOne = () => {
             setHtmltext(true);
             setTargethree(1);
             play();
-            setIsLocked(true), setSelector(".instructions-overlay");
+            setSelector(".instructions-overlay");
           }}
           popup
         >
@@ -630,7 +630,7 @@ export const RoomChapterOne = () => {
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/about"}>
                   <Button
-                    color="failure"
+                    color="success"
                     onClick={() => {
                       setOpenModalthree(false);
                       play();
@@ -647,6 +647,8 @@ export const RoomChapterOne = () => {
                     setHtmltext(true);
                     setTargethree(1);
                     play();
+                    setIsLocked(true), 
+                    setSelector(".instructions-overlay");
                   }}
                 >
                   ยกเลิก
@@ -681,7 +683,7 @@ export const RoomChapterOne = () => {
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/home"}>
                   <Button
-                    color="failure"
+                    color="success"
                     onClick={() => {
                       setOpenModaldoor(false);
                       play();
@@ -698,7 +700,8 @@ export const RoomChapterOne = () => {
                     setHtmltext(true);
                     setTargefour(1);
                     play();
-                    setIsLocked(true), setSelector(".instructions-overlay");
+                    setIsLocked(true)
+                    , setSelector(".instructions-overlay");
                   }}
                 >
                   ยกเลิก

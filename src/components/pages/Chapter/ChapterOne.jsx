@@ -21,6 +21,7 @@ const ChapterOne = () => {
   const soundUrl = "/sound_effects/ButtonPush.mp3";
   const [play] = useSound(soundUrl);
 
+
   const handleVideoEnded = () => {
     setTimeout(() => {
       setVideoEnded(true);
