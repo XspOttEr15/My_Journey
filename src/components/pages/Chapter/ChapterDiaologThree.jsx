@@ -31,7 +31,7 @@ const ChapterDialogThree = () => {
   //   loop: false,
   // });
   const [playBgm, { pause: pauseBgm, stop: stopBgm }] = useSound(bgmSound, {
-    volume: 0.1,
+    volume: 0.5,
     loop: true,
   });
   const [textFullyTyped, setTextFullyTyped] = useState(false);
@@ -46,22 +46,22 @@ const ChapterDialogThree = () => {
   const [dialogue, setDialogue] = useState([
     {
       speaker: "-- Lunar --",
-      text: "เมืองด้านบนสุสด ที่อย่เหนือจินตนาการของฉัน ",
+      text: "เมืองด้านบนสุด ที่อยู่เหนือจินตนาการของฉัน ",
       bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Layer%2036.png?updatedAt=1714105540258',
     },
     {
       speaker: "-- Lunar --",
-      text: "เป็นเมืมองที่มีแต่รูปทรงแปลกประหลาดที่ฉันไม่สามารถจินตนาการได้ ",
+      text: "เป็นเมืองที่มีแต่รูปทรงแปลกประหลาดที่ฉันไม่สามารถจินตนาการได้ ",
       bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Layer%2036.png?updatedAt=1714105540258',
     },
     {
       speaker: "-- Lunar --",
-      text: "เมืองนี้มีชื่อว่า.......[PeaceFusion]",
+      text: "เมืองนี้มีชื่อว่า.......PeaceFusion",
       bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Layer%2036.png?updatedAt=1714105540258',
     },
     {
       speaker: "-- Lunar --",
-      text: "หลังจากที่พวกเราได้พักค้างคืนที่เมือง [Solarwind] ",
+      text: "หลังจากที่พวกเราได้พักค้างคืนที่เมือง Solarwind ",
       bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%201.png?updatedAt=1714112460157',
     },
     {
@@ -95,13 +95,13 @@ const ChapterDialogThree = () => {
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%207.png?updatedAt=1714112460157",
     },
     {
-      speaker: "-- Rabbet --",
+      speaker: "-- Lunar --",
       text:  "ฉันพูดพลางมองไปรอบๆแล้วสะดุดตากับผู้คน ที่กำลังมองมาที่ฉัน",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%208.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Soldier --",
-      text:  "นั่น!...ใช่ [Lapin-02] รึเปล่า",
+      text:  "นั่น!...ใช่ Lapin-02 รึเปล่า",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%209.png?updatedAt=1714112460157",
     },
     {
@@ -111,23 +111,23 @@ const ChapterDialogThree = () => {
     },
     {
       speaker: "-- Rabbet --",
-      text: "หยุดนะ นี่พวกนายยจะทำอะไรกันน่ะ",
+      text: "หยุดนะ นี่พวกนายจะทำอะไรกันน่ะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2011.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Lunar --",
-      text:  "พวกนายพูดอะไรกันน่ะ นี่คือ [Rabbet] ไม่ใช่หรอ",
+      text:  "พวกนายพูดอะไรกันน่ะ นี่คือ Rabbet ไม่ใช่หรอ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2012.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Soldier --",
-      text:  "สิ่งที่เธอเรียกว่า [Rabbet] นั่นคือหุ่นยนต์เตาปฏิกรณ์นิวเคลียร์จากโครงการที่ไม่เสถียรและควรจะดับสิ้นไปแล้ว ",
+      text:  "สิ่งที่เธอเรียกว่า Rabbet นั่นคือหุ่นยนต์เตาปฏิกรณ์นิวเคลียร์จากโครงการที่ไม่เสถียรและควรจะดับสิ้นไปแล้ว ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2013.png?updatedAt=1714112460157",
     },
     // fade out and fade in 
     {
       speaker: "-- Soldier --",
-      text: "ชื่อเรียกของ Project นั้นคือ [Lapin-02] ต่างหาก นั่นหน่ะคือเตาปฏิกรณ์นิวเคลียร์เดินได้ และพร้อมที่จะรเบิดต่างหาก",
+      text: "ชื่อเรียกของ Project นั้นคือ Lapin-02 ต่างหาก นั่นหน่ะคือเตาปฏิกรณ์นิวเคลียร์เดินได้ และพร้อมที่จะระเบิดต่างหาก",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2014.png?updatedAt=1714112460157",
     },
     {
@@ -142,7 +142,7 @@ const ChapterDialogThree = () => {
     },
     {
       speaker: "-- Lunar --",
-      text: " [Rabbet] ก็คือ [Rabbet] ที่เพิ่งตกลงมาเมื่อวันก่อนที่เมืองด้านล่างสุดแล้วช่วยฉันเอาไว้สิ",
+      text: " Rabbet ก็คือ Rabbet ที่เพิ่งตกลงมาเมื่อวันก่อนที่เมืองด้านล่างสุดแล้วช่วยฉันเอาไว้สิ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2017.png?updatedAt=1714112460157",
     },
     {
@@ -157,7 +157,7 @@ const ChapterDialogThree = () => {
     },
     {
       speaker: "-- Rabbet --",
-      text: "[Lapin-02]  คือตัวฉันเองงั้นสินะ",
+      text: "Lapin-02  คือตัวฉันเองงั้นสินะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2019.png?updatedAt=1714112460157",
     },
     {
@@ -172,7 +172,7 @@ const ChapterDialogThree = () => {
     },
     {
       speaker: "-- Lunar --",
-      text: "วัตถุบางอย่างบินชนกับกำแพงล่องหน แรงระเบิดททำให้เกิดเสียงดังลั่นท้องฟ้าก็สว่างวาบเป็นสีขาวโพลน",
+      text: "วัตถุบางอย่างบินชนกับกำแพงล่องหน แรงระเบิดทำให้เกิดเสียงดังลั่นท้องฟ้าก็สว่างวาบเป็นสีขาวโพลน",
       bg: " https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Layer%2037.png?updatedAt=1714105540120",
     },
     {
@@ -187,7 +187,7 @@ const ChapterDialogThree = () => {
     },
     {
       speaker: "-- Lunar --",
-      text: " ทันใดนั้น [Rabbet] ได้พุ่งเข้ามาบังกระจกบานนั้นให้ฉัน",
+      text: " ทันใดนั้น Rabbet ได้พุ่งเข้ามาบังกระจกบานนั้นให้ฉัน",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2024.png?updatedAt=1714112460157",
     },
     
@@ -213,12 +213,12 @@ const ChapterDialogThree = () => {
     },
     {
       speaker: "-- Lunar --",
-      text: "ระหว่างนั้น [Soldier] วิ่งหนีกันกระจัดกระจาย ความโกลาหนมันสวนทางกับความสงบทุกอย่างทุกคนล้วนต่างเอาชีวิตรอดโดยไม่สนสิ่งอื่นใด",
+      text: "ระหว่างนั้น Soldier วิ่งหนีกันกระจัดกระจาย ความโกลาหนมันสวนทางกับความสงบ ทุกอย่างทุกคนล้วนต่างเอาชีวิตรอดโดยไม่สนสิ่งอื่นใด",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2029.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Rabbet --",
-      text:  "ฟังนะ [Lunar] เราคงต้องจากลากันตรงนี้แล้วหล่ะ",
+      text:  "ฟังนะ Lunar เราคงต้องจากลากันตรงนี้แล้วหล่ะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2030.png?updatedAt=1714112460157",
     },
     {
@@ -232,7 +232,7 @@ const ChapterDialogThree = () => {
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2032.png?updatedAt=1714112460157",
     },
     {
-      speaker: "-- Lunar --",
+      speaker: "-- Rabbet --",
       text:  "ฉันรู้แล้วหล่ะว่าฉันเกิดมาด้วยเหตุผลอะไร......",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2033.png?updatedAt=1714112460157",
     },

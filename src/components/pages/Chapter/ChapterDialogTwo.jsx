@@ -46,17 +46,17 @@ const ChapterDialogTwo = () => {
     {
       speaker: "-- Lunar --",
       text: "(ฉันเคยได้ยินว่าปกติท้องฟ้าจะมีสีฟ้าสดใส แต่ทำไมมันถึงกลายเป็นสีส้มนะ)",
-      bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter2/image/2.png?updatedAt=1713737838507',
+      bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter2/image/1.png?updatedAt=1713737838507',
     },
     {
       speaker: "-- Rabbet --",
       text: "ตอนนี้ท้องฟ้ามีสีแดงส้ม เป็นสัญญาญว่าตอนนี้คือตอนเย็นหน่ะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/3.png?updatedAt=1713737838573",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/2.png?updatedAt=1713737838573",
     },
     {
       speaker: "-- Lunar --",
       text: "ตอนเย็น.....ต่อจากนี้ก็จะเป็นกลางคืนใช่ไหม?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/4.png?updatedAt=1713737838534",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/3.png?updatedAt=1713737838534",
     },
     {
       speaker: "-- Rabbet --",
@@ -110,7 +110,7 @@ const ChapterDialogTwo = () => {
     },
     {
       speaker: "-- Lunar --",
-      text: "จากนั้น [Rabbet] ก็ได้ตั้งเพิงที่พัก และเอาอะไรสักอย่างที่มีกลิ่นหอมชวนให้น้ำลายหกออกมาจากกล่อง",
+      text: "จากนั้น Rabbet ก็ได้ตั้งเพิงที่พัก และเอาอะไรสักอย่างที่มีกลิ่นหอมชวนให้น้ำลายหกออกมาจากกล่อง",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/12.png?updatedAt=1713737842595",
     },
     {
@@ -130,33 +130,39 @@ const ChapterDialogTwo = () => {
     },
     {
       speaker: "-- Lunar --",
-      text: "......",
+      text: "ง่ำๆ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/16.png?updatedAt=1713737843746",
     },
     {
       speaker: "-- Lunar --",
-      text: "ง่ำๆ หือ!?",
+      text: "อร่อยมากก !!",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/17.png?updatedAt=1713737843914",
     },
     {
       speaker: "-- Lunar --",
-      text: "อร่อยมากก !!",
+      text: "ว่าแต่นายไปเอามาจากไหนหรอ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/18.png?updatedAt=1713737843772",
     },
     {
-      speaker: "-- Lunar --",
-      text: " ว่าแต่นายไปเอามาจากไหนหรอ",
+      speaker: "-- Rabbet --",
+      text: " อะ.เอ่ออ คือว่า",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/18.png?updatedAt=1713737843268",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "เปล่าหรอก ฉันหยิบมาจากกระเป๋าหน่ะ ฮ่าฮ่า",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/19.png?updatedAt=1713737843268",
     },
     {
       speaker: "-- Rabbet --",
-      text: "อะ.เอ่ออ คือว่า",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/19.png?updatedAt=1713737843268",
-    },
-    {
-      speaker: "-- Rabbet --",
-      text:  "เปล่าหรอก ฉันหยิบมาจากกระเป๋าหน่ะ ฮ่าฮ่า",
+      text:  "เมื่อความมืดเริ่มปกคลุมท้องฟ้า แสงสว่างจากแคมป์ไฟก็สว่างขึ้นมาก รอบข้างของนาก็มืดสนิท ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/20.png?updatedAt=1713737843840",
+    },
+    {
+      // เฟดดำก่อนขึ้นภาพนี้
+      speaker: "-- Lunar --",
+      text: " เมื่อความมืดเริ่มปกคลุมท้องฟ้า แสงสว่างจากแคมป์ไฟก็สว่างขึ้นมาก รอบข้างของนาก็มืดสนิท ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/21.png?updatedAt=1713737845561",
     },
     {
       // เฟดดำก่อนขึ้นภาพนี้
