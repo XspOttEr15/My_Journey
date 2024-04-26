@@ -6,9 +6,6 @@ import './Maps.css'
 import { DataContext } from "../../../App";
 
 
-
-
-
 const store = [
   {
     name: "Bridge",

@@ -108,7 +108,7 @@ const ChapterDialogOne = () => {
     // fade out and fade in
     {
       speaker: "-- Lunar --",
-      text: "หลังจากได้ตัดสินใจที่จะออกเดินทางไปพร้อมกับ [Rabbet]",
+      text: "หลังจากได้ตัดสินใจที่จะออกเดินทางไปพร้อมกับ Rabbet",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_8%20.png?updatedAt=1712913575270",
     },
     {
@@ -118,12 +118,12 @@ const ChapterDialogOne = () => {
     },
     {
       speaker: "-- Lunar --",
-      text: "ก่อนจะออกเดินทางฉันพา [Rabbet] ไปช่วยเก็บของที่บ้านของฉันก่อนที่เขตพักอาศัยก่อน แล้วจึงได้เริ่มออกเดินทาง ",
+      text: "ก่อนจะออกเดินทางฉันพา Rabbet ไปช่วยเก็บของที่บ้านของฉันก่อนที่เขตพักอาศัยก่อน แล้วจึงได้เริ่มออกเดินทาง ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_9.png?updatedAt=1712913575276",
     },
     {
       speaker: "-- Lunar --",
-      text: "[Rabbet] ยังใช้พลังบางอย่างในการปกป้องตัวฉัน มันเป็นเหมือนพลังงานที่สามารถช่วยป้องกันจากอากาศและมลพิษให้กับฉันได้",
+      text: "Rabbet ยังใช้พลังบางอย่างในการปกป้องตัวฉัน มันเป็นเหมือนพลังงานที่สามารถช่วยป้องกันจากอากาศและมลพิษให้กับฉันได้",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_10%20.png?updatedAt=1712913578266",
     },
     {
@@ -213,7 +213,7 @@ const ChapterDialogOne = () => {
     },
     {
       speaker: "-- Lunar --",
-      text: "ฉันคิดตามในสิ่งที่ [Rabbet] พูด ภายในใจว่าถ้าทำอะไรสักอย่างได้ก็คงจะดี พลางคิดในหัวตัดพ้อตัวเองว่าฉันก็ไม่ได้มีความสามารถ หรือความรู้อะไรสักหน่อย",
+      text: "ฉันคิดตามในสิ่งที่พูดภายในใจว่าถ้าทำอะไรสักอย่างได้ก็คงจะดี พลางคิดในหัวตัดพ้อตัวเองว่าฉันก็ไม่ได้มีความสามารถ หรือความรู้อะไรสักหน่อย",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_19%20.png?updatedAt=1712913579324",
     },
     {
@@ -243,7 +243,7 @@ const ChapterDialogOne = () => {
     },
     {
       speaker: "-- Lunar --",
-      text: "ถึงนายขะเป็นหุ่นยนต์ติด AI ก็ดูพูดคล่องกว่าหุ่นยนต์ตัวอื่นๆมากเลยนะ",
+      text: "ถึงนายจะเป็นหุ่นยนต์ติด AI ก็ดูพูดคล่องกว่าหุ่นยนต์ตัวอื่นๆมากเลยนะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_24%20.png?updatedAt=1712913581838",
     },
     {
@@ -253,12 +253,12 @@ const ChapterDialogOne = () => {
     },
     {
       speaker: "-- Rabbet --",
-      text: "ถึงแม้ว่าฉันจะไม่รู้จุดประสงค์ของการทำอุตสาหกรรมจำนวนมากขนาดนี้ แต่ฉันคิดว่ามันต้องมีเหตผลอะไรแน่นอน",
+      text: "ถึงแม้ว่าฉันจะไม่รู้จุดประสงค์ของการทำอุตสาหกรรมจำนวนมากขนาดนี้ แต่ฉันคิดว่ามันต้องมีเหตุผลอะไรแน่นอน",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_25.png?updatedAt=1712913575274",
     },
     {
       speaker: "-- Lunar --",
-      text: "เพราะฉนั้น เราถึงต้องไปหาความจริงที่โลกภายนอกยังไงหล่ะ",
+      text: "เพราะฉะนั้น เราถึงต้องไปหาความจริงที่โลกภายนอกยังไงหล่ะ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_25.png?updatedAt=1712913575274",
     },
     //Fade ดำ ปิด chapetert 1
