@@ -80,8 +80,7 @@ const Character = () => {
     <>
     <div className=" w-full lg:h-screen md:h-auto relative ">
     <div className="bg"></div>
-
-    <motion.div className="  text-center mb-[0rem] pt-[4%]   sections" 
+    <div className="  text-center mb-[0rem] pt-[5%] sections   " 
       animate={{ scale: [1, 1.1, 1] }}
       transition={{
         duration: 2,
@@ -93,7 +92,7 @@ const Character = () => {
         <span className="  text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-4 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
         CONCEPT
         </span>
-      </motion.div>
+      </div>
       
 
       <div className="  text-center  lg:p-0 lg:m-16 md:p-[8rem] sections">
@@ -276,12 +275,14 @@ const CardOne = React.forwardRef(
     const [play] = useSound(soundUrl);
     const [open, setOpen] = React.useState(false);
     return (
-      <div className=" w-full lg:h-screen  md:h-auto sections relative z-20">
+
+      
+      <div className="w-full lg:h-screen  md:h-auto sections relative z-20">
         <div className="cardone-bg"></div>
       <div
         ref={ref}
         id="componentCardOne"
-        className="flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-32 lg:px-32  items-center"
+        className="flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-22 lg:px-32  items-center"
       >
         <Modal
           size={["7xl"]}
@@ -293,7 +294,7 @@ const CardOne = React.forwardRef(
           <Modal.Header className=" bg-slate-800 ">
             <span className="text-white">Powered by Sketchfab</span>
           </Modal.Header>
-          <Modal.Body className="bg-slate-800 h-auto">
+          <Modal.Body className="bg-slate-800 ">
             <div className=" h-[600px] w-full">
               <ThreeModelOne />
             </div>
@@ -317,7 +318,7 @@ const CardOne = React.forwardRef(
             { src: "/images/Characters/Lunar/Lunar_Undressed_back.png" },
           ]}
         />
-        <div className="lg:max-w-3xl  lg:w-1/2 md:max-w-lg bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800   text-center md:mt-16 lg:mt-0">
+        <div className="lg:max-w-2xl  lg:w-1/2 md:max-w-lg bg-gray-800 rounded-3xl p-5  shadow-lg shadow-emerald-800/80 border border-emerald-800   text-center md:mt-16 lg:mt-0">
           <Characterdisplay />
           <button
             type="button"

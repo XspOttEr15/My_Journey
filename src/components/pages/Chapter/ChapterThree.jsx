@@ -111,13 +111,12 @@ const ChapterThree = () => {
           <Modal.Header className="bg-slate-800" />
           <Modal.Body className="bg-slate-800">
             <div className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-200" />
-              <h3 className="mb-5 p-1 md:text-lg lg:text-xl font-normal text-gray-400">
-                วิดิโอลงจบแล้ว กดปุ่มถัดไปเพื่อดำเนินเนื้อเรื่องต่อ หรือ 
-                กลับไปรับชมอีกรอบ
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14  text-white" />
+              <h3 className="mb-5 p-1 md:text-lg lg:text-xl font-normal text-white">
+                Chapter 3 จบลงแล้ว คุณรับชมเนื้อเรื่องทั้งหมดแล้ว กดปุ่มด้านล่างเพื่อกลับไปหน้าเลือก Chapter 
               </h3>
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
-                <Link to={"/chapterthreedialog"}>
+                <Link to={"/roomchapterone"}> 
                   <Button
                     color="success"
                     onClick={() => {
@@ -125,7 +124,7 @@ const ChapterThree = () => {
                       play();
                     }}
                   >
-                    {" ดำเนินเนื้อเรื่อง "}
+                    {" กลับไปหน้าเลือก Chapter"}
                   </Button>
                 </Link>
                 <Button

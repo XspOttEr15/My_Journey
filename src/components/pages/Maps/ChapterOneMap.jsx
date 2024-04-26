@@ -55,7 +55,7 @@ const store = [
     link: 6,
   },
   {
-    name: " Maps Page",
+    name: " Chapter 2 ",
     color: "lightblue",
     position: [80, 0, 120],
     url: "/images/Maps/chapterOne/Lunar_with_Rabbet.png",

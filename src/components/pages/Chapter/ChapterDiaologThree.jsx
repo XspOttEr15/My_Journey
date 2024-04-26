@@ -5,10 +5,8 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { DataContext } from "../../../App";
 import useSound from "use-sound";
 import "./styles/ChapterOne.css";
-import bgmSound from "/audios/chapterOne/bgm1.mp3";
-import walkingSound from "/audios/chapterOne/walking.mp3";
-import punchSound from "/audios/chapterOne/punch.mp3";
-import alarmSound from "/audios/chapterOne/alarm.mp3";
+import bgmSound from "/audios/chapterThree/bg_3.mp3";
+
 
 const ChapterDialogThree = () => {
   const [isSliderVisible, setIsSliderVisible] = useState(false);
@@ -20,20 +18,20 @@ const ChapterDialogThree = () => {
   const openNav = () => setIsOpen(true);
   const closeNav = () => setIsOpen(false);
   const [volume, setVolume] = useState(0.1); // Initial volume value
-  const [playwalkingSound, { stop: stopWalkingSound }] = useSound(
-    walkingSound,
-    { volume: volume , loop: false }
-  );
-  const [playpunchSound, { stop: stopPunchSound }] = useSound(punchSound, {
-    volume: volume,
-    loop: false,
-  });
-  const [playalarmSound, { stop: stopAlarmSound }] = useSound(alarmSound, {
-    volume: volume,
-    loop: false,
-  });
+  // const [playwalkingSound, { stop: stopWalkingSound }] = useSound(
+  //   walkingSound,
+  //   { volume: volume , loop: false }
+  // );
+  // const [playpunchSound, { stop: stopPunchSound }] = useSound(punchSound, {
+  //   volume: volume,
+  //   loop: false,
+  // });
+  // const [playalarmSound, { stop: stopAlarmSound }] = useSound(alarmSound, {
+  //   volume: volume,
+  //   loop: false,
+  // });
   const [playBgm, { pause: pauseBgm, stop: stopBgm }] = useSound(bgmSound, {
-    volume: 0.05,
+    volume: 0.1,
     loop: true,
   });
   const [textFullyTyped, setTextFullyTyped] = useState(false);
@@ -48,226 +46,203 @@ const ChapterDialogThree = () => {
   const [dialogue, setDialogue] = useState([
     {
       speaker: "-- Lunar --",
-      text: "แล้วจากนี้ไปนายจะทำยังไงต่อ จะกลับขึ้นไปที่เมืองด้านบนไหม",
-      bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126',
-    },
-    {
-      speaker: "-- Rabbet --",
-      text: "ถึงจะจำเหตุผลไม่ได้ แต่ฉันก็คงต้องกลับขึ้นไปแหละนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_2.png?updatedAt=1712913575129",
+      text: "เมืองด้านบนสุสด ที่อย่เหนือจินตนาการของฉัน ",
+      bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Layer%2036.png?updatedAt=1714105540258',
     },
     {
       speaker: "-- Lunar --",
-      text: "ถ้าอย่างนั้น ฉันขอออกเดินทางไปด้วยได้ไหม?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126",
-    },
-    {
-      speaker: "-- Rabbet --",
-      text: "หะ เธอแน่ใจแล้วหรอ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126",
+      text: "เป็นเมืมองที่มีแต่รูปทรงแปลกประหลาดที่ฉันไม่สามารถจินตนาการได้ ",
+      bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Layer%2036.png?updatedAt=1714105540258',
     },
     {
       speaker: "-- Lunar --",
-      text:  "มันเคยเป็นความฝันของฉันหน่ะ วันหนึ่งฉันอยากออกเดินทาง อยากจะพบเจอสิ่งใหม่ๆ ก่อนที่จะอายุ 18 หน่ะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_1&3.png?updatedAt=1712913575126",
-    },
-    {
-      speaker: "-- Rabbet --",
-      text: "ถ้าเธอออกเดินทางไป แล้วผู้คนที่นี่จะไม่เป็นห่วงเธอเอาหรอ?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_4.png?updatedAt=1712913575242",
+      text: "เมืองนี้มีชื่อว่า.......[PeaceFusion]",
+      bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Layer%2036.png?updatedAt=1714105540258',
     },
     {
       speaker: "-- Lunar --",
-      text: "ไม่เป็นไร ฉันไม่มีครอบครัว หรือเพื่อนที่คอยห่วงใยหรอก",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_4.png?updatedAt=1712913575242",
-    },
-    {
-      speaker: "-- Rabbet --",
-      text:  "ฉันขอโทษนะที่ทำให้นึกถึงเรื่องนั้น",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_5.png?updatedAt=1712913575277",
+      text: "หลังจากที่พวกเราได้พักค้างคืนที่เมือง [Solarwind] ",
+      bg: 'https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%201.png?updatedAt=1714112460157',
     },
     {
       speaker: "-- Lunar --",
-      text:  "ไม่เป็นไรหรอก ถึงแม้จะรู้สึกผูกพันกับที่นี่ แต่ก็อยากออกไปท่อง โลก บ้างหน่ะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_5.png?updatedAt=1712913575277",
-    },
-    {
-      speaker: "-- Rabbet --",
-      text: "“โลก... งั้นหรอ”",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_6.png?updatedAt=1712913575138",
+      text: "พวกเราก็ได้ขึ้นลิฟต์ชั้นสุดท้ายที่สูงขึ้นมาจากพื้นดินจนสูงกว่าขอบของหลุมลึก",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%202.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Lunar --",
-      text: "ถ้าอย่างงั้น ขอฝากเนื้อฝากตัวด้วยนะเพื่อนใหม่ของฉัน",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_7%20.png?updatedAt=1712913575261",
-    },
-    {
-      speaker: "-- Rabbet --",
-      text:  "เช่นกันนะ ขอให้เป็นการเดินทางที่น่าจดจำ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_7%20.png?updatedAt=1712913575261",
+      text: "เมื่อพวกเราขึ้นลิฟต์มาจนถึงเมืองชั้นบน ภาพแรกที่ฉันได้เห็นคือภาพของเมืองที่ใหญ่โตมโหฬาร",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%203.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Lunar --",
-      text:  "ฉันจับมือของ  Rabbet และเรื่องราวของพวกเรากำลังจะเริ่มต้นขึ้น",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_7%20.png?updatedAt=1712913575261",
+      text: "ตึกที่สูงเสียดฟ้าและมีรูปร่างหน้าตาแปลกๆ ล้อมรอบปากหลุมอยู่",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%204.png?updatedAt=1714112460157",
+    },
+    {
+      speaker: "-- Lunar --",
+      text:  "พวกเเราได้เห็นวงแหวนที่หมุนวนรอบแก่นของพลังงานบางอย่างอยู่ที่ด้านบนของเมือง",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%205.png?updatedAt=1714112460157",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "มีบางอย่างผิดปกติ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%206.png?updatedAt=1714112460157",
+    },
+    {
+      speaker: "-- Lunar --",
+      text: "เกิดอะไรขึ้นหรอ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%207.png?updatedAt=1714112460157",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text:  "ฉันพูดพลางมองไปรอบๆแล้วสะดุดตากับผู้คน ที่กำลังมองมาที่ฉัน",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%208.png?updatedAt=1714112460157",
+    },
+    {
+      speaker: "-- Soldier --",
+      text:  "นั่น!...ใช่ [Lapin-02] รึเปล่า",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%209.png?updatedAt=1714112460157",
+    },
+    {
+      speaker: "-- Soldier --",
+      text: "ต้องใช่แน่ ๆ ทำไมแกถึงอยู่ที่นี่ได้!",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2010.png?updatedAt=1714112460157",
+    },
+    {
+      speaker: "-- Rabbet --",
+      text: "หยุดนะ นี่พวกนายยจะทำอะไรกันน่ะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2011.png?updatedAt=1714112460157",
+    },
+    {
+      speaker: "-- Lunar --",
+      text:  "พวกนายพูดอะไรกันน่ะ นี่คือ [Rabbet] ไม่ใช่หรอ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2012.png?updatedAt=1714112460157",
+    },
+    {
+      speaker: "-- Soldier --",
+      text:  "สิ่งที่เธอเรียกว่า [Rabbet] นั่นคือหุ่นยนต์เตาปฏิกรณ์นิวเคลียร์จากโครงการที่ไม่เสถียรและควรจะดับสิ้นไปแล้ว ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2013.png?updatedAt=1714112460157",
     },
     // fade out and fade in 
     {
-      speaker: "-- Lunar --",
-      text: "หลังจากได้ตัดสินใจที่จะออกเดินทางไปพร้อมกับ [Rabbet]",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_8%20.png?updatedAt=1712913575270",
+      speaker: "-- Soldier --",
+      text: "ชื่อเรียกของ Project นั้นคือ [Lapin-02] ต่างหาก นั่นหน่ะคือเตาปฏิกรณ์นิวเคลียร์เดินได้ และพร้อมที่จะรเบิดต่างหาก",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2014.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Lunar --",
-      text: "การเดินทางของพวกเรานั้นฉันเข้าใจว่ามันจะไม่ได้ออกมาสวยหรูมากนัก แต่ฉันมั่นใจว่าฉันเลือกในสิ่งที่ฉันอยากจะทำมันมานานแล้วและจะไม่เสียใจภายหลังแน่นอน",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_8%20.png?updatedAt=1712913575270",
+      text: "ไม่นะ! ไม่จริง!",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2015.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Lunar --",
-      text: "ก่อนจะออกเดินทางฉันพา [Rabbet] ไปช่วยเก็บของที่บ้านของฉันก่อนที่เขตพักอาศัยก่อน แล้วจึงได้เริ่มออกเดินทาง ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_9.png?updatedAt=1712913575276",
+      text: "ฉันไม่เข้าใจ อะไรคือปฏิกรณ์นิวเคลียร์ที่พวกนายพูดถึงกัน",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2016.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Lunar --",
-      text: "[Rabbet] ยังใช้พลังบางอย่างในการปกป้องตัวฉัน มันเป็นเหมือนพลังงานที่สามารถช่วยป้องกันจากอากาศและมลพิษให้กับฉันได้",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_10%20.png?updatedAt=1712913578266",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "จากนั้นฉันได้บอกลาเพื่อนร่วมงานของฉันก่อนจะออกเดินทาง",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_11.png?updatedAt=1712913579324",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "ระหว่างการเดินทางออกจากเมืองนี้ Rabbet ก็ได้พบกับการผลิตพลังงาน และอุตสาหกรรมต่างๆ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_12.png?updatedAt=1712913578440",
+      text: " [Rabbet] ก็คือ [Rabbet] ที่เพิ่งตกลงมาเมื่อวันก่อนที่เมืองด้านล่างสุดแล้วช่วยฉันเอาไว้สิ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2017.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Rabbet --",
-      text: "ที่นี่ดูเหมือนจะใช้วิธีการผลิตพลังงานแบบยุคเก่า ที่สร้างมลพิษอยู่ตลอดเวลา",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_13%20.png?updatedAt=1712913579063",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: " ใกล้จะถึงเขตชาญเมืองแล้วแหละนะ ฉันพูดพลางปาดเหงื่อ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_14.png?updatedAt=1712913578502",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: " ฉันอยากจะรู้จังเลยนะ ว่าเมืองด้านบนจะมีคุณภาพชีวิตที่ดีกว่าเมืองด้านล่างขนาดไหน",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_14.png?updatedAt=1712913578502",
+      text: "...",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2018.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Rabbet --",
-      text:  "ที่เมืองด้านบนนั้นก็ใช่ว่าจะดีเสมอไปหรอกนะ มันก็มีสิ่งที่ต้องแลกมาหลายๆ อย่างอยู่เสมอซะทุกอย่างหน่ะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_14.png?updatedAt=1712913578502",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "หลังจากที่พวกเราเดินทางผ่านเมืองกันมาก็ได้มาถึงน้ำพุใจกลางของเมือง",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_15%20.png?updatedAt=1712913579095",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: " ใกล้จะถึงเขตชายเมืองแล้วแหละนะ ฉันพูดพลางหยุดที่ด้านหน้าน้ำพุ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_15%20.png?updatedAt=1712913579095",
+      text: " ขอโทษนะ Lunar ฉันจำเรื่องราวทั้งหมดได้แล้วล่ะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2018.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Rabbet --",
-      text: " สภาพอากาศดูเลวร้ายกว่าที่ประเมินเอาไว้มาก ผู้คนที่นี่ต้องทนอยู่กับมลพิษขนาดไหนกันนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_15%20.png?updatedAt=1712913579095",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "มันพอจะมีวิธีแก้ไขสิ่งเหล่านี้บ้างไหม",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_16.png?updatedAt=1712913578619",
+      text: "[Lapin-02]  คือตัวฉันเองงั้นสินะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2019.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Rabbet --",
-      text: "ตราบเท่าที่มนุษย์ยังต้องพึ่งพาการผลิตพลังงานเหล่านี้อยู่ ก็จะสร้างมลพิษพวกนี้แบบไม่รู้จบ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_16.png?updatedAt=1712913578619",
-    },
-    {
-      speaker: "-- Lunar --",
-      text:  "สภาพอากาศที่เลวร้ายอย่างนี้ไม่มีวิธีแก้ไขมันเลยหรอ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_16.png?updatedAt=1712913578619",
+      text: "ถ้างั้นด้านบนนั้นก็คือ เตาปฏิกรหมายเลข1 ที่กำลังจะดับลงงั้นสินะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2020.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Rabbet --",
-      text:  "เกรงว่าจะไม่ ถ้าหากเราไม่ได้แก้ไขที่จุดเริ่มต้นของมัน",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_16.png?updatedAt=1712913578619",
+      text: "หืม..? นั่นมันอะไรน่ะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2021.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Lunar --",
-      text:  "แล้วถ้าเราเปลี่ยนวิธีการผลิตพลังงานหล่ะ?",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel%20_17.png?updatedAt=1712913575097",
-    },
-    {
-      speaker: "-- Rabbet --",
-      text:   "กระบวนการ การเปลี่ยนแปลงระบบมันไม่ได้ง่ายดายขนาดนั้นหรอกนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel%20_17.png?updatedAt=1712913575097",
+      text: "วัตถุบางอย่างบินชนกับกำแพงล่องหน แรงระเบิดททำให้เกิดเสียงดังลั่นท้องฟ้าก็สว่างวาบเป็นสีขาวโพลน",
+      bg: " https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Layer%2037.png?updatedAt=1714105540120",
     },
     {
       speaker: "-- Lunar --",
-      text:  "ตะ..แต่ว่า...",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_18%20.png?updatedAt=1712913579289",
+      text: " หลังจากที่ฉันตั้งสติได้ และมองไปรอบ ๆ หลังจากการระเบิดนั้น ก็ได้มีเศษกระจกใส ๆ ตกลงมาจากด้านบน",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2022.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Rabbet --",
-      text:  "คิดซะว่านี่คือกรรมตามสนองที่มนุษย์กระทำกับโลกนี้ไว้ก็ได้",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_18%20.png?updatedAt=1712913579289",
+      text:  "Lunar!!!",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2023.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Lunar --",
-      text: "ฉันคิดตามในสิ่งที่ [Rabbet] พูด ภายในใจว่าถ้าทำอะไรสักอย่างได้ก็คงจะดี พลางคิดในหัวตัดพ้อตัวเองว่าฉันก็ไม่ได้มีความสามารถ หรือความรู้อะไรสักหน่อย",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_19%20.png?updatedAt=1712913579324",
+      text: " ทันใดนั้น [Rabbet] ได้พุ่งเข้ามาบังกระจกบานนั้นให้ฉัน",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2024.png?updatedAt=1714112460157",
+    },
+    
+    {
+      speaker: "-- Lunar --",
+      text: "ภาพในตอนนั้นมันลอยขึ้นมาอีกครั้ง ภาพตรงหน้าของฉันเหมือนถูกเอาภาพเก่ามาฉายซ้ำอีกครั้ง",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2025.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Rabbet --",
-      text: "มนุษย์นี่สื่ออารมณ์ผ่านสีหน้าง่ายจังเลยนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_20.png?updatedAt=1712913579292",
+      text: " ไม่เป็นไรใช่ไหม",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2026.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Lunar --",
-      text: ".....ก็ใช่อยู่หรอกนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_21%20.png?updatedAt=1712913581555",
+      text: " อื้อ.....แผลเล็กน้อยหน่ะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2027.png?updatedAt=1714112460157",
     },
     {
-      speaker: "-- Rabbet --",
-      text: "ขอโทษที่ทำให้เธอคิดมากนะ  ฉันแค่อยากสื่อสารว่าเรื่องพวกนี้ไม่ใช่ว่าแก้ไขไม่ได้ แต่การปรับเปลี่ยนนั้นต้องใช้ทั้งทรัพยากร และเวลา",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_22.png?updatedAt=1712913581705",
-    },
-    {
-      speaker: "-- Lunar --",
-      text: "อื้อไม่เป็นไร ฉันต่างหากที่ต้องขอโทษด้วย งั้นเรื่องนี้เจ๊ากันนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_22.png?updatedAt=1712913581705",
-    },
-    {
-      speaker: "-- Rabbet --",
-      text: " อีกนิดก็จะถึงลิฟต์ขนส่งแล้ว ฉันว่าเราพักกันสักเดี๋ยวก่อนนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_23%20.png?updatedAt=1712913581817",
+      speaker: "-- Soldier --",
+      text: "ตอนนี้ไม่มีเวลาแล้ว Barrier ได้แตกลงแล้ว!",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2028.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Lunar --",
-      text: "ถึงนายขะเป็นหุ่นยนต์ติด AI ก็ดูพูดคล่องกว่าหุ่นยนต์ตัวอื่นๆมากเลยนะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_24%20.png?updatedAt=1712913581838",
+      text: "ระหว่างนั้น [Soldier] วิ่งหนีกันกระจัดกระจาย ความโกลาหนมันสวนทางกับความสงบทุกอย่างทุกคนล้วนต่างเอาชีวิตรอดโดยไม่สนสิ่งอื่นใด",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2029.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Rabbet --",
-      text: "ฉันก็อยากรู้เหมือนกันว่าฉันถูกสร้างขึ้นมาเพื่อจุดประสงค์อะไรกันแน่นะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_24%20.png?updatedAt=1712913581838",
-    },
-    {
-      speaker: "-- Rabbet --",
-      text: "ถึงแม้ว่าฉันจะไม่รู้จุดประสงค์ของการทำอุตสาหกรรมจำนวนมากขนาดนี้ แต่ฉันคิดว่ามันต้องมีเหตผลอะไรแน่นอน",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_25.png?updatedAt=1712913575274",
+      text:  "ฟังนะ [Lunar] เราคงต้องจากลากันตรงนี้แล้วหล่ะ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2030.png?updatedAt=1714112460157",
     },
     {
       speaker: "-- Lunar --",
-      text: "เพราะฉนั้น เราถึงต้องไปหาความจริงที่โลกภายนอกยังไงหล่ะ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter1/image/City1_rencel_25.png?updatedAt=1712913575274",
+      text:  "คำพูดนั้นทำให้ฉันพูดไม่ออก",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2031.png?updatedAt=1714112460157",
     },
-    //Fade ดำ ปิด chapetert 1
+    {
+      speaker: "-- Rabbet --",
+      text:  "ฉันถูกสร้างขึ้นเพื่อใช้เป็นอาวุธสำหรับปกป้องหลุมแห่งนี้ ภายในตัวของฉันก็มีเตาปฏิกรณ์นิวเคลียร์ที่เหมือนกับด้านบนนั้น",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2032.png?updatedAt=1714112460157",
+    },
+    {
+      speaker: "-- Lunar --",
+      text:  "ฉันรู้แล้วหล่ะว่าฉันเกิดมาด้วยเหตุผลอะไร......",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2033.png?updatedAt=1714112460157",
+    },
+    {
+      speaker: "-- Lunar --",
+      text:  "งั้นหรอ",
+      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter3/image/Group%2034.png?updatedAt=1714112460157",
+    },
+    
+    //Fade ดำ ปิด chapetert 3
     // Add more dialogue objects as needed
   ]);
 
@@ -296,7 +271,7 @@ const ChapterDialogThree = () => {
 
   useEffect(() => {
     setColseBgmusic(false);
-    // playBgm(); 
+     playBgm(); 
     return () => {
       stopBgm();
     };
@@ -315,9 +290,7 @@ const ChapterDialogThree = () => {
   };
 
   const handleStopSoundEffects = () => {
-    stopWalkingSound();
-    stopPunchSound();
-    stopAlarmSound();
+    
   };
 
   const handleVolumeChange = (e) => {
@@ -326,7 +299,8 @@ const ChapterDialogThree = () => {
   };
 
   const handleNext = () => {
-    if (textFullyTyped && currentDialogueIndex < dialogue.length - 1) {
+
+     if (textFullyTyped && currentDialogueIndex < 40 && currentDialogueIndex !== dialogue.length - 1) {
       handleStopSoundEffects();
       setCurrentDialogueIndex(currentDialogueIndex + 1);
       play();
@@ -335,10 +309,13 @@ const ChapterDialogThree = () => {
       setTextFullyTyped(false);
       setTimeout(() => setIsAnimating(false), 1000); // หยุดเล่นอนิเมชันหลังจาก 1 วินาที
     } else if (textFullyTyped && currentDialogueIndex === dialogue.length - 1) {
-      // Show the modal when user clicks on the last dialogue
-      setOpenModal(true);
-      handleStopSoundEffects();
-    }
+        // Show the modal when user clicks on the last dialogue
+        setFadeEffect("fade-exit-active");
+        setTimeout(() => {
+          setOpenModal(true);
+        }, 4000); 
+        handleStopBgm();
+      }
   };
 
   const handleUserClick = () => {
@@ -383,7 +360,7 @@ const ChapterDialogThree = () => {
   const handleButtonClickNext = () => {
     setFadeEffect("fade-exit-active");
     setTimeout(() => {
-      navigate("/roomchapterone");
+      navigate("/chapterthree");
     }, 3000); // 3000ms is the duration of the fade-out effect
   };
 
@@ -629,7 +606,7 @@ const ChapterDialogThree = () => {
               <h1 className="absolute top-[15%] bottom-0 left-0 right-0 font-bold text-2xl  md:text-3xl lg:text-5xl opacity-90">
                 {dialogue[currentDialogueIndex].speaker}
               </h1>
-              <p className="absolute top-[50%] bottom-0 left-0 right-0 text-base md:text-2xl lg:text-2xl px-5 ">
+              <p className="absolute top-[50%] bottom-0 left-0 right-0 text-base md:text-2xl lg:text-3xl px-5 ">
                 {textFullyTyped
                   ? dialogue[currentDialogueIndex].text
                   : displayedText}
@@ -687,21 +664,21 @@ const ChapterDialogThree = () => {
           <Modal.Header className="bg-slate-800" />
           <Modal.Body className="bg-slate-800">
             <div className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normal text-gray-500 dark:text-gray-400">
-                Chapter 3 จบลงแล้ว กลับไปหน้าเลือก Chapter
-                เพื่อหาความลับที่ซ่อนอยู่ 
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14  text-white" />
+              <h3 className="mb-5 text-sm md:text-lg lg:text-xl font-normal  text-white">
+                Chapter 3 ครึ่งแรกจบลงแล้ว กดปุ่มถัดไปเพื่อดำเนินเนื้อเรื่องต่อใน
+                Chapter 3 ครึ่งหลัง 
               </h3>
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
-                <Link to={"/roomchapterone"}>
+                <Link to={"/chapterthree"}>
                   <Button
-                    color="failure"
+                    color="success"
                     onClick={() => {
                       setOpenModal(false);
                       play();
                     }}
                   >
-                    {" กลับไปหน้าเลือก Chapter "}
+                    {" ดำเนินเนื้อเรื่องต่อ "}
                   </Button>
                 </Link>
               </div>

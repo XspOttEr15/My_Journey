@@ -11,96 +11,109 @@ const store = [
   {
     name: "Next Place",
     color: "lightpink",
-    position: [10, 0, -15],
-    url: "/images/Maps/chapterTwo/City2_Scene01_HDRI_Tex.png",
+    position: [17, 0, -10],
+    url: "/images/Maps/chapterTwo/1.png",
     link: 1,
   },
   {
     name: "Next Place",
     color: "lightblue",
-    position: [0, 0, 15],
-    url: "/images/Maps/chapterOne/Top.png",
+    position: [-5, 0, -15],
+    url: "/images/Maps/chapterTwo/2.png",
     link: 2,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/bridge.png",
+    position: [-15, 1, -15],
+    url: "/images/Maps/chapterTwo/3.png",
     link: 3,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/factory.png",
+    position: [-25, 0, 10],
+    url: "/images/Maps/chapterTwo/4.png",
     link: 4,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/village1.png",
+    position: [-1, -1, 15],
+    url: "/images/Maps/chapterTwo/5.png",
     link: 5,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
     position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/village2.png",
+    url: "/images/Maps/chapterTwo/6.png",
     link: 6,
   },
   {
-    name: " Maps Page",
+    name: " Next Place",
     color: "lightblue",
-    position: [15, 0, 15],
-    url: "/images/Maps/chapterOne/Lunar_with_Rabbet.png",
+    position: [14, 0, -30],
+    url: "/images/Maps/chapterTwo/7.png",
     link: 7,
+  },
+  {
+    name: " Chapter 3 ",
+    color: "lightblue",
+    position: [0, -1, -15],
+    url: "/images/Maps/chapterTwo/8.png",
+    link: 8,
   },
 ];
 
 const storeB = [
   {
-    nameB: "Chapter 2",
-    positionB: [80, 0, -15],
+    nameB: "Chapter 1",
+    positionB: [0, 0, 15],
     urlB: "/images/Maps/chapterOne/Garbage.png",
     linkB:1,
   },
   {
     nameB: " Previous Maps ",
-    positionB: [-50, 0, 15],
-    urlB: "/images/Maps/chapterOne/Photosphere1.jpg",
+    positionB: [-22, 20, 30],
+    urlB: "/images/Maps/chapterTwo/1.png",
     linkB:2,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
-    urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    positionB: [-1, 0, 15],
+    urlB: "/images/Maps/chapterTwo/2.png",
     linkB:3,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
-    urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    positionB: [13, 0, 15],
+    urlB: "/images/Maps/chapterTwo/3.png",
     linkB:4,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
-    urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    positionB: [18, -1, -15],
+    urlB: "/images/Maps/chapterTwo/4.png",
     linkB:5,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
-    urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    positionB: [-14, -1, -15],
+    urlB: "/images/Maps/chapterTwo/5.png",
     linkB:6,
   },
   {
     nameB: "Previous Maps",
-    positionB: [-30, 0, 15],
-    urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
+    positionB: [-30, 6, 0],
+    urlB: "/images/Maps/chapterTwo/6.png",
     linkB:7,
+  },
+  {
+    nameB: "Previous Maps",
+    positionB: [-10, -4, 15],
+    urlB: "/images/Maps/chapterTwo/7.png",
+    linkB:8,
   },
   
 ];
@@ -145,7 +158,7 @@ function Portals({setFadeOut,fadeOut}) {
   const maps = useLoader(THREE.TextureLoader, store.map((entry) => entry.url));
 
   const handleClick = () => {
-    if (link === 7) {
+    if (link === 8) {
       setFadeOut(true);
       setTimeout(() => {
         window.location.href = "/chapterthreemap";
@@ -206,6 +219,8 @@ export default function ChapterTwoMap() {
     const timer = setTimeout(() => {
       setLoaded(true);
     }, 1000); // Adjust the delay time as needed
+
+  
 
     // Clean up timer
     return () => clearTimeout(timer);

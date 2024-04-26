@@ -31,6 +31,7 @@
     "r3f-perf": "^7.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-image-preloader": "^1.0.2",
     "react-intersection-observer": "^9.8.0",
     "react-lazy-load-image-component": "^1.6.0",
     "react-parallax-mouse": "^2.1.0",
