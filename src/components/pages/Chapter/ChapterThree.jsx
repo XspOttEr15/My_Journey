@@ -91,7 +91,7 @@ const ChapterThree = () => {
             volume={0.3}
             width="100%"
             height="100%"
-            url={"https://www.youtube.com/watch?v=0I647GU3Jsc"}
+            url={"https://youtu.be/gA8HDifynt0"}
             config={{
               youtube: {
                 playerVars: { showinfo: 1, disablekb: 1, fs: 1 },

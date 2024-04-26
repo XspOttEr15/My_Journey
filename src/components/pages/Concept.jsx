@@ -40,7 +40,7 @@ const Concept = () => {
           <Link to={"/character"}>
             <motion.img
               className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 "
-              src="https://ik.imagekit.io/vsfmz5htw/Concepts/character.png?updatedAt=1711183016990"
+              src="/images/Concepts/lunar_half.png"
               alt="Character"
               whileHover={{scale: 1.1}}
               transition={{duration:0.5}}
@@ -69,7 +69,7 @@ const Concept = () => {
         <Link to={"/maps"}>
           <motion.img
             className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 "
-            src="https://ik.imagekit.io/vsfmz5htw/Concepts/map.png?updatedAt=1711183019710"
+            src="/images/Concepts/map_half.png"
             alt="map"
             loading="eager"
             whileHover={{scale: 1.1}}

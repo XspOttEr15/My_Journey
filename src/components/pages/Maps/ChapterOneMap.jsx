@@ -11,7 +11,7 @@ import { DataContext } from "../../../App";
 
 const store = [
   {
-    name: "Next Place",
+    name: "Bridge",
     color: "lightpink",
     position: [0, 0, 15],
     Camposition: [0, 0, 5],
@@ -20,35 +20,35 @@ const store = [
     link: 1,
   },
   {
-    name: "Next Place",
+    name: "Factory",
     color: "lightblue",
     position: [10, -4.5, 1.5],
     url: "/images/Maps/chapterOne/bridge.png",
     link: 2,
   },
   {
-    name: " Next Place",
+    name: " Village1",
     color: "lightblue",
     position: [500, 0, -200],
     url: "/images/Maps/chapterOne/factory.png" ,
     link: 3,
   },
   {
-    name: " Next Place",
+    name: " Village2",
     color: "lightblue",
     position: [-20, 0, 15],
     url: "/images/Maps/chapterOne/village1.png" ,
     link: 4,
   },
   {
-    name: " Next Place",
+    name: " Garbage",
     color: "lightblue",
     position: [15, 3, 15],
     url:  "/images/Maps/chapterOne/village2.png",
     link: 5,
   },
   {
-    name: " Next Place",
+    name: " Lunar & Rabbet",
     color: "lightblue",
     position: [100, 0, -90],
     url: "/images/Maps/chapterOne/Garbage.png",
@@ -63,6 +63,7 @@ const store = [
   },
 ];
 
+
 const storeB = [
   {
     nameB: "Maps Page",
@@ -71,37 +72,37 @@ const storeB = [
     linkB:1,
   },
   {
-    nameB: " Previous Maps ",
+    nameB: "Top",
     positionB: [0, 0, -15],
     urlB: "/images/Maps/chapterOne/Photosphere1.jpg",
     linkB:2,
   },
   {
-    nameB: "Previous Maps",
+    nameB: "Bridge",
     positionB: [-500, 120, -15],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:3,
   },
   {
-    nameB: "Previous Maps",
+    nameB: "Factory",
     positionB: [200,0,-100],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:4,
   },
   {
-    nameB: "Previous Maps",
+    nameB: "Village1",
     positionB: [-1, 0, -250],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:5,
   },
   {
-    nameB: "Previous Maps",
+    nameB: "Village2",
     positionB: [0, 0, 160],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:6,
   },
   {
-    nameB: "Previous Maps",
+    nameB: "Garbage",
     positionB: [-100, 0, -60],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB:7,
