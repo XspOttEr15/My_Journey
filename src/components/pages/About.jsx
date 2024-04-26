@@ -43,7 +43,7 @@ const About = () => {
               }}
             >
               <motion.img
-                className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 w-full h-[480px] "
+                className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 w-full h-[480px] pointer-events-none "
                 src="/images/AboutUs/left_1.png"
                 alt=""
               />
@@ -70,7 +70,7 @@ const About = () => {
               }}
             >
               <motion.img
-                className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 w-full h-[480px]  "
+                className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 w-full h-[480px] pointer-events-none  "
                 src="/images/AboutUs/midle_2.png"
                 alt=""
               />
@@ -97,7 +97,7 @@ const About = () => {
               }}
             >
               <motion.img
-                className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 w-full h-[480px]  "
+                className="rounded-3xl  shadow-lg shadow-emerald-800/80 border border-emerald-800 w-full h-[480px]  pointer-events-none "
                 src="/images/AboutUs/Ri_3.png"
                 alt=""
               />
@@ -180,7 +180,13 @@ const About = () => {
               <img
                 src="https://media.discordapp.net/attachments/761581562641907723/1233350897623629885/KMUTTFIET-Logo-Eng.png?ex=662cc708&is=662b7588&hm=e8c407c64030ff370db3c443ba8ad36ac1ee512401bdb8bf9c5d6126e25ceaaf&=&format=webp&quality=lossless&width=1440&height=480"
                 class=" w-[250px]"
-                alt="Flowbite Logo"
+                alt="CMM"
+              />
+              
+              <img
+              src="/images/AboutUs/logo_footer.png"
+              className="w-[250px]"
+              alt="CMM" 
               />
               
             </a>
