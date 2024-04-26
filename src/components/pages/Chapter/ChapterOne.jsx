@@ -93,7 +93,7 @@ const ChapterOne = () => {
             volume={0.3}
             width="100%"
             height="100%"
-            url={"https://www.youtube.com/watch?v=LHCob76kigA"}
+            url={"https://www.youtube.com/watch?v=IZO5aOmviuI"}
             config={{
               youtube: {
                 playerVars: {
