@@ -13,7 +13,6 @@ const Video = () => {
     <>
       <div className="w-full h-screen z-20 relative ">
         <div className="overlay"></div>
-        <h1 className=" absolute top-10">MY JOURNEY</h1>
         <MouseParallaxContainer
           resetOnLeave
           globalFactorX={0.1}
@@ -60,10 +59,9 @@ const Video = () => {
               loop
               className=" object-cover w-screen h-screen"
             >
-              <source src="public/videos/Loading/Reels.mp4" type="video/mp4" />
+              <source src="/videos/home/Reels.mp4" type="video/mp4" />
             </video>
           </MouseParallaxChild>
-
           </MouseParallaxContainer>
 
           <div className=" z-50  absolute inset-0  flex flex-col justify-center place-items-center  gap-10   text-center  pt-10 ">
