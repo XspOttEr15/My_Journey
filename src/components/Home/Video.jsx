@@ -61,7 +61,7 @@ const Video = () => {
               loop
               className=" object-cover w-screen h-screen"
             >
-              <source src="/videos/home/Reels.mp4" type="video/mp4" />
+              <source src="public/videos/Loading/Reels.mp4" type="video/mp4" />
             </video>
           </MouseParallaxChild>
 
