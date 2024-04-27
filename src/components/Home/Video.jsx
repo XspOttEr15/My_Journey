@@ -21,8 +21,8 @@ const Video = () => {
           containerStyle={{
             width: "100%",
             height: "100%",
-          }}
-        >
+          }}>
+            
           {/* <MouseParallaxChild
             factorX={0.3}
             factorY={0.5}
@@ -44,7 +44,6 @@ const Video = () => {
             factorY={0.5}
             style={{
               backgroundSize: "auto",
-
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -64,6 +63,8 @@ const Video = () => {
               <source src="public/videos/Loading/Reels.mp4" type="video/mp4" />
             </video>
           </MouseParallaxChild>
+
+          </MouseParallaxContainer>
 
           <div className=" z-50  absolute inset-0  flex flex-col justify-center place-items-center  gap-10   text-center  pt-10 ">
             <h1
@@ -88,13 +89,11 @@ const Video = () => {
             </button>
             </Link>
           </div>
-        </MouseParallaxContainer>
-        {/* <video autoPlay muted loop className="object-cover w-screen h-screen">
-            <source src={bgVideo} type="video/mp4"  />
-          </video> */}
+          
       </div>
     </>
   );
 };
+
 
 export default Video;
