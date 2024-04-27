@@ -263,6 +263,21 @@ const ChapterDialogTwo = () => {
       }
   };
 
+  const handleBack = () => {
+    if (currentDialogueIndex > 0) {
+        handleStopSoundEffects();
+        if (currentDialogueIndex === dialogue.length) {
+            setOpenModal(false);
+            handlePlayBgm();
+        }
+        setCurrentDialogueIndex(currentDialogueIndex - 1);
+        play();
+        setIsAnimating(true);
+        setTextFullyTyped(false);
+        setTimeout(() => setIsAnimating(false), 1000);
+    }
+};
+
   const handleUserClick = () => {
     // Set textFullyTyped to true when user clicks to show full text
     setTextFullyTyped(true);
@@ -592,6 +607,17 @@ const ChapterDialogTwo = () => {
             >
               Skip {">>"}
             </button>
+            <button
+                type="button"
+                onClick={() => {
+                  play();
+                  handleBack();
+                  
+                }}
+                className=" absolute  lg:top-[72%] z-40  border-dashed border-2  border-emerald-500 lg:left-[2%] md:top-[74%] md:left-[88%]  opacity-[100%]   lg:w-28 md:w-[5rem] h-10 text-base  text-white rounded-lg focus:outline-none focus:ring-2 hover:bg-emerald-600 hover:border-white "
+              >
+                {"<<"} Back 
+              </button>
           </div>
         </Link>
         <Modal
@@ -656,10 +682,7 @@ const ChapterDialogTwo = () => {
             <div className="text-center">
               <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14   text-emerald-700 " />
               <h3 className="mb-5 md:text-lg lg:text-xl  text-white">
-                ต้องการข้าม Chapter 2  ? กดปุ่ม Skip &nbsp; 
-                เพื่อดำเนินเนื้อเรื่องต่อใน
-                Chapter 3 หรือ 
-                Cancel เพื่อชม Chapter 2 
+                ต้องการข้าม Chapter 2  ? 
               </h3>
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Button
