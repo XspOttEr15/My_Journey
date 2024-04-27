@@ -17,7 +17,7 @@ const ChapterDialogTwo = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth); // State to store window width
   const openNav = () => setIsOpen(true);
   const closeNav = () => setIsOpen(false);
-  const [volume, setVolume] = useState(0.1); // Initial volume value
+  const [volume, setVolume] = useState(0.3); // Initial volume value
   
   // const [playalarmSound, { stop: stopAlarmSound }] = useSound(alarmSound, {
   //   volume: volume,
@@ -25,7 +25,7 @@ const ChapterDialogTwo = () => {
   // });
 
   const [playBgm, { pause: pauseBgm, stop: stopBgm }] = useSound(bgm2Sound, {
-    volume: 0.4,
+    volume: volume,
     loop: true,
   });
   const [textFullyTyped, setTextFullyTyped] = useState(false);
@@ -145,7 +145,7 @@ const ChapterDialogTwo = () => {
     },
     {
       speaker: "-- Rabbet --",
-      text: " อะ.เอ่ออ คือว่า",
+      text: " อะ เอ่ออ คือว่า",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/18.png?updatedAt=1713737843268",
     },
     {
@@ -159,19 +159,10 @@ const ChapterDialogTwo = () => {
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/20.png?updatedAt=1713737843840",
     },
     {
-      // เฟดดำก่อนขึ้นภาพนี้
       speaker: "-- Lunar --",
-      text: " เมื่อความมืดเริ่มปกคลุมท้องฟ้า แสงสว่างจากแคมป์ไฟก็สว่างขึ้นมาก รอบข้างของนาก็มืดสนิท ",
+      text: " เหลือเพียงความสว่างจากหมู่บ้านริมเขา และแสงสว่างจากหมู่ดาวบนท้องฟ้า ",
       bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/21.png?updatedAt=1713737845561",
     },
-    {
-      // เฟดดำก่อนขึ้นภาพนี้
-      speaker: "-- Lunar --",
-      text: " เมื่อความมืดเริ่มปกคลุมท้องฟ้า แสงสว่างจากแคมป์ไฟก็สว่างขึ้นมาก รอบข้างของนาก็มืดสนิท ",
-      bg: "https://ik.imagekit.io/vsfmz5htw/Chapter2/image/21.png?updatedAt=1713737845561",
-    },
-    //Fade ดำ ปิด chapetert 2
-    // Add more dialogue objects as needed
   ]);
 
   const toggleSliderVisibility = () => {
@@ -227,8 +218,9 @@ const ChapterDialogTwo = () => {
     setVolume(newVolume);
   };
 
+
   const handleNext = () => {
-    if (textFullyTyped && currentDialogueIndex <= 23) {
+    if (textFullyTyped && currentDialogueIndex <= 21) {
       handleStopSoundEffects();
       setCurrentDialogueIndex(currentDialogueIndex + 1);
       play();
@@ -236,16 +228,20 @@ const ChapterDialogTwo = () => {
       // Reset textFullyTyped state for the next dialogue
       setTextFullyTyped(false);
       setTimeout(() => setIsAnimating(false), 1000); // หยุดเล่นอนิเมชันหลังจาก 1 วินาที
-    } else if (textFullyTyped && currentDialogueIndex === 25) {
+    } else if (textFullyTyped && currentDialogueIndex === 22) {
       setFadeEffect("fade-exit-active");
       setTimeout(() => {
         setCurrentDialogueIndex(currentDialogueIndex + 1);
         setFadeEffect("fade-enter-active");
-      }, 3000); // 3000ms is the duration of the fade-out effect      
+      }, 3000); // 3000ms is the duration of the fade-out effect
       play();
       setTextFullyTyped(true);
       setTimeout(() => setIsAnimating(false), 1000); // หยุดเล่นอนิเมชันหลังจาก 1 วินาที
-    } else if (textFullyTyped && currentDialogueIndex > 26 && currentDialogueIndex !== dialogue.length - 1) {
+    } else if (
+      textFullyTyped &&
+      currentDialogueIndex > 22 &&
+      currentDialogueIndex !== dialogue.length - 1
+    ) {
       handleStopSoundEffects();
       setCurrentDialogueIndex(currentDialogueIndex + 1);
       play();
@@ -254,13 +250,14 @@ const ChapterDialogTwo = () => {
       setTextFullyTyped(false);
       setTimeout(() => setIsAnimating(false), 1000); // หยุดเล่นอนิเมชันหลังจาก 1 วินาที
     } else if (textFullyTyped && currentDialogueIndex === dialogue.length - 1) {
-        // Show the modal when user clicks on the last dialogue
-        setFadeEffect("fade-exit-active");
-        setTimeout(() => {
-          setOpenModal(true);
-        }, 4000); 
-        handleStopSoundEffects();
-      }
+      // Show the modal when user clicks on the last dialogue
+      setFadeEffect("fade-exit-active");
+      setTimeout(() => {
+        setOpenModal(true);
+        handlePauseBgm();
+      }, 4000);
+      handleStopSoundEffects();
+    }
   };
 
   const handleBack = () => {
@@ -672,7 +669,6 @@ const ChapterDialogTwo = () => {
           size="md"
           onClose={() => {
             play(), setOpenModalt(false);
-            handleStopBgm();
           }}
           popup={true}
           fade={true}

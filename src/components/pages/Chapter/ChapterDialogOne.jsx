@@ -15,7 +15,7 @@ const ChapterDialogOne = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth); // State to store window width
   const openNav = () => setIsOpen(true);
   const closeNav = () => setIsOpen(false);
-  const [volume, setVolume] = useState(0.1); // Initial volume value
+  const [volume, setVolume] = useState(0.2); // Initial volume value
 
 
   // const [playpunchSound, { stop: stopPunchSound }] = useSound(punchSound, {
@@ -24,7 +24,7 @@ const ChapterDialogOne = () => {
   // });
 
   const [playBgm, { pause: pauseBgm, stop: stopBgm }] = useSound(bgmSound, {
-    volume: 0.05,
+    volume: volume,
     loop: true,
   });
 
@@ -774,7 +774,6 @@ const ChapterDialogOne = () => {
             size="md"
             onClose={() => {
               play(), setOpenModalt(false);
-              handleStopBgm();
             }}
             popup={true}
             fade={true}

@@ -17,7 +17,7 @@ const ChapterDialogThree = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth); // State to store window width
   const openNav = () => setIsOpen(true);
   const closeNav = () => setIsOpen(false);
-  const [volume, setVolume] = useState(0.1); // Initial volume value
+  const [volume, setVolume] = useState(0.3); // Initial volume value
   // const [playwalkingSound, { stop: stopWalkingSound }] = useSound(
   //   walkingSound,
   //   { volume: volume , loop: false }
@@ -31,7 +31,7 @@ const ChapterDialogThree = () => {
   //   loop: false,
   // });
   const [playBgm, { pause: pauseBgm, stop: stopBgm }] = useSound(bgmSound, {
-    volume: 0.5,
+    volume: volume,
     loop: true,
   });
   const [textFullyTyped, setTextFullyTyped] = useState(false);
@@ -312,8 +312,8 @@ const ChapterDialogThree = () => {
         // Show the modal when user clicks on the last dialogue
         setFadeEffect("fade-exit-active");
         setTimeout(() => {
-          setOpenModal(true);
-        }, 4000); 
+          handleButtonClickNext();
+        }, 2000); 
         handleStopBgm();
       }
   };
@@ -718,7 +718,6 @@ const ChapterDialogThree = () => {
           onClose={() => {
             play(), setOpenModalt(false);
             setCurrentDialogueIndex(0); // Reset currentIndex to 0
-            handleStopBgm();
           }}
           popup={true}
           fade={true}
