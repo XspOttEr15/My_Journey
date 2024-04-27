@@ -215,7 +215,7 @@ const About = () => {
           </div>
           <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <span class="block text-sm  sm:text-center text-white">
-            © 2023{" "}
+            © 2024{" "}
             <a href="https://flowbite.com/" class="hover:underline">
             My Journey™
             </a>
