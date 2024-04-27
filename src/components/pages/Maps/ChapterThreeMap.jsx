@@ -133,7 +133,7 @@ function Portals({setFadeOut,fadeOut,setCameraTarget}) {
   const maps = useLoader(THREE.TextureLoader, store.map((entry) => entry.url));
 
   const handleClick = () => {
-    if (link === 7) {
+    if (link === 6) {
       setFadeOut(true);
       setTimeout(() => {
         window.location.href = "/maps";
