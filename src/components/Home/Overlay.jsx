@@ -11,9 +11,8 @@ export function Overlay() {
     animate: { x: 0, opacity: 1, transition: { ...transition, delay: 0 } },
     exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } },
   };
-
   return (
-    <div className="absolute z-30  xl:left-[1%] md:left-[5%] md:top-[80%] xl:top-[80%] ">
+    <div className="absolute z-30  lg:left-[25%] right-[25%]  md:left-[50%] md:top-[70%] lg:top-[70%] ">
       <motion.header
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
@@ -24,7 +23,7 @@ export function Overlay() {
           <motion.section
             key="main"
             {...config}
-            className="pl-16 xl:pl-16 lg:pl-16 sm:pl-0 ssm:pl-0 md:pl-0"
+            className="pl-12 xl:pl-16 lg:pl-0 sm:pl-0 ssm:pl-0 md:pl-0"
           >
             <div className="section--container">
               <div className="support--content">
@@ -44,6 +43,7 @@ export function Overlay() {
                     delayChildren: 0.2,
                   }}
                 >
+                  
                   
                   <Link to={"/roomchapterone"}>
                     <button
