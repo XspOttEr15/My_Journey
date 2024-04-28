@@ -8,8 +8,6 @@
 @tailwind utilities;
 
 
-
-
 :root {
   font-family: 'Oxanium','Playpen Sans','Noto Sans Thai' ,sans-serif;
   font-optical-sizing: auto;
@@ -22,8 +20,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  
 }
+
+
 
 
 

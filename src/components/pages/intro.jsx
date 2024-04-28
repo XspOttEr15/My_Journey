@@ -3,7 +3,7 @@ import "../styles/intro.css";
 import { useNavigate } from "react-router-dom";
 import { useGLTF } from "@react-three/drei";
 import { DataContext } from "../../App";
-useGLTF.preload("/models/rooms3.glb");
+useGLTF.preload("/models/rooms3_t.glb");
 
 
 
@@ -18,7 +18,7 @@ const Intro = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setFadeEffect(fadeEffect + " fade-enter-active");
+      setFadeEffect(fadeEffect + "fade-enter-active");
     }, 1000);
     return () => clearTimeout(timeout);
   }, []);

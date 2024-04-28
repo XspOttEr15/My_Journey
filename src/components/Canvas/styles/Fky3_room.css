@@ -34,4 +34,9 @@
                                     supported by Chrome, Edge, Opera and Firefox */
   }
 
+  canvas {
+    width: 100%;
+    height: 100vh;
+  }
+
   

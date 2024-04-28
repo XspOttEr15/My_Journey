@@ -11,7 +11,7 @@ import "/audios/bgm_room.mp3"
 
 
 export function Room(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   // useEffect(() => {
   // }, [materials]);
   
@@ -166,10 +166,10 @@ export function Room(props) {
 }
 
 export function Floor(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   return (
     <group {...props} dispose={null} >
-      <RigidBody type="fixed"  >
+      <RigidBody   >
       <mesh castShadow receiveShadow geometry={nodes.floor1.geometry} material={materials.M_floor} />
       </RigidBody>
     </group>
@@ -180,10 +180,10 @@ export function Floor(props) {
 
 
 export function Wall(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   return (
     <group {...props} dispose={null} >
-      <RigidBody type="fixed" >
+      <RigidBody  >
       <mesh castShadow receiveShadow geometry={nodes.wall.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.wall1.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.wall2.geometry} material={materials.M_wall} />
@@ -193,7 +193,7 @@ export function Wall(props) {
   );
 }
 
-useGLTF.preload('/models/rooms3.glb')
+useGLTF.preload('/models/rooms3_t.glb')
 
 
 

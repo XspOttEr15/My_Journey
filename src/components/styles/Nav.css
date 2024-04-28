@@ -11,8 +11,6 @@
   text-align: center;
   transition: 0.5s;
   background: rgba(17, 24, 39,0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 .sidenav.open {
