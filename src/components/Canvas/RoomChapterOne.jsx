@@ -36,7 +36,6 @@ import { Perf } from "r3f-perf";
 
 export const RoomChapterOne = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [maxVelLimit, setmaxVelLimit] = useState(2.5);
   const [disableFollowCamPos, setDisableFollowCamPos] = useState({
     x: 0,
     y: 2,
@@ -47,7 +46,6 @@ export const RoomChapterOne = () => {
     y: 0,
     z: -2,
   });
-  const [jumpVel, setjumpVel] = useState(4);
   const [selector, setSelector] = useState("#Skip");
   const [openModal, setOpenModal] = useState(false);
   const [openModaltwo, setOpenModaltwo] = useState(false);
@@ -63,6 +61,11 @@ export const RoomChapterOne = () => {
   const [targettwo, setTargetwo] = useState(1);
   const [targetthree, setTargethree] = useState(1);
   const [targetfour, setTargefour] = useState(1);
+
+
+const [playerPositionX, setPlayerPositionX] = useState(-2);
+const [playerPositionY, setPlayerPositionY] = useState(4.001);
+const [playerPositionZ, setPlayerPositionZ] = useState(3);
   const { setColseBgmusic, setCloseNavbar, isLocked, setIsLocked } =
     useContext(DataContext);
   const [htmltext, setHtmltext] = useState(true);
@@ -103,6 +106,7 @@ export const RoomChapterOne = () => {
     }
   };
 
+
   const handleBack = () => {
     if (currentDialogueIndex > 0) {
       setCurrentDialogueIndex(currentDialogueIndex - 1);
@@ -111,6 +115,7 @@ export const RoomChapterOne = () => {
       // End of dialogue
     }
   };
+
 
   const [dialogueT, setDialogueT] = useState([
     {
@@ -174,6 +179,7 @@ export const RoomChapterOne = () => {
     setIsLocked(false);
   }, []);
 
+
   useEffect(() => {
     function handleResize() {
       setWindowWidth(window.innerWidth);
@@ -198,6 +204,8 @@ export const RoomChapterOne = () => {
             isVisible={!isLocked}
             setOpenModalTutorial={setOpenModalTutorial}
             setSelector={setSelector}
+            setPlayerPositionY={setPlayerPositionY}
+            playerPositionY={playerPositionY}
           />
         )}
         {windowWidth < 1440 && (
@@ -205,13 +213,16 @@ export const RoomChapterOne = () => {
             isVisible={!isLocked}
             setOpenModalTutorial={setOpenModalTutorial}
             setSelector={setSelector}
+            respawnPlayer={respawnPlayer}
+            setPlayerPositionY={setPlayerPositionY}
+            playerPositionY={playerPositionY}
           />
         )}
         <Canvas
           frameloop="demand"
           shadows="soft"
           camera={[0, 3, 0]}
-          style={{ width: "100%", height: "100%", display: "relative" }}
+          style={{ width: "100%", height: "100vh", display: "relative" }}
         >
           {/* <Perf position="top-left" /> */}
           {/* <StatsGl/>  */}
@@ -239,9 +250,9 @@ export const RoomChapterOne = () => {
                 disableFollowCam={disableFollowCam}
                 disableFollowCamPos={disableFollowCamPos} // Corrected: Camera position when the follow camera feature is disabled
                 disableFollowCamTarget={disableFollowCamTarget} // Camera lookAt target when the follow camera feature is disabled
-                position={[-2, 4, 3]}
-                maxVelLimit={maxVelLimit}
-                jumpVel={jumpVel}
+                position={[playerPositionX,playerPositionY,playerPositionZ]}
+                maxVelLimit={2.5}
+                jumpVel={4}
                 dampingC={0.12}
               >
                 {/* Replace your model here */}

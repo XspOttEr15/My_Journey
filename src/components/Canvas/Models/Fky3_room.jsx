@@ -157,12 +157,9 @@ export function Room(props) {
       <mesh castShadow receiveShadow geometry={nodes.ob_firerail.geometry} material={materials.M_fireplace} />
       <mesh castShadow receiveShadow geometry={nodes.ob_pipefireplace.geometry} material={materials.M_fireplace} />
       <mesh castShadow receiveShadow geometry={nodes.floor.geometry} material={materials.M_floor} />
-      <mesh castShadow receiveShadow geometry={nodes.wall.geometry} material={materials.M_wall} />
-      <mesh castShadow receiveShadow geometry={nodes.wall1.geometry} material={materials.M_wall} />
-      <mesh castShadow receiveShadow geometry={nodes.wall2.geometry} material={materials.M_wall} />
-      <mesh castShadow receiveShadow geometry={nodes.wall3.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.floor1.geometry} material={materials.M_floor} />
       <mesh castShadow receiveShadow geometry={nodes.celing1.geometry} material={materials.M_roof} />
+      <mesh castShadow receiveShadow geometry={nodes.floor1.geometry} material={materials.M_floor} />
       </RigidBody>
     </group>
   );
@@ -171,7 +168,7 @@ export function Room(props) {
 export function Floor(props) {
   const { nodes, materials } = useGLTF("/models/rooms3.glb");
   return (
-    <group {...props} dispose={null} position={[0, 0, 0]}>
+    <group {...props} dispose={null} >
       <RigidBody type="fixed"  colliders="cuboid">
       <mesh castShadow receiveShadow geometry={nodes.floor1.geometry} material={materials.M_floor} />
       </RigidBody>
@@ -185,7 +182,7 @@ export function Floor(props) {
 export function Wall(props) {
   const { nodes, materials } = useGLTF("/models/rooms3.glb");
   return (
-    <group {...props} dispose={null} position={[0, 0, 0]}>
+    <group {...props} dispose={null} >
       <RigidBody type="fixed" colliders="cuboid">
       <mesh castShadow receiveShadow geometry={nodes.wall.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.wall1.geometry} material={materials.M_wall} />

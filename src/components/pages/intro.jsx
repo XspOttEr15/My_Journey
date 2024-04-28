@@ -23,7 +23,7 @@ const Intro = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = () => { 
     setFadeEffect("fade-exit-active");
     setTimeout(() => {
       navigate("/introTwo");
