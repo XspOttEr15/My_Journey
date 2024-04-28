@@ -885,7 +885,7 @@ export const EffectsPost = ({
 };
 
 export const Book = ({ htmltext, setHtmltext, ...props }) => {
-  const { nodes, materials } = useGLTF("public/models/rooms3_t.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -950,7 +950,7 @@ export const MBook = ({
   setOpenModaltwo,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("public/models/rooms3_t.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   const [hovered, hover] = useState(null);
   const ref = useRef();
   const [closelabel, Setcloselabel] = useState(false);
@@ -1060,7 +1060,7 @@ export const Paper = ({
   setOpenModalthree,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("public/models/rooms3_t.glb ");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb ");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -1182,7 +1182,7 @@ export const Door = ({
   setOpenModaldoor,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("public/models/rooms3_t.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -1294,4 +1294,4 @@ export const Door = ({
 };
 
 
-useGLTF.preload('public/models/rooms3_t.glb')
+useGLTF.preload('/models/rooms3_t.glb')
