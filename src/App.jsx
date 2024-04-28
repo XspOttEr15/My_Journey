@@ -21,7 +21,7 @@ import "flowbite-react";
 // import ChapterOneMap from "./components/pages/Maps/ChapterOneMap";
 
 const Home = lazy(() => wait(5000).then(() =>import('./components/Home/Home')));
-const RoomChapterOne = lazy(() => wait(3000).then(() =>import('./components/Canvas/RoomChapterOne')));
+const RoomChapterOne = lazy(() => import('./components/Canvas/RoomChapterOne'));
 const Character = lazy(() => wait(2000).then(() =>import('./components/pages/Character')));
 const Concept = lazy(() => wait(2000).then(() =>import('./components/pages/Concept')));
 const About = lazy(() => wait(2000).then(() =>import('./components/pages/About')));

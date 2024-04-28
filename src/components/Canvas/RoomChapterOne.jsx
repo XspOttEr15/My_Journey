@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+
+import React, { Suspense, useContext, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   PointerLockControls,
@@ -33,6 +34,7 @@ import { EcctrlJoystick } from "ecctrl";
 import Instructions from "./Instructions";
 import InstructionsT from "./Instructions_mobile";
 import { Perf } from "r3f-perf";
+import LoadingScreen from "../pages/LoadingScreen";
 
 export const RoomChapterOne = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -193,6 +195,7 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
 
   return (
     <>
+    <Suspense fallback={<LoadingScreen/>}>
       <div className=" w-full h-screen ">
         <div className="tutorial">
           <h3 className=" text-2xl mt-1">กด ESC เพื่อแสดง Menu Tutorial</h3>
@@ -220,8 +223,8 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
         <Canvas
           frameloop="demand"
           shadows="soft"
-          camera={[0, 3, 0]}
-          style={{ width: "100%", height: "100vh", display: "relative" }}
+          camera={[0, 0, 0]}
+          style={{ width: "100%", height: "100%",}}
         >
           {/* <Perf position="top-left" /> */}
           {/* <StatsGl/>  */}
@@ -230,14 +233,11 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
           <fog attach="fog" args={["#569BF3", 1, 200]} />
           {/* debug */}
           <Physics
-            interpolation={false}
-            colliders={false}
-            gravity={[0, -9.81, 0]}
-            timeStep="vary"
+            gravity={[0, -11, 0]}
+            debug
           >
             <KeyboardControls map={keyboardMap}>
               <Ecctrl
-                debug="false"
                 camInitDis={-0.01} // camera intial position
                 camInitDir={{ x: 0, y: -3.1, z: 0 }} // Camera initial rotation direction (in rad)
                 camMaxDis={-0.03} // Maximum camera distance
@@ -254,7 +254,7 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
                 jumpVel={jumpVel}
               >
                 {/* Replace your model here */}
-                <Player />
+             
                 {/* First Person Camera */}
                 {!disableFollowCam && (
                   <PointerLockControls
@@ -729,19 +729,13 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
           </Modal.Body>
         </Modal>
       </div>
+      </Suspense>
     </>
   );
 };
 export default RoomChapterOne;
 
-const Player = () => {
-  return (
-    <mesh position={[0, 0, 0]} visible={false}>
-      <capsuleGeometry args={[0.3, 0.7, 1]} />
-      <meshStandardMaterial color="yellow" />
-    </mesh>
-  );
-};
+
 
 // Light
 const Lights = () => {
