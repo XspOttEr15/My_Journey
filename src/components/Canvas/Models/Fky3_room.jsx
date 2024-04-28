@@ -11,12 +11,12 @@ import "/audios/bgm_room.mp3"
 
 
 export function Room(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3t.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   // useEffect(() => {
   // }, [materials]);
   
   return (
-    <group {...props} dispose={null} position={[0, 0, 0]}>
+    <group {...props} dispose={null}>
       <RigidBody  type="fixed" colliders="cuboid">
       <mesh castShadow receiveShadow geometry={nodes.ob_fuse.geometry} material={materials.M_mainpipe} />
       <mesh castShadow receiveShadow geometry={nodes.polySurface3.geometry} material={materials.M_mainpipe} />
@@ -118,7 +118,7 @@ export function Room(props) {
         <mesh castShadow receiveShadow geometry={nodes.pPlane6.geometry} material={materials.M_maintable} position={[-0.981, 0, -0.414]} rotation={[0, -0.925, 0]} />
         <mesh castShadow receiveShadow geometry={nodes.pPlane7.geometry} material={materials.M_maintable} position={[-1.149, 0.282, -0.376]} rotation={[0, -0.158, 0]} scale={0.668} />
       </group>
-      
+
       <mesh castShadow receiveShadow geometry={nodes.pCube46.geometry} material={materials.M_maintable} />
       <mesh castShadow receiveShadow geometry={nodes.pCylinder15.geometry} material={materials.M_maintable} />
       <mesh castShadow receiveShadow geometry={nodes.pCylinder14.geometry} material={materials.M_maintable} />
@@ -169,7 +169,7 @@ export function Room(props) {
 }
 
 export function Floor(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3t.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
       <RigidBody type="fixed"  colliders="cuboid">
@@ -183,7 +183,7 @@ export function Floor(props) {
 
 
 export function Wall(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3t.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
       <RigidBody type="fixed" colliders="cuboid">
@@ -196,7 +196,7 @@ export function Wall(props) {
   );
 }
 
-useGLTF.preload('/models/rooms3t.glb')
+useGLTF.preload('/models/rooms3_t.glb')
 
 
 
