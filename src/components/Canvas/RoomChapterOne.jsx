@@ -213,7 +213,6 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
             isVisible={!isLocked}
             setOpenModalTutorial={setOpenModalTutorial}
             setSelector={setSelector}
-            respawnPlayer={respawnPlayer}
             setPlayerPositionY={setPlayerPositionY}
             playerPositionY={playerPositionY}
           />
