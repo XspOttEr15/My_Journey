@@ -13,24 +13,8 @@ import "/audios/bgm_room.mp3"
 export function Room(props) {
   const { nodes, materials } = useGLTF("/models/rooms3t.glb");
   // useEffect(() => {
-  //   // materials.M_scifidoor.emissive.multiplyScalar(1.7);
-  //   // materials.M_mainpipe.emissive.multiplyScalar(1.7);
-  //   // materials.M_middlelight.emissive.multiplyScalar(1.7);
-  //   // materials.M_bookcase.emissive.multiplyScalar(1.7);
-  //   // materials.M_TVmap.emissive.multiplyScalar(1.7);
-  //   // materials.M_maintable.emissive.multiplyScalar(1.7);
-  //   // materials.M_lamp.emissive.multiplyScalar(1.7);
-  //   // materials.M_sofas.emissive.multiplyScalar(1.7); 
-  //   // materials.M_sofa_chair.emissive.multiplyScalar(1.7);
-  //   // materials.M_fireplace.emissive.multiplyScalar(1.7);
-  //   // materials.M_cubboard.emissive.multiplyScalar(1.7);
-  //   // materials.M_bigtable.emissive.multiplyScalar(1.7);
-  //   // materials.M_glasscarpet.emissive.multiplyScalar(1.7);
-  
   // }, [materials]);
   
-  
-
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
       <RigidBody  type="fixed" colliders="cuboid">
@@ -67,16 +51,6 @@ export function Room(props) {
       <mesh castShadow receiveShadow geometry={nodes.polySurface21.geometry} material={materials.M_middlelight} />
       <mesh castShadow receiveShadow geometry={nodes.polySurface22.geometry} material={materials.M_middlelight} />
       <mesh castShadow receiveShadow geometry={nodes.polySurface23.geometry} material={materials.M_middlelight} />
-      <mesh
-              castShadow receiveShadow
-              geometry={nodes.pCube35.geometry}
-              material={materials.M_scifidoor}
-            />
-            <mesh
-              castShadow receiveShadow
-              geometry={nodes.pCube28.geometry}
-              material={materials.M_scifidoor}
-            />
       <mesh castShadow receiveShadow geometry={nodes.pCube18.geometry} material={materials.M_middlelight} />
       <mesh castShadow receiveShadow geometry={nodes.pCube19.geometry} material={materials.M_middlelight} />
       <mesh castShadow receiveShadow geometry={nodes.pCube20.geometry} material={materials.M_middlelight} />
@@ -144,6 +118,7 @@ export function Room(props) {
         <mesh castShadow receiveShadow geometry={nodes.pPlane6.geometry} material={materials.M_maintable} position={[-0.981, 0, -0.414]} rotation={[0, -0.925, 0]} />
         <mesh castShadow receiveShadow geometry={nodes.pPlane7.geometry} material={materials.M_maintable} position={[-1.149, 0.282, -0.376]} rotation={[0, -0.158, 0]} scale={0.668} />
       </group>
+      
       <mesh castShadow receiveShadow geometry={nodes.pCube46.geometry} material={materials.M_maintable} />
       <mesh castShadow receiveShadow geometry={nodes.pCylinder15.geometry} material={materials.M_maintable} />
       <mesh castShadow receiveShadow geometry={nodes.pCylinder14.geometry} material={materials.M_maintable} />
@@ -197,7 +172,7 @@ export function Floor(props) {
   const { nodes, materials } = useGLTF("/models/rooms3t.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
-      <RigidBody type="fixed"  colliders="cuboid" >
+      <RigidBody type="fixed"  colliders="cuboid">
       <mesh castShadow receiveShadow geometry={nodes.floor1.geometry} material={materials.M_floor} />
       </RigidBody>
     </group>
@@ -208,10 +183,10 @@ export function Floor(props) {
 
 
 export function Wall(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3t.glb ");
+  const { nodes, materials } = useGLTF("/models/rooms3t.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
-      <RigidBody type="fixed" colliders="cuboid" >
+      <RigidBody type="fixed" colliders="cuboid">
       <mesh castShadow receiveShadow geometry={nodes.wall.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.wall1.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.wall2.geometry} material={materials.M_wall} />

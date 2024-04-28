@@ -893,7 +893,7 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed" colliders="cuboid">
+      <RigidBody type="fixed">
         <Select enabled={hovered}>
           <mesh
             castShadow
@@ -1005,7 +1005,7 @@ export const MBook = ({
   return (
     <>
       <group {...props} dispose={null} position={[0, 0, 0]}>
-        <RigidBody type="fixed" colliders="cuboid">
+        <RigidBody type="fixed">
           <Select enabled={hovered}>
             <mesh
               castShadow
@@ -1118,7 +1118,7 @@ export const Paper = ({
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed" colliders="cuboid">
+      <RigidBody type="fixed" >
         <Select enabled={hovered}>
           <mesh
             castShadow
@@ -1240,7 +1240,7 @@ export const Door = ({
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed" colliders="cuboid">
+      <RigidBody type="fixed">
         <Select enabled={hovered}>
           <mesh
             castShadow
