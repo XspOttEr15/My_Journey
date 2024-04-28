@@ -17,8 +17,150 @@ export function Room(props) {
   
   return (
     <group {...props} dispose={null}>
-      
+      <RigidBody  type="fixed">
+      <mesh castShadow receiveShadow geometry={nodes.ob_fuse.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface3.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface2.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_pipe_03.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_pipe_08.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder21.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder18.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_pipe_06.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_pipe_07.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_pipe_02.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_pipe_01.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder19.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder20.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder10.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_pipe_05.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_pipe_04.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder1.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_pipe_09.geometry} material={materials.M_mainpipe} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube1.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface10.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface11.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface12.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface13.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface14.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface15.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface16.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface17.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface18.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface19.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface20.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface21.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface22.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface23.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube18.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube19.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube20.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube21.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube51.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube26.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube25.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder9.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube24.geometry} material={materials.M_middlelight} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube32.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_19.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_53.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_68.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_69.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_70.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_71.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_72.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_73.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_75.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_76.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_77.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_21.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_20.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_29.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_28.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_35.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_36.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_61.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_65.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_58.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_39.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_08.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_09.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_12.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_31.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_15.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_30.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_27.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_51.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_60.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_47.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_43.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_41.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_18.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_17.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_14.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_11.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_37.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_54.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_62.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_56.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_59.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_book_06.geometry} material={materials.M_bookcase} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube38.geometry} material={materials.M_TVmap} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube39.geometry} material={materials.M_TVmap} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube37.geometry} material={materials.M_TVmap} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder11.geometry} material={materials.M_TVmap} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube40.geometry} material={materials.M_TVmap} />
+
+      <group position={[2.888, -0.303, -5.503]} rotation={[Math.PI / 2, 0, 0]}>
+        <mesh castShadow receiveShadow geometry={nodes.pPlane2.geometry} material={materials.M_maintable} position={[-0.389, 0, 0.256]} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane1.geometry} material={materials.M_maintable} position={[-1.163, 0.17, -0.267]} rotation={[0, -0.448, 0]} scale={0.8} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane3.geometry} material={materials.M_maintable} position={[-1.289, 0, -0.067]} rotation={[0, -0.445, 0]} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane4.geometry} material={materials.M_maintable} position={[-0.523, 0.17, -0.457]} rotation={[0, -0.484, 0]} scale={0.8} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane6.geometry} material={materials.M_maintable} position={[-0.981, 0, -0.414]} rotation={[0, -0.925, 0]} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane7.geometry} material={materials.M_maintable} position={[-1.149, 0.282, -0.376]} rotation={[0, -0.158, 0]} scale={0.668} />
+      </group>
+
+      <mesh castShadow receiveShadow geometry={nodes.pCube46.geometry} material={materials.M_maintable} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder15.geometry} material={materials.M_maintable} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder14.geometry} material={materials.M_maintable} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube47.geometry} material={materials.M_maintable} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder16.geometry} material={materials.M_lamp} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder6.geometry} material={materials.M_maintable} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder8.geometry} material={materials.M_maintable} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube22.geometry} material={materials.M_maintable} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube29.geometry} material={materials.M_cubboard} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube34.geometry} material={materials.M_cubboard} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube58.geometry} material={materials.M_cubboard} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube48.geometry} material={materials.M_sofas} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube49.geometry} material={materials.M_sofas} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface9.geometry} material={materials.M_sofas} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface8.geometry} material={materials.M_sofas} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube50.geometry} material={materials.M_sofas} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube56.geometry} material={materials.M_sofas} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface7.geometry} material={materials.M_bed} />
+      <mesh castShadow receiveShadow geometry={nodes.polySurface5.geometry} material={materials.M_bed} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube36.geometry} material={materials.M_bed} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube60.geometry} material={materials.M_bed} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube62.geometry} material={materials.M_bed} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube41.geometry} material={materials.M_bed} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube42.geometry} material={materials.M_bed} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_table_big.geometry} material={materials.M_bigtable} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder22.geometry} material={materials.M_bigtable} />
+      <mesh castShadow receiveShadow geometry={nodes.pCylinder17.geometry} material={materials.M_bigtable} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_glassfire.geometry} material={materials.aiStandardSurface2} />
+      <mesh castShadow receiveShadow geometry={nodes.glasstable.geometry} material={materials.aiStandardSurface2} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_longsofa.geometry} material={materials.M_sofa_chair} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_chair.geometry} material={materials.M_sofa_chair} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_bin.geometry} material={materials.M_sofa_chair} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_whiteboard.geometry} material={materials.M_sofa_chair} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_fireplace.geometry} material={materials.M_fireplace} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_fireplacedoor.geometry} material={materials.M_fireplace} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_firerail.geometry} material={materials.M_fireplace} />
+      <mesh castShadow receiveShadow geometry={nodes.ob_pipefireplace.geometry} material={materials.M_fireplace} />
+      <mesh castShadow receiveShadow geometry={nodes.floor.geometry} material={materials.M_floor} />
       <mesh castShadow receiveShadow geometry={nodes.floor1.geometry} material={materials.M_floor} />
+      <mesh castShadow receiveShadow geometry={nodes.celing1.geometry} material={materials.M_roof} />
+      <mesh castShadow receiveShadow geometry={nodes.floor1.geometry} material={materials.M_floor} />
+      </RigidBody>
     </group>
   );
 }
@@ -26,8 +168,10 @@ export function Room(props) {
 export function Floor(props) {
   const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   return (
-    <group {...props} dispose={null}  >
+    <group {...props} dispose={null}  type="fixed" >
+      <RigidBody   >
       <mesh castShadow receiveShadow geometry={nodes.floor1.geometry} material={materials.M_floor} />
+      </RigidBody>
     </group>
   );
 }
@@ -38,11 +182,13 @@ export function Floor(props) {
 export function Wall(props) {
   const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   return (
-    <group {...props} dispose={null} >
+    <group {...props} dispose={null} type="fixed" >
+      <RigidBody  >
       <mesh castShadow receiveShadow geometry={nodes.wall.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.wall1.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.wall2.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.wall3.geometry} material={materials.M_wall} />
+      </RigidBody>
     </group>
   );
 }
