@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./styles/Instructions.scss";
 import { DataContext } from "../../App";
 
-const InstructionsT = ({ isVisible, setOpenModalTutorial, setSelector, selector }) => {
+const InstructionsT = ({ isVisible, setOpenModalTutorial, setSelector, selector,setPlayerPositionY }) => {
   // Initialize the animation class state
   const [animationClass, setAnimationClass] = useState("animate-bounce");
   const [header, setHeader] = useState("คลิกปุ่มด้านล่างเพื่อเข้าสู่หน้า Tutorial");
@@ -65,6 +65,20 @@ const InstructionsT = ({ isVisible, setOpenModalTutorial, setSelector, selector 
         className="btn third  text-white bg-gradient-to-br   font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-0 mt-5 "
       >
         {skipButton}
+      </button>
+
+      <button
+        disabled={isLocked}
+        onClick={() => {
+          setIsLocked(false);
+          setPlayerPositionY(prevY => prevY + 0.001);
+        }}
+        
+        type="button"
+        id="Skip"
+        className="btn third  text-white bg-gradient-to-br    font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-0  mt-8"
+      >
+        Reset Position (รีเซ็ตตำแหน่ง)
       </button>
     </div>
   );
