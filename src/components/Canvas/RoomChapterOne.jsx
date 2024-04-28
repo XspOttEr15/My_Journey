@@ -6,8 +6,8 @@ import {
   useGLTF,
   Html,
   KeyboardControls,
-  Stats, 
-  StatsGl
+  Stats,
+  StatsGl,
 } from "@react-three/drei";
 import { Floor, Room, Wall } from "./Models/Fky3_room";
 import { Physics, RigidBody } from "@react-three/rapier";
@@ -193,32 +193,36 @@ export const RoomChapterOne = () => {
         </div>
         <div className="aim"></div>
         {windowWidth < 1440 && <EcctrlJoystick />}
-        {windowWidth >= 1440 &&
-        <Instructions
-          isVisible={!isLocked}
-          setOpenModalTutorial={setOpenModalTutorial}
-          setSelector={setSelector}
-        />}
-        {windowWidth < 1440 &&
-        <InstructionsT
-          isVisible={!isLocked}
-          setOpenModalTutorial={setOpenModalTutorial}
-          setSelector={setSelector}
-        />}
+        {windowWidth >= 1440 && (
+          <Instructions
+            isVisible={!isLocked}
+            setOpenModalTutorial={setOpenModalTutorial}
+            setSelector={setSelector}
+          />
+        )}
+        {windowWidth < 1440 && (
+          <InstructionsT
+            isVisible={!isLocked}
+            setOpenModalTutorial={setOpenModalTutorial}
+            setSelector={setSelector}
+          />
+        )}
         <Canvas
           frameloop="demand"
           shadows="soft"
-          camera={[0,3,0]}
+          camera={[0, 3, 0]}
           style={{ width: "100%", height: "100%", display: "relative" }}
         >
-          {/* <StatsGl/> */}
+          {/* <Perf position="top-left" /> */}
+          {/* <StatsGl/>  */}
+
           <color attach="background" args={["#638689"]} />
           <fog attach="fog" args={["#569BF3", 1, 200]} />
           {/* debug */}
           <Physics
             interpolation={false}
             colliders={false}
-            gravity={[0, -11, 0]}
+            gravity={[0, -9.81, 0]}
           >
             <KeyboardControls map={keyboardMap}>
               <Ecctrl
@@ -238,7 +242,6 @@ export const RoomChapterOne = () => {
                 maxVelLimit={maxVelLimit}
                 jumpVel={jumpVel}
                 dampingC={0.12}
-                floatingDis="auto"
               >
                 {/* Replace your model here */}
                 <Player />
@@ -345,7 +348,7 @@ export const RoomChapterOne = () => {
               setOpenModalTutorial(false);
               setdisableFollowCam(false);
               setIsLocked(false), play();
-              setCurrentDialogueTIndex(0)
+              setCurrentDialogueTIndex(0);
             }}
             style={{
               cursor: 'url("/images/CustomMouses/default32.png"), pointer',
@@ -591,7 +594,7 @@ export const RoomChapterOne = () => {
                   </Button>
                 </Link>
                 <Button
-                className="btn third2"
+                  className="btn third2"
                   color="none"
                   onClick={() => {
                     setOpenModaltwo(false);
@@ -633,7 +636,7 @@ export const RoomChapterOne = () => {
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/about"}>
                   <Button
-                  className="third"
+                    className="third"
                     color="none"
                     onClick={() => {
                       setOpenModalthree(false);
@@ -644,7 +647,7 @@ export const RoomChapterOne = () => {
                   </Button>
                 </Link>
                 <Button
-                className="third2"
+                  className="third2"
                   color="none"
                   onClick={() => {
                     setOpenModalthree(false);
@@ -652,8 +655,7 @@ export const RoomChapterOne = () => {
                     setHtmltext(true);
                     setTargethree(1);
                     play();
-                    setIsLocked(true), 
-                    setSelector(".instructions-overlay");
+                    setIsLocked(true), setSelector(".instructions-overlay");
                   }}
                 >
                   ยกเลิก
@@ -707,8 +709,7 @@ export const RoomChapterOne = () => {
                     setHtmltext(true);
                     setTargefour(1);
                     play();
-                    setIsLocked(true)
-                    , setSelector(".instructions-overlay");
+                    setIsLocked(true), setSelector(".instructions-overlay");
                   }}
                 >
                   ยกเลิก
@@ -724,7 +725,6 @@ export const RoomChapterOne = () => {
 export default RoomChapterOne;
 
 const Player = () => {
-
   return (
     <mesh position={[0, 0, 0]} visible={false}>
       <capsuleGeometry args={[0.3, 0.7, 1]} />
@@ -804,8 +804,8 @@ export const EffectsPost = ({
     visibleEdgeColor: "#ffffff",
     hiddenEdgeColor: "#ffffff",
     blur: true,
-    width: { value: 1000,},
-    edgeStrength: { value: 2.5, },
+    width: { value: 1000 },
+    edgeStrength: { value: 2.5 },
   });
 
   // camera book movement
@@ -880,7 +880,7 @@ export const EffectsPost = ({
 };
 
 export const Book = ({ htmltext, setHtmltext, ...props }) => {
-  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb ");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -892,7 +892,7 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed">
+      <RigidBody type="fixed" colliders="cuboid">
         <Select enabled={hovered}>
           <mesh
             castShadow
@@ -901,31 +901,9 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
           >
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane2.geometry}
-              material={materials.M_maintable}
-            />
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane3.geometry}
-              material={materials.M_maintable}
-            />
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane1.geometry}
-              material={materials.M_maintable}
-            />
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={nodes.pCube47.geometry}
-              material={materials.M_maintable}
-            />
-
+           
+      <mesh geometry={nodes.pCube47.geometry} material={materials.M_maintable} />
+      
             <group position={[-0.3, 1, -1.5]}>
               {!htmltext ? null : (
                 <Html
@@ -967,7 +945,7 @@ export const MBook = ({
   setOpenModaltwo,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   const [hovered, hover] = useState(null);
   const ref = useRef();
   const [closelabel, Setcloselabel] = useState(false);
@@ -1026,7 +1004,7 @@ export const MBook = ({
   return (
     <>
       <group {...props} dispose={null} position={[0, 0, 0]}>
-        <RigidBody type="fixed">
+        <RigidBody type="fixed" colliders="cuboid">
           <Select enabled={hovered}>
             <mesh
               castShadow
@@ -1034,12 +1012,7 @@ export const MBook = ({
               onPointerOver={() => hover(true)}
               onPointerOut={() => hover(false)}
             >
-              <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.ob_book_73.geometry}
-                material={materials.M_bookcase}
-              />
+              <mesh geometry={nodes.pCube32.geometry} material={materials.M_bookcase} />
               <group position={[-2.4, 1.3, -4.2]}>
                 {!htmltext ? null : (
                   <Html
@@ -1082,7 +1055,7 @@ export const Paper = ({
   setOpenModalthree,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb ");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -1144,7 +1117,7 @@ export const Paper = ({
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed">
+      <RigidBody type="fixed" colliders="cuboid">
         <Select enabled={hovered}>
           <mesh
             castShadow
@@ -1153,88 +1126,15 @@ export const Paper = ({
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
           >
-            <mesh
-              position={[2.7, -0.37, -5.6]}
-              rotation={[-4.65, -0.4, 0]}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane2.geometry}
-              material={materials.M_maintable}
-            />
-
-            <mesh
-              position={[3.36, -0.33, -5.6]}
-              rotation={[-4.65, 0, 0]}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane2.geometry}
-              material={materials.M_maintable}
-            />
-
-            <mesh
-              position={[2.7, -0.2, -5.7]}
-              rotation={[-4.6, -0.4, 0.031]}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane3.geometry}
-              material={materials.M_maintable}
-            />
-
-            <mesh
-              position={[2.7, -0.2, -5.7]}
-              rotation={[-4.6, -0.4, 0.031]}
-              scale={1}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane1.geometry}
-              material={materials.M_maintable}
-            />
-
-            <mesh
-              position={[1.69, -0.04, -5.7]}
-              rotation={[-4.6, -0.42, 0.031]}
-              scale={1}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane1.geometry}
-              material={materials.M_maintable}
-            />
-            <mesh
-              position={[1.4, 0, -5.7]}
-              rotation={[-4.6, -0.4, 0.031]}
-              scale={1}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane1.geometry}
-              material={materials.M_maintable}
-            />
-            <mesh
-              position={[1.6, -0.4, -5.7]}
-              rotation={[-4.6, -0.4, 0.031]}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane3.geometry}
-              material={materials.M_maintable}
-            />
-
-            <mesh
-              position={[1.6, -0.5, -5.7]}
-              rotation={[-4.6, -0.42, 0.031]}
-              scale={1}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane1.geometry}
-              material={materials.M_maintable}
-            />
-
-            <mesh
-              position={[2.36, -0.33, -5.6]}
-              rotation={[-4.65, 0, 0]}
-              castShadow
-              receiveShadow
-              geometry={nodes.pPlane2.geometry}
-              material={materials.M_maintable}
-            />
+        <group position={[2.888, -0.303, -5.503]} rotation={[Math.PI / 2, 0, 0]}>
+        <mesh geometry={nodes.pPlane2.geometry} material={materials.M_maintable} position={[-0.389, 0, 0.256]} />
+        <mesh geometry={nodes.pPlane1.geometry} material={materials.M_maintable} position={[-1.163, 0.17, -0.267]} rotation={[0, -0.448, 0]} scale={0.8} />
+        <mesh geometry={nodes.pPlane3.geometry} material={materials.M_maintable} position={[-1.289, 0, -0.067]} rotation={[0, -0.445, 0]} />
+        <mesh geometry={nodes.pPlane4.geometry} material={materials.M_maintable} position={[-0.523, 0.17, -0.457]} rotation={[0, -0.484, 0]} scale={0.8} />
+        <mesh geometry={nodes.pPlane5.geometry} material={materials.M_maintable} position={[0.806, -0.011, 0.206]} rotation={[0.007, 0.183, 0.042]} />
+        <mesh geometry={nodes.pPlane6.geometry} material={materials.M_maintable} position={[-0.981, 0, -0.414]} rotation={[0, -0.925, 0]} />
+        <mesh geometry={nodes.pPlane7.geometry} material={materials.M_maintable} position={[-1.149, 0.282, -0.376]} rotation={[0, -0.158, 0]} scale={0.668} />
+      </group>
 
             <group position={[1.6, 0, -4.5]}>
               {!htmltext ? null : (
@@ -1277,7 +1177,7 @@ export const Door = ({
   setOpenModaldoor,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("/models/fky3_room.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -1339,7 +1239,7 @@ export const Door = ({
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed">
+      <RigidBody type="fixed" colliders="cuboid">
         <Select enabled={hovered}>
           <mesh
             castShadow
@@ -1349,14 +1249,10 @@ export const Door = ({
             onPointerOut={() => hover(false)}
           >
             <mesh
-              castShadow
-              receiveShadow
               geometry={nodes.pCube35.geometry}
               material={materials.M_scifidoor}
             />
             <mesh
-              castShadow
-              receiveShadow
               geometry={nodes.pCube28.geometry}
               material={materials.M_scifidoor}
             />
