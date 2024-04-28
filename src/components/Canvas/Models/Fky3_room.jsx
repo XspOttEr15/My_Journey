@@ -11,7 +11,7 @@ import "/audios/bgm_room.mp3"
 
 
 export function Room(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3_t.glb ");
+  const { nodes, materials } = useGLTF("/models/rooms3t.glb");
   // useEffect(() => {
   //   // materials.M_scifidoor.emissive.multiplyScalar(1.7);
   //   // materials.M_mainpipe.emissive.multiplyScalar(1.7);
@@ -67,6 +67,16 @@ export function Room(props) {
       <mesh castShadow receiveShadow geometry={nodes.polySurface21.geometry} material={materials.M_middlelight} />
       <mesh castShadow receiveShadow geometry={nodes.polySurface22.geometry} material={materials.M_middlelight} />
       <mesh castShadow receiveShadow geometry={nodes.polySurface23.geometry} material={materials.M_middlelight} />
+      <mesh
+              castShadow receiveShadow
+              geometry={nodes.pCube35.geometry}
+              material={materials.M_scifidoor}
+            />
+            <mesh
+              castShadow receiveShadow
+              geometry={nodes.pCube28.geometry}
+              material={materials.M_scifidoor}
+            />
       <mesh castShadow receiveShadow geometry={nodes.pCube18.geometry} material={materials.M_middlelight} />
       <mesh castShadow receiveShadow geometry={nodes.pCube19.geometry} material={materials.M_middlelight} />
       <mesh castShadow receiveShadow geometry={nodes.pCube20.geometry} material={materials.M_middlelight} />
@@ -184,7 +194,7 @@ export function Room(props) {
 }
 
 export function Floor(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3_t.glb ");
+  const { nodes, materials } = useGLTF("/models/rooms3t.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
       <RigidBody type="fixed"  colliders="cuboid" >
@@ -198,7 +208,7 @@ export function Floor(props) {
 
 
 export function Wall(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3_t.glb ");
+  const { nodes, materials } = useGLTF("/models/rooms3t.glb ");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
       <RigidBody type="fixed" colliders="cuboid" >
@@ -211,7 +221,7 @@ export function Wall(props) {
   );
 }
 
-
+useGLTF.preload('/models/rooms3t.glb')
 
 
 
