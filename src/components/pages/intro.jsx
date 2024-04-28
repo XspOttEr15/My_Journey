@@ -45,7 +45,7 @@ const Intro = () => {
       <button
         onClick={handleButtonClick}
         type="button"
-        className=" animate-pulse mt-16 text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
+        className=" third mt-16 text-white bg-gradient-to-br   font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
       >
         หน้าถัดไป
       </button>

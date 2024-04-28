@@ -37,3 +37,17 @@ hr{
   transition: opacity 2000ms;
 }
 
+
+.third {
+  color: #fff;
+  box-shadow: 0 0 10px 0 #10af72 inset, 0 0 10px 4px #109b66;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+.third:hover {
+  
+  box-shadow: 0 0 40px 40px #11ac73 inset, 0 0 15px 4.5px #109b66;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+

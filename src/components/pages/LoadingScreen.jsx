@@ -12,7 +12,7 @@ const LoadingScreen = () => {
         <source src="https://ik.imagekit.io/vsfmz5htw/Video/Loading/vid_loading_room.mp4?updatedAt=1712911800087" type="video/mp4" />
       </video>
       <div className="loading-screen__container">
-        <h1 className="loading-screen__title">Loading Scene...</h1>
+        <h1 className="loading-screen__title animate-pulse">Loading Scene...</h1>
       </div>
     </div>
   );

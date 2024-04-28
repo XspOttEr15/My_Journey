@@ -73,7 +73,7 @@ const IntroTwo = () => {
       </div>
       <hr />
 
-      <div className=" flex lg:flex-row md:flex-col  mx-20 mt-8  rounded-xl items-center justify-center lg:bg-emerald-700 md:bg-none m-2 ">
+      <div className=" bgg flex lg:flex-row md:flex-col  mx-20 mt-8  rounded-xl items-center justify-center  md:bg-none m-2 ">
         <div className=" lg:w-[66%] md:w-[95%]">
           <img
             className="  max-w-[1440px] md:w-full   lg:w-full h-auto rounded-xl "
@@ -94,7 +94,7 @@ const IntroTwo = () => {
                   handleBackT();
                 }}
                 type="button"
-                className=" animate-pulse mt-12 text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
+                className=" third mt-12   font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
               >
                 {dialogueT[currentDialogueTIndex].buttonT}
               </button>
@@ -105,7 +105,7 @@ const IntroTwo = () => {
                 handleNextT();
               }}
               type="button"
-              className=" animate-pulse mt-12 text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
+              className=" animate-pulse third mt-12 text-white   font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
             >
               {dialogueT[currentDialogueTIndex].button}
             </button>
