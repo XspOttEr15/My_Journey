@@ -17,7 +17,6 @@ export function Room(props) {
   
   return (
     <group {...props} dispose={null}>
-      <RigidBody  type="fixed">
       <mesh castShadow receiveShadow geometry={nodes.ob_fuse.geometry} material={materials.M_mainpipe} />
       <mesh castShadow receiveShadow geometry={nodes.polySurface3.geometry} material={materials.M_mainpipe} />
       <mesh castShadow receiveShadow geometry={nodes.polySurface2.geometry} material={materials.M_mainpipe} />
@@ -160,7 +159,6 @@ export function Room(props) {
       <mesh castShadow receiveShadow geometry={nodes.floor1.geometry} material={materials.M_floor} />
       <mesh castShadow receiveShadow geometry={nodes.celing1.geometry} material={materials.M_roof} />
       <mesh castShadow receiveShadow geometry={nodes.floor1.geometry} material={materials.M_floor} />
-      </RigidBody>
     </group>
   );
 }
@@ -169,9 +167,7 @@ export function Floor(props) {
   const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   return (
     <group {...props} dispose={null}  >
-      <RigidBody  type="fixed" >
       <mesh castShadow receiveShadow geometry={nodes.floor1.geometry} material={materials.M_floor} />
-      </RigidBody>
     </group>
   );
 }
@@ -183,12 +179,10 @@ export function Wall(props) {
   const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
   return (
     <group {...props} dispose={null} >
-      <RigidBody  type="fixed" >
       <mesh castShadow receiveShadow geometry={nodes.wall.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.wall1.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.wall2.geometry} material={materials.M_wall} />
       <mesh castShadow receiveShadow geometry={nodes.wall3.geometry} material={materials.M_wall} />
-      </RigidBody>
     </group>
   );
 }

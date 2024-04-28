@@ -11,7 +11,7 @@ import {
   StatsGl,
 } from "@react-three/drei";
 import { Floor, Room, Wall } from "./Models/Fky3_room";
-import { Physics, RigidBody } from "@react-three/rapier";
+import { BallCollider, Physics, RigidBody } from "@react-three/rapier";
 import {
   Selection,
   EffectComposer,
@@ -111,7 +111,7 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
     }
   };
 
-
+  
   const handleBack = () => {
     if (currentDialogueIndex > 0) {
       setCurrentDialogueIndex(currentDialogueIndex - 1);
@@ -184,33 +184,30 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
     setIsLocked(false);
   }, []);
 
-  // useEffect(() => {
-  //   function handleResize() {
-  //     setWindowWidth(window.innerWidth);
-  //   }
+   useEffect(() => {
+     function handleResize() {
+       setWindowWidth(window.innerWidth);
+     }
 
-  //   window.addEventListener("resize", handleResize);
+     window.addEventListener("resize", handleResize);
 
-  //   // Clean up the event listener on component unmount
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
+     // Clean up the event listener on component unmount
+     return () => window.removeEventListener("resize", handleResize);
+   }, []);
 
   return (
     <>
     <Suspense fallback={<LoadingScreen/>}>
-    
         <div className="tutorial">
           <h3 className=" text-2xl mt-1">กด ESC เพื่อแสดง Menu Tutorial</h3>
         </div>
         <div className="aim"></div>
-        {windowWidth < 1440 && <EcctrlJoystick />}
+        {/* {windowWidth < 1440 && <EcctrlJoystick />} */}
         {windowWidth >= 1440 && (
           <Instructions
             isVisible={!isLocked}
             setOpenModalTutorial={setOpenModalTutorial}
             setSelector={setSelector}
-            setPlayerPositionY={setPlayerPositionY}
-            playerPositionY={playerPositionY}
           />
         )}
         {windowWidth < 1440 && (
@@ -218,14 +215,12 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
             isVisible={!isLocked}
             setOpenModalTutorial={setOpenModalTutorial}
             setSelector={setSelector}
-            setPlayerPositionY={setPlayerPositionY}
-            playerPositionY={playerPositionY}
           />
         )}
         <Canvas
           frameloop="demand"
           shadows="soft"
-          camera={[0, 0, 0]}
+          camera={[0, 3, 0]}
           style={{ width: "100vw", height: "100vh",}}
         >
           {/* <Perf position="top-left" /> */}
@@ -234,39 +229,14 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
           <color attach="background" args={["#638689"]} />
           <fog attach="fog" args={["#569BF3", 1, 200]} />
           {/* debug */}
-          <Physics
-            gravity={[0, -11, 0]}
-            debug
-          >
-            <KeyboardControls map={keyboardMap}>
-              <Ecctrl
-                camInitDis={-0.01} // camera intial position
-                camInitDir={{ x: 0, y: -3.1, z: 0 }} // Camera initial rotation direction (in rad)
-                camMaxDis={-0.03} // Maximum camera distance
-                camMinDis={-0.01} // camera zoom in closest position
-                camFollowMult={100} // give any big number here, so the camera follows the character instantly
-                turnVelMultiplier={1} // character won't move before turn completed
-                turnSpeed={100} // give it big turning speed to prevent turning wait time
-                mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
-                disableFollowCam={disableFollowCam}
-                disableFollowCamPos={disableFollowCamPos} // Corrected: Camera position when the follow camera feature is disabled
-                disableFollowCamTarget={disableFollowCamTarget} // Camera lookAt target when the follow camera feature is disabled
-                position={[playerPositionX,playerPositionY,playerPositionZ]}
-                maxVelLimit={2.5}
-                jumpVel={jumpVel}
-              >
-                {/* Replace your model here */}
-             
-                {/* First Person Camera */}
-                {!disableFollowCam && (
+            
+            {!disableFollowCam && (
                   <PointerLockControls
                     onLock={() => setIsLocked(true)}
                     onUnlock={() => setIsLocked(false)}
                     selector={selector}
                   />
                 )}
-              </Ecctrl>
-            </KeyboardControls>
             <Room />
             <Floor />
             <Wall />
@@ -342,7 +312,6 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
               target={target}
               setTarget={setTarget}
             />
-          </Physics>
           <Lights />
         </Canvas>
 
@@ -731,10 +700,14 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
           </Modal.Body>
         </Modal>
       </Suspense>
+
+      
     </>
   );
 };
 export default RoomChapterOne;
+
+
 
 
 
@@ -897,7 +870,6 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed">
         <Select enabled={hovered}>
           <mesh
             castShadow
@@ -935,7 +907,6 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
             </group>
           </mesh>
         </Select>
-      </RigidBody>
     </group>
   );
 };
@@ -1009,7 +980,6 @@ export const MBook = ({
   return (
     <>
       <group {...props} dispose={null} position={[0, 0, 0]}>
-        <RigidBody type="fixed">
           <Select enabled={hovered}>
             <mesh
               castShadow
@@ -1044,7 +1014,6 @@ export const MBook = ({
               </group>
             </mesh>
           </Select>
-        </RigidBody>
       </group>
     </>
   );
@@ -1122,7 +1091,6 @@ export const Paper = ({
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed" >
         <Select enabled={hovered}>
           <mesh
             castShadow
@@ -1167,7 +1135,6 @@ export const Paper = ({
             </group>
           </mesh>
         </Select>
-      </RigidBody>
     </group>
   );
 };
@@ -1244,7 +1211,6 @@ export const Door = ({
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed">
         <Select enabled={hovered}>
           <mesh
             castShadow
@@ -1288,7 +1254,6 @@ export const Door = ({
             </group>
           </mesh>
         </Select>
-      </RigidBody>
     </group>
   );
 };
