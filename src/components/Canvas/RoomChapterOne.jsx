@@ -111,7 +111,7 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
     }
   };
 
-  
+
   const handleBack = () => {
     if (currentDialogueIndex > 0) {
       setCurrentDialogueIndex(currentDialogueIndex - 1);
