@@ -223,6 +223,7 @@ export const RoomChapterOne = () => {
             interpolation={false}
             colliders={false}
             gravity={[0, -9.81, 0]}
+            timeStep="vary"
           >
             <KeyboardControls map={keyboardMap}>
               <Ecctrl
@@ -902,7 +903,7 @@ export const Book = ({ htmltext, setHtmltext, ...props }) => {
             onPointerOut={() => hover(false)}
           >
            
-      <mesh geometry={nodes.pCube47.geometry} material={materials.M_maintable} />
+      <mesh castShadow receiveShadow geometry={nodes.pCube47.geometry} material={materials.M_maintable} />
       
             <group position={[-0.3, 1, -1.5]}>
               {!htmltext ? null : (
@@ -1012,7 +1013,7 @@ export const MBook = ({
               onPointerOver={() => hover(true)}
               onPointerOut={() => hover(false)}
             >
-              <mesh geometry={nodes.pCube32.geometry} material={materials.M_bookcase} />
+              <mesh castShadow receiveShadow geometry={nodes.pCube32.geometry} material={materials.M_bookcase} />
               <group position={[-2.4, 1.3, -4.2]}>
                 {!htmltext ? null : (
                   <Html
@@ -1127,13 +1128,13 @@ export const Paper = ({
             onPointerOut={() => hover(false)}
           >
         <group position={[2.888, -0.303, -5.503]} rotation={[Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.pPlane2.geometry} material={materials.M_maintable} position={[-0.389, 0, 0.256]} />
-        <mesh geometry={nodes.pPlane1.geometry} material={materials.M_maintable} position={[-1.163, 0.17, -0.267]} rotation={[0, -0.448, 0]} scale={0.8} />
-        <mesh geometry={nodes.pPlane3.geometry} material={materials.M_maintable} position={[-1.289, 0, -0.067]} rotation={[0, -0.445, 0]} />
-        <mesh geometry={nodes.pPlane4.geometry} material={materials.M_maintable} position={[-0.523, 0.17, -0.457]} rotation={[0, -0.484, 0]} scale={0.8} />
-        <mesh geometry={nodes.pPlane5.geometry} material={materials.M_maintable} position={[0.806, -0.011, 0.206]} rotation={[0.007, 0.183, 0.042]} />
-        <mesh geometry={nodes.pPlane6.geometry} material={materials.M_maintable} position={[-0.981, 0, -0.414]} rotation={[0, -0.925, 0]} />
-        <mesh geometry={nodes.pPlane7.geometry} material={materials.M_maintable} position={[-1.149, 0.282, -0.376]} rotation={[0, -0.158, 0]} scale={0.668} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane2.geometry} material={materials.M_maintable} position={[-0.389, 0, 0.256]} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane1.geometry} material={materials.M_maintable} position={[-1.163, 0.17, -0.267]} rotation={[0, -0.448, 0]} scale={0.8} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane3.geometry} material={materials.M_maintable} position={[-1.289, 0, -0.067]} rotation={[0, -0.445, 0]} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane4.geometry} material={materials.M_maintable} position={[-0.523, 0.17, -0.457]} rotation={[0, -0.484, 0]} scale={0.8} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane5.geometry} material={materials.M_maintable} position={[0.806, -0.011, 0.206]} rotation={[0.007, 0.183, 0.042]} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane6.geometry} material={materials.M_maintable} position={[-0.981, 0, -0.414]} rotation={[0, -0.925, 0]} />
+        <mesh castShadow receiveShadow geometry={nodes.pPlane7.geometry} material={materials.M_maintable} position={[-1.149, 0.282, -0.376]} rotation={[0, -0.158, 0]} scale={0.668} />
       </group>
 
             <group position={[1.6, 0, -4.5]}>
@@ -1249,10 +1250,12 @@ export const Door = ({
             onPointerOut={() => hover(false)}
           >
             <mesh
+              castShadow receiveShadow
               geometry={nodes.pCube35.geometry}
               material={materials.M_scifidoor}
             />
             <mesh
+              castShadow receiveShadow
               geometry={nodes.pCube28.geometry}
               material={materials.M_scifidoor}
             />
