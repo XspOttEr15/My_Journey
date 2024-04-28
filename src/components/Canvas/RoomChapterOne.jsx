@@ -226,7 +226,7 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
           frameloop="demand"
           shadows="soft"
           camera={[0, 0, 0]}
-          style={{ width: "100vw", height: "100vh",}}
+          style={{ width: "100%", height: "100%",}}
         >
           {/* <Perf position="top-left" /> */}
           {/* <StatsGl/>  */}
@@ -236,6 +236,7 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
           {/* debug */}
           <Physics
             gravity={[0, -12, 0]}
+            debug
           >
             <KeyboardControls map={keyboardMap}>
               <Ecctrl
@@ -740,8 +741,11 @@ export default RoomChapterOne;
 export const Player = () => {
 
   return (
-    <RigidBody  lockRotations colliders={"ball"}>
-    <BallCollider args={[1.5,1,1]} />
+    <RigidBody   >
+    <mesh position-y={1.5} >
+          <capsuleGeometry args={[0.1, 1, 0.1]} />
+          <meshStandardMaterial color="mediumpurple" />
+    </mesh>
     </RigidBody>
   );
 };

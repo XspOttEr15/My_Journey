@@ -77,9 +77,10 @@ const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector,set
       </button>
 
       <button
+        disabled={isLocked}
         onClick={() => {
           setIsLocked(false);
-          setPlayerPositionY(prevY => prevY + 0.001);
+          setPlayerPositionY(playerPositionY + 0.001);
         }}
         
         type="button"

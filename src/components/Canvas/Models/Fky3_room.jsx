@@ -17,7 +17,7 @@ export function Room(props) {
   
   return (
     <group {...props} dispose={null}>
-      <RigidBody  type="fixed">
+      <RigidBody  type="fixed" >
       <mesh castShadow receiveShadow geometry={nodes.ob_fuse.geometry} material={materials.M_mainpipe} />
       <mesh castShadow receiveShadow geometry={nodes.polySurface3.geometry} material={materials.M_mainpipe} />
       <mesh castShadow receiveShadow geometry={nodes.polySurface2.geometry} material={materials.M_mainpipe} />
