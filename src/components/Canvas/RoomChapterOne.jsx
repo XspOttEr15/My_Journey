@@ -1288,3 +1288,6 @@ export const Door = ({
     </group>
   );
 };
+
+
+useGLTF.preload('/models/rooms3_t.glb')
