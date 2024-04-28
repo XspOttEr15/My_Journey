@@ -11,7 +11,7 @@ import "/audios/bgm_room.mp3"
 
 
 export function Room(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3.glb");
   // useEffect(() => {
   // }, [materials]);
   
@@ -169,7 +169,7 @@ export function Room(props) {
 }
 
 export function Floor(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
       <RigidBody type="fixed"  colliders="cuboid">
@@ -183,7 +183,7 @@ export function Floor(props) {
 
 
 export function Wall(props) {
-  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
+  const { nodes, materials } = useGLTF("/models/rooms3.glb");
   return (
     <group {...props} dispose={null} position={[0, 0, 0]}>
       <RigidBody type="fixed" colliders="cuboid">
@@ -196,7 +196,7 @@ export function Wall(props) {
   );
 }
 
-useGLTF.preload('/models/rooms3_t.glb')
+useGLTF.preload('/models/rooms3.glb')
 
 
 
