@@ -253,7 +253,6 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
                 position={[playerPositionX,playerPositionY,playerPositionZ]}
                 maxVelLimit={2.5}
                 jumpVel={jumpVel}
-                dampingC={0.12}
               >
                 {/* Replace your model here */}
                 <Player />
