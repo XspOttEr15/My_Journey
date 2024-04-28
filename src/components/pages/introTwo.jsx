@@ -61,7 +61,7 @@ const IntroTwo = () => {
     setFadeEffects("fade-exit-actives");
     setTimeout(() => {
       navigate("/home");
-    }, 3000); // 3000ms is the duration of the fade-out effect
+    }, 1500); // 3000ms is the duration of the fade-out effect
   };
 
   return (

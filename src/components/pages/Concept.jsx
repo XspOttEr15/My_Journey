@@ -83,7 +83,7 @@ const Concept = () => {
           />
         </Link>
 
-        <Link to={"/"}>
+        <Link to={"/maps"}>
           <button
             type="button"
             id="bbb"

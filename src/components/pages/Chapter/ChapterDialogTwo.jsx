@@ -611,7 +611,7 @@ const ChapterDialogTwo = () => {
                   handleBack();
                   
                 }}
-                className=" absolute transition  lg:top-[72%] z-40  border-dashed border-2  border-emerald-500 lg:left-[2%] md:top-[74%] md:left-[88%]  opacity-[100%]   lg:w-28 md:w-[5rem] h-10 text-base  text-white rounded-lg focus:outline-none focus:ring-2 hover:bg-emerald-600 hover:border-white "
+                className=" absolute transition  lg:top-[72%] z-40  border-dashed border-2  border-emerald-500 lg:left-[2%] md:top-[74%] md:left-[5%]  opacity-[100%]   lg:w-28 md:w-[5rem] h-10 text-base  text-white rounded-lg focus:outline-none focus:ring-2 hover:bg-emerald-600 hover:border-white "
               >
                 {"<<"} Back 
               </button>

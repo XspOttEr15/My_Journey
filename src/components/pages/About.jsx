@@ -53,7 +53,6 @@ const About = () => {
               >
                 <div className="text-xl">63080500230</div>
                 <div className="text-xl text-white">นายนัทธพงศ์ เพ็ชรพิพัฒน์</div>
-                <div className="text-xl text-white">Programmer</div>
               </motion.button>
             </motion.div>
 
@@ -81,7 +80,6 @@ const About = () => {
               >
                 <div className="text-xl">63080500269</div>
                 <div className="text-xl text-white">นายนรุตม์ สุวรรณ</div>
-                <div className="text-xl text-white">Animator</div>
               </motion.button>
             </motion.div>
 
@@ -109,7 +107,6 @@ const About = () => {
               >
                 <div className="text-xl">63080500242</div>
                 <div className="text-xl text-white">นายภูบดินทร์ ดิศพัฒน์</div>
-                <div className="text-xl text-white">Animator</div>
               </motion.button>
             </motion.div>
           </div>
