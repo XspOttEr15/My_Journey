@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
-import "./styles/ChapterOne.css";
+import "./styles/ChapterOne.scss";
 import { Button, Modal } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
@@ -120,14 +120,15 @@ const ChapterOne = () => {
           <Modal.Header className="bg-slate-800" />
           <Modal.Body className="bg-slate-800">
             <div className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-              <h3 className="mb-5 text md:text-lg  lg:text-base font-normal text-gray-500 dark:text-gray-400">
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14  text-white" />
+              <h3 className="mb-5 text md:text-lg  lg:text-xl font-normal  text-white">
                 วิดิโอลงจบแล้ว กดปุ่มถัดไปเพื่อดำเนินเนื้อเรื่องต่อ หรือ กลับไปรับชมอีกรอบ
               </h3>
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/chapteronedialog"}>
                   <Button
-                    color="success"
+                    color="none"
+                    className="third"
                     onClick={() => {
                       setOpenModal(false), play();
                     }}
@@ -136,7 +137,8 @@ const ChapterOne = () => {
                   </Button>
                 </Link>
                 <Button
-                  color="gray"
+                className="third2"
+                  color="none"
                   onClick={() => {
                     handleReplayVideo(), play();
                   }}

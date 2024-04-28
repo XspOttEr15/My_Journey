@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
-import "./styles/ChapterOne.css";
+import "./styles/ChapterOne.scss";
 import { Button, Modal } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
@@ -118,7 +118,8 @@ const ChapterThree = () => {
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/roomchapterone"}> 
                   <Button
-                    color="success"
+                    color="none"
+                    className="third"
                     onClick={() => {
                       setOpenModal(false);
                       play();
@@ -127,14 +128,7 @@ const ChapterThree = () => {
                     {" กลับไปหน้าเลือก Chapter"}
                   </Button>
                 </Link>
-                <Button
-                  color="gray"
-                  onClick={() => {
-                    handleReplayVideo(), play();
-                  }}
-                >
-                  รับชมอีกรอบ
-                </Button>
+                
               </div>
             </div>
           </Modal.Body>

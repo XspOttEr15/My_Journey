@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./styles/Instructions.css";
+import "./styles/Instructions.scss";
 import { DataContext } from "../../App";
 
 const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector }) => {
@@ -32,7 +32,7 @@ const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector }) 
       className={`instructions-overlay${isVisible ? " visible" : ""}`}
     >
       <div className="overlay"></div>
-      <div  className=" animate-pulse text-green-400 text-6xl mb-5 text-center pointer-events-none">
+      <div  className=" glitch  text-green-400 text-6xl mb-5 text-center  select-none">
         {header}
       </div>
       <svg
@@ -47,6 +47,7 @@ const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector }) 
         <path d="M14.5 3 12 7.156 9.857 3H2l10 18L22 3h-7.5ZM4.486 4.5h2.4L12 13.8l5.107-9.3h2.4L12 18.021 4.486 4.5Z" />
       </svg>
       <button
+      
         disabled={isLocked}
         onClick={() => {
           setOpenModalTutorial(true)
@@ -55,7 +56,7 @@ const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector }) 
         }}
         // animate-pulse
         type="button" 
-        className="   text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
+        className="btn third  text-white bg-gradient-to-br   font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2 "
       >
         Tutorial (วิธีการเล่น)
       </button>
@@ -70,7 +71,7 @@ const Instructions = ({ isVisible, setOpenModalTutorial,setSelector,selector }) 
         }}
         type="button"
         id="Skip"
-        className="mt-2  cursor-not-allowed text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
+        className="btn third  text-white bg-gradient-to-br    font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-0 mt-5"
       >
         {skipButton}
       </button>

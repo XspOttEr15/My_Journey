@@ -20,7 +20,7 @@ import {
   Select,
 } from "@react-three/postprocessing";
 import * as THREE from "three";
-import "./styles/RoomChapterOne.css";
+import "./styles/RoomChapterOne.scss";
 import { useControls } from "leva";
 import { Button, Modal } from "flowbite-react";
 import { motion } from "framer-motion";
@@ -345,6 +345,7 @@ export const RoomChapterOne = () => {
               setOpenModalTutorial(false);
               setdisableFollowCam(false);
               setIsLocked(false), play();
+              setCurrentDialogueTIndex(0)
             }}
             style={{
               cursor: 'url("/images/CustomMouses/default32.png"), pointer',
@@ -431,7 +432,7 @@ export const RoomChapterOne = () => {
                         }}
                         type="button"
                         id="Skip"
-                        className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
+                        className="text-white btn third font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
                       >
                         {dialogueT[currentDialogueTIndex].button}
                       </button>
@@ -510,7 +511,7 @@ export const RoomChapterOne = () => {
                   <motion.img
                     src={dialogue[currentDialogueIndex].bg}
                     alt="..."
-                    className="rounded-3xl h-full w-full z-10"
+                    className="rounded-3xl h-full w-full z-10 select-none"
                     key={currentDialogueIndex}
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -534,7 +535,7 @@ export const RoomChapterOne = () => {
                     {dialogue[currentDialogueIndex].text}
                   </motion.p>
                   <Link to={dialogue[currentDialogueIndex].link}>
-                    <div className="text-center m-3">
+                    <div className="text-center  m-3">
                       <button
                         onClick={play}
                         style={{
@@ -542,7 +543,7 @@ export const RoomChapterOne = () => {
                             'url("/images/CustomMouses/pointer.png"), pointer',
                         }}
                         type="button"
-                        className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none  focus:ring-blue-800 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
+                        className=" btn third text-white  font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
                       >
                         {dialogue[currentDialogueIndex].button}
                       </button>
@@ -579,7 +580,8 @@ export const RoomChapterOne = () => {
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/concept"}>
                   <Button
-                    color="success"
+                    className="btn third"
+                    color="none"
                     onClick={() => {
                       setOpenModaltwo(false);
                       play();
@@ -589,7 +591,8 @@ export const RoomChapterOne = () => {
                   </Button>
                 </Link>
                 <Button
-                  color="gray"
+                className="btn third2"
+                  color="none"
                   onClick={() => {
                     setOpenModaltwo(false);
                     setdisableFollowCam(false);
@@ -630,7 +633,8 @@ export const RoomChapterOne = () => {
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/about"}>
                   <Button
-                    color="success"
+                  className="third"
+                    color="none"
                     onClick={() => {
                       setOpenModalthree(false);
                       play();
@@ -640,7 +644,8 @@ export const RoomChapterOne = () => {
                   </Button>
                 </Link>
                 <Button
-                  color="gray"
+                className="third2"
+                  color="none"
                   onClick={() => {
                     setOpenModalthree(false);
                     setdisableFollowCam(false);
@@ -683,7 +688,8 @@ export const RoomChapterOne = () => {
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/home"}>
                   <Button
-                    color="success"
+                    color="none"
+                    className="third"
                     onClick={() => {
                       setOpenModaldoor(false);
                       play();
@@ -693,7 +699,8 @@ export const RoomChapterOne = () => {
                   </Button>
                 </Link>
                 <Button
-                  color="gray"
+                  color="none"
+                  className="third2"
                   onClick={() => {
                     setOpenModaldoor(false);
                     setdisableFollowCam(false);

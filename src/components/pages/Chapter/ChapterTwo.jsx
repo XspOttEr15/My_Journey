@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
-import "./styles/ChapterOne.css";
+import "./styles/ChapterOne.scss";
 import { Button, Modal } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
@@ -119,7 +119,8 @@ const ChapterTwo = () => {
               <div className="flex flex-col md:flex-row justify-center gap-4 ">
                 <Link to={"/chaptertwodialog"}>
                   <Button
-                    color="success"
+                    color="none"
+                    className="third"
                     onClick={() => {
                       play(), setOpenModal(false);
                     }}
@@ -128,7 +129,8 @@ const ChapterTwo = () => {
                   </Button>
                 </Link>
                 <Button
-                  color="gray"
+                className="third2"
+                  color="none"
                   onClick={() => {
                     handleReplayVideo(), play();
                   }}

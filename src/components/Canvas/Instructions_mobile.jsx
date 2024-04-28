@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./styles/Instructions.css";
+import "./styles/Instructions.scss";
 import { DataContext } from "../../App";
 
 const InstructionsT = ({ isVisible, setOpenModalTutorial, setSelector, selector }) => {
@@ -29,7 +29,7 @@ const InstructionsT = ({ isVisible, setOpenModalTutorial, setSelector, selector 
   return (
     <div className={`instructions-overlay${isVisible ? " visible" : ""}${isLocked ? " locked" : ""}`}>
       <div className="overlay"></div>
-      <div className="animate-pulse text-green-400 text-6xl mb-5 text-center pointer-events-none">
+      <div  className=" glitch  text-green-400 text-6xl mb-5 text-center  select-none">
         {header}
       </div>
       <svg
@@ -49,7 +49,7 @@ const InstructionsT = ({ isVisible, setOpenModalTutorial, setSelector, selector 
           setSkipButton("Resume (เข้าสู่ห้อง)");
         }}
         type="button"
-        className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
+        className="btn third  text-white bg-gradient-to-br   font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2 "
       >
         Tutorial (วิธีการเล่น)
       </button>
@@ -62,7 +62,7 @@ const InstructionsT = ({ isVisible, setOpenModalTutorial, setSelector, selector 
           }, 3000); // 5000 milliseconds = 5 seconds
         }}
         type="button"
-        className="mt-2 cursor-not-allowed text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-2"
+        className="btn third  text-white bg-gradient-to-br   font-medium rounded-lg text-2xl px-5 py-2.5 text-center me-2 mb-0 mt-5 "
       >
         {skipButton}
       </button>

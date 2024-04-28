@@ -51,8 +51,13 @@ const Concept = () => {
             <button
               onClick={play}
               type="button"
+              id="bbb"
               className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800   shadow-lg shadow-emerald-800/80 rounded-lg  px-12 py-5 text-center m-5 mt-6  text-3xl font-bold inline-flex  items-center  sm:mx w-auto "
             >
+              <span id="gg"></span>
+              <span id="gg"></span>
+              <span id="gg"></span>
+              <span id="gg"></span>
               &nbsp;CHARACTER&nbsp;
             </button>
           </Link>
@@ -81,8 +86,13 @@ const Concept = () => {
         <Link to={"/"}>
           <button
             type="button"
+            id="bbb"
             className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800   shadow-lg shadow-emerald-800/80 rounded-lg  px-28 py-5 text-center m-5 mt-6  text-3xl font-bold inline-flex  items-center  sm:mx w-auto "
           >
+             <span id="gg"></span>
+              <span id="gg"></span>
+              <span id="gg"></span>
+              <span id="gg"></span>
             &nbsp;MAP&nbsp;
           </button>
         </Link>

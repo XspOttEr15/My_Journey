@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Video.css";
+import "../styles/Video.scss";
 import { Link } from "react-router-dom";
 import {
   MouseParallaxContainer,
@@ -12,7 +12,7 @@ const Video = () => {
   return (
     <>
       <div className="w-full h-screen z-20 relative ">
-        <div className="overlay"></div>
+        <div className="overlayshadow"></div>
         <MouseParallaxContainer
           resetOnLeave
           globalFactorX={0.1}
@@ -21,7 +21,7 @@ const Video = () => {
             width: "100%",
             height: "100%",
           }}>
-            
+
           {/* <MouseParallaxChild
             factorX={0.3}
             factorY={0.5}
@@ -62,32 +62,45 @@ const Video = () => {
               <source src="/videos/home/Reels.mp4" type="video/mp4" />
             </video>
           </MouseParallaxChild>
-          </MouseParallaxContainer>
+        </MouseParallaxContainer>
 
-          <div className=" z-50  absolute inset-0  flex flex-col justify-center place-items-center  gap-10   text-center  pt-10 ">
-            <h1
-              style={{
-                opacity: "0.9",
-                color: "#fff",
-              }}
-              className="select-none text-9xl  opacity-90 font-black  mix-blend-multiply "
-            >
+        <div className=" z-50 select-none  absolute inset-0  flex flex-col justify-center place-items-center  gap-10   text-center  pt-10  ">
+          <div
+            style={{
+              
+              opacity: "1",
+              color: "#fff",
+              textShadow: "#009d7b 9px 8px 11px ",
+              
+            }}
+            className="  text-9xl  opacity-90 font-black   "
+            id="divv"
+
+          >
               MY JOURNEY
-            </h1>
-            <Link to={"/roomchapterone"}>
+          </div>
+
+          <Link to={"/roomchapterone"}>
             <button
+              id="bb"
               style={{
                 cursor: 'url("/images/CustomMouses/pointer.png"), pointer',
               }}
               onClick={play}
-              className=" text-emerald-400  bg-font-medium    font-semibold  text-5xl px-10 py-4 text-center mr-5 mb-5   hover:text-white border border-white hover:bg-emerald-600 focus:ring-4 focus:outline-none focus:ring-purple-300  rounded-lg  me-2  dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900"
-              
+              className=" bbutton   bg-font-medium    font-semibold  text-3xl px-10 py-4 text-center mr-5 mb-5     "
+
             >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
               Let's Begin
             </button>
-            </Link>
-          </div>
-          
+
+
+          </Link>
+        </div>
+
       </div>
     </>
   );

@@ -43,3 +43,43 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.third {
+  border-color: #3498db;
+  color: #fff;
+  box-shadow: 0 0 10px 0 #10af72 inset, 0 0 10px 4px #11d88c;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+.third:hover {
+  
+  box-shadow: 0 0 40px 40px #11ac73 inset, 0 0 15px 4.5px #30c08a;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+
+
+
+.glitch {
+  background: 50% 100% / 50% 50% no-repeat
+              radial-gradient(ellipse at bottom, #fff, transparent, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: reveal 3000ms ease-in-out forwards 200ms,
+             glow 2500ms linear infinite 2000ms;
+
+  @keyframes reveal {
+    80%{
+      letter-spacing: 8px;
+    }
+    100% {
+      background-size: 300% 300%;
+    }
+  }
+  @keyframes glow {
+    40% {
+      text-shadow: 0 0 8px #fff;
+    }
+  }
+}  

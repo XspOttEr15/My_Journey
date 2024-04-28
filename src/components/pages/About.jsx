@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import "flowbite";
-import "../styles/About.css";
+import "../styles/About.scss";
 import { motion } from "framer-motion";
 import { DataContext } from "../../App";
 const About = () => {
@@ -49,10 +49,11 @@ const About = () => {
               />
               <motion.button
                 type="button"
-                className="text-emerald-400  bg-gray-900    ring-4 outline-none  ring-emerald-800 shadow-lg   shadow-emerald-800/80 rounded-lg  px-10 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto lg:w-auto "
+                className="text-emerald-400  bg-gray-900    ring-4 outline-none  ring-emerald-400 shadow-lg   shadow-emerald-800/80 rounded-lg  px-10 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto lg:w-auto "
               >
                 <div className="text-xl">63080500230</div>
-                <div className="text-xl">นายนัทธพงศ์ เพ็ชรพิพัฒน์</div>
+                <div className="text-xl text-white">นายนัทธพงศ์ เพ็ชรพิพัฒน์</div>
+                <div className="text-xl text-white">Programmer</div>
               </motion.button>
             </motion.div>
 
@@ -76,10 +77,11 @@ const About = () => {
               />
               <motion.button
                 type="button"
-                className="text-emerald-400  bg-gray-900  ring-4 focus:outline-none  ring-emerald-800 shadow-lg   shadow-emerald-800/80 rounded-lg  px-14 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto "
+                className="text-emerald-400  bg-gray-900  ring-4 focus:outline-none  ring-emerald-400 shadow-lg   shadow-emerald-800/80 rounded-lg  px-14 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto "
               >
                 <div className="text-xl">63080500269</div>
-                <div className="text-xl">นายนรุตม์ สุวรรณ</div>
+                <div className="text-xl text-white">นายนรุตม์ สุวรรณ</div>
+                <div className="text-xl text-white">Animator</div>
               </motion.button>
             </motion.div>
 
@@ -103,10 +105,11 @@ const About = () => {
               />
               <motion.button
                 type="button"
-                className="text-emerald-400  bg-gray-900   bg-gradient-to-br ring-4 outline-none  ring-emerald-800 shadow-lg   shadow-emerald-800/80 rounded-lg  px-14 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto  "
+                className="text-emerald-400  bg-gray-900   bg-gradient-to-br ring-4 outline-none  ring-emerald-400 shadow-lg   shadow-emerald-800/80 rounded-lg  px-14 py-3 text-center m-5 mt-6  text-lg font-bold  items-center  md:w-auto  "
               >
                 <div className="text-xl">63080500242</div>
-                <div className="text-xl">นายภูบดินทร์ ดิศพัฒน์</div>
+                <div className="text-xl text-white">นายภูบดินทร์ ดิศพัฒน์</div>
+                <div className="text-xl text-white">Animator</div>
               </motion.button>
             </motion.div>
           </div>
@@ -117,8 +120,10 @@ const About = () => {
         <div className="bg1"></div>
         <div className=" lg:pt-[100px] md:pt-0 text-center md:p-8 lg:mt-0">
           <div className="md:flex md:flex-col lg:flex lg:flex-row lg:m-10 md:p-14 md:pt-12  lg:pt-20   ">
+
             <motion.div
-              className=" lg:w-1/2 md:w-full  md:max-w-none bg-gray-800 rounded-3xl p-3 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 lg:ml-8  md:ml-0"
+              id="bbs"
+              className=" lg:w-1/2 md:w-full  md:max-w-none bg-gray-800  p-3 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 lg:ml-8  md:ml-0"
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
@@ -129,8 +134,12 @@ const About = () => {
                 damping: 10,
               }}
             >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
               <motion.img
-                className="rounded-3xl h-full w-full object-cover  shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80"
+                className=" h-full w-full object-cover  shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80"
                 src="/images/AboutUs/renderer1.png"
                 alt=""
               />
@@ -178,7 +187,7 @@ const About = () => {
               class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
             >
               <img
-                src="https://media.discordapp.net/attachments/761581562641907723/1233350897623629885/KMUTTFIET-Logo-Eng.png?ex=662cc708&is=662b7588&hm=e8c407c64030ff370db3c443ba8ad36ac1ee512401bdb8bf9c5d6126e25ceaaf&=&format=webp&quality=lossless&width=1440&height=480"
+                src="/images/AboutUs/KMUTTFIET-Logo-Eng.png"
                 class=" w-[250px]"
                 alt="CMM"
               />

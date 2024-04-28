@@ -1,12 +1,28 @@
-.bgc {
+.overlayshadow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 30;
     width: 100%;
     height: 100%;
-    background-image: url("https://ik.imagekit.io/vsfmz5htw/border-img/room.png?updatedAt=1711183017419");
-    background-size: cover;
-  }
-  
-  #bbb{
-  position: relative;
+    background-color: rgba(0, 0, 0, 0.69);
+}
+
+
+
+
+
+iframe {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+}
+
+#bb{
+    position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	color: #ffffff;
 	overflow: hidden;
 	padding: 22px 70px;
@@ -17,7 +33,7 @@
 	font-weight: bold;
 	box-shadow: 0 20px 50px rgb(255 255 255 / 5%)
 }
-#bbb:before{
+#bb:before{
 	position: absolute;
 	width: 100%;
 	top: 2px;
@@ -27,7 +43,7 @@
 	background: rgb(142 255 240 / 6%);
 	
 }
-#bbb #gg:nth-child(1) {
+#bb span:nth-child(1) {
 	position: absolute;
 	width: 100%;
 	height: 5px;
@@ -44,7 +60,7 @@
 		transform: translateX(100%);
 	}
 }
-#bbb #gg:nth-child(2) {
+#bb span:nth-child(2) {
 	position: absolute;
 	width: 5px;
 	height: 100%;
@@ -62,7 +78,7 @@
 		transform: translateY(100%);
 	}
 }
-#bbb #gg:nth-child(3) {
+#bb span:nth-child(3) {
 	position: absolute;
 	width: 100%;
 	height: 5px;
@@ -79,7 +95,7 @@
 		transform: translateX(-100%);
 	}
 }
-#bbb #gg:nth-child(4) {
+#bb span:nth-child(4) {
 	position: absolute;
 	width: 5px;
 	height: 100%;
@@ -98,28 +114,55 @@
 	}
 }
 
-#bbb:hover {
+#bb:hover {
 
     color: #00daaa;
     transition: 1s;
     
 }
 
-#bbb:hover #gg:nth-child(1) {
+#bb:hover span:nth-child(1) {
 	background: linear-gradient(to right, #34ffea, #009d7b);
     transition: 1s;
 }
-#bbb:hover #gg:nth-child(2) {
+#bb:hover span:nth-child(2) {
 	background: linear-gradient(to top, #34ffea, #009d7b);
     transition: 1s;
 }
 
-#bbb:hover #gg:nth-child(3) {
+#bb:hover span:nth-child(3) {
 	background: linear-gradient(to left, #34ffea, #009d7b);
     transition: 1s;
 }
 
-#bbb:hover #gg:nth-child(4) {
+#bb:hover span:nth-child(4) {
 	background: linear-gradient(to top, #34ffea, #009d7b);
     transition: 1s;
 }
+
+
+
+#divv {
+    background: 50% 100% / 50% 50% no-repeat
+                radial-gradient(ellipse at bottom, #ffffff, transparent, transparent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-family: "Source Sans Pro", sans-serif;
+    animation: reveal 3000ms ease-in-out forwards 200ms,
+               glow 2500ms linear infinite 2000ms;
+  
+    @keyframes reveal {
+      80%{
+        letter-spacing: 8px;
+      }
+      100% {
+        background-size: 300% 300%;
+      }
+    }
+    @keyframes glow {
+      40% {
+        text-shadow: 0 0 12px #00daaa;
+      }
+    }
+  }  

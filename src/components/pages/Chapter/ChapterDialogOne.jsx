@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { DataContext } from "../../../App";
 import useSound from "use-sound";
-import "./styles/ChapterOne.css";
+import "./styles/ChapterOne.scss";
 import bgmSound from "/audios/chapterOne/Factory_amb.mp3";
 
 const ChapterDialogOne = () => {
@@ -706,7 +706,7 @@ const ChapterDialogOne = () => {
                   play();
                   setOpenModalt(true)
                 }}
-                className=" absolute  lg:top-[72%] z-40  border-dashed border-2  border-emerald-500 lg:left-[92%] md:top-[74%] md:left-[88%]  opacity-[100%]   lg:w-28 md:w-[5rem] h-10 text-base  text-white rounded-lg focus:outline-none focus:ring-2 hover:bg-emerald-600 hover:border-white "
+                className=" absolute transition  lg:top-[72%] z-40  border-dashed border-2  border-emerald-500 lg:left-[92%] md:top-[74%] md:left-[88%]  opacity-[100%]   lg:w-28 md:w-[5rem] h-10 text-base  text-white rounded-lg focus:outline-none focus:ring-2 hover:bg-emerald-600 hover:border-white "
               >
                 Skip {">>"}
               </button>
@@ -717,7 +717,7 @@ const ChapterDialogOne = () => {
                   handleBack();
                   
                 }}
-                className=" absolute  lg:top-[72%] z-40  border-dashed border-2  border-emerald-500 lg:left-[2%] md:top-[74%] md:left-[88%]  opacity-[100%]   lg:w-28 md:w-[5rem] h-10 text-base  text-white rounded-lg focus:outline-none focus:ring-2 hover:bg-emerald-600 hover:border-white "
+                className=" absolute transition  lg:top-[72%] z-40  border-dashed border-2  border-emerald-500 lg:left-[2%] md:top-[74%] md:left-[88%]  opacity-[100%]   lg:w-28 md:w-[5rem] h-10 text-base  text-white rounded-lg focus:outline-none focus:ring-2 hover:bg-emerald-600 hover:border-white "
               >
                 {"<<"} Back 
               </button>
