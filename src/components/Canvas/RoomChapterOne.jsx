@@ -39,6 +39,18 @@ const LoadingScreen = lazy(() => import('../pages/LoadingScreen'));
 
 
 export const RoomChapterOne = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [disableFollowCamPos, setDisableFollowCamPos] = useState({
+    x: 0,
+    y: 2,
+    z: 0,
+  });
+  const [disableFollowCamTarget, setdisableFollowCamTarget] = useState({
+    x: 0,
+    y: 0,
+    z: -2,
+  });
+  const [jumpVel, setjumpVel] = useState(4);
   const [selector, setSelector] = useState("#Skip");
   const [openModal, setOpenModal] = useState(false);
   const [openModaltwo, setOpenModaltwo] = useState(false);
@@ -57,7 +69,7 @@ export const RoomChapterOne = () => {
 
 
 const [playerPositionX, setPlayerPositionX] = useState(-2);
-const [playerPositionY, setPlayerPositionY] = useState(6.001);
+const [playerPositionY, setPlayerPositionY] = useState(4.001);
 const [playerPositionZ, setPlayerPositionZ] = useState(3);
   const { setColseBgmusic, setCloseNavbar, isLocked, setIsLocked } =
     useContext(DataContext);
@@ -191,7 +203,8 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
           <h3 className=" text-2xl mt-1">กด ESC เพื่อแสดง Menu Tutorial</h3>
         </div>
         <div className="aim"></div>
-          {/* <EcctrlJoystick /> */}
+        {windowWidth < 1440 && <EcctrlJoystick />}
+        {windowWidth >= 1440 && (
           <Instructions
             isVisible={!isLocked}
             setOpenModalTutorial={setOpenModalTutorial}
@@ -199,17 +212,21 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
             setPlayerPositionY={setPlayerPositionY}
             playerPositionY={playerPositionY}
           />
-          {/* <InstructionsT
+        )}
+        {windowWidth < 1440 && (
+          <InstructionsT
             isVisible={!isLocked}
             setOpenModalTutorial={setOpenModalTutorial}
             setSelector={setSelector}
             setPlayerPositionY={setPlayerPositionY}
             playerPositionY={playerPositionY}
-          /> */}
+          />
+        )}
         <Canvas
           frameloop="demand"
           shadows="soft"
           camera={[0, 0, 0]}
+          style={{ width: "100vw", height: "100vh",}}
         >
           {/* <Perf position="top-left" /> */}
           {/* <StatsGl/>  */}
@@ -219,6 +236,7 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
           {/* debug */}
           <Physics
             gravity={[0, -11, 0]}
+            debug
           >
             <KeyboardControls map={keyboardMap}>
               <Ecctrl
@@ -231,11 +249,11 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
                 turnSpeed={100} // give it big turning speed to prevent turning wait time
                 mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
                 disableFollowCam={disableFollowCam}
-                disableFollowCamPos={{ x: 0, y: 2, z: 0 }} // Corrected: Camera position when the follow camera feature is disabled
-                disableFollowCamTarget={{ x: 0, y: 0, z: -2 }} // Camera lookAt target when the follow camera feature is disabled
+                disableFollowCamPos={disableFollowCamPos} // Corrected: Camera position when the follow camera feature is disabled
+                disableFollowCamTarget={disableFollowCamTarget} // Camera lookAt target when the follow camera feature is disabled
                 position={[playerPositionX,playerPositionY,playerPositionZ]}
                 maxVelLimit={2.5}
-                jumpVel={4}
+                jumpVel={jumpVel}
               >
                 {/* Replace your model here */}
              
@@ -867,7 +885,7 @@ export const EffectsPost = ({
 };
 
 export const Book = ({ htmltext, setHtmltext, ...props }) => {
-  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
+  const { nodes, materials } = useGLTF("public/models/rooms3_t.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -932,7 +950,7 @@ export const MBook = ({
   setOpenModaltwo,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
+  const { nodes, materials } = useGLTF("public/models/rooms3_t.glb");
   const [hovered, hover] = useState(null);
   const ref = useRef();
   const [closelabel, Setcloselabel] = useState(false);
@@ -1042,7 +1060,7 @@ export const Paper = ({
   setOpenModalthree,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("/models/rooms3_t.glb ");
+  const { nodes, materials } = useGLTF("public/models/rooms3_t.glb ");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -1164,7 +1182,7 @@ export const Door = ({
   setOpenModaldoor,
   ...props
 }) => {
-  const { nodes, materials } = useGLTF("/models/rooms3_t.glb");
+  const { nodes, materials } = useGLTF("public/models/rooms3_t.glb");
   const ref = useRef();
   const [hovered, hover] = useState(null);
   const [closelabel, Setcloselabel] = useState(false);
@@ -1276,4 +1294,4 @@ export const Door = ({
 };
 
 
-useGLTF.preload('/models/rooms3_t.glb')
+useGLTF.preload('public/models/rooms3_t.glb')
