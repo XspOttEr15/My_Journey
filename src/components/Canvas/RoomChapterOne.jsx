@@ -46,6 +46,7 @@ export const RoomChapterOne = () => {
     y: 0,
     z: -2,
   });
+  const [jumpVel, setjumpVel] = useState(4);
   const [selector, setSelector] = useState("#Skip");
   const [openModal, setOpenModal] = useState(false);
   const [openModaltwo, setOpenModaltwo] = useState(false);
@@ -179,7 +180,6 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
     setIsLocked(false);
   }, []);
 
-
   useEffect(() => {
     function handleResize() {
       setWindowWidth(window.innerWidth);
@@ -252,7 +252,7 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
                 disableFollowCamTarget={disableFollowCamTarget} // Camera lookAt target when the follow camera feature is disabled
                 position={[playerPositionX,playerPositionY,playerPositionZ]}
                 maxVelLimit={2.5}
-                jumpVel={4}
+                jumpVel={jumpVel}
                 dampingC={0.12}
               >
                 {/* Replace your model here */}
