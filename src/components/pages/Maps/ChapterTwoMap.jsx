@@ -4,7 +4,6 @@ import { Canvas, useLoader } from "@react-three/fiber";
 import { Html, Preload, OrbitControls } from "@react-three/drei";
 import './Maps.css'
 import { DataContext } from "../../../App";
-import LoadingScreen from "../LoadingScreen";
 
 
 
@@ -238,7 +237,7 @@ export default function ChapterTwoMap() {
         autoRotate={false}
         rotateSpeed={-0.5}
       />
-      <Suspense fallback={<LoadingScreen/>}>
+      <Suspense fallback={null}>
         <Preload all />
         <Portals setFadeOut={setFadeOut} fadeOut={fadeOut}/>
       </Suspense>

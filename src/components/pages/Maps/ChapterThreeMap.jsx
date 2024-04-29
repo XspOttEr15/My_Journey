@@ -22,7 +22,7 @@ const store = [
     link: 2,
   },
   {
-    name: " Top Tower 2",
+    name: "Destroyed City ",
     color: "lightblue",
     position: [1.5, 3.5, 15],
     url: "/images/Maps/chapterThree/3.png",
@@ -31,22 +31,22 @@ const store = [
   {
     name: " The Tower 2",
     color: "lightblue",
-    position: [1, 0, -15],
-    url: "/images/Maps/chapterThree/4.png",
+    position: [30, 0, 20],
+    url: "/images/Maps/chapterThree/6.png",
     link: 4,
   },
   {
-    name: " PathWay 2",
+    name: " Top Tower 2",
     color: "lightblue",
-    position: [30, -16, -15],
+    position: [1, 0, 15],
     url: "/images/Maps/chapterThree/5.png",
     link: 5,
   },
   {
-    name: "Maps Page",
+    name: "Go to Maps Page",
     color: "lightblue",
-    position: [-15, 0, -8],
-    url: "/images/Maps/chapterThree/6.png",
+    position: [1, 3, 15],
+    url: "/images/Maps/chapterThree/4.png",
     link: 6,
   },
 ];
@@ -71,24 +71,45 @@ const storeB = [
     linkB: 3,
   },
   {
-    nameB: "Top Tower ",
-    positionB: [1, 3.5, 15],
+    nameB: "Nomal City Top Tower ",
+    positionB: [-5, 0, -2],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB: 4,
   },
   {
     nameB: "Top Tower 2",
-    positionB: [1, 4, 15],
+    positionB: [20, -16, -10],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB: 5,
   },
   {
     nameB: "The Tower 2",
-    positionB: [15, 0, 10],
+    positionB: [1, 0, -15],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
     linkB: 6,
   },
 ];
+
+const storeC = [
+  {
+    nameC: "Destroyed City",
+    colorC: "lightpink",
+    positionC: [25, 4, 15],
+    urlC: "/images/Maps/chapterThree/1.png",
+    linkC: 1,
+  },
+];
+
+const storeD = [
+  {
+    nameD: "Nomal City",
+    colorD: "lightpink",
+    positionD: [22.1, 3, 15],
+    urlD: "/images/Maps/chapterThree/1.png",
+    linkD: 1,
+  },
+];
+
 
 function Dome({
   name,
@@ -99,6 +120,13 @@ function Dome({
   positionB,
   handleClickB,
   setCameraTarget,
+  nameC,
+  positionC,
+  handleClickC,
+  nameD,
+  positionD,
+  handleClickD,
+  which,
 }) {
   return (
     <group>
@@ -124,21 +152,49 @@ function Dome({
           </div>
         </Html>
       </mesh>
+      
+      {which === 0 && (
+        <mesh position={positionC}>
+          <Html center>
+            <div className={`labelM  animate-pulse`}>
+              <a href="#" className="label__tuM" onClick={handleClickC}>
+                {nameC}
+              </a>
+            </div>
+          </Html>
+        </mesh>
+      )}
+
+    {which === 3 && (
+        <mesh position={positionD}>
+          <Html center>
+            <div className={`labelM  animate-pulse`}>
+              <a href="#" className="label__tuM" onClick={handleClickD}>
+                {nameD}
+              </a>
+            </div>
+          </Html>
+        </mesh>
+      )}
+
+      
     </group>
   );
 }
 
-function Portals({ setFadeOut, fadeOut, setCameraTarget, }) {
+function Portals({ setFadeOut, fadeOut, setCameraTarget }) {
   const [whichB, setWhichB] = useState(0);
   const [which, setWhich] = useState(0);
+  const [whichC, setWhichC] = useState(0);
+  const [whichD, setWhichD] = useState(0);
   const { linkB, ...propss } = storeB[whichB];
   const { link, ...props } = store[which];
+  const { linkC, ...propsss } = storeC[whichC];
+  const { linkD, ...propssss } = storeD[whichD];
   const maps = useLoader(
     THREE.TextureLoader,
     store.map((entry) => entry.url)
   );
-
-  
 
   const handleClick = () => {
     if (link === 6) {
@@ -146,7 +202,9 @@ function Portals({ setFadeOut, fadeOut, setCameraTarget, }) {
       setTimeout(() => {
         window.location.href = "/maps";
       }, 800);
-    } else {
+    }  
+    else 
+    {
       // For other links, just update the state
       setTimeout(() => {
         setWhich((prevWhich) => Math.max(0, prevWhich + 1));
@@ -172,8 +230,26 @@ function Portals({ setFadeOut, fadeOut, setCameraTarget, }) {
     }
   };
 
+ const handleClickC = () => {
+    if (link === 1) {
+      setTimeout(() => {
+        setWhich(3)
+      }, 800);
+      setFadeOut(true);
+    }
+  }
+
+  const handleClickD = () => {
+    if (which === 3) {
+      setTimeout(() => {
+        setWhich(0)
+      }, 800);
+      setFadeOut(true);
+    }
+  }
+
   useEffect(() => {
-    // เมื่อมีการคลิกลิงก์ ให้ทำการ fade-out
+    
     if (fadeOut) {
       const timer = setTimeout(() => {
         setFadeOut(false);
@@ -193,15 +269,20 @@ function Portals({ setFadeOut, fadeOut, setCameraTarget, }) {
     <Dome
       handleClick={handleClick}
       handleClickB={handleClickB}
+      handleClickC={handleClickC}
+      handleClickD={handleClickD}
       {...props}
       {...propss}
+      {...propsss}
+      {...propssss}
       texture={maps[which]}
+      which={which}
       setCameraTarget={setCameraTarget}
     />
   );
 }
 
-export default function ChapterThreeMap( handleBack) {
+export default function ChapterThreeMap() {
   const [fadeOut, setFadeOut] = useState(false);
   const [cameraTarget, setCameraTarget] = useState([1.2, 0, 1]);
   const [loaded, setLoaded] = useState(false);
@@ -218,6 +299,7 @@ export default function ChapterThreeMap( handleBack) {
     const timer = setTimeout(() => {
       setLoaded(true);
     }, 1000); // Adjust the delay time as needed
+
 
     // Clean up timer
     return () => clearTimeout(timer);
@@ -238,7 +320,7 @@ export default function ChapterThreeMap( handleBack) {
           rotateSpeed={-0.5}
           target={cameraTarget}
         />
-        <Suspense fallback={<LoadingScreen />}>
+        <Suspense fallback={null}>
           <Preload all />
           <Portals
             setFadeOut={setFadeOut}
@@ -247,6 +329,7 @@ export default function ChapterThreeMap( handleBack) {
           />
         </Suspense>
       </Canvas>
+      
     </div>
   );
 }
