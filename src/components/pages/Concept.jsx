@@ -15,9 +15,9 @@ const Concept = () => {
     setColseBgmusic(false);
   },);
   return (
-    <div className="w-full lg:h-screen  md:h-auto ">
+    <div className="w-full lg:h-screen  md:h-full ">
     <div className="bgc">
-      <motion.div className=" sections  text-center pt-[8rem]" 
+      <motion.div className=" sections  text-center pt-[5.6rem]" 
       animate={{ scale: [1, 1.1, 1] }}
       transition={{
         duration: 2,
@@ -31,7 +31,7 @@ const Concept = () => {
         </span>
       </motion.div>
 
-      <div className=" sections lg:flex lg:flex-row  md:flex md:flex-col gap-10 justify-center align-middle  mt-16 items-center  text-center">
+      <div className=" sections lg:flex lg:flex-row  md:flex md:flex-row    gap-10 justify-center align-middle  mt-16 items-center  text-center">
         {/* // Card Layout 1*/}
         <motion.div className=" max-w-sm h-auto" 
         initial={{opacity:0, y:100}}

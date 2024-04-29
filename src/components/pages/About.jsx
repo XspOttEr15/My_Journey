@@ -11,11 +11,11 @@ const About = () => {
   }, []);
   return (
     <>
-      <div className="w-full lg:h-screen md:h-auto relative">
+      <div className="w-full lg:h-screen md:w-full relative">
         <div className="bg1"></div>
-        <div className="sections md:h-auto overflow-y-hidden overflow-x-hidden text-center lg:pt-20 ">
+        <div className="sections md:h-full overflow-y-hidden overflow-x-hidden text-center lg:pt-20 md:pt-7 ">
           <motion.div
-            className="lg:pt-[0rem] md:pt-[10rem] "
+            className="lg:pt-[0rem] md:pt-[4rem] "
             animate={{ scale: [1, 1.1, 1] }}
             transition={{
               duration: 2,
@@ -29,7 +29,7 @@ const About = () => {
             </motion.span>
           </motion.div>
 
-          <div className=" lg:flex md:inline-block gap-8 justify-center align-middle m-10 mt-[8rem] items-center ">
+          <div className=" lg:flex md:flex gap-8 justify-center align-middle m-10 lg:mt-[4rem] md:mt-[4rem]  items-center ">
             {/* // Card Layout 1*/}
             <motion.div
               className=" max-w-sm h-auto"
@@ -116,11 +116,11 @@ const About = () => {
       <div className="w-full lg:h-screen md:h-auto sections relative">
         <div className="bg1"></div>
         <div className=" lg:pt-[100px] md:pt-0 text-center md:p-8 lg:mt-0">
-          <div className="md:flex md:flex-col lg:flex lg:flex-row lg:m-10 md:p-14 md:pt-12  lg:pt-20   ">
+          <div className="md:flex md:flex-row lg:flex lg:flex-row lg:m-10 md:p-14 md:pt-12  lg:pt-20   ">
 
             <motion.div
               id="bbs"
-              className=" lg:w-1/2 md:w-full  md:max-w-none bg-gray-800  p-3 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 lg:ml-8  md:ml-0"
+              className=" lg:w-1/2 md:w-1/2 md:flex-col  md:max-w-none bg-gray-800  p-3 shadow-emerald-500/50 dark:shadow-lg dark:shadow-emerald-800/80 border border-emerald-800 lg:ml-8  md:ml-0"
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
@@ -143,7 +143,7 @@ const About = () => {
             </motion.div>
 
             <motion.div
-              className="lg:w-1/2 lg:flex lg:flex-col  md:w-full  justify-center  items-center p-10"
+              className="lg:w-1/2 lg:flex lg:flex-col    md:w-1/2  justify-center  items-center p-10"
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
