@@ -33,7 +33,7 @@ const Concept = () => {
 
       <div className="  lg:flex lg:flex-row  md:flex  md:flex-row    gap-10 justify-center align-middle  lg:mt-16 md:mt-16   items-center  text-center">
         {/* // Card Layout 1*/}
-        <motion.div className=" max-w-xs h-auto" 
+        <motion.div className=" lg:max-w-sm md:max-w-xs h-auto" 
         initial={{opacity:0, y:100}}
         animate={{ opacity:1 , y:0}}
         transition={{duration:0.5}}>
@@ -66,7 +66,7 @@ const Concept = () => {
 
         {/* // Card Layout 2*/}
 
-        <motion.div className="  max-w-xs h-auto" 
+        <motion.div className=" lg:max-w-sm md:max-w-xs h-auto" 
         initial={{opacity:0, y:100}}
         animate={{ opacity:1 , y:0}}
         transition={{duration:0.5}}>
