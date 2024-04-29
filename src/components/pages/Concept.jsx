@@ -15,9 +15,9 @@ const Concept = () => {
     setColseBgmusic(false);
   },);
   return (
-    <div className="w-full lg:h-screen  md:h-full ">
+    <div className="w-full lg:h-screen  md:h-screen ">
     <div className="bgc">
-      <motion.div className="  text-center pt-[5.6rem]" 
+      <motion.div className="  text-center lg:pt-[5.6rem] md:pt-[8%] " 
       animate={{ scale: [1, 1.1, 1] }}
       transition={{
         duration: 2,
@@ -26,14 +26,14 @@ const Concept = () => {
         repeat: Infinity,
       }}
       >
-        <span className=" text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-4 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
+        <span className=" text-4xl font-extrabold leading-none tracking-tight   md:text-5xl lg:text-6xl text-emerald-400 bg-gray-900   pl-12 pr-12 pt-4 pb-2 rounded-full shadow-green-800/80 shadow-lg focus:ring-green-800 ">
           CONCEPT
         </span>
       </motion.div>
 
-      <div className="  lg:flex lg:flex-row  md:flex md:flex-row    gap-10 justify-center align-middle  mt-16 items-center  text-center">
+      <div className="  lg:flex lg:flex-row  md:flex  md:flex-row    gap-10 justify-center align-middle  lg:mt-16 md:mt-16   items-center  text-center">
         {/* // Card Layout 1*/}
-        <motion.div className=" max-w-sm h-auto" 
+        <motion.div className=" max-w-xs h-auto" 
         initial={{opacity:0, y:100}}
         animate={{ opacity:1 , y:0}}
         transition={{duration:0.5}}>
@@ -52,7 +52,7 @@ const Concept = () => {
               onClick={play}
               type="button"
               id="bbb"
-              className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800   shadow-lg shadow-emerald-800/80 rounded-lg  px-12 py-5 text-center m-5 mt-6  text-3xl font-bold inline-flex  items-center  sm:mx w-auto "
+              className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800   shadow-lg shadow-emerald-800/80 rounded-lg  px-12 py-5 text-center lg:m-5 mt-6  lg:text-3xl md:text-2xl font-bold inline-flex  items-center  sm:mx w-auto "
             >
               <span id="gg"></span>
               <span id="gg"></span>
@@ -66,7 +66,7 @@ const Concept = () => {
 
         {/* // Card Layout 2*/}
 
-        <motion.div className="  max-w-sm h-auto" 
+        <motion.div className="  max-w-xs h-auto" 
         initial={{opacity:0, y:100}}
         animate={{ opacity:1 , y:0}}
         transition={{duration:0.5}}>
@@ -87,7 +87,7 @@ const Concept = () => {
           <button
             type="button"
             id="bbb"
-            className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800   shadow-lg shadow-emerald-800/80 rounded-lg  px-28 py-5 text-center m-5 mt-6  text-3xl font-bold inline-flex  items-center  sm:mx w-auto "
+            className="text-emerald-400  from-gray-900 via-gray-900 to-gray-900  bg-gradient-to-br focus:ring-4 focus:outline-none  focus:ring-emerald-800   shadow-lg shadow-emerald-800/80 rounded-lg  px-24 py-5 text-center lg:m-5 mt-6  text-3xl font-bold inline-flex  items-center  sm:mx w-auto "
           >
              <span id="gg"></span>
               <span id="gg"></span>
