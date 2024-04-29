@@ -1,6 +1,6 @@
 
 import React, { Suspense, useContext, useEffect, useRef, useState, lazy } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   PointerLockControls,
   useHelper,
@@ -39,6 +39,7 @@ const LoadingScreen = lazy(() => import('../pages/LoadingScreen'));
 
 
 export const RoomChapterOne = () => {
+  
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [disableFollowCamPos, setDisableFollowCamPos] = useState({
     x: 0,
@@ -66,6 +67,7 @@ export const RoomChapterOne = () => {
   const [targettwo, setTargetwo] = useState(1);
   const [targetthree, setTargethree] = useState(1);
   const [targetfour, setTargefour] = useState(1);
+  
 
 
 const [playerPositionX, setPlayerPositionX] = useState(-2);
@@ -178,6 +180,8 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
     { name: "run", keys: ["Shift"] },
   ];
 
+  
+
   useEffect(() => {
     setColseBgmusic(false);
     setCloseNavbar("Room");
@@ -194,9 +198,11 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
      // Clean up the event listener on component unmount
      return () => window.removeEventListener("resize", handleResize);
    }, []);
+   
 
   return (
     <>
+    
     <Suspense fallback={<LoadingScreen/>}>
     
         <div className="tutorial">
@@ -222,21 +228,24 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
             playerPositionY={playerPositionY}
           />
         )}
+        
         <Canvas
           frameloop="demand"
           shadows="soft"
           camera={[0, 0, 0]}
           style={{ width: "100%", height: "100%",}}
-        >
-          {/* <Perf position="top-left" /> */}
-          {/* <StatsGl/>  */}
+          performance={{ 
+            current: 0.2,
+            min: 0.1,
+            max: 0.3,
+            debounce: 200,
+            regress: () => {}
+          }}>
+            
 
-          <color attach="background" args={["#638689"]} />
-          <fog attach="fog" args={["#569BF3", 1, 200]} />
           {/* debug */}
           <Physics
             gravity={[0, -12, 0]}
-            debug
           >
             <KeyboardControls map={keyboardMap}>
               <Ecctrl
@@ -614,6 +623,7 @@ const [playerPositionZ, setPlayerPositionZ] = useState(3);
                     setHtmltext(true);
                     setTargetwo(1);
                     play();
+                    setSelector(".instructions-overlay");
                   }}
                 >
                   ยกเลิก
@@ -742,7 +752,7 @@ export const Player = () => {
 
   return (
     <RigidBody   >
-    <mesh position-y={1.5} >
+    <mesh position-y={1.5} visible={false} >
           <capsuleGeometry args={[0.1, 1, 0.1]} />
           <meshStandardMaterial color="mediumpurple" />
     </mesh>
@@ -1185,6 +1195,15 @@ export const Paper = ({
     </group>
   );
 };
+
+function AdaptivePixelRatio() {
+  const current = useThree((state) => state.performance.current)
+  const setPixelRatio = useThree((state) => state.setDpr)
+  useEffect(() => {
+    setPixelRatio(window.devicePixelRatio * current)
+  }, [current])
+  return null
+}
 
 export const Door = ({
   targetfour,

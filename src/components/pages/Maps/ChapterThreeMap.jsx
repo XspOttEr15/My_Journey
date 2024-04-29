@@ -2,10 +2,9 @@ import * as THREE from "three";
 import { Suspense, useContext, useEffect, useState } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { Html, Preload, OrbitControls } from "@react-three/drei";
-import './Maps.css'
+import "./Maps.css";
 import { DataContext } from "../../../App";
-
-
+import LoadingScreen from "../LoadingScreen";
 
 const store = [
   {
@@ -50,7 +49,6 @@ const store = [
     url: "/images/Maps/chapterThree/6.png",
     link: 6,
   },
-  
 ];
 
 const storeB = [
@@ -58,43 +56,50 @@ const storeB = [
     nameB: "Chapter 2",
     positionB: [-20, -1, -11],
     urlB: "/images/Maps/chapterOne/Garbage.png",
-    linkB:1,
+    linkB: 1,
   },
   {
     nameB: " Pathway ",
     positionB: [27, -34, -15],
     urlB: "/images/Maps/chapterThree/1.png",
-    linkB:2,
+    linkB: 2,
   },
   {
     nameB: "The Tower",
     positionB: [1.5, 0, -15],
     urlB: "/images/Maps/chapterThree/2.png",
-    linkB:3,
+    linkB: 3,
   },
   {
     nameB: "Top Tower ",
     positionB: [1, 3.5, 15],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
-    linkB:4,
+    linkB: 4,
   },
   {
     nameB: "Top Tower 2",
     positionB: [1, 4, 15],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
-    linkB:5,
+    linkB: 5,
   },
   {
     nameB: "The Tower 2",
     positionB: [15, 0, 10],
     urlB: "/images/Maps/chapterOne/small_cathedral_4k (1).jpg",
-    linkB:6,
+    linkB: 6,
   },
-
 ];
 
-
-function Dome({ name, position, texture, handleClick ,nameB, positionB,handleClickB,setCameraTarget}) {
+function Dome({
+  name,
+  position,
+  texture,
+  handleClick,
+  nameB,
+  positionB,
+  handleClickB,
+  setCameraTarget,
+}) {
   return (
     <group>
       <mesh>
@@ -113,7 +118,7 @@ function Dome({ name, position, texture, handleClick ,nameB, positionB,handleCli
       <mesh position={positionB}>
         <Html center>
           <div className={`labelM  animate-pulse`}>
-            <a href="#" className="label__tuM" onClick={handleClickB} >
+            <a href="#" className="label__tuM" onClick={handleClickB}>
               {nameB}
             </a>
           </div>
@@ -123,14 +128,17 @@ function Dome({ name, position, texture, handleClick ,nameB, positionB,handleCli
   );
 }
 
-
-
-function Portals({setFadeOut,fadeOut,setCameraTarget}) {
+function Portals({ setFadeOut, fadeOut, setCameraTarget, }) {
   const [whichB, setWhichB] = useState(0);
   const [which, setWhich] = useState(0);
   const { linkB, ...propss } = storeB[whichB];
   const { link, ...props } = store[which];
-  const maps = useLoader(THREE.TextureLoader, store.map((entry) => entry.url));
+  const maps = useLoader(
+    THREE.TextureLoader,
+    store.map((entry) => entry.url)
+  );
+
+  
 
   const handleClick = () => {
     if (link === 6) {
@@ -141,9 +149,9 @@ function Portals({setFadeOut,fadeOut,setCameraTarget}) {
     } else {
       // For other links, just update the state
       setTimeout(() => {
-      setWhich((prevWhich) => Math.max(0, prevWhich + 1)); 
-      setWhichB((prevWhichB) => Math.max(0, prevWhichB + 1));
-    }, 1000);
+        setWhich((prevWhich) => Math.max(0, prevWhich + 1));
+        setWhichB((prevWhichB) => Math.max(0, prevWhichB + 1));
+      }, 1000);
       setFadeOut(true);
     }
   };
@@ -157,13 +165,13 @@ function Portals({setFadeOut,fadeOut,setCameraTarget}) {
       }, 800);
     } else {
       setTimeout(() => {
-      setWhich((prevWhich) => Math.max(0, prevWhich - 1)); 
-      setWhichB((prevWhichB) => Math.max(0, prevWhichB - 1));
+        setWhich((prevWhich) => Math.max(0, prevWhich - 1));
+        setWhichB((prevWhichB) => Math.max(0, prevWhichB - 1));
       }, 1000);
       setFadeOut(true);
     }
   };
-  
+
   useEffect(() => {
     // เมื่อมีการคลิกลิงก์ ให้ทำการ fade-out
     if (fadeOut) {
@@ -180,17 +188,25 @@ function Portals({setFadeOut,fadeOut,setCameraTarget}) {
   //     setCameraTarget([-14,-10,10])
   //   }
   // }, [link]);
-  
 
-  return <Dome handleClick={handleClick} handleClickB={handleClickB} {...props} {...propss} texture={maps[which]} setCameraTarget={setCameraTarget}  />;
+  return (
+    <Dome
+      handleClick={handleClick}
+      handleClickB={handleClickB}
+      {...props}
+      {...propss}
+      texture={maps[which]}
+      setCameraTarget={setCameraTarget}
+    />
+  );
 }
 
-
-export default function ChapterThreeMap() {
+export default function ChapterThreeMap( handleBack) {
   const [fadeOut, setFadeOut] = useState(false);
-  const [cameraTarget, setCameraTarget] = useState([1.2,0,1]);
+  const [cameraTarget, setCameraTarget] = useState([1.2, 0, 1]);
   const [loaded, setLoaded] = useState(false);
-  const { setColseBgmusic,setCloseNavbar,setIsLocked } = useContext(DataContext);
+  const { setColseBgmusic, setCloseNavbar, setIsLocked } =
+    useContext(DataContext);
   useEffect(() => {
     setColseBgmusic(false);
     setCloseNavbar("showall");
@@ -207,25 +223,30 @@ export default function ChapterThreeMap() {
     return () => clearTimeout(timer);
   }, []);
 
-  
-
   return (
-    <div className={`page ${loaded ? "fade-in" : ""} ${fadeOut ? "fade-out" : ""}`}>
-    <Canvas frameloop="demand" camera={{ position: [0, 0, 0.1] }}>
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        enableDamping
-        dampingFactor={0.2}
-        autoRotate={false}
-        rotateSpeed={-0.5}
-        target={cameraTarget}
-      />
-      <Suspense fallback={null}>
-        <Preload all />
-        <Portals setFadeOut={setFadeOut} fadeOut={fadeOut} setCameraTarget={setCameraTarget}/>
-      </Suspense>
-    </Canvas>
+    <div
+      className={`page ${loaded ? "fade-in" : ""} ${fadeOut ? "fade-out" : ""}`}
+    >
+      
+      <Canvas frameloop="demand" camera={{ position: [0, 0, 0.1] }}>
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          enableDamping
+          dampingFactor={0.2}
+          autoRotate={false}
+          rotateSpeed={-0.5}
+          target={cameraTarget}
+        />
+        <Suspense fallback={<LoadingScreen />}>
+          <Preload all />
+          <Portals
+            setFadeOut={setFadeOut}
+            fadeOut={fadeOut}
+            setCameraTarget={setCameraTarget}
+          />
+        </Suspense>
+      </Canvas>
     </div>
   );
 }
