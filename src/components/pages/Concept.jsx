@@ -17,7 +17,7 @@ const Concept = () => {
   return (
     <div className="w-full lg:h-screen  md:h-full ">
     <div className="bgc">
-      <motion.div className=" sections  text-center pt-[5.6rem]" 
+      <motion.div className="  text-center pt-[5.6rem]" 
       animate={{ scale: [1, 1.1, 1] }}
       transition={{
         duration: 2,
@@ -31,7 +31,7 @@ const Concept = () => {
         </span>
       </motion.div>
 
-      <div className=" sections lg:flex lg:flex-row  md:flex md:flex-row    gap-10 justify-center align-middle  mt-16 items-center  text-center">
+      <div className="  lg:flex lg:flex-row  md:flex md:flex-row    gap-10 justify-center align-middle  mt-16 items-center  text-center">
         {/* // Card Layout 1*/}
         <motion.div className=" max-w-sm h-auto" 
         initial={{opacity:0, y:100}}
@@ -66,7 +66,7 @@ const Concept = () => {
 
         {/* // Card Layout 2*/}
 
-        <motion.div className=" sections max-w-sm h-auto" 
+        <motion.div className="  max-w-sm h-auto" 
         initial={{opacity:0, y:100}}
         animate={{ opacity:1 , y:0}}
         transition={{duration:0.5}}>
