@@ -3,6 +3,7 @@ import "flowbite";
 import "../styles/About.scss";
 import { motion } from "framer-motion";
 import { DataContext } from "../../App";
+import { Link } from "react-router-dom";
 const About = () => {
   const { setCloseNavbar, setColseBgmusic } = useContext(DataContext);
   useEffect(() => {
@@ -178,53 +179,49 @@ const About = () => {
 
       <footer class=" rounded-lg shadow bg-gray-900 m-0 sections">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-          <div class="sm:flex sm:items-center sm:justify-between">
-            <a
-              href="https://flowbite.com/"
-              class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
-            >
+          <div class="flex flex-wrap items-center justify-between">
+            <ul className="flex">
               <img
                 src="/images/AboutUs/KMUTTFIET-Logo-Eng.png"
                 class=" w-[250px]"
                 alt="CMM"
               />
-              
-              <img
+            
+            <img
               src="/images/AboutUs/logo_footer.png"
               className="w-[250px]"
               alt="CMM" 
               />
-              
-            </a>
+              </ul>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 ">
               <li>
-                <a href="#" class="hover:underline me-4 md:me-6">
+                <Link to={"/home"} class="hover:underline me-4 md:me-6">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" class="hover:underline me-4 md:me-6">
+                <Link to={"/roomchapterone"}  class="hover:underline me-4 md:me-6">
                   Story
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" class="hover:underline me-4 md:me-6">
+                <Link to={"/concept"} class="hover:underline me-4 md:me-6">
                 Concept
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" class="hover:underline">
+                <Link to={"/about"} class="hover:underline">
                 About Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
           <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <span class="block text-sm  sm:text-center text-white">
             © 2024{" "}
-            <a href="https://flowbite.com/" class="hover:underline">
+            <span href="https://flowbite.com/">
             My Journey™
-            </a>
+            </span>
             . All Rights Reserved.
           </span>
         </div>

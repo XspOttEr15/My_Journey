@@ -78,9 +78,10 @@ const Character = () => {
 
   return (
     <>
-    <div className=" w-full lg:h-screen md:h-auto relative ">
+    
+    <div className=" w-full lg:h-screen md:h-screen relative">
     <div className="bg"></div>
-    <div className="  text-center mb-[0rem] pt-[5%] sections   " 
+    <div className="  text-center mb-[0rem] pt-[5%] sections  w-full   " 
       animate={{ scale: [1, 1.1, 1] }}
       transition={{
         duration: 2,
@@ -95,7 +96,7 @@ const Character = () => {
       </div>
       
 
-      <div className="  text-center  lg:p-0 lg:m-16 md:p-[8rem] sections">
+      <div className="  text-center  lg:p-0 lg:mx-[7%] md:mx-[17%] md:my-[3.5%] sections">
           <Slider {...settings}>
               <Link
                 onClick={() => {
@@ -252,6 +253,24 @@ const settings = {
       },
     },
     {
+      breakpoint: 1180, // iPad Pro portrait mode and iPad Mini
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 1366, // iPad Pro portrait mode and iPad Mini
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
       breakpoint: 1920, // iPad Pro portrait mode and iPad Mini
       settings: {
         slidesToShow: 4,
@@ -260,6 +279,7 @@ const settings = {
         dots: true,
       },
     },
+    
   ],
 };
 export default Character;
@@ -282,7 +302,7 @@ const CardOne = React.forwardRef(
       <div
         ref={ref}
         id="componentCardOne"
-        className="flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-32 lg:pb-22 lg:px-32  items-center"
+        className="flex flex-col xl:flex-row lgg:flex-col lg:m-0 lg:pt-12 lg:pb-22 lg:px-32  items-center"
       >
         <Modal
           size={["7xl"]}

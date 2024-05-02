@@ -17,7 +17,7 @@ const Concept = () => {
   return (
     <div className="w-full lg:h-screen  md:h-screen ">
     <div className="bgc">
-      <motion.div className="  text-center lg:pt-[5.6rem] md:pt-[8%] " 
+      <motion.div className="  text-center lg:pt-[5.6rem] md:pt-[7%] " 
       animate={{ scale: [1, 1.1, 1] }}
       transition={{
         duration: 2,
