@@ -366,7 +366,7 @@ const CardOne = React.forwardRef(
             <h1 className="text-4xl lg:text-5xl font-extrabold text-white m-5">
               Lunar (Main Charecter)
             </h1>
-            <p className="text-2xl  text-justify pt-5">
+            <p className="text-2xl  text-center pt-5">
               เป็นตัวละครหลักที่จะคอยบรรยายสิ่งต่าง ๆ ให้กับผู้รับชม
               จะมีการเล่าผ่านมุมมองของเธอเปรียบเสมือนผู้ชมที่ไม่เคยรู้จักสิ่งนั้น
               ๆ มาก่อน และพยายามทำความเข้าใจในสิ่งที่กำลังจะเกิดขึ้นต่อจากนี้
@@ -484,7 +484,7 @@ const CardTwo = React.forwardRef(
             <h1 className="text-4xl lg:text-5xl font-extrabold text-white m-5">
               Rabbet (Lapin-02)
             </h1>
-            <p className="  text-2xl text-justify pt-5 ssm:text-center ssm:text-xl ">
+            <p className="  text-2xl text-center pt-5 ssm:text-center ssm:text-xl ">
               Lapin-02 คือชื่อที่แท้จริงของ Rabbet มีความหมายในภาษาละตินว่า
               กระต่าย และเป็นเตาปฏิกรณ์หมายเลข 2 ที่ถูกสร้างขึ้นเพื่อมาทดแทนที่
               เตาปฏิกรณ์หมายเลข1
@@ -598,7 +598,7 @@ const CardThee = React.forwardRef(
             <h1 className="text-4xl lg:text-5xl font-extrabold text-white m-5 ">
               Supporting Character
             </h1>
-            <p className=" text-2xl text-justify pt-5 ssm:text-center ssm:text-xl">
+            <p className=" text-2xl text-center pt-5 ssm:text-center ssm:text-xl">
             เป็นตัวละครเสริมภายในฉาก มีรูปร่างคล้ายมนุษย์ แต่ร่างกายเป็นหุ่นยนต์ โดยตัวละครนี้จะถูกนำไปประกอบฉากเพื่อให้ตัวเมืองดูเป็นธรรมชาติมากขึ้น มีผู้คนทำงาน โดยสามารถดัดแปลงให้ตัวละครนี้ถืออุปกรณ์หลาย ๆ แบบเผื่อใช้ในสถานการณ์ที่แตกต่างกันได้
             </p>
           </div>
@@ -707,7 +707,7 @@ const CardFour = React.forwardRef(
             <h1 className="text-4xl lg:text-5xl font-extrabold text-white m-5">
               Suppoting Robot
             </h1>
-            <p className="text-2xl text-justify pt-5 ">
+            <p className="text-2xl text-center pt-5 ">
             เป็นตัวละครเสริมภายในฉาก รูปร่างเป็นหุ่นยนต์ที่มีความสูงมากกว่ามนุษย์ ตรงกลางอกสามารถเปิดเพื่อเก็บของได้ โดยตัวละครนี้จะถูกนำไปประกอบฉากเช่นเดียวกัน เพื่อให้เมืองดูมีชีวิตชีวา โดยสามารถดัดแปลงให้ตัวละครนี้ถืออุปกรณฺ์หลาย ๆ แบบให้ใช้ในสถานการณ์ที่แตกต่างกันได้เหมือนกับตัว Supporting character
             </p>
           </div>

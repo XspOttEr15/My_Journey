@@ -13,7 +13,7 @@ const store = [
     position: [0, 0, 15],
     Camposition: [0, 0, 5],
     
-    url: "/images/Maps/chapterOne/Top.png ",
+    url: "/images/Maps/chapterOne/Garbage.png ",
     link: 1,
   },
   {
@@ -38,7 +38,7 @@ const store = [
     link: 4,
   },
   {
-    name: " Garbage",
+    name: "Top",
     color: "lightblue",
     position: [15, 3, 15],
     url:  "/images/Maps/chapterOne/village2.png",
@@ -48,7 +48,7 @@ const store = [
     name: " Lunar & Rabbet",
     color: "lightblue",
     position: [100, 0, -90],
-    url: "/images/Maps/chapterOne/Garbage.png",
+    url: "/images/Maps/chapterOne/Top.png",
     link: 6,
   },
   {
@@ -69,7 +69,7 @@ const storeB = [
     linkB:1,
   },
   {
-    nameB: "Top",
+    nameB: "Garbage",
     positionB: [0, 0, -15],
     urlB: "/images/Maps/chapterOne/Photosphere1.jpg",
     linkB:2,

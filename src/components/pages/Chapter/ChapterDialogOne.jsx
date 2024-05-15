@@ -648,7 +648,7 @@ const ChapterDialogOne = () => {
         className={`w-full h-full  text-center items-center  ${fadeEffect}`}
       >
         <div
-          className=" w-full h-full bg-no-repeat   lg:bg-cover md:bg-contain  bg-center	"
+          className=" w-full h-full bg-no-repeat   lg:bg-cover md:bg-cover bg-center	"
           style={{
             backgroundImage: `url(${dialogue[currentDialogueIndex].bg})`,
           }}

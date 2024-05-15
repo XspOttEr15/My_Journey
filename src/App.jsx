@@ -40,6 +40,7 @@ const Maps = lazy(() => wait(2000).then(() =>import('./components/pages/Maps')))
 const IntroTwo = lazy(() => wait(0).then(() =>import('./components/pages/introTwo.jsx')));
 import Nav from "./components/Navbar/Nav";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react"
 
 
 
@@ -59,6 +60,7 @@ function App() {
   return (
     <>
       <SpeedInsights />
+      <Analytics/>
       <DataContext.Provider
         value={{
           RoomVolumn, 
