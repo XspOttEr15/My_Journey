@@ -1,3 +1,4 @@
-<h1> React + R3F + JS + TailwindCSS </h1> 
-<br/>
-<video width="auto" height="auto" src="https://www.youtube.com/embed/6LhlYvEmkZY?si=hDXTpGrE0-pMT_nS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen/>
+# React + R3F + JS + TailwindCSS
+
+![image](https://github.com/user-attachments/assets/e58cff86-c47c-43ad-a37b-5e3cb8282211)
+
